@@ -4,6 +4,24 @@
              xmlns:local="clr-namespace:GreenSale.Desktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!--begin:theme-->
+                <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+                <!--end:theme-->
+
+                <!--begin:icons-->
+                <ResourceDictionary Source="Assets/Icons/Icons.xaml"/>
+                <!--end:icons-->
+
+                <!--begin:styles-->
+                <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
+                <!--end:styles-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>
