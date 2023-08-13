@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenSale.Desktop.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace GreenSale.Desktop
     {
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
 
         private void btnMinimized_Click(object sender, RoutedEventArgs e)
@@ -42,6 +43,17 @@ namespace GreenSale.Desktop
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void rbProduct_Click(object sender, RoutedEventArgs e)
+        {
+            productsPage productsPage = new productsPage();
+            PageNavigator.Content = productsPage;
+        }
+
+        private void PageNavigator_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }

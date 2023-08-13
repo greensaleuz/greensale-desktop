@@ -17,10 +17,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" 
-                Background="{DynamicResource PrimaryBackground}"
-                CornerRadius="10 10 0 0"
-                BorderThickness="0 0 0 1.5"
-                BorderBrush="{DynamicResource PrimaryBorderColor}">
+                CornerRadius="10 10 0 0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#219241"/>
+                    <GradientStop Color="#209240"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -28,11 +31,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0"
-                        Background="{DynamicResource PrimaryBackground}"
-                        CornerRadius="10 0 0 0"
-                        >
+                        CornerRadius="10 0 0 0">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#219241"/>
+                            <GradientStop Color="#209240"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
                 </Border>
-
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Button Click="btnMinimized_Click" Style="{DynamicResource MinimizedButton}"/>
                     <Button Click="btnMaximized_Click" Style="{DynamicResource MaximizedButton}"/>
@@ -46,36 +52,79 @@
                     <ColumnDefinition Width="230"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
                 <Border Grid.Column="0" 
-                        Background="{DynamicResource PrimaryBackground}"
-                        CornerRadius="0 0 0 10">
-                    <StackPanel Margin="0 20 0 0">
-                        <RadioButton x:Name="rbDashboard"
-                                     Style="{DynamicResource MenuButton}"
-                                     Content="Asosiy"
-                                     Tag="{DynamicResource Dashboard}"/>
-                        <RadioButton  Style="{DynamicResource MenuButton}"
-                                     Content="E'lonlar"
-                                     Tag="{DynamicResource announcement}"/>
-                        <RadioButton Style="{DynamicResource MenuButton}"
-                                     Content="O'ylash kerak"
-                                     />
-                        <RadioButton Style="{DynamicResource MenuButton}"
-                                     Content="Register"
-                                     />
-                        <RadioButton Style="{DynamicResource MenuButton}"
-                                     Content="Sozlamalar"
-                                     Tag="{DynamicResource settings}"/>
-                        <RadioButton Style="{DynamicResource MenuButton}"
-                                     Content="Haqida"
-                                     Tag="{DynamicResource Detail}"/>
-                    </StackPanel>
+                        CornerRadius="0 0 0 10"
+                        Background="{DynamicResource SecondaryBackground}">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1"
+                                CornerRadius="25"
+                                Margin="10 0 5 20">
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="#219241"/>
+                                    <GradientStop Color="#209240"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Margin="0 20 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="1"
+                                        Height="70"
+                                        >
+                                        <TextBlock Text="Green Sale"
+                                           FontSize="26"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           FontFamily="Arial"
+                                           Foreground="{DynamicResource PrimarytextColor}">
+                                            <TextBlock.Effect>
+                                                <DropShadowEffect BlurRadius="10" Opacity="0.32"/>
+                                            </TextBlock.Effect>
+                                        </TextBlock>
+                                </Border>
+                            </Grid>
+                            <RadioButton x:Name="rbDashboard"
+                                         Style="{DynamicResource MenuButton}"
+                                         Content="Asosiy"
+                                         Tag="{DynamicResource Dashboard}"/>
+                            <RadioButton x:Name="rbProduct"
+                                         Style="{DynamicResource MenuButton}"
+                                         Content="Mahsulotlar"
+                                         Tag="{DynamicResource Product}"
+                                          Click="rbProduct_Click"/>
+                            <RadioButton Style="{DynamicResource MenuButton}"
+                                         Content="Oluvchi E'lonlari"
+                                         Tag="{DynamicResource announcement}"
+                                        />
+                            <RadioButton Style="{DynamicResource MenuButton}"
+                                         Content="Yukxonalar"
+                                         Tag="{DynamicResource incoming}"/>
+                            <RadioButton Style="{DynamicResource MenuButton}"
+                                         Content="Sozlamalar"
+                                         Tag="{DynamicResource settings}"/>
+                            <RadioButton Style="{DynamicResource MenuButton}"
+                                         Content="Haqida"
+                                         Tag="{DynamicResource Detail}"/>
+                        </StackPanel>
+                        </Border>
+                    </Grid>
                 </Border>
 
                 <Border Grid.Column="1" 
                         Background="{DynamicResource SecondaryBackground}"
-                        CornerRadius="0 0 10 0">
+                        CornerRadius="0 0 10 0"
+                        BorderThickness="0">
+                    
+                    <Frame x:Name="PageNavigator" 
+                           NavigationUIVisibility="Hidden"/>
+                    
                 </Border>
             </Grid>
         </Border>
