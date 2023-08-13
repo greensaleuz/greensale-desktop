@@ -7,4 +7,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\Images\photo_2023-08-10_19-26-35.jpg" />
+    <None Remove="Assets\Images\Screenshot 2023-08-10 191603.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-10 191901.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\photo_2023-08-10_19-26-35.jpg" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-10 191603.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-10 191901.png" />
+  </ItemGroup>
+
 </Project>
