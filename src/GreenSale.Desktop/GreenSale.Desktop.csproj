@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Assets\Images\1-removebg-preview.png" />
+    <None Remove="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <None Remove="Assets\Images\icons8-46-66.png" />
     <None Remove="Assets\Images\icons8-helping-hand-64.png" />
     <None Remove="Assets\Images\OIP1jpg.jpg" />
@@ -16,6 +17,12 @@
     <None Remove="Assets\Images\pngtreet-removebg-preview.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-10 191603.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-10 191901.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +32,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\Images\1-removebg-preview.png" />
+    <Resource Include="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <Resource Include="Assets\Images\icons8-46-66.png" />
     <Resource Include="Assets\Images\icons8-helping-hand-64.png" />
     <Resource Include="Assets\Images\OIP1jpg.jpg" />
@@ -32,6 +40,7 @@
     <Resource Include="Assets\Images\pngtreet-removebg-preview.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-10 191603.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-10 191901.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
   </ItemGroup>
 
 </Project>
