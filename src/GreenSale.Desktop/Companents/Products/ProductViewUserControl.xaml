@@ -5,48 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="250">
-    <Border>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="3*"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Row="0"
-                    CornerRadius="7 7 0 0"
-                    Background="{DynamicResource FourthBackground}">
-                <Border Margin="35 30">
-                    <Image Source="/Assets/Images/greensale-image-removebg-preview.png"/>
-                </Border>
-            </Border>
-            <Border Grid.Row="1"
-                    CornerRadius="0 0 7 7"
-                    Background="{DynamicResource SecondaryBackground}">
-                <StackPanel>
-                    <Label Content="Shaftoli"
-                           Margin="30 5"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="16"
-                           FontFamily="Arial"
-                           Foreground="{DynamicResource SecondaryTextColor}"/>
-                    <Label Content="Andijon"
-                           Margin="30 0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="16"
-                           FontFamily="Arial"
-                           Foreground="{DynamicResource SecondaryTextColor}"/>
-                    <Label Content="25000"
-                           Margin="30 10"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="16"
-                           FontFamily="Arial"
-                           Foreground="{DynamicResource SecondaryTextColor}"/>
-
-                </StackPanel>
-            </Border>
-        </Grid>
-    </Border>
+             d:DesignHeight="350" d:DesignWidth="270">
+    <Button Style="{DynamicResource ProductButton}"
+            >
+    </Button>
 </UserControl>
