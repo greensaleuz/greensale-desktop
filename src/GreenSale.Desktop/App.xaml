@@ -5,7 +5,6 @@
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              
              StartupUri="windows/RegisterWindow.xaml">
-             StartupUri="MainWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
