@@ -6,28 +6,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenSale.Desktop.window2"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
         Title="Dashboad" Height="780" Width="1280">
     <Border CornerRadius="25" 
             Padding="20" 
             Background="#f7f6f4"
             MouseDown="Border_MouseDown"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Grid Margin="0,70,0,60">
+        <Grid Margin="0,40,0,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="11*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="130"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
 
             <!--Menu-->
 
-            <Border Grid.RowSpan="3"
+            <Border
                     CornerRadius="25">
 
                 <Border.Background>
@@ -38,7 +42,7 @@
                 </Border.Background>
 
                 <StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" 
                                 HorizontalAlignment="Center" 
                                 Margin="0 30 0 10">
@@ -70,8 +74,8 @@
                             </Border>
 
                         </Grid>
-                        <!--Title texr-->
-                        <TextBlock Text="Gren Sale"
+                        <!--Title text-->
+                        <TextBlock Text="Green Sale"
                                    Foreground="#ffffff"
                                    FontSize="30" 
                                    Margin="10 0 0 3">
@@ -84,48 +88,65 @@
 
                     </StackPanel>
                     <!--Menu item-->
-                    <TextBlock Text="Menu" Style="{DynamicResource menuTitle}"/>
-                    <Button Style="{DynamicResource menuButton}">
+                    <TextBlock Text="Menyu" Style="{DynamicResource menuTitle}"/>
+
+                    <RadioButton x:Name="AsosiyButton" Click="AsosiyButton_Click" Style="{DynamicResource menuButton}" >
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Dashboard" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Asosiy" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
+                    </RadioButton>
 
-                    <Button Style="{DynamicResource menuButton}">
+                    <RadioButton Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
-                            <icon:PackIconMaterial Kind="SpaceInvaders" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Elonlar" Style="{DynamicResource menuButtonText}"/>
+                            <icon:PackIconMaterial Kind="Adjust" Style="{DynamicResource menuButtonIcon}"/>
+                            <TextBlock Text="Sotuvchi e'lonlari" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
-                    <Button Style="{DynamicResource menuButton}">
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
-                            <icon:PackIconMaterial Kind="Satellite" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Mahsulotlar" Style="{DynamicResource menuButtonText}"/>
+                            <icon:PackIconMaterial Kind="HomeGroup" Style="{DynamicResource menuButtonIcon}"/>
+                            <TextBlock Text="Yukxona e'lonlari" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
-                    <Button Style="{DynamicResource menuButton}">
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="ClipboardTextPlayOutline" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Malumotlar" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Oluvchi e'lonlari" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
-                    <Button Style="{DynamicResource menuButton}">
+                    </RadioButton>
+              
+                
+
+                    <TextBlock Text="Yordam" Style="{DynamicResource menuTitle}"/>
+                    <RadioButton Style="{DynamicResource menuButton}" Click="Button_Click">
                         <StackPanel Orientation="Horizontal">
-                            <icon:PackIconMaterial Kind="StarSettings" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Elonlar" Style="{DynamicResource menuButtonText}"/>
+                            <icon:PackIconMaterial Kind="AccountCheck" Style="{DynamicResource menuButtonIcon}"/>
+                            <TextBlock Text="Biz haqimizda" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
-                    <Button Style="{DynamicResource menuButton}">
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource menuButton}" >
                         <StackPanel Orientation="Horizontal">
-                            <icon:PackIconMaterial Kind="Phone" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Elonlar" Style="{DynamicResource menuButtonText}"/>
+                            <icon:PackIconMaterial Kind="HomeGroup" Style="{DynamicResource menuButtonIcon}"/>
+                            <TextBlock Text="Biz bilan bog'lanish" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </Button>
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <icon:PackIconMaterial Kind="HeartSettings" Style="{DynamicResource menuButtonIcon}"/>
+                            <TextBlock Text="Sozlamalar" Style="{DynamicResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+
                 </StackPanel>
             </Border>
 
+            <Border Grid.Column="1" Grid.ColumnSpan="2" >
+                <Frame x:Name="FrameFilter" NavigationUIVisibility="Hidden">
 
+                </Frame>
+            </Border>
         </Grid>
 
     </Border>

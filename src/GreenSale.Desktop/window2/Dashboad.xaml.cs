@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenSale.Desktop.Pages.Dashbord;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,18 @@ namespace GreenSale.Desktop.window2
                 }
 
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AsosiyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Dashboard dashboard = new Dashboard();
+            FrameFilter.Content= dashboard;
         }
     }
 }

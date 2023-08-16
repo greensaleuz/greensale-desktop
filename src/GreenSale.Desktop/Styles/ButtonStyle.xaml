@@ -34,6 +34,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="MaximizedButton" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="23"/>
         <Setter Property="Width" Value="23"/>
@@ -64,6 +65,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="CloseButtun" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="23"/>
         <Setter Property="Width" Value="23"/>
@@ -94,6 +96,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="UserButtun" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="40"/>
@@ -223,14 +226,8 @@
 
 
 
-    <Style x:Key="menuTitle" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="#FFFFFF"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Margin" Value="40 30 0 15"/>
-    </Style>
 
-    <Style x:Key="menuButton" TargetType="Button">
+    <Style x:Key="menuButton" TargetType="RadioButton">
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="45"/>
@@ -238,7 +235,7 @@
         <Setter Property="Margin" Value="15 0 15 5"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="RadioButton">
                     <Border Background="{TemplateBinding Background}" CornerRadius="10">
                         <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     </Border>
@@ -250,6 +247,10 @@
                 <Setter Property="Background" Value="#f7f6f4"/>
                 <Setter Property="Foreground" Value="#fb7657"/>
             </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="#f7f6f4"/>
+                <Setter Property="Foreground" Value="#fb7657"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -257,14 +258,14 @@
         <Setter Property="Margin" Value="25 0 0 0"/>
         <Setter Property="Width" Value="18"/>
         <Setter Property="Height" Value="18"/>
-        <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
 
     </Style>
 
     <Style x:Key="menuButtonText" TargetType="TextBlock">
         <Setter Property="Margin" Value="20 0 0 2 "/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=Foreground,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RadioButton}}}"/>
 
     </Style>
 
@@ -274,6 +275,13 @@
         <Setter Property="Padding" Value="20"/>
     </Style>
 
+    <Style x:Key="menuTitle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="40 30 0 15"/>
+    </Style>
+    
     <Style x:Key="titleText" TargetType="TextBlock">
         <Setter Property="FontSize" Value="26"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -281,9 +289,48 @@
     </Style>
 
     <Style x:Key="titleSecoundText" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="10"/>
         <Setter Property="Margin" Value="0 5"/>
         <Setter Property="Foreground" Value="#b7b7b7"/>
+    </Style>
+
+    <Style x:Key="searchTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="#f7f6f4"/>
+        <Setter Property="Foreground" Value="#a0a0a0"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="15 13 40 13"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="border"
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      Focusable="False"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden">
+                        </ScrollViewer>
+                        
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#d9d9d9"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#d9d9d9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        
     </Style>
 
 </ResourceDictionary>
