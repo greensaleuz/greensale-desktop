@@ -18,6 +18,8 @@
     <None Remove="Assets\Images\OIP1jpg.jpg" />
     <None Remove="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <None Remove="Assets\Images\apple-tree-garden-green.jpg" />
+    <None Remove="Assets\Images\5357377_Internet-go-removebg-preview.png" />
+    <None Remove="Assets\Images\apple-tree-garden-green.jpg" />
     <None Remove="Assets\Images\photo_2023-08-10_19-26-35.jpg" />
     <None Remove="Assets\Images\pngtreet-removebg-preview.png" />
     <None Remove="Assets\Images\pngtreet.jpg" />
@@ -34,6 +36,8 @@
 
   <ItemGroup>
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
   </ItemGroup>
@@ -54,6 +58,8 @@
     <Resource Include="Assets\Images\icons8-46-66.png" />
     <Resource Include="Assets\Images\icons8-helping-hand-64.png" />
     <Resource Include="Assets\Images\OIP1jpg.jpg" />
+    <Resource Include="Assets\Images\5357377_Internet-go-removebg-preview.png" />
+    <Resource Include="Assets\Images\apple-tree-garden-green.jpg" />
     <Resource Include="Assets\Images\photo_2023-08-10_19-26-35.jpg" />
     <Resource Include="Assets\Images\pngtreet-removebg-preview.png" />
     <Resource Include="Assets\Images\pngtreet.jpg" />
@@ -64,6 +70,8 @@
     <Resource Include="Assets\Images\Screenshot 2023-08-15 122945.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
