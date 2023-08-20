@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Pages
+namespace GreenSale.Desktop.Pages.CreateAd
 {
     /// <summary>
-    /// Interaction logic for productsPage.xaml
+    /// Interaction logic for CreateAd.xaml
     /// </summary>
-    public partial class productsPage : Page
+    public partial class CreateAd : Page
     {
-        public productsPage()
+        public CreateAd()
         {
             InitializeComponent();
         }
