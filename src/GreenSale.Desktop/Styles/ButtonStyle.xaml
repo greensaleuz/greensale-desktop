@@ -597,9 +597,7 @@
                                 </StackPanel>
                             </StackPanel>
                             <Border Grid.Column="1" CornerRadius="0 15 15 0">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="/Assets/Images/1-removebg-preview.png"/>
-                                </Border.Background>
+                           
                             </Border>
                         </Grid>
                     </Border>
