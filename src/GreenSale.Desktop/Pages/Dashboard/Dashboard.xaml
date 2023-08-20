@@ -82,10 +82,10 @@
             </Grid.ColumnDefinitions>
            
             <!--Card-->
-            <uc:ProductCountControl Grid.Column="0" Title="E'lonlar" SubTitle="Bir yillik e'lonlar soni 9997" Amount="3" Image="/Assets/Images/OIP1jpg.jpg"/>
-            <uc:ProductCountControl Grid.Column="1" Title="Olinganlar" SubTitle="Bir yillik kelishilganlar soni 7778" Amount="7" Image="/Assets/Images/icons8-helping-hand-64.png"/>
-            <uc:ProductCountControl Grid.Column="2" Title="Yangi" SubTitle="Band qilinmagan e'lonlar soni 8887" Amount="5" Image="/Assets/Images/icons8-46-66.png" />
-            <uc:ProductCountControl Grid.Column="3" Title="Mijozlar" SubTitle="Foydalanuvchilar soni 5578" Amount="5" Image="/Assets/Images/1-removebg-preview.png" />
+            <uc:ProductCountControl Grid.Column="0" Title="E'lonlar" SubTitle="Bir yillik e'lonlar soni 9997" Amount="3"/> 
+            <uc:ProductCountControl Grid.Column="1" Title="Olinganlar" SubTitle="Bir yillik kelishilganlar soni 7778" Amount="7"/>
+            <uc:ProductCountControl Grid.Column="2" Title="Yangi" SubTitle="Band qilinmagan e'lonlar soni 8887" Amount="5"/>
+            <uc:ProductCountControl Grid.Column="3" Title="Mijozlar" SubTitle="Foydalanuvchilar soni 5578" Amount="5" />
 
         </Grid>
         
