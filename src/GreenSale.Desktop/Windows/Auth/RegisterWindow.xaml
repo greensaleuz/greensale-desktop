@@ -1,11 +1,11 @@
-﻿<Window x:Class="GreenSale.Desktop.Windows.Register_Singup_Window"
+﻿<Window x:Class="GreenSale.Desktop.Windows.RegisterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenSale.Desktop.Windows"
         mc:Ignorable="d"
-        Title="Register_Singup_Window" Height="700" Width="1200"
+        Title="RegisterWindow" Height="700" Width="1200"
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -51,25 +51,25 @@
                                 <Label Content="New here?"
                                    FontSize="30"
                                    Margin="0 0 0 5"
-                                   FontFamily="arial"
+                                   FontFamily="send-series"
                                    Foreground="{DynamicResource PrimarytextColor}"
                                    HorizontalAlignment="Center"/>
-                                <TextBlock Text="saaskdksakdkdaksdkasdkasdklaslkdkasldklasdalsdkasd"
+                                <TextBlock Text="Oldin bu dasturni ishlatgan bo'lsangiz yoki ro'yhatdan o'tgan"
                                        FontSize="16"
                                        Margin="50 5"
                                        TextWrapping="Wrap"
-                                       FontFamily="arial"
+                                       FontFamily="send-series"
                                        Foreground="{DynamicResource PrimarytextColor}"
                                        HorizontalAlignment="Center"/>
-                                <TextBlock Text="saaskdksakdkdasldklasdalsdkasd"
+                                <TextBlock Text="bo'lsangiz shaxsiy kabinetingizga o'ting"
                                        FontSize="16"
                                        Margin="50 0"
                                        TextWrapping="Wrap"
-                                       FontFamily="arial"
+                                       FontFamily="send-series"
                                        Foreground="{DynamicResource PrimarytextColor}"
                                        HorizontalAlignment="Center"/>
-                                <Button x:Name="btn_Sign_in"
-                                        Click="btn_Sign_in_Click"
+                                <Button x:Name="btnShaxsiykabinet"
+                                        Click="btnShaxsiykabinet_Click"
                                         Style="{DynamicResource SuccessButton}"
                                         Content="Shaxsiy Kabinet"
                                         Margin="0 20 0 0"/>
@@ -84,20 +84,20 @@
                 CornerRadius="10 0 0 10"
                 Background="{DynamicResource SecondaryBackground}">
             <StackPanel>
-                <Border Margin="80 40 80 80">
+                <Border Margin="80 20 80 80">
                     <StackPanel Margin="20" >
                         <Label Content="Ro'yhatdan o'tish"
                                HorizontalAlignment="Center"
                                FontSize="30"
                                FontWeight="Bold"
                                Margin="0 0 0 20"
-                               FontFamily="arial"
+                               FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Label Height="40" Width="350"
                                Content="Ism"
                                Margin="0 10 0 0"                       
                                FontSize="18"
-                               FontFamily="arial"
+                               FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
@@ -128,7 +128,7 @@
                                Content="Familiya"
                                Margin="0 10 0 0"                       
                                FontSize="18"
-                               FontFamily="arial"
+                               FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
@@ -159,7 +159,7 @@
                                Content="Telefon nomer"
                                Margin="0 10 0 0"                       
                                FontSize="18"
-                               FontFamily="arial"
+                               FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
@@ -190,7 +190,7 @@
                                Content="Parol"
                                Margin="0 10 0 0"                       
                                FontSize="18"
-                               FontFamily="arial"
+                               FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
@@ -217,12 +217,20 @@
                                          Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                         </Border>
+                        <TextBlock Height="40" Width="350"
+                                   Text="Parolda katta va kichik harflar,raqamlar va belgilardan foydalaning."
+                                   Margin="0 10 0 0"    
+                                   TextWrapping="Wrap"
+                                   FontSize="12"
+                                   FontFamily="send-series"
+                                   Foreground="{DynamicResource FourthTextColor}"/>
                         <Border>
-
-                            <Button Height="60"
-                        Margin="0 40 0 0"
-                        Content="Ro'yhatdan o'tish"
-                        Style="{DynamicResource SuccessButton}">
+                            <Button x:Name="btnRegister"
+                                    Click="btnRegister_Click"
+                                    Height="60"
+                                    Margin="0 10 0 0"
+                                    Content="Ro'yhatdan o'tish"
+                                    Style="{DynamicResource SignSuccessButton}">
                             </Button>
                         </Border>
                     </StackPanel>

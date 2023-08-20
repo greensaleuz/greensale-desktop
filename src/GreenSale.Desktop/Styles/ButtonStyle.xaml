@@ -34,7 +34,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
     <Style x:Key="MaximizedButton" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="23"/>
         <Setter Property="Width" Value="23"/>
@@ -65,7 +64,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
     <Style x:Key="CloseButtun" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="23"/>
         <Setter Property="Width" Value="23"/>
@@ -76,27 +74,86 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="CloseB" 
-                            Background="Red"
+                            Background="#209240"
                             CornerRadius="10">
                         <Path Fill="White" Margin="6"
                               Data="{DynamicResource close}" Width="15" Stretch="Uniform"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="CloseB" Property="Background" Value="#D8504B"/>
+                            <Setter TargetName="CloseB" Property="Background" Value="#209240"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="CloseB" Property="Background" Value="#F05954"/>
+                            <Setter TargetName="CloseB" Property="Background" Value="#24A649"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="CloseB" Property="Background" Value="#C14843"/>
+                            <Setter TargetName="CloseB" Property="Background" Value="#1B7C37"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+    <Style x:Key="BackButtun" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Width" Value="23"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="CloseB" 
+                            Background="#209240"
+                            CornerRadius="10">
+                        <Path Fill="White" Margin="6"
+                              Data="{DynamicResource back}" Width="15" Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#209240"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="CloseB" Property="Background" Value="#24A649"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#1B7C37"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="UpdateButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="CloseB" 
+                            Background="#fff"
+                            CornerRadius="10">
+                        <Path Fill="{DynamicResource FifthTextColor}" Margin="6"
+                              Data="{DynamicResource update}" Width="15" Stretch="Uniform"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#DCDCDC"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="CloseB" Property="Background" Value="#fff"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="CloseB" Property="Background" Value="#BBBBBB"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="UserButtun" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="40"/>
@@ -171,6 +228,50 @@
 
     <Style x:Key="SuccessButton" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="55"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="B" CornerRadius="28"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#219241"/>
+                                <GradientStop Color="#209240"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label FontSize="24"
+                               Margin="10 0"
+                               FontFamily="send-series"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Content="{TemplateBinding Content}"
+                               />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#24A649"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="#209240"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SignSuccessButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="55"/>
         <Setter Property="Width" Value="350"/>
         <Setter Property="Margin" Value="10 0"/>
         <Setter Property="Padding" Value="10"/>
@@ -189,7 +290,7 @@
                         </Border.Background>
                         <Label FontSize="24"
                                Margin="10 0"
-                               FontFamily="Jetbrains Mono"
+                               FontFamily="send-series"
                                FontWeight="SemiBold"
                                Foreground="White"
                                VerticalAlignment="Center"
@@ -199,13 +300,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#049761"/>
+                            <Setter TargetName="B" Property="Background" Value="#24A649"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#04BE7A"/>
+                            <Setter TargetName="B" Property="Background" Value="#209240"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#03774C"/>
+                            <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -365,9 +466,168 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SendCodButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="B" CornerRadius="20"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#219241"/>
+                                <GradientStop Color="#209240"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label FontSize="24"
+                               Margin="10 0"
+                               FontFamily="send-series"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Content="{TemplateBinding Content}"
+                               />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#24A649"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="#209240"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ProductCreateButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="B" CornerRadius="5" 
+                            Background="#04BE7A"
+                            Margin="0 5">
+                        <Label FontSize="20"
+                               Margin="10 0"
+                               FontFamily="Jetbrains Mono"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Content="{TemplateBinding Content}"
+                               />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#049761"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="#04BE7A"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#03774C"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AdButton" TargetType="Button">
+        <Setter Property="Height" Value="270"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="categoryBorder"
+                            Background="{DynamicResource SecondaryBackground}"
+                            CornerRadius="15"              
+                            BorderThickness="2"
+                            BorderBrush="Transparent">
+                        <Grid x:Name="categoryGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label x:Name="lblAd"                               
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       FontSize="25"
+                                       Foreground="{DynamicResource FifthTextColor}"                               
+                                       Content="{TemplateBinding Content}"
+                                       Margin="0 150 0 0"
+                                       >
+                                </Label>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="E'lon berish"
+                                           x:Name="lblAddAd"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="58 0 0 0"
+                                           Foreground="{DynamicResource FourthBackground}"
+                                       
+                                       >
+                                    </Label>
+                                    <Path x:Name="icon"                                  
+                                          Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                          Height="20" Width="20"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"                                  
+                                          Fill="{DynamicResource FourthTextColor}"                                  
+                                          Stretch="Uniform"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Border Grid.Column="1" CornerRadius="0 15 15 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Assets/Images/1-removebg-preview.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                            <Setter TargetName="icon" Property="Fill" Value="{DynamicResource FifthTextColor}"/>
+                            <Setter TargetName="lblAd" Property="Foreground" Value="{DynamicResource FifthTextColor}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="False">
 
 
+                        </Trigger>
 
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
     <Style x:Key="menuButton" TargetType="RadioButton">
@@ -439,16 +699,16 @@
 
     <Style x:Key="searchTextBox" TargetType="TextBox">
         <Setter Property="Background" Value="#f7f6f4"/>
-        <Setter Property="Foreground" Value="#a0a0a0"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource FifthTextColor}"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="15 13 40 13"/>
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBoxBase">
                     <Border x:Name="border"
-                            CornerRadius="10"
+                            CornerRadius="10 0 0 10"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding Background}"

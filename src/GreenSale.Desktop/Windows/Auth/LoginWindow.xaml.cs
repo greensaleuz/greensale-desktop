@@ -18,9 +18,9 @@ namespace GreenSale.Desktop.Windows
     /// <summary>
     /// Interaction logic for RegisterWindow.xaml
     /// </summary>
-    public partial class RegisterWindow : Window
+    public partial class LoginWindow : Window
     {
-        public RegisterWindow()
+        public LoginWindow()
         {
             InitializeComponent();
         }
@@ -36,12 +36,17 @@ namespace GreenSale.Desktop.Windows
             Application.Current.Shutdown();
         }
 
-        private void btn_Sign_up_Click(object sender, RoutedEventArgs e)
-        {
-            Register_Singup_Window register_Singup_Window = new Register_Singup_Window();
-            register_Singup_Window.Show();
-            this.Close();
 
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+                
+        }
+
+        private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            this.Close();
         }
     }
 }
