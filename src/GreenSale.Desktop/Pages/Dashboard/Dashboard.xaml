@@ -39,7 +39,7 @@
                             </LinearGradientBrush>
                         </Border.Background>
 
-                        <Image Width="40" Height="40" Source="/Assets/Images/pngtreet-removebg-preview.png"/>
+                        <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
                     </Border>
                     <StackPanel  VerticalAlignment="Center">
                         <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
@@ -82,10 +82,10 @@
             </Grid.ColumnDefinitions>
            
             <!--Card-->
-            <uc:ProductCountControl Grid.Column="0" Title="E'lonlar" SubTitle="Bir yillik e'lonlar soni 9997" Amount="3"/> 
-            <uc:ProductCountControl Grid.Column="1" Title="Olinganlar" SubTitle="Bir yillik kelishilganlar soni 7778" Amount="7"/>
-            <uc:ProductCountControl Grid.Column="2" Title="Yangi" SubTitle="Band qilinmagan e'lonlar soni 8887" Amount="5"/>
-            <uc:ProductCountControl Grid.Column="3" Title="Mijozlar" SubTitle="Foydalanuvchilar soni 5578" Amount="5" />
+            <uc:ProductCountControl Grid.Column="0" Title="E'lonlar" SubTitle="Bir yillik e'lonlar soni 9997" Amount="3" Image= "/Assets/Images/Elonlar.png" />
+            <uc:ProductCountControl Grid.Column="1" Title="Olinganlar" SubTitle="Bir yillik kelishilganlar soni 7778" Amount="7" Image="/Assets/Images/Kelishilganlar.png"/>
+            <uc:ProductCountControl Grid.Column="2" Title="Yangi" SubTitle="Band qilinmagan e'lonlar soni 8887" Amount="5" Image="/Assets/Images/YangiElonlar.png"/>
+            <uc:ProductCountControl Grid.Column="3" Title="Mijozlar" SubTitle="Foydalanuvchilar soni 5578" Amount="5" Image="/Assets/Images/Users.png"/>
 
         </Grid>
         
