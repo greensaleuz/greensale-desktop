@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="270">
-    <Button Style="{DynamicResource ProductButton}"
-            >
-    </Button>
+
+    <Grid>
+        <Button Style="{DynamicResource ProductButton}"/>
+    </Grid>
+    
 </UserControl>
