@@ -26,12 +26,11 @@
                     <RowDefinition Height="39*"/>
                     <RowDefinition Height="661*"/>
                 </Grid.RowDefinitions>
-                <!--<Ellipse Height="1450" Width="1100"
-                     Margin="0 -700 -500 0"
-                     Fill="#209240" >
-                </Ellipse>-->
                 <Border Grid.RowSpan="2"
                         CornerRadius="10">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Images/Screenshot 2023-08-15 215526.png"/>
+                    </Border.Background>
                     <StackPanel Margin="0,0,0,660"
                                 HorizontalAlignment="Right">
                         <Button x:Name="btn_Close"

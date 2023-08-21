@@ -336,8 +336,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="B"  Background="Transparent"
+                    <Border x:Name="B"
                             CornerRadius="10">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                        </Border.Background>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="44*"/>
@@ -556,7 +559,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="categoryBorder"
-                            Background="{DynamicResource SecondaryBackground}"
                             CornerRadius="15"              
                             BorderThickness="2"
                             BorderBrush="Transparent">
@@ -597,7 +599,9 @@
                                 </StackPanel>
                             </StackPanel>
                             <Border Grid.Column="1" CornerRadius="0 15 15 0">
-                           
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Assets/Images/Users.png"/>
+                                </Border.Background>
                             </Border>
                         </Grid>
                     </Border>

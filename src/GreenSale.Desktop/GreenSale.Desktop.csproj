@@ -8,9 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\apple-tree-garden-green.jpg" />
     <None Remove="Assets\Images\Elonlar.png" />
     <None Remove="Assets\Images\Kelishilganlar.png" />
     <None Remove="Assets\Images\Salomaka.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
     <None Remove="Assets\Images\Users.png" />
     <None Remove="Assets\Images\YangiElonlar.png" />
   </ItemGroup>
@@ -21,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Images\apple-tree-garden-green.jpg" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
+    <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
     <Resource Include="Assets\Images\Users.png" />
     <Resource Include="Assets\Images\YangiElonlar.png" />
     <Resource Include="Assets\Images\Kelishilganlar.png" />

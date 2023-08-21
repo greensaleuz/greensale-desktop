@@ -28,7 +28,7 @@
                             </LinearGradientBrush>
                         </Border.Background>
 
-                        <Image Width="40" Height="40" Source="/Assets/Images/pngtreet-removebg-preview.png"/>
+                        <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
                     </Border>
                     <StackPanel  VerticalAlignment="Center">
                         <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>

@@ -18,6 +18,9 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0"
                 CornerRadius="10 0 0 10">
+            <Border.Background>
+                <ImageBrush ImageSource="/Assets/Images/Screenshot 2023-08-15 214117.png"/>
+            </Border.Background>
           
             <Grid >
                 <Grid.RowDefinitions>
@@ -64,8 +67,11 @@
                 <Border Grid.Row="1"
                         Height="350" 
                         Margin="100 10 50 0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Images/5357377_Internet-go-removebg-preview.png"/>
+                    </Border.Background>
                 </Border>
-
+                    
             </Grid>
         </Border>
         <Border Grid.Column="1"
