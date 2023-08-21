@@ -8,12 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\Elonlar.png" />
+    <None Remove="Assets\Images\Kelishilganlar.png" />
+    <None Remove="Assets\Images\Salomaka.png" />
+    <None Remove="Assets\Images\Users.png" />
+    <None Remove="Assets\Images\YangiElonlar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Images\" />
+    <Resource Include="Assets\Images\Users.png" />
+    <Resource Include="Assets\Images\YangiElonlar.png" />
+    <Resource Include="Assets\Images\Kelishilganlar.png" />
+    <Resource Include="Assets\Images\Elonlar.png" />
+    <Resource Include="Assets\Images\Salomaka.png" />
   </ItemGroup>
 
 </Project>
