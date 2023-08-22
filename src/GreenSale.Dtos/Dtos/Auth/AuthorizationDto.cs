@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GreenSale.Integrated.API
+namespace GreenSale.Dtos.Dtos.Auth
 {
-    internal class AllAPI
+    public class AuthorizationDto
     {
+        public string Authorization { get; set; } = string.Empty;
     }
 }
