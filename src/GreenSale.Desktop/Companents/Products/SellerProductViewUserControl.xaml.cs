@@ -18,9 +18,9 @@ namespace GreenSale.Desktop.Companents.Products
     /// <summary>
     /// Interaction logic for ProductViewUserControl.xaml
     /// </summary>
-    public partial class ProductViewUserControl : UserControl
+    public partial class SellerProductViewUserControl : UserControl
     {
-        public ProductViewUserControl()
+        public SellerProductViewUserControl()
         {
             InitializeComponent();
         }

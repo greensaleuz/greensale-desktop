@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Sellers"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
+      Loaded="Page_Loaded_1"
       d:DesignHeight="780" d:DesignWidth="1040"
       Title="SellerPage">
 

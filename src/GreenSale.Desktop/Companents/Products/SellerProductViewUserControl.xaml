@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GreenSale.Desktop.Companents.Products.ProductViewUserControl"
+﻿<UserControl x:Class="GreenSale.Desktop.Companents.Products.SellerProductViewUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,8 +7,149 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="270">
 
-    <Grid>
-        <Button Style="{DynamicResource ProductButton}"/>
+    <Grid Height="350" Width="270">
+        <Border x:Name="B" Style="{DynamicResource BorderProduct}"
+                            Cursor="Hand"
+                            CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="44*"/>
+                    <RowDefinition Height="56*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                                    BorderThickness="2 2 2 0"
+                                    BorderBrush="{DynamicResource SecondaryBorderColor}"
+                                    CornerRadius="8 8 0 0"
+                                    Background="{DynamicResource SecondaryBackground}">
+                    <Border Margin="0" CornerRadius="7 7 0 0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                        </Border.Background>
+
+                    </Border>
+                </Border>
+                <Border Grid.Row="1"
+                                    CornerRadius="0 0 7 7"
+                                    BorderThickness="2 0 2 2"
+                                    BorderBrush="{DynamicResource SecondaryBorderColor}"
+                                    Background="{DynamicResource SecondaryBackground}">
+                    <StackPanel>
+                        <Border Height="40"
+                                            Margin="10 0 10 0"
+                                            BorderThickness="0 0 0 1"
+                                            BorderBrush="{DynamicResource SelectedBorderColor}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="0 0 0 0"
+                                                Orientation="Horizontal">
+                                    <Path Width="15" Height="15"
+                                                      Margin="0"
+                                                      Data="{DynamicResource Location}"
+                                                      Stretch="Uniform"
+                                                      Fill="{DynamicResource PrimaryBackground}"/>
+                                    <TextBlock Text="Andijon"
+                                                           Margin="5 0 0 0"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           FontSize="14"
+                                                           FontFamily="send-series"
+                                                           Foreground="{DynamicResource FourthTextColor}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="0"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Right">
+                                    <Path Width="15" Height="15"
+                                                      Margin="5"
+                                                      Data="{DynamicResource Calendar}"
+                                                      Stretch="Uniform"
+                                                      Fill="{DynamicResource PrimaryBackground}"/>
+                                    <TextBlock Text="21-iyun 2021"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           FontSize="14"
+                                                           FontFamily="send-series"
+                                                           Foreground="{DynamicResource FourthTextColor}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0"
+                                    Height="35" 
+                                    HorizontalAlignment="Left"
+                                    Margin="10 0 0 0">
+                                <TextBlock Text="Olma"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       FontSize="18"
+                                                       FontFamily="send-series"
+                                                       Foreground="{DynamicResource FifthTextColor}"/>
+                            </Border>
+                            <StackPanel Grid.Column="1"
+                                        Height="35" 
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal"
+                                        Margin="0 0 10 0">
+                                <TextBlock Text="12000"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontSize="14"
+                                           Margin="0 0 5 0"
+                                           FontFamily="send-series"
+                                           Foreground="{DynamicResource FifthTextColor}"/>
+                                <TextBlock Text="so'm"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontSize="14"
+                                           FontFamily="send-series"
+                                           Foreground="{DynamicResource FifthTextColor}"/>
+                            </StackPanel>
+                        </Grid>
+                        <Border Height="30" HorizontalAlignment="Left"
+                                            Margin="10 0 0 0">
+                            <TextBlock Text="Bog'da semeranka olma navi bor."
+                                                   TextWrapping="Wrap"
+                                                   Margin="0 0 7 0"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="14"
+                                                   FontFamily="send-series"
+                                                   Foreground="{DynamicResource FourthTextColor}"/>
+                        </Border>
+                        <Border Height="30" HorizontalAlignment="Left"
+                                            Margin="10 0 0 0">
+                            <TextBlock Text="15000  kg"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="12"
+                                                   FontFamily="send-series"
+                                                   Foreground="{DynamicResource FifthTextColor}"/>
+                        </Border>
+                        <Border Height="30" Width="120"
+                                            CornerRadius="7"
+                                            Margin="10 5 0 0"
+                                            HorizontalAlignment="Left"
+                                            Background="{DynamicResource SecondaryBackground}"
+                                            BorderThickness="1.5"
+                                            BorderBrush="{DynamicResource FifthTextColor}">
+                            <Label Content="Hammasini ko'rish"
+                                               FontSize="12"
+                                               Margin="0"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"
+                                               FontFamily="send-series"
+                                               Foreground="{DynamicResource FourthTextColor}"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
     
 </UserControl>
