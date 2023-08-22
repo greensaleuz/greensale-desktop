@@ -94,7 +94,7 @@
                        FontFamily="send-series"
                        Foreground="{DynamicResource FifthTextColor}"/>
                         <Label Height="40" Width="350"
-                               Content="Familiya"
+                               Content="Telefon nomer"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
@@ -115,7 +115,7 @@
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
 
-                                <TextBox Grid.Column="1"
+                                <TextBox x:Name="txtPhoneNumber" Grid.Column="1"
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          Foreground="{DynamicResource FourthTextColor}"
@@ -147,7 +147,7 @@
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
                                       
-                                <TextBox Grid.Column="1"
+                                <TextBox x:Name="txtParol" Grid.Column="1"
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
