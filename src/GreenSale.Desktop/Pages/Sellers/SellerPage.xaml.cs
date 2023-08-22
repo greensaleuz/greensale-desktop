@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenSale.Desktop.Companents.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace GreenSale.Desktop.Pages.Sellers
         public SellerPage()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            SellerProductViewUserControl sellerProductViewUserControl = new SellerProductViewUserControl();
+            wrpCourses.Children.Add(sellerProductViewUserControl);
         }
     }
 }
