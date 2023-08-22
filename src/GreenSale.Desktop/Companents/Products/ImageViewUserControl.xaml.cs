@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Windows.Products
+namespace GreenSale.Desktop.Companents.Products
 {
     /// <summary>
-    /// Interaction logic for ProductViewWindow.xaml
+    /// Interaction logic for ImageViewUserControl.xaml
     /// </summary>
-    public partial class ProductViewWindow : Window
+    public partial class ImageViewUserControl : UserControl
     {
-        public ProductViewWindow()
+        public ImageViewUserControl()
         {
             InitializeComponent();
         }
