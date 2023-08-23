@@ -19,6 +19,6 @@ namespace GreenSale.ViewModels.Models.SellerPosts
         public string type { get; set; } = string.Empty;
         public DateTime updatedAt { get; set; }
         public string  status { get; set; } = string.Empty;
-        public string image { get; set; } = string.Empty; 
+        public string mainImage { get; set; } = string.Empty; 
     }
 }
