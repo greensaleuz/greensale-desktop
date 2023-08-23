@@ -13,19 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Pages.Dashbord
+namespace GreenSale.Desktop.Pages.CreateAd
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for BuyerCreateAdd.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class BuyerCreateAdd : Page
     {
-        public Dashboard()
+        public BuyerCreateAdd()
         {
             InitializeComponent();
         }
 
-        private void User_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnBuyerCreate_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

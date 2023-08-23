@@ -12,6 +12,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize">
+    
     <Border CornerRadius="25" 
             Padding="20" 
             Background="#f7f6f4"
@@ -148,7 +149,7 @@
                     </RadioButton>
                     <RadioButton Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
-                            <icon:PackIconMaterial Kind="HeartSettings" Style="{DynamicResource menuButtonIcon}"/>
+                            <icon:PackIconMaterial Kind="StarSettings" Style="{DynamicResource menuButtonIcon}"/>
                             <TextBlock Text="Sozlamalar" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>

@@ -20,13 +20,13 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         private void btnBuyerAd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new CreateAd());
+            NavigationService?.Navigate(new BuyerCreateAdd());
 
         }
 
         private void btnStorageAd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new CreateAd());
+            NavigationService?.Navigate(new StorageCreateAd());
 
         }
     }
