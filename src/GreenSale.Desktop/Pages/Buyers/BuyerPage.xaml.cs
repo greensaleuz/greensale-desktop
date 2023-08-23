@@ -25,7 +25,6 @@ namespace GreenSale.Desktop.Pages.Buyers
 
             foreach (var post in buyerpost)
             {
-
                 BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();
                 buyerProductViewUserControl.SetData(post);
                 wrpCourses.Children.Add(buyerProductViewUserControl);

@@ -48,29 +48,18 @@
                                 Margin="0 30 0 10">
                         <Grid>
 
-                            <Border Background="#ffffff" Width="35" Height="35" CornerRadius="50"/>
+                            <Border Background="#ffffff" Width="55" Height="55" CornerRadius="50"/>
 
                             <Border BorderBrush="#ffffff" 
-                                Width="35" Height="35" 
+                                Width="55" Height="55" 
                                 BorderThickness="3" 
                                 CornerRadius="35">
 
-                                <Border.Effect>
-                                    <DropShadowEffect BlurRadius="10" Opacity="0.32"/>
-                                </Border.Effect>
+                               
                                 <!--Icon-->
-                                <icon:PackIconMaterial Kind="SendOutline" 
-                                                       Width="15" 
-                                                       Height="15" 
-                                                       Foreground="#Fb7154"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Center"
-                                                       Margin="3 0 0 2">
-                                    <icon:PackIconMaterial.LayoutTransform>
-                                        <RotateTransform Angle="-45"/>
-                                    </icon:PackIconMaterial.LayoutTransform>
 
-                                </icon:PackIconMaterial>
+                                <Image Margin="0 0 2 0" Source="/Assets/Images/logo.png"/>
+
                             </Border>
 
                         </Grid>
@@ -78,7 +67,7 @@
                         <TextBlock Text="Green Sale"
                                    Foreground="#ffffff"
                                    FontSize="30" 
-                                   Margin="10 0 0 3">
+                                   Margin="10 7 0 3">
 
                             <TextBlock.Effect>
                                 <DropShadowEffect BlurRadius="10" Opacity="0.32"/>
