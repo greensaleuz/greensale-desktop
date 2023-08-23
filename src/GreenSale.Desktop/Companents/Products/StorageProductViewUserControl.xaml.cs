@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GreenSale.Desktop.Companents.Products
 {
     /// <summary>
-    /// Interaction logic for ImageViewUserControl.xaml
+    /// Interaction logic for StorageProductViewUserControl.xaml
     /// </summary>
-    public partial class ImageViewUserControl : UserControl
+    public partial class StorageProductViewUserControl : UserControl
     {
-        public ImageViewUserControl()
+        public StorageProductViewUserControl()
         {
             InitializeComponent();
         }

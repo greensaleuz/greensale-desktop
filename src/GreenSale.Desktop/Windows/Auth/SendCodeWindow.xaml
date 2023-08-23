@@ -159,9 +159,11 @@
             </StackPanel>
 
             <Border>
-                <Button Style="{DynamicResource SendCodButton}"
+                <Button x:Name="btnConfirm"
+                        Click="btnConfirm_Click"
+                        Style="{DynamicResource SendCodButton}"
                         Content="Tasdiqlash"
-                        Margin="0 30 0 0" Click="Button_Click"/>
+                        Margin="0 30 0 0"/>
             </Border>
             <Border Height="25"
                     Margin="0 70 0 0">

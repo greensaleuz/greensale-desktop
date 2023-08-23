@@ -128,5 +128,15 @@ namespace GreenSale.Desktop.Windows.Auth
                 string token =  result.Token.ToString();
             }
         }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfirm_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

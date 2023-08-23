@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenSale.Desktop.Windows.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,9 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         private void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
         {
-            
+            BuyerProductCreateWindow buyerProductCreateWindow = new BuyerProductCreateWindow();
+            buyerProductCreateWindow.ShowDialog();
         }
 
-        private void btnBuyerCreate_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
