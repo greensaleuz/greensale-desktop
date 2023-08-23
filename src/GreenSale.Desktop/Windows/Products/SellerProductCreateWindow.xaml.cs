@@ -30,7 +30,8 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            SellerProductCreateWindow sellerProductCreateWindow = new SellerProductCreateWindow();
+            this.Close();
         }
 
         private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)

@@ -1,13 +1,13 @@
-﻿<Page x:Class="GreenSale.Desktop.Pages.CreateAd.CreateAd"
+﻿<Page x:Class="GreenSale.Desktop.Pages.CreateAd.StorageCreateAd"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.CreateAd"
+      xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"            
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1040"
-      Title="CreateAd">
+      Title="StorageCreateAd">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -55,14 +55,14 @@
                                      Width="352"
                                      Height="40"
                                      Margin="15 5 0 5">
-                                     
+
                             </TextBox>
                             <Border Grid.Column="1" 
                                     Background="#f7f6f4"
                                     Margin="0 5"
                                     CornerRadius="0 10 10 0">
-                                
-                            <icon:PackIconMaterial Kind="Magnify" 
+
+                                <icon:PackIconMaterial Kind="Magnify" 
                                                    Width="15" 
                                                    Height="15" 
                                                    Margin="0 0 15 0"
@@ -73,16 +73,16 @@
 
                         </Grid>
                     </Border>
-                    
 
-                    
-                    <Button x:Name="btnSellerCreate"
-                            Click="btnSellerCreate_Click"
+
+
+                    <Button x:Name="btnStorageCreate"
+                            Click="btnStorageCreate_Click"
                             Style="{DynamicResource ProductCreateButton}" 
                             HorizontalAlignment="Right"
                             Content="Create"/>
                 </StackPanel>
-                
+
             </Grid>
         </Border>
         <ScrollViewer Margin="5 5 0 5"

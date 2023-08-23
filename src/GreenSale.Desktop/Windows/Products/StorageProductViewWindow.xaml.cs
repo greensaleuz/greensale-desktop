@@ -10,22 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Pages.Dashbord
+namespace GreenSale.Desktop.Windows.Products
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for StorageProductViewWindow.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class StorageProductViewWindow : Window
     {
-        public Dashboard()
+        public StorageProductViewWindow()
         {
             InitializeComponent();
         }
 
-        private void User_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }

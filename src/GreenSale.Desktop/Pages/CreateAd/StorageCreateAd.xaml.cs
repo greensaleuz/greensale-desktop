@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenSale.Desktop.Windows.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +14,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Pages.Dashbord
+namespace GreenSale.Desktop.Pages.CreateAd
 {
     /// <summary>
-    /// Interaction logic for Dashboard.xaml
+    /// Interaction logic for StorageCreateAd.xaml
     /// </summary>
-    public partial class Dashboard : Page
+    public partial class StorageCreateAd : Page
     {
-        public Dashboard()
+        public StorageCreateAd()
         {
             InitializeComponent();
         }
 
-        private void User_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnStorageCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            StorageProductCreateWindow storageProductCreateWindow = new StorageProductCreateWindow();
+            storageProductCreateWindow.ShowDialog();
         }
     }
 }

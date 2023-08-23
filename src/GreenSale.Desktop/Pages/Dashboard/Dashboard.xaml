@@ -31,7 +31,13 @@
 
             <Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Border Width="50" Height="50" CornerRadius="10" Margin="5 0 20 0">
+                    <Border x:Name="User"
+                            MouseDown="User_MouseDown"
+                            Width="50" Height="50" 
+                            CornerRadius="10" 
+                            Margin="5 0 20 0"
+                            Cursor="Hand"
+                            >
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Color="#219241"/>
@@ -41,11 +47,11 @@
 
                         <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
                     </Border>
-                    <StackPanel  VerticalAlignment="Center">
-                        <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
-                        <TextBlock Text="kuningiz xayrli o'tsin" Foreground="#6c879a" Margin="0 1 0 0"/>
+                        <StackPanel  VerticalAlignment="Center">
+                            <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
+                            <TextBlock Text="kuningiz xayrli o'tsin" Foreground="#6c879a" Margin="0 1 0 0"/>
 
-                    </StackPanel>
+                        </StackPanel>
                 </StackPanel>
 
                 <!--Search TextBox-->
