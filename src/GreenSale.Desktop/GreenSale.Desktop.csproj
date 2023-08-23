@@ -13,6 +13,7 @@
     <None Remove="Assets\Images\apple-tree-garden-green.jpg" />
     <None Remove="Assets\Images\Elonlar.png" />
     <None Remove="Assets\Images\Kelishilganlar.png" />
+    <None Remove="Assets\Images\logo.png" />
     <None Remove="Assets\Images\luik.jpg" />
     <None Remove="Assets\Images\Salomaka.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
@@ -34,6 +35,7 @@
     <Resource Include="Assets\Images\3094352-removebg-preview (3).png" />
     <Resource Include="Assets\Images\5357377_Internet-go-removebg-preview.png" />
     <Resource Include="Assets\Images\apple-tree-garden-green.jpg" />
+    <Resource Include="Assets\Images\logo.png" />
     <Resource Include="Assets\Images\luik.jpg" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
