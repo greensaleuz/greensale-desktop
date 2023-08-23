@@ -16,7 +16,7 @@ namespace GreenSale.Integrated.Services.BuyerPosts
         public async Task<List<BuyerPost>> GetAllAsync()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/post");
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/posts");
             HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
             string response = await message.Content.ReadAsStringAsync();
             List<BuyerPost> posts = JsonConvert.DeserializeObject<List<BuyerPost>>(response);
