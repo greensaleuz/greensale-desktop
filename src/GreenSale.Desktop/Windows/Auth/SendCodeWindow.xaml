@@ -77,7 +77,7 @@
                         Height="50"
                         Background="{DynamicResource FourthBackground}"
                         >
-                    <TextBox x:Name="txtCode"
+                    <TextBox x:Name="txtCode1"
                              TextChanged="txtCode_TextChanged"
                              Height="35" Width="20"
                              MaxLength="1"
@@ -161,7 +161,7 @@
             <Border>
                 <Button Style="{DynamicResource SendCodButton}"
                         Content="Tasdiqlash"
-                        Margin="0 30 0 0"/>
+                        Margin="0 30 0 0" Click="Button_Click"/>
             </Border>
             <Border Height="25"
                     Margin="0 70 0 0">
@@ -195,7 +195,7 @@
                                 Margin="0 0 5 0"
                                 Foreground="{DynamicResource FourthTextColor}"/>
                     <TextBlock  x:Name="txtSecond"
-                                Text="10" 
+                                Text="90" 
                                 FontSize="16" 
                                 Margin="0 0 5 0"
                                 Foreground="{DynamicResource FifthTextColor}"/>

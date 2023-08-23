@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GreenSale.ViewModels.Models.Buyers
+namespace GreenSale.ViewModels.Models.SellerPosts
 {
-    internal class BuyerViewModel
+     public class SellerPostImage
     {
+
     }
 }
