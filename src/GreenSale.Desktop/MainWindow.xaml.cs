@@ -94,5 +94,25 @@ namespace GreenSale.Desktop
             BuyerPage buyerPage = new BuyerPage();
             FrameFilter.Content = buyerPage;
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMaximized_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if(WindowState == WindowState.Maximized )
+            {
+                WindowState = WindowState.Normal;
+            }
+            else WindowState = WindowState.Maximized;
+        }
+
+        private void btnMinimized_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
     }
 }

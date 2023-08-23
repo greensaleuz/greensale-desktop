@@ -18,22 +18,28 @@
             Background="#f7f6f4"
             MouseDown="Border_MouseDown"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Grid Margin="0,40,0,40">
+        <Grid Margin="0,0,0,40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="220"/>
                 <ColumnDefinition Width="40*"/>
-                <ColumnDefinition Width="11*"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
-                <RowDefinition Height="130"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>-->
+            </Grid.RowDefinitions>
 
             <!--Menu-->
-
-            <Border CornerRadius="25">
+            <Border Grid.Row="0" Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0">
+                    <Button x:Name="btnMinimized" Style="{DynamicResource MinimizedButton}" Click="btnMinimized_Click" ></Button>
+                    <Button x:Name="btnMaximized" Style="{DynamicResource MaximizedButton}" Click="btnMaximized_Click"></Button>
+                    <Button x:Name="btnExit" Style="{DynamicResource CloseButtun}" Click="btnExit_Click" ></Button>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" ></Border>
+            
+            <Border Grid.Row="1" CornerRadius="25">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#219241"/>
@@ -147,7 +153,7 @@
                 </StackPanel>
             </Border>
 
-            <Border Grid.Column="1" Grid.ColumnSpan="2" >
+            <Border Grid.Column="1" Grid.Row="1" >
                 <Frame x:Name="FrameFilter" NavigationUIVisibility="Hidden" Margin="0">
 
                 </Frame>
