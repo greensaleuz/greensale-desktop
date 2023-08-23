@@ -29,7 +29,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(SellerPost post)
         {
-            string image = AuthAPI.BASE_URL + post.image[0];
+            string image ="http://95.130.227.68:8080/"+ post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellerPostImage.ImageSource = new BitmapImage(imageUri);
