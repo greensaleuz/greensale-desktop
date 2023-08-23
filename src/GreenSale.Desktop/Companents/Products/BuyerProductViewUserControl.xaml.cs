@@ -1,5 +1,4 @@
-﻿using GreenSale.Desktop.Companents.Products;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenSale.Desktop.Pages.Buyers
+namespace GreenSale.Desktop.Companents.Products
 {
     /// <summary>
-    /// Interaction logic for BuyerPage.xaml
+    /// Interaction logic for BuyerProductViewUserControl.xaml
     /// </summary>
-    public partial class BuyerPage : Page
+    public partial class BuyerProductViewUserControl : UserControl
     {
-        public BuyerPage()
+        public BuyerProductViewUserControl()
         {
             InitializeComponent();
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();
-            wrpCourses.Children.Add(buyerProductViewUserControl);
         }
     }
 }
