@@ -1,4 +1,6 @@
 ﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Integrated.Interfaces.SellerPosts;
+using GreenSale.Integrated.Services.SellerPosts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +23,22 @@ namespace GreenSale.Desktop.Pages.Sellers
     /// </summary>
     public partial class SellerPage : Page
     {
+        private ISellerPost _service;
         public SellerPage()
         {
             InitializeComponent();
+            this._service= new SellerPostService();
         }
 
-        private void Page_Loaded_1(object sender, RoutedEventArgs e)
+        private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
-            SellerProductViewUserControl sellerProductViewUserControl = new SellerProductViewUserControl();
-            wrpCourses.Children.Add(sellerProductViewUserControl);
+            var sellerpost = await _service.GetAllAsync();
+            foreach (var post in sellerpost)
+            {
+                SellerProductViewUserControl userControl = new SellerProductViewUserControl();
+                userControl.SetData(post);
+                wrpSellerPost.Children.Add(userControl);
+            }
         }
     }
 }

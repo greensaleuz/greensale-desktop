@@ -1,17 +1,8 @@
 ﻿using GreenSale.Desktop.Windows.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GreenSale.Dtos.Dtos.Auth;
+using GreenSale.Integrated.Interfaces.Auth;
+using GreenSale.Integrated.Services.Auth;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenSale.Desktop.Windows
 {
@@ -20,9 +11,13 @@ namespace GreenSale.Desktop.Windows
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        private IAuthService _service;
+        public static string phoneNum { get; set; }
         public RegisterWindow()
         {
             InitializeComponent();
+            this._service = new AuthService();
+
         }
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
@@ -41,12 +36,25 @@ namespace GreenSale.Desktop.Windows
         {
 
         }
-
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            SendCodeWindow sendCodeWindow = new SendCodeWindow();
-            sendCodeWindow.Show();
-            this.Close();
+            UserRegisterDto dto = new UserRegisterDto()
+            {
+                FirstName = txtFirstName.Text.ToString(),
+                LastName = txtLastName.Text.ToString(),
+                PhoneNumber = txtPhoneNumber.Text.ToString(),
+                Password = txtPassword.Text.ToString()
+            };
+
+            bool res = await _service.RegisterAsync(dto);
+            if (res)
+            {
+                await _service.SendCodeForRegisterAsync(txtPhoneNumber.Text);
+                phoneNum= txtPhoneNumber.Text;
+                SendCodeWindow sendCodeWindow = new SendCodeWindow();
+                sendCodeWindow.Show();
+                this.Close();
+            }
         }
     }
 }

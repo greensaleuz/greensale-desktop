@@ -80,7 +80,7 @@
         </Border>
         <ScrollViewer Margin="5 5 0 5"
                           Grid.Row="1">
-            <WrapPanel x:Name="wrpCourses" >
+            <WrapPanel x:Name="wrpSellerPost" >
 
             </WrapPanel>
         </ScrollViewer>

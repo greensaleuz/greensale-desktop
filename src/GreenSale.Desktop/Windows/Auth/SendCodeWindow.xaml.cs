@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GreenSale.Integrated.Interfaces.Auth;
+using GreenSale.Integrated.Services.Auth;
+using System;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -10,14 +12,18 @@ namespace GreenSale.Desktop.Windows.Auth
     /// 
     public partial class SendCodeWindow : Window
     {
-        public int secoundsCount = 10;
+        public int secoundsCount = 59;
         DispatcherTimer _timer;
+        private IAuthService _service;
         TimeSpan _time;
 
+        public string sendCode = string.Empty;
+     
         public SendCodeWindow()
         {
             InitializeComponent();
-            _time = TimeSpan.FromSeconds(8);
+            this._service = new AuthService();
+            _time = TimeSpan.FromSeconds(secoundsCount);
 
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
@@ -61,39 +67,66 @@ namespace GreenSale.Desktop.Windows.Auth
 
         private void txtCode_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (txtCode.Text.Length > 0)
+            if (txtCode1.Text.Length > 0)
             {
+                sendCode += txtCode1.Text.ToString();
                 txtCode2.Focus();
             }
         }
 
         private void txtCode2_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (txtCode2.Text.Length > 0) txtCode3.Focus();
-            else txtCode.Focus();
+            if (txtCode2.Text.Length > 0)
+            {
+                sendCode += txtCode2.Text.ToString();
+                txtCode3.Focus();
+            }
+            else txtCode1.Focus();
         }
 
 
         private void txtCode5_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (txtCode5.Text.Length == 0) txtCode4.Focus();
+            if (txtCode5.Text.Length > 0)
+            {
+                sendCode += txtCode5.Text.ToString();
+                txtCode4.Focus(); 
+            }
         }
 
         private void txtCode4_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (txtCode4.Text.Length > 0) txtCode5.Focus();
+            if (txtCode4.Text.Length > 0)
+            {
+                sendCode += txtCode4.Text.ToString();
+                txtCode5.Focus();
+            }
             else txtCode3.Focus();
         }
 
         private void txtCode3_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (txtCode3.Text.Length > 0) txtCode4.Focus();
+            if (txtCode3.Text.Length > 0)
+            {   sendCode += txtCode3.Text.ToString();
+                txtCode4.Focus();
+            }
             else txtCode2.Focus();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string phoneNum = RegisterWindow.phoneNum;
+            var result = await _service.VerifyRegisterAsync("+998500727879", int.Parse(sendCode));
+            
+            if(result.Result)
+            {
+                string token =  result.Token.ToString();
+            }
         }
     }
 }

@@ -51,9 +51,9 @@ namespace GreenSale.Desktop.Windows
                 password  = txtParol.Text.ToString()
             };
 
-            bool res = await _authService.LoginAsync(dto);
+            var res = await _authService.LoginAsync(dto);
 
-            if (res)
+            if (res.Result)
             {
                 MessageBox.Show("Tizimga kirdingiz");
             }
