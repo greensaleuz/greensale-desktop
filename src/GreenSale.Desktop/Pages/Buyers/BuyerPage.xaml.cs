@@ -1,18 +1,8 @@
 ﻿using GreenSale.Desktop.Companents.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GreenSale.Integrated.Interfaces.BuyerPosts;
+using GreenSale.Integrated.Services.BuyerPosts;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GreenSale.Desktop.Pages.Buyers
 {
@@ -21,15 +11,26 @@ namespace GreenSale.Desktop.Pages.Buyers
     /// </summary>
     public partial class BuyerPage : Page
     {
+        private IBuyerPostService _service;
+
         public BuyerPage()
         {
             InitializeComponent();
+            this._service = new BuyerPostService();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();
-            wrpCourses.Children.Add(buyerProductViewUserControl);
+            var buyerpost = await _service.GetAllAsync();
+
+            foreach (var post in buyerpost)
+            {
+
+                BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();
+                buyerProductViewUserControl.SetData(post);
+                wrpCourses.Children.Add(buyerProductViewUserControl);
+            }
+
         }
     }
 }
