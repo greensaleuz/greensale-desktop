@@ -43,7 +43,8 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            StorageProductCreateWindow storageProductCreateWindow   = new StorageProductCreateWindow();
+            this.Close();
         }
     }
 }
