@@ -162,9 +162,9 @@
                                       Foreground="{DynamicResource FifthTextColor}"
                                       VerticalAlignment="Center"
                                       SelectedIndex="0">
-                                <ComboBoxItem x:Name="category" Content="Meva"/>
                                 <ComboBoxItem Content="Sabzovot"/>
                                 <ComboBoxItem Content="Poliz Ekini"/>
+                                <ComboBoxItem Content="Meva"/>
                             </ComboBox>
                         </Border>
                     </StackPanel>
@@ -374,14 +374,14 @@
                                     CornerRadius="10"
                                     Background="{DynamicResource SixthBackground}">
                                 <ComboBox x:Name="cmbRegion"
-                                      Height="35" Width="190"
-                                      FontSize="16"                                      
-                                      BorderThickness="0"
-                                      BorderBrush="{DynamicResource FourthBackground}"
-                                      Foreground="{DynamicResource FifthTextColor}"
-                                      VerticalAlignment="Center"
-                                      SelectedIndex="0">
-                                    <ComboBoxItem x:Name="Region1" Content="Toshkent"/>
+                                          SelectionChanged="cmbRegion_SelectionChanged"
+                                          Height="35" Width="190"
+                                          FontSize="16"                                      
+                                          BorderThickness="0"
+                                          BorderBrush="{DynamicResource FourthBackground}"
+                                          Foreground="{DynamicResource FifthTextColor}"
+                                          VerticalAlignment="Center">
+                                    <ComboBoxItem  Content="Toshkent"/>
                                     <ComboBoxItem Content="Andijon"/>
                                     <ComboBoxItem Content="Namangan"/>
                                     <ComboBoxItem Content="Farg'ona"/>
@@ -419,10 +419,6 @@
                                       Foreground="{DynamicResource FifthTextColor}"
                                       VerticalAlignment="Center"
                                       SelectedIndex="0">
-                                    <ComboBoxItem x:Name="District1" Content="Chilonzor"/>
-                                    <ComboBoxItem Content="Qoraqamish"/>
-                                    <ComboBoxItem Content="Namangan"/>
-                                    <ComboBoxItem Content="Farg'ona"/>
                                 </ComboBox>
                             </Border>
                         </StackPanel>

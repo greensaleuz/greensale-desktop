@@ -80,7 +80,7 @@
                             Click="btnSellerCreate_Click"
                             Style="{DynamicResource ProductCreateButton}" 
                             HorizontalAlignment="Right"
-                            Content="Create"/>
+                            Content="Yaratish"/>
                 </StackPanel>
                 
             </Grid>
