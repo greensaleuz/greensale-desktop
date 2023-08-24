@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GreenSale.Desktop.Pages.Storages;
+using GreenSale.ViewModels.Models.SellerPosts;
+using GreenSale.ViewModels.Models.Storages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,19 @@ namespace GreenSale.Desktop.Companents.Products
         public StorageProductViewUserControl()
         {
             InitializeComponent();
+        }
+        public void SetData(Storage post)
+        {
+            string image = "http://95.130.227.68:8080/" + post.ImagePath;
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+
+            StorageImage.ImageSource = new BitmapImage(imageUri);
+            txtbRegion.Text = post.Region;
+            txtbDescription.Text = post.Description;
+            txtbUpdate.Text = post.UpdatedAt.ToString();
+            txtInfo.Text = post.Info;
+            txtbUser.Text = post.FullName.ToString().Split()[1];
+            txtbPhoneNumber.Text = post.PhoneNumber;
         }
     }
 }

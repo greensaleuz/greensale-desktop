@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Storages"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      Loaded="Page_Loaded"
       d:DesignHeight="780" d:DesignWidth="1040"
       Title="StoragePage">
 
@@ -79,7 +80,7 @@
         </Border>
         <ScrollViewer Margin="5 5 0 5"
                           Grid.Row="1">
-            <WrapPanel x:Name="wrpCourses" >
+            <WrapPanel x:Name="wrpStorage">
 
             </WrapPanel>
         </ScrollViewer>
