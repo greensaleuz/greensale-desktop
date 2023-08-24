@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,7 +49,7 @@ namespace GreenSale.Desktop.Windows
             UserLoginDto dto = new UserLoginDto()
             {
                 PhoneNumber = txtPhoneNumber.Text.ToString(),
-                password  = txtParol.Text.ToString()
+                password  = txtParol.Password.ToString(),
             };
 
             var res = await _authService.LoginAsync(dto);
@@ -72,6 +73,20 @@ namespace GreenSale.Desktop.Windows
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Show();
             this.Close();
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+            string filteredText = Regex.Replace(text, "[^0-9]+", "");
+
+            if (text != filteredText)
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = filteredText;
+                textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
+            }
         }
     }
 }
