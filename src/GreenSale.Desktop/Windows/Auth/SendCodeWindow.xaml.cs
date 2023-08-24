@@ -142,5 +142,10 @@ namespace GreenSale.Desktop.Windows.Auth
                 this.Close();
             }
         }
+
+        private void loaded(object sender, RoutedEventArgs e)
+        {
+            txtPhoneNum.Content = RegisterWindow.phoneNum;
+        }
     }
 }

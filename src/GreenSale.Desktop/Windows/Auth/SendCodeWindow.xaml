@@ -10,6 +10,8 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
+
+        Loaded="loaded"
         Background="Transparent">
     <Border Background="White" CornerRadius="10">
         <StackPanel >
@@ -49,7 +51,7 @@
                        Foreground="{DynamicResource FourthTextColor}"
                        HorizontalAlignment="Center"
                        Margin="0 0 10 0"/>
-                <Label Content="+998 931211121"
+                <Label x:Name="txtPhoneNum" Content="+998 931211121"
                        FontSize="16"
                        FontWeight="Bold"
                        Foreground="{DynamicResource FifthTextColor}"
