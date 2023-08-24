@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="270">
-    <Grid Height="350" Width="270">
+             d:DesignHeight="370" d:DesignWidth="300">
+    <Grid Height="350" Width="270"
+          Margin="30 20 0 0">
         <Border x:Name="B" Style="{DynamicResource BorderProduct}"
                             Cursor="Hand"
                             CornerRadius="10">
@@ -23,7 +24,7 @@
                     <Border Margin="0" CornerRadius="7 7 0 0">
 
                         <Border.Background>
-                            <ImageBrush x:Name="BuyerPostImage" ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                            <ImageBrush x:Name="StorageImage" ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
                         </Border.Background>
 
                     </Border>
@@ -99,8 +100,8 @@
                         </Border>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="55*"/>
+                                <ColumnDefinition Width="45*"/>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0"
                                     Height="35" 
@@ -116,10 +117,10 @@
                                                       Data="{DynamicResource User}"
                                                       Stretch="Uniform"
                                                       Fill="{DynamicResource PrimaryBackground}"/>
-                                    <TextBlock x:Name="txtbCapacityMeasure" Text="Samandarbek"
+                                    <TextBlock x:Name="txtbUser" Text="Muhammadqodir"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
-                                           FontSize="14"
+                                           FontSize="12"
                                            FontFamily="send-series"
                                            Foreground="{DynamicResource FourthTextColor}"/>
                                 </StackPanel>
@@ -134,10 +135,10 @@
                                                       Data="{DynamicResource call}"
                                                       Stretch="Uniform"
                                                       Fill="{DynamicResource PrimaryBackground}"/>
-                                <TextBlock Text="+998977771747"
+                                <TextBlock x:Name="txtbPhoneNumber" Text="+998977771747"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
-                                           FontSize="14"
+                                           FontSize="12"
                                            Margin="0 0 0 0"
                                            FontFamily="send-series"
                                            Foreground="{DynamicResource FourthTextColor}"/>

@@ -32,7 +32,7 @@ namespace GreenSale.Desktop.Companents.Products
             string image ="http://95.130.227.68:8080/"+ post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
-            SellerPostImage.ImageSource = new BitmapImage(imageUri);
+            SellePostImage.ImageSource = new BitmapImage(imageUri);
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();

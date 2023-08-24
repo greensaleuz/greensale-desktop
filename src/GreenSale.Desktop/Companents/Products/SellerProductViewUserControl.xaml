@@ -25,7 +25,7 @@
                     <Border Margin="0" CornerRadius="7 7 0 0">
                        
                         <Border.Background>
-                            <ImageBrush x:Name="SellerPostImage" ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                            <ImageBrush x:Name="SellePostImage" ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
                         </Border.Background>
 
                     </Border>
