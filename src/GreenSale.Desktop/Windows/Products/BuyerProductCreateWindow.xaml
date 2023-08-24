@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenSale.Desktop.Windows.Products"
         mc:Ignorable="d"
-        Title="BuyerProductCreateWindow" Height="680" Width="900"
+        Title="BuyerProductCreateWindow" Height="760" Width="900"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -134,10 +134,40 @@
                 Background="{DynamicResource SecondaryBackground}"
                 CornerRadius="0 0 10 0">
                 <StackPanel Margin="10 0">
+                    
                     <Label Content="Malumotlarni to'ldiring"
                                    FontSize="24"
                                    Margin="11 10 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"/>
+                    
+                    <StackPanel Grid.Column="0"
+                                    Margin="0"
+                                    VerticalAlignment="Center">
+                        <Label Content="Toifa"
+                                   FontSize="16"
+                                   Margin="13 5 5 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                        <Border Height="40" Width="400"
+                                    Margin="0 0 0 0"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource FourthTextColor}"
+                                    CornerRadius="10"
+                                    Background="{DynamicResource SixthBackground}">
+                            <ComboBox x:Name="cmbCategory"
+                                      Height="35" Width="390"
+                                      FontSize="16"                                      
+                                      BorderThickness="0"
+                                      BorderBrush="{DynamicResource FourthBackground}"
+                                      Foreground="{DynamicResource FifthTextColor}"
+                                      VerticalAlignment="Center"
+                                      SelectedIndex="0">
+                                <ComboBoxItem x:Name="category" Content="Meva"/>
+                                <ComboBoxItem Content="Sabzovot"/>
+                                <ComboBoxItem Content="Poliz Ekini"/>
+                            </ComboBox>
+                        </Border>
+                    </StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -213,7 +243,7 @@
                                     Background="{DynamicResource SixthBackground}"
                                     CornerRadius="10"
                                     BorderThickness="1"
-                                    BorderBrush="{DynamicResource SixthBackground}"
+                                    BorderBrush="{DynamicResource FourthTextColor}"
                                     VerticalAlignment="Center"
                                     Margin="10 0 0 0">
                                 <TextBox FontSize="16"
@@ -230,6 +260,8 @@
                                     Margin="0"
                                     VerticalAlignment="Bottom">
                             <Border Height="40" Width="105"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource FourthTextColor}"
                                     Margin="-13 0 0 0"
                                     VerticalAlignment="Center"
                                     Background="{DynamicResource SixthBackground}"
@@ -337,6 +369,8 @@
                                    />
                             <Border Height="40" Width="200"
                                     Margin="10 0 0 0"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource FourthTextColor}"
                                     CornerRadius="10"
                                     Background="{DynamicResource SixthBackground}">
                                 <ComboBox x:Name="cmbRegion"
@@ -373,6 +407,8 @@
 
                             <Border Height="40" Width="200"
                                     Margin="0 0 14 0"
+                                    BorderThickness="1"
+                                    BorderBrush="{DynamicResource FourthTextColor}"
                                     CornerRadius="10"
                                     Background="{DynamicResource SixthBackground}">
                                 <ComboBox x:Name="cmbDistrict"
