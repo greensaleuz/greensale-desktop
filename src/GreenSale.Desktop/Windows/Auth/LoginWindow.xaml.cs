@@ -48,7 +48,7 @@ namespace GreenSale.Desktop.Windows
         {
             UserLoginDto dto = new UserLoginDto()
             {
-                PhoneNumber = txtPhoneNumber.Text.ToString(),
+                PhoneNumber =("+998"+ txtPhoneNumber.Text.ToString()),
                 password  = txtParol.Password.ToString(),
             };
 
