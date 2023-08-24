@@ -139,11 +139,38 @@
                                    FontSize="24"
                                    Margin="11 10 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"/>
+                    <StackPanel Grid.Column="0"
+                                    Margin="0"
+                                    VerticalAlignment="Center">
+                        <Label Content="Toifa"
+                                   FontSize="16"
+                                   Margin="13 5 5 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                        <Border Height="40" Width="400"
+                                    Margin="0 0 0 0"
+                                    CornerRadius="10"
+                                    Background="{DynamicResource SixthBackground}">
+                            <ComboBox x:Name="cmbCategory"
+                                      Height="35" Width="390"
+                                      FontSize="16"                                      
+                                      BorderThickness="0"
+                                      BorderBrush="{DynamicResource FourthBackground}"
+                                      Foreground="{DynamicResource FifthTextColor}"
+                                      VerticalAlignment="Center"
+                                      SelectedIndex="0">
+                                <ComboBoxItem x:Name="category" Content="Meva"/>
+                                <ComboBoxItem Content="Sabzovot"/>
+                                <ComboBoxItem Content="Poliz Ekini"/>
+                            </ComboBox>
+                        </Border>
+                    </StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <StackPanel Grid.Column="0"
                                     Margin="0"
                                     VerticalAlignment="Center">
