@@ -163,9 +163,9 @@
                                       Foreground="{DynamicResource FifthTextColor}"
                                       VerticalAlignment="Center"
                                       SelectedIndex="0">
-                                <ComboBoxItem x:Name="category" Content="Meva"/>
                                 <ComboBoxItem Content="Sabzovot"/>
                                 <ComboBoxItem Content="Poliz Ekini"/>
+                                <ComboBoxItem Content="Meva"/>
                             </ComboBox>
                         </Border>
                     </StackPanel>
