@@ -131,12 +131,9 @@ namespace GreenSale.Desktop.Windows.Auth
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnConfirm_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.ShowDialog();
+            this.Close();
         }
     }
 }
