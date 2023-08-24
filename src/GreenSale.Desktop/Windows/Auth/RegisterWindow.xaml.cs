@@ -52,7 +52,7 @@ namespace GreenSale.Desktop.Windows
                 await _service.SendCodeForRegisterAsync(txtPhoneNumber.Text);
                 phoneNum= txtPhoneNumber.Text;
                 SendCodeWindow sendCodeWindow = new SendCodeWindow();
-                sendCodeWindow.Show();
+                sendCodeWindow.ShowDialog();
                 this.Close();
             }
         }

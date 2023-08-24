@@ -121,7 +121,7 @@ namespace GreenSale.Desktop.Windows.Auth
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string phoneNum = RegisterWindow.phoneNum;
-            var result = await _service.VerifyRegisterAsync("+998500727879", int.Parse(sendCode));
+            var result = await _service.VerifyRegisterAsync(phoneNum, int.Parse(sendCode));
             
             if(result.Result)
             {
@@ -137,8 +137,8 @@ namespace GreenSale.Desktop.Windows.Auth
             if (result.Result)
             {
                 string token = result.Token.ToString();
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ShowDialog();
+                LoginWindow login = new LoginWindow();
+                login.Show();
                 this.Close();
             }
         }

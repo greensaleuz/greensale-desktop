@@ -55,11 +55,13 @@ namespace GreenSale.Desktop.Windows
 
             if (res.Result)
             {
-                MessageBox.Show("Tizimga kirdingiz");
+                MainWindow window = new MainWindow();
+                window.Show();
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Registerdan otib kelin");
+
             }
 
 
