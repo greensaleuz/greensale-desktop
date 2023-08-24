@@ -26,6 +26,37 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
+            BuyerProductViewWindow buyerProductViewWindow = new BuyerProductViewWindow();
+            this.Close();
+        }
+
+        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgMain.ImageSource = Img.ImageSource;
+
+        }
+
+        private void btnPicture1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgMain.ImageSource = Img2.ImageSource;
+
+        }
+
+        private void btnPicture2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgMain.ImageSource = Img2.ImageSource;
+
+        }
+
+        private void btnPicture3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgMain.ImageSource = Img3.ImageSource;
+
+        }
+
+        private void btnPicture4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ImgMain.ImageSource = Img4.ImageSource;
 
         }
     }

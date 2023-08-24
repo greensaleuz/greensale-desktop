@@ -23,5 +23,10 @@ namespace GreenSale.Desktop.Windows.Products
         {
             InitializeComponent();
         }
+
+        private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
