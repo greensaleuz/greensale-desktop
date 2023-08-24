@@ -1,20 +1,8 @@
-﻿using GreenSale.Desktop.Pages;
-using GreenSale.Dtos.Dtos.Auth;
+﻿using GreenSale.Dtos.Dtos.Auth;
 using GreenSale.Integrated.Interfaces.Auth;
+using GreenSale.Integrated.Security;
 using GreenSale.Integrated.Services.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenSale.Desktop.Windows
 {
@@ -48,13 +36,14 @@ namespace GreenSale.Desktop.Windows
             UserLoginDto dto = new UserLoginDto()
             {
                 PhoneNumber = txtPhoneNumber.Text.ToString(),
-                password  = txtParol.Text.ToString()
+                password = txtParol.Text.ToString()
             };
 
             var res = await _authService.LoginAsync(dto);
 
             if (res.Result)
             {
+                IdentitySingelton.GetInstance().Token = res.Token;
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();

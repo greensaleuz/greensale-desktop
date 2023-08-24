@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:GreenSale.Desktop"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              
-             StartupUri="windows\auth\registerwindow.xaml">
+             StartupUri="windows\auth\loginwindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             

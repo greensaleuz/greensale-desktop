@@ -44,7 +44,7 @@
                                 BorderBrush="{DynamicResource SelectedBorderColor}"
                                 MouseDown="btnPicture_MouseDown">
                             <Border.Background>
-                                <ImageBrush x:Name="Img" Stretch="UniformToFill" />
+                                <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" />
                             </Border.Background>
                             <Path  x:Name="ImgIcon" Height="70" Width="70"
                                     Data="{DynamicResource pilus}"
@@ -68,7 +68,7 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     VerticalAlignment="Center"
                                     Margin="10 0 0 0">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtbName" FontSize="16"
                                          Margin="10 5"
                                          Background="#EBEBEB"
                                          BorderThickness="0"
@@ -91,7 +91,7 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     VerticalAlignment="Center"
                                     Margin="10 0 0 0">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtbInfo" FontSize="16"
                                          Margin="10 5"
                                          Background="#EBEBEB"
                                          BorderThickness="0"
@@ -189,7 +189,7 @@
                         BorderBrush="{DynamicResource SixthBackground}"
                         VerticalAlignment="Center"
                         Margin="30 0 0 0">
-                    <TextBox FontSize="16"
+                    <TextBox x:Name="txtbAddress" FontSize="16"
                              Margin="10 5"
                              Background="{DynamicResource SixthBackground}"
                              BorderThickness="0"
@@ -210,7 +210,7 @@
                         BorderBrush="{DynamicResource SixthBackground}"
                         VerticalAlignment="Center"
                         Margin="30 0 0 0">
-                    <TextBox FontSize="16"
+                    <TextBox x:Name="txtbDescription" FontSize="16"
                              Height="70"
                              Margin="10 5"
                              Background="{DynamicResource SixthBackground}"
@@ -219,11 +219,11 @@
                              VerticalAlignment="Top"
                              Foreground="{DynamicResource FifthTextColor}"/>
                 </Border>
-                <Button Style="{DynamicResource ProductCreateButton}"
+                <Button x:Name="btnCreate" Style="{DynamicResource ProductCreateButton}"
                         Content="Yaratish"
                         Height="55"
                         Width="490"
-                        Margin="0 20 0 0"/>
+                        Margin="0 20 0 0" Click="btnCreate_Click"/>
             </StackPanel>
         </Border>
     </Grid>

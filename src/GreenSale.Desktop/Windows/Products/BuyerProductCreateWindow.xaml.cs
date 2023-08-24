@@ -139,5 +139,10 @@ namespace GreenSale.Desktop.Windows.Products
                 textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
