@@ -53,20 +53,19 @@
                                 HorizontalAlignment="Center" 
                                 Margin="0 30 0 10">
                         <Grid>
-
                             <Border Background="#ffffff" Width="55" Height="55" CornerRadius="50"/>
-
-                            <Border BorderBrush="#ffffff" 
-                                Width="55" Height="55" 
-                                BorderThickness="3" 
-                                CornerRadius="35">
-
+                                <Border 
+                                        BorderBrush="#ffffff" 
+                                        Width="55" Height="55" 
+                                        BorderThickness="3" 
+                                        CornerRadius="35">
+                            
                                
-                                <!--Icon-->
+                                    <!--Icon-->
 
-                                <Image Margin="0 0 2 0" Source="/Assets/Images/logo.png"/>
+                                    <Image Margin="0 0 2 0" Source="/Assets/Images/logo.png"/>
 
-                            </Border>
+                                </Border>
 
                         </Grid>
                         <!--Title text-->
