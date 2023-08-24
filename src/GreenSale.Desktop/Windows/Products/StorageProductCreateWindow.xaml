@@ -42,9 +42,9 @@
                                 Margin="10 15 0 0"  
                                 BorderThickness="1"
                                 BorderBrush="{DynamicResource SelectedBorderColor}"
-                                MouseDown="btnPicture_MouseDown">
+                                MouseDown="btnPicture_MouseDown_1">
                             <Border.Background>
-                                <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" />
+                                <ImageBrush x:Name="Img" Stretch="UniformToFill" />
                             </Border.Background>
                             <Path  x:Name="ImgIcon" Height="70" Width="70"
                                     Data="{DynamicResource pilus}"
