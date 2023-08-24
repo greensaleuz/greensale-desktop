@@ -129,11 +129,18 @@ namespace GreenSale.Desktop.Windows.Auth
             }
         }
 
-        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        private async void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
-            this.Close();
+            string phoneNum = RegisterWindow.phoneNum;
+            var result = await _service.VerifyRegisterAsync(phoneNum, int.Parse(sendCode));
+
+            if (result.Result)
+            {
+                string token = result.Token.ToString();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

@@ -585,7 +585,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AdButton" TargetType="Button">
+    <Style x:Key="AdSellerButton" TargetType="Button">
         <Setter Property="Height" Value="270"/>
         <Setter Property="Width" Value="400"/>
         <Setter Property="Margin" Value="10"/>
@@ -666,8 +666,168 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="AdBuyerButton" TargetType="Button">
+        <Setter Property="Height" Value="270"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="categoryBorder"
+                            CornerRadius="15"              
+                            BorderThickness="2"
+                            BorderBrush="Transparent">
+                        <Grid x:Name="categoryGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label x:Name="lblAd"                               
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       FontSize="25"
+                                       Foreground="{DynamicResource FifthTextColor}"                               
+                                       Content="{TemplateBinding Content}"
+                                       Margin="0 150 0 0"
+                                       >
+                                </Label>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="E'lon berish"
+                                           x:Name="lblAddAd"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="58 0 0 0"
+                                           Foreground="{DynamicResource FourthBackground}"
+                                       
+                                       >
+                                    </Label>
+                                    <Path x:Name="icon"                                  
+                                          Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                          Height="20" Width="20"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"                                  
+                                          Fill="{DynamicResource FourthTextColor}"                                  
+                                          Stretch="Uniform"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Border Grid.Column="1" CornerRadius="0 15 15 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Assets/Images/Users.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                            <Setter TargetName="icon" Property="Fill" Value="{DynamicResource FifthTextColor}"/>
+                            <Setter TargetName="lblAd" Property="Foreground" Value="{DynamicResource FifthTextColor}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="False">
 
 
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="AdStorageButton" TargetType="Button">
+        <Setter Property="Height" Value="270"/>
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="categoryBorder"
+                            CornerRadius="15"              
+                            BorderThickness="2"
+                            BorderBrush="Transparent">
+                        <Grid x:Name="categoryGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label x:Name="lblAd"                               
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       FontSize="25"
+                                       Foreground="{DynamicResource FifthTextColor}"                               
+                                       Content="{TemplateBinding Content}"
+                                       Margin="0 150 0 0"
+                                       >
+                                </Label>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="E'lon berish"
+                                           x:Name="lblAddAd"
+                                           FontWeight="SemiBold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="58 0 0 0"
+                                           Foreground="{DynamicResource FourthBackground}"
+                                       
+                                       >
+                                    </Label>
+                                    <Path x:Name="icon"                                  
+                                          Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                                          Height="20" Width="20"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"                                  
+                                          Fill="{DynamicResource FourthTextColor}"                                  
+                                          Stretch="Uniform"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Border Grid.Column="1" CornerRadius="0 15 15 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Assets/Images/Users.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                            <Setter TargetName="icon" Property="Fill" Value="{DynamicResource FifthTextColor}"/>
+                            <Setter TargetName="lblAd" Property="Foreground" Value="{DynamicResource FifthTextColor}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="False">
+
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="categoryBorder" Property="BorderBrush" Value="#209240"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 

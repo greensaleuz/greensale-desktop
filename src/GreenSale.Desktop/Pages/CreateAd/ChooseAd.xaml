@@ -21,19 +21,19 @@
                 <Button x:Name="btnSellerAd"
                             Content="Sotuvchi"   
                             Click="btnSellerAd_Click"
-                            Style="{DynamicResource AdButton}"     
+                            Style="{DynamicResource AdSellerButton}"     
                             Tag="{DynamicResource right_angle}">
                     </Button>
                     <Button x:Name="btnBuyerAd"
                             Content="Haridor"   
                             Click="btnBuyerAd_Click"
-                            Style="{DynamicResource AdButton}"     
+                            Style="{DynamicResource AdBuyerButton}"     
                             Tag="{DynamicResource right_angle}">
                     </Button>
                     <Button x:Name="btnStorageAd"
                             Content="Yukxona"   
                             Click="btnStorageAd_Click"
-                            Style="{DynamicResource AdButton}"     
+                            Style="{DynamicResource AdStorageButton}"     
                             Tag="{DynamicResource right_angle}">
                     </Button>
                 </WrapPanel>
