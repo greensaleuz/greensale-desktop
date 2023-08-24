@@ -12,5 +12,6 @@ namespace GreenSale.Integrated.Interfaces.BuyerPosts
     {
         public Task<List<BuyerPost>> GetAllAsync();
         public Task<BuyerPost> GetByIdAsync(int id);
+        
     }
 }
