@@ -444,11 +444,12 @@
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
 
-                    <Button Style="{DynamicResource ProductCreateButton}"
+                    <Button x:Name="btnCreate"
+                            Style="{DynamicResource ProductCreateButton}"
                             Content="Yaratish"
                             Width="400"
                             Height="50"
-                            Margin="0 28 0 0" Click="Button_Click"
+                            Margin="0 28 0 0" Click="btnCreate_Click"
                             />
                 </StackPanel>
             </Border>

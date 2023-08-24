@@ -152,6 +152,11 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgIcon.Visibility = Visibility.Hidden;
             }
         }
+
+        private void btnCreate_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
