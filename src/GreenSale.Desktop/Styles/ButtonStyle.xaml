@@ -587,8 +587,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="B" CornerRadius="5" 
-                            Background="#04BE7A"
+                    <Border x:Name="B" CornerRadius="10" 
+                            Background="#209240"
                             Margin="0 5">
                         <Label FontSize="20"
                                Margin="10 0"
@@ -602,13 +602,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#049761"/>
+                            <Setter TargetName="B" Property="Background" Value="#1D853B"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#04BE7A"/>
+                            <Setter TargetName="B" Property="Background" Value="#209240"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#03774C"/>
+                            <Setter TargetName="B" Property="Background" Value="#1B7A36"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

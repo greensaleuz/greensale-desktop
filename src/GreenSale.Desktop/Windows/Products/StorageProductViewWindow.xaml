@@ -35,7 +35,6 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border x:Name="btnPicture"
-                                MouseDown="btnPicture_MouseDown"
                                 Grid.Column="0" 
                                 CornerRadius="10"
                                 Height="200"
