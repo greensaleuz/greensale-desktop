@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.Storages;
+﻿using GreenSale.Dtos.Dtos.Storages;
+using GreenSale.ViewModels.Models.Storages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace GreenSale.Integrated.Interfaces.Storages
     public interface IStorageService
     {
         public Task<List<Storage>> GetAllAsync();
+        public Task<bool>CreateAsync(StorageDto dto);
     }
 }
