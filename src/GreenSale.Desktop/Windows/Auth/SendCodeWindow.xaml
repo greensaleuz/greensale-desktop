@@ -197,7 +197,7 @@
                                 Margin="0 0 5 0"
                                 Foreground="{DynamicResource FourthTextColor}"/>
                     <TextBlock  x:Name="txtSecond"
-                                Text="90" 
+                                Text="60" 
                                 FontSize="16" 
                                 Margin="0 0 5 0"
                                 Foreground="{DynamicResource FifthTextColor}"/>

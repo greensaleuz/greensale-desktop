@@ -47,7 +47,7 @@
                         <Border>
                             <StackPanel>
 
-                                <Label Content="New here?"
+                                <Label Content="Bu joyda yangimisiz?"
                                    FontSize="30"
                                    Margin="0 0 0 5"
                                    FontFamily="send-series"
