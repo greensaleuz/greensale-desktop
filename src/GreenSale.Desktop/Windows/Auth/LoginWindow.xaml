@@ -107,6 +107,7 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Path Grid.Column="0"
@@ -114,15 +115,24 @@
                                       Stretch="Uniform"
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
-
-                                <TextBox x:Name="txtPhoneNumber" Grid.Column="1"
-                                         Margin="8"
+                                <Label Grid.Column="1"
+                                        Content="+998"
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontFamily="arial"
+                                       Foreground="{DynamicResource FourthTextColor}"/>
+                                <TextBox Grid.Column="2"
+                                         x:Name="txtPhoneNumber" 
+                                         TextChanged="txtPhoneNumber_TextChanged"
+                                         Margin="4"
+                                         MaxLength="9"
                                          VerticalAlignment="Center"
                                          Foreground="{DynamicResource FourthTextColor}"
                                          FontSize="18"
                                          FontFamily="Arial"
                                          BorderThickness="0"
-                                         Background="{DynamicResource FifthBackground}"/>
+                                         Background="{DynamicResource FifthBackground}"
+                                         />
                             </Grid>
                         </Border>
                         <Label Height="40" Width="350"
@@ -147,14 +157,15 @@
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
                                       
-                                <TextBox x:Name="txtParol" Grid.Column="1"
-                                         Margin="8"
-                                         VerticalAlignment="Center"
-                                         FontSize="18"
-                                         Foreground="{DynamicResource FourthTextColor}"                                         
-                                         FontFamily="Arial"
-                                         BorderThickness="0"
-                                         Background="{DynamicResource FifthBackground}"/>
+                                <PasswordBox x:Name="txtParol" Grid.Column="1"
+                                             Margin="8"
+                                             
+                                             VerticalAlignment="Center"
+                                             FontSize="18"
+                                             Foreground="{DynamicResource FourthTextColor}"                                         
+                                             FontFamily="Arial"
+                                             BorderThickness="0"
+                                             Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                 </Border>
                         <Border>
