@@ -205,5 +205,10 @@ namespace GreenSale.Desktop.Windows.Products
                 cmbDistrict.ItemsSource = lstJizzax;
             }
         }
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
