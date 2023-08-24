@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -29,7 +30,6 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Img.ImageSource == null)
             if (ImgStorage.ImageSource == null)
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -152,4 +152,4 @@ namespace GreenSale.Desktop.Windows.Products
             }
         }
     }
-}
+
