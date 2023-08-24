@@ -114,5 +114,10 @@ namespace GreenSale.Desktop
         {
             WindowState= WindowState.Minimized;
         }
+
+        private void brdUser_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
