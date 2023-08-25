@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace GreenSale.Integrated.Services.Storages
 {
+
     public class StorageService : IStorageService
     {
         public async Task<bool> CreateAsync(StorageDto dto)
@@ -32,6 +33,19 @@ namespace GreenSale.Integrated.Services.Storages
             var response = await res.Content.ReadAsStringAsync();
            
 
+            return response == "true";
+        }
+
+        public async Task<bool> DeleteAsync(long storageId)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/storages/{storageId}");
+
+            var token = IdentitySingelton.GetInstance().Token;
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            var result = await client.DeleteAsync(client.BaseAddress);
+            string response = await result.Content.ReadAsStringAsync();
             return response == "true";
         }
 

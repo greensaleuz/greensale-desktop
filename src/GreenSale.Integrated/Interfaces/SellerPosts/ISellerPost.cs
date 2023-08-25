@@ -13,6 +13,7 @@ namespace GreenSale.Integrated.Interfaces.SellerPosts
         public Task<List<SellerPost>> GetAllAsync();
         public Task<SellerPost> GetByIdAsync(int id);
         public Task<List<SellerPost>> GetAllUserId(long userId);
+        public Task<bool> DeleteAsync(long postId);
 
     }
 }

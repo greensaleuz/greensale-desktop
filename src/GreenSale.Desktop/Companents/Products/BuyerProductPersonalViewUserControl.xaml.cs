@@ -1,4 +1,7 @@
-﻿using GreenSale.ViewModels.Models.BuyerPosts;
+﻿using GreenSale.Integrated.Interfaces.BuyerPosts;
+using GreenSale.Integrated.Services.BuyerPosts;
+using GreenSale.Integrated.Services.Storages;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,15 @@ namespace GreenSale.Desktop.Companents.Products
     /// </summary>
     public partial class BuyerProductPersonalViewUserControl : UserControl
     {
+        private IBuyerPostService _service;
+
+         private long ID { get; set; }
+
         public BuyerProductPersonalViewUserControl()
         {
             InitializeComponent();
+            this._service = new BuyerPostService();
+
         }
         public void SetData(BuyerPost post)
         {
@@ -38,6 +47,15 @@ namespace GreenSale.Desktop.Companents.Products
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
+            ID = post.Id;
+
+        }
+
+        private async void btnBuyerDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await _service.DeleteAsync(ID);
+
+            Buyercom.Visibility = Visibility.Collapsed;
         }
     }
 }

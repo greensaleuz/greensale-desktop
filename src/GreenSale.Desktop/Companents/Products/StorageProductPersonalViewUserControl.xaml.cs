@@ -1,4 +1,6 @@
-﻿using GreenSale.ViewModels.Models.Storages;
+﻿using GreenSale.Integrated.Interfaces.Storages;
+using GreenSale.Integrated.Services.Storages;
+using GreenSale.ViewModels.Models.Storages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,13 @@ namespace GreenSale.Desktop.Companents.Products
     /// </summary>
     public partial class StorageProductPersonalViewUserControl : UserControl
     {
+        private IStorageService _service;
+
+        private long ID { get; set; }
         public StorageProductPersonalViewUserControl()
         {
             InitializeComponent();
+            this._service = new StorageService();
         }
         public void SetData(Storage post)
         {
@@ -37,6 +43,14 @@ namespace GreenSale.Desktop.Companents.Products
             txtInfo.Text = post.Info;
             txtbUser.Text = post.FullName.ToString().Split()[1];
             txtbPhoneNumber.Text = post.PhoneNumber;
+            ID = post.Id;
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var result = await _service.DeleteAsync(ID);
+
+            Storagecom.Visibility = Visibility.Collapsed;
         }
     }
 }
