@@ -28,5 +28,6 @@ namespace GreenSale.Integrated.Security
 
             return _identitySingelton;
         }
+
     }
 }
