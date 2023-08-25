@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -30,7 +31,15 @@ namespace GreenSale.Desktop.Windows.Products
             this._service = new StorageService();
         }
 
-
+        public string ToBin (string imagePaht)
+        {
+            StringBuilder @string = new StringBuilder();
+            foreach (char item in imagePaht.ToCharArray())
+            {
+                @string.Append(Convert.ToString(item, 2).PadLeft(8, '0'));
+            }
+            return @string.ToString();
+        }
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             StorageDto storage = new StorageDto()
@@ -46,9 +55,10 @@ namespace GreenSale.Desktop.Windows.Products
             string imagePath = ImgStorage.ImageSource.ToString();
 
             string name = Path.GetFileName(imagePath);
-            if (!String.IsNullOrEmpty(imagePath))
+            string image = ToBin(name);
+            if (!String.IsNullOrEmpty(image))
             {
-                storage.ImagePath = name.ToString();
+                storage.ImagePath = image;
             }
 
             var result = await _service.CreateAsync(storage);

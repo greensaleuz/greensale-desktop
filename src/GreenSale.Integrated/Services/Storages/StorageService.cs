@@ -20,7 +20,8 @@ namespace GreenSale.Integrated.Services.Storages
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(AuthAPI.BASE_URL + "/api/client/storages");
-
+            MultipartFormDataContent multipart = new MultipartFormDataContent();
+            
             string json = JsonConvert.SerializeObject(dto);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
