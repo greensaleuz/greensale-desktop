@@ -1,4 +1,7 @@
-﻿using GreenSale.Desktop.Windows.Products;
+﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.Services.BuyerPosts;
+using GreenSale.Integrated.Services.Storages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,13 @@ namespace GreenSale.Desktop.Pages.CreateAd
     /// </summary>
     public partial class BuyerCreateAdd : Page
     {
+        private BuyerPostService _service;
+
         public BuyerCreateAdd()
         {
             InitializeComponent();
+            this._service = new BuyerPostService();
+
         }
 
         private void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
@@ -32,5 +39,16 @@ namespace GreenSale.Desktop.Pages.CreateAd
             buyerProductCreateWindow.ShowDialog();
         }
 
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var buyerPost = await _service.GetAllUserId(20);
+            foreach (var post in buyerPost)
+            {
+                BuyerProductViewUserControl control = new BuyerProductViewUserControl();
+                control.SetData(post);
+
+                wrpCourses.Children.Add(control);
+            }
+        }
     }
 }
