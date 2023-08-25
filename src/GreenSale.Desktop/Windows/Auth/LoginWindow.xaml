@@ -157,7 +157,7 @@
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
                                       
-                                <PasswordBox x:Name="txtParol" Grid.Column="1"
+                                <TextBox x:Name="txtParol" Grid.Column="1"
                                              Margin="8"
                                              
                                              VerticalAlignment="Center"

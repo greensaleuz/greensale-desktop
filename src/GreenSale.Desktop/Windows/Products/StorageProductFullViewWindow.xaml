@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenSale.Desktop.Windows.Products"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="StorageProductFullViewWindow" Height="550" Width="550">
     <Grid>
         <Grid.RowDefinitions>
@@ -40,7 +43,7 @@
                                 BorderBrush="{DynamicResource SelectedBorderColor}"
                                 >
                             <Border.Background>
-                                <ImageBrush x:Name="Img" Stretch="UniformToFill" 
+                                <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" 
                                             ImageSource="/assets/images/luik.jpg"/>
                             </Border.Background>
                         </Border>
@@ -55,7 +58,9 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     VerticalAlignment="Center"
                                     Margin="0 5 0 0">
-                                <TextBlock FontSize="26"
+                                <TextBlock
+                                         x:Name="txtbName"
+                                         FontSize="26"
                                          Text="Oltiariq  yukxonasi"
                                          Margin="0 5"
                                          Background="{DynamicResource SecondaryBackground}"
@@ -71,7 +76,9 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     VerticalAlignment="Center"
                                     Margin="0 20 0 0">
-                                <TextBlock Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
+                                <TextBlock
+                                         x:Name="txtbInfo"
+                                         Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -92,7 +99,7 @@
                                              VerticalAlignment="Center"
                                              TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBlock Text="Aliyev Vali" 
+                                    <TextBlock x:Name="txtbFullName" Text="Aliyev Vali" 
                                              FontSize="18"
                                              Margin="-5 5"
                                              Background="{DynamicResource SixthBackground}"
@@ -113,7 +120,9 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBlock Text="+998977771747" 
+                                    <TextBlock
+                                         x:Name="txtbPhoneNumber"
+                                         Text="+998977771747" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -145,7 +154,8 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                            <TextBlock Text="Farg'ona" 
+                            <TextBlock  x:Name="txtbRegion"
+                                        Text="Farg'ona" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -169,7 +179,8 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                            <TextBlock Text="Oltiariq" 
+                            <TextBlock x:Name="txtbDistrict"
+                                        Text="Oltiariq" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -187,12 +198,14 @@
                             Margin="20 3 0 3">
                         <TextBlock Text="Manzil:"
                                          FontSize="18"
-                                         Margin="10 5"
+                                         Margin="5 5"
                                          Background="{DynamicResource SixthBackground}"
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                        <TextBlock Text="Qo'rg'ontepa mahallasi" 
+                        
+                        <TextBlock x:Name="txtbAddress"      
+                                        Text="Qo'rg'ontepa mahallasi" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -222,7 +235,10 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                            <TextBlock Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
+                            
+                            <TextBlock   
+                                         x:Name="txtbDescription"
+                                         Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
                                          FontSize="18"
                                          Margin="0 5 0 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -240,15 +256,19 @@
                     <Border Grid.Column="0"
                             Height="50"
                             Margin="10 0 0 0">
-                        <Button Style="{DynamicResource ProductUpdateButton}"
-                                Content="Tahrirlash"/>
+                        <Button x:Name="btnUpdate" 
+                                Style="{DynamicResource ProductUpdateButton}"
+                                Content="Tahrirlash"
+                                Click="btnUpdate_Click"/>
                     </Border>
                     <Border Grid.Column="1"
                             Margin="0 0 20 0"
                             Height="50"
                             >
-                        <Button Style="{DynamicResource ProductDeleteButton}"
-                                Content="O'chirish"/>
+                        <Button x:Name="btnDelete"
+                                Style="{DynamicResource ProductDeleteButton}"
+                                Content="O'chirish"
+                                Click="btnDelete_Click"/>
                     </Border>
                 </Grid>
             </StackPanel>

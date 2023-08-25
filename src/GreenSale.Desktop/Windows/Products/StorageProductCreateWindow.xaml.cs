@@ -54,12 +54,9 @@ namespace GreenSale.Desktop.Windows.Products
 
             string imagePath = ImgStorage.ImageSource.ToString();
 
-            string name = Path.GetFileName(imagePath);
-            string image = ToBin(name);
-            if (!String.IsNullOrEmpty(image))
-            {
-                storage.ImagePath = image;
-            }
+         
+         
+           
 
             var result = await _service.CreateAsync(storage);
 
