@@ -12,5 +12,6 @@ namespace GreenSale.Integrated.Interfaces.Storages
     {
         public Task<List<Storage>> GetAllAsync();
         public Task<bool>CreateAsync(StorageDto dto);
+        public Task<List<Storage>> GetAllUserId(long userId);
     }
 }

@@ -45,5 +45,16 @@ namespace GreenSale.Integrated.Services.Storages
 
             return posts;
         }
+
+        public async Task<List<Storage>> GetAllUserId(long userId)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/all/{userId}");
+            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+            string response = await message.Content.ReadAsStringAsync();
+            List<Storage> posts = JsonConvert.DeserializeObject<List<Storage>>(response);
+
+            return posts;
+        }
     }
 }
