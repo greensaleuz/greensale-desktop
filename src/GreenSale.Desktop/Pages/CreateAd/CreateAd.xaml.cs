@@ -49,7 +49,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
             var sellerPost = await _service.GetAllUserId(id);
             foreach (var post in sellerPost)
             {
-                SellerProductViewUserControl control = new SellerProductViewUserControl();
+                SellerProductPersonalViewUserControl control = new SellerProductPersonalViewUserControl();
                 control.SetData(post);
 
                 wrpCourses.Children.Add(control);
