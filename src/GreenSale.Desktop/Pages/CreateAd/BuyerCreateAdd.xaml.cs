@@ -2,6 +2,7 @@
 using GreenSale.Desktop.Windows.Products;
 using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.Integrated.Services.Storages;
+using GreenSale.Integrated.Services.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,13 @@ namespace GreenSale.Desktop.Pages.CreateAd
     public partial class BuyerCreateAdd : Page
     {
         private BuyerPostService _service;
+        private UserService _serviceUser;
 
         public BuyerCreateAdd()
         {
             InitializeComponent();
             this._service = new BuyerPostService();
+            this._serviceUser = new UserService();
 
         }
 
@@ -41,7 +44,9 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var buyerPost = await _service.GetAllUserId(20);
+            var user = await _serviceUser.GetAsync();
+            long id = user.Id;
+            var buyerPost = await _service.GetAllUserId(id);
             foreach (var post in buyerPost)
             {
                 BuyerProductViewUserControl control = new BuyerProductViewUserControl();
