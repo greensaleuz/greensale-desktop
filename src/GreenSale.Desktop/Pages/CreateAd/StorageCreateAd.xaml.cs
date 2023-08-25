@@ -51,7 +51,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
             var storagePost = await _service.GetAllUserId(id);
             foreach (var post in storagePost)
             {
-                StorageProductViewUserControl control = new StorageProductViewUserControl();
+                StorageProductPersonalViewUserControl control = new StorageProductPersonalViewUserControl();
                 control.SetData(post);
 
                 wrpCourses.Children.Add(control);
