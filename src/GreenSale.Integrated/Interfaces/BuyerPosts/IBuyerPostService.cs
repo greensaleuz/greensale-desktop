@@ -15,6 +15,7 @@ namespace GreenSale.Integrated.Interfaces.BuyerPosts
         public Task<BuyerPost> GetByIdAsync(int id);
 
         public Task<List<BuyerPost>> GetAllUserId(long userId);
+        public Task<bool> DeleteAsync(long postId);
 
 
     }

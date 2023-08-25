@@ -1,5 +1,6 @@
 ﻿using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
+using GreenSale.Integrated.Security;
 using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
@@ -14,6 +15,19 @@ namespace GreenSale.Integrated.Services.SellerPosts
 {
     public class SellerPostService : ISellerPost
     {
+        public async Task<bool> DeleteAsync(long postId)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/storages/{postId}");
+
+            var token = IdentitySingelton.GetInstance().Token;
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            var result = await client.DeleteAsync(client.BaseAddress);
+            string response = await result.Content.ReadAsStringAsync();
+            return response == "true";
+        }
+
         public async Task<List<SellerPost>> GetAllAsync()
         {
             HttpClient client = new HttpClient();
@@ -37,7 +51,7 @@ namespace GreenSale.Integrated.Services.SellerPosts
             return posts;
         }
 
-        public Task<SellerPost> GetByIdAsync(int id)
+        public async Task<SellerPost> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
