@@ -661,8 +661,10 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="B" CornerRadius="5" 
                             Background="Red"
-                            Margin="0 5">
-                        <Label FontSize="20"
+                            Margin="0 5"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource FifthTextColor}">
+                        <Label FontSize="12"
                                Margin="10 0"
                                FontFamily="Jetbrains Mono"
                                FontWeight="SemiBold"
