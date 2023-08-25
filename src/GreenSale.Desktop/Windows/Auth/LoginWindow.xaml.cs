@@ -43,7 +43,7 @@ namespace GreenSale.Desktop.Windows
             UserLoginDto dto = new UserLoginDto()
             {
                 PhoneNumber =("+998"+ txtPhoneNumber.Text.ToString()),
-                password  = txtParol.Password.ToString(),
+                password  = txtParol.Text.ToString(),
             };
 
             var res = await _authService.LoginAsync(dto);

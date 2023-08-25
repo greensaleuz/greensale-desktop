@@ -1,4 +1,5 @@
-﻿using GreenSale.Integrated.Interfaces.Storages;
+﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using GreenSale.ViewModels.Models.Storages;
 using System;
@@ -26,6 +27,7 @@ namespace GreenSale.Desktop.Companents.Products
         private IStorageService _service;
 
         private long ID { get; set; }
+        public static long storageId { get; set; }
         public StorageProductPersonalViewUserControl()
         {
             InitializeComponent();
@@ -51,6 +53,14 @@ namespace GreenSale.Desktop.Companents.Products
             var result = await _service.DeleteAsync(ID);
 
             Storagecom.Visibility = Visibility.Collapsed;
+        }
+
+        private void Border_MouseEnter(object sender, MouseButtonEventArgs e)
+        {
+            storageId = ID;
+            StorageProductFullViewWindow storage = new StorageProductFullViewWindow();
+            storage.Show();
+
         }
     }
 }

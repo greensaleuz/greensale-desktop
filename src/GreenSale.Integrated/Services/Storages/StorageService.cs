@@ -70,5 +70,35 @@ namespace GreenSale.Integrated.Services.Storages
 
             return posts;
         }
+
+        public async Task<StorageGetById> GetByIdAsync(long storageId)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/{storageId}");
+            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+            string response = await message.Content.ReadAsStringAsync();
+            StorageGetById posts = JsonConvert.DeserializeObject<StorageGetById>(response);
+
+            return posts;
+        }
+
+
+        public async Task<bool> UpdateAsync(long storageId, StorageUpdateDto dto)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/storages/{storageId}");
+            MultipartFormDataContent multipart = new MultipartFormDataContent();
+
+            string json = JsonConvert.SerializeObject(dto);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var token = IdentitySingelton.GetInstance().Token;
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            var res = await client.PutAsync(client.BaseAddress, content);
+            var response = await res.Content.ReadAsStringAsync();
+
+            return response == "true";
+        }
     }
 }
