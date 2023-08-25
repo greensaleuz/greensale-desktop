@@ -29,5 +29,10 @@ namespace GreenSale.Desktop.Pages.CreateAd
             NavigationService?.Navigate(new StorageCreateAd());
 
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

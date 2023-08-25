@@ -24,6 +24,17 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             return posts;
         }
 
+        public async Task<List<BuyerPost>> GetAllUserId(long userId)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/all/{userId}");
+            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+            string response = await message.Content.ReadAsStringAsync();
+            List<BuyerPost> posts = JsonConvert.DeserializeObject<List<BuyerPost>>(response);
+
+            return posts;
+        }
+
         public Task<BuyerPost> GetByIdAsync(int id)
         {
             throw new NotImplementedException();

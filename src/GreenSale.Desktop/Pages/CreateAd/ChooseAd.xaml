@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.CreateAd"
       mc:Ignorable="d" 
       Title="ChooseAd"
+      Loaded="Page_Loaded"
       >
 
     <Border>

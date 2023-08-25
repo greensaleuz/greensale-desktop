@@ -7,7 +7,8 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.CreateAd"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1040"
-      Title="CreateAd">
+      Title="CreateAd"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
