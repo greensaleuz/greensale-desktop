@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.SellerPosts;
+﻿using GreenSale.ViewModels.Models.BuyerPosts;
+using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace GreenSale.Integrated.Interfaces.SellerPosts
     public interface ISellerPost
     {
         public Task<List<SellerPost>> GetAllAsync();
-        public Task<SellerPost> GetByIdAsync(int id);
+        public Task<SellerGetById> GetByIdAsync(long postId);
+
         public Task<List<SellerPost>> GetAllUserId(long userId);
         public Task<bool> DeleteAsync(long postId);
 

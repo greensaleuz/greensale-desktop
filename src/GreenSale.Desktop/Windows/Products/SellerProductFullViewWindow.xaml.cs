@@ -78,41 +78,60 @@ namespace GreenSale.Desktop.Windows.Products
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             long id = SellerProductPersonalViewUserControl.sellerId;
-            var seller = await _service.GetByIdAsync(id);
+            var sellerPost = await _service.GetByIdAsync(id);
 
-            txbTitle.Text = seller.Title;
-            lbType.Content = seller.Type;
-            lbCapacity.Content = seller.Capacity;
-            lbCM.Content = seller.CapacityMeasure;
-            lbPrice.Content = seller.Price;
-            lbRegion.Content = seller.Region;
-            lbDistrict.Content = seller.District;
-            lbPhone.Content = seller.PhoneNumber;
-            txbDescribtion.Text=seller.Description;
+            lbCapacity.Content = sellerPost.Capacity.ToString();
+            lbCM.Content = sellerPost.CapacityMeasure;
+            txbDescribtion.Text = sellerPost.Description;
+            lbDistrict.Content = sellerPost.District;
+            lbPhone.Content = sellerPost.PostPhoneNumber;
+            lbPrice.Content = sellerPost.Price.ToString();
+            txbTitle.Text = sellerPost.Title;
+            lbType.Content = sellerPost.Type;
 
-            string image = "http://95.130.227.68:8080/" + seller.MainImage;
-            Uri imageUri = new Uri(image, UriKind.Absolute);
-            ImgMain.ImageSource = new BitmapImage(imageUri);
 
-            string image1 = "http://95.130.227.68:8080/" + seller.MainImage;
-            Uri imageUri1 = new Uri(image1, UriKind.Absolute);
-            Img.ImageSource = new BitmapImage(imageUri1);
+            int i = 0;
+            foreach (var item in sellerPost.PostImages)
+            {
 
-            string image2 = "http://95.130.227.68:8080/" + seller.Images[1];
-            Uri imageUri2 = new Uri(image2, UriKind.Absolute);
-            Img1.ImageSource = new BitmapImage(imageUri2);
+                if (i == 0)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
-            string image3 = "http://95.130.227.68:8080/" + seller.Images[2];
-            Uri imageUri3 = new Uri(image3, UriKind.Absolute);
-            Img2.ImageSource = new BitmapImage(imageUri3);
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img.ImageSource = new BitmapImage(imageUri);
+                    ImgMain.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 1)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
-            string image4 = "http://95.130.227.68:8080/" + seller.Images[3];
-            Uri imageUri4 = new Uri(image4, UriKind.Absolute);
-            Img3.ImageSource = new BitmapImage(imageUri4);
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img1.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 2)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
-            string image5 = "http://95.130.227.68:8080/" + seller.Images[4];
-            Uri imageUri5 = new Uri(image5, UriKind.Absolute);
-            Img4.ImageSource = new BitmapImage(imageUri5);
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img2.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 3)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img3.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 4)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img4.ImageSource = new BitmapImage(imageUri);
+                }
+                i++;
+            }
         }
     }
 }

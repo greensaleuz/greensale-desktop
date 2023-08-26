@@ -1,6 +1,7 @@
 ﻿using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
@@ -51,9 +52,16 @@ namespace GreenSale.Integrated.Services.SellerPosts
             return posts;
         }
 
-        public async Task<SellerPost> GetByIdAsync(int id)
+
+        public async Task<SellerGetById> GetByIdAsync(long postId)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/{postId}");
+            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+            string response = await message.Content.ReadAsStringAsync();
+            SellerGetById posts = JsonConvert.DeserializeObject<SellerGetById>(response);
+
+            return posts;
         }
     }
 }
