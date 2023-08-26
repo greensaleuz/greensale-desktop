@@ -49,7 +49,7 @@
                                             ImageSource="/assets/images/luik.jpg"/>
                             </Border.Background>
                             
-                            <Path  x:Name="ImgIcon2" Height="70" Width="70"
+                            <Path  x:Name="ImgIcon" Height="70" Width="70"
                                     Data="{DynamicResource pilus}"
                                     Fill="{DynamicResource FourthBackground}"
                                     Stretch="Uniform"/>

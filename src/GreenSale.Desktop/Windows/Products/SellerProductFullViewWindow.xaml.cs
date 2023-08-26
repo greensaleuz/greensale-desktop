@@ -143,7 +143,9 @@ namespace GreenSale.Desktop.Windows.Products
                 {
                     string imgPath = openFileDialog.FileName;
                     Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                }
+                    ImgIcon.Visibility = Visibility.Hidden;
+                    ImgUpdateMain.BorderThickness = new Thickness(0);
+            }
         }
 
         private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
