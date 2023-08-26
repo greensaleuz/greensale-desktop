@@ -112,20 +112,31 @@ namespace GreenSale.Integrated.Services.Storages
 
         public async Task<bool> UpdateAsync(long storageId, StorageUpdateDto dto)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/storages/{storageId}");
-            MultipartFormDataContent multipart = new MultipartFormDataContent();
-
-            string json = JsonConvert.SerializeObject(dto);
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var token = IdentitySingelton.GetInstance().Token;
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/storages/{storageId}");
+            request.Headers.Add("Authorization", $"Bearer {token}");
 
-            var res = await client.PutAsync(client.BaseAddress, content);
-            var response = await res.Content.ReadAsStringAsync();
-
-            return response == "true";
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.Region), "Region");
+            content.Add(new StringContent(dto.District), "District");
+            content.Add(new StringContent(dto.AddressLatitude.ToString()), "AddressLatitude");
+            content.Add(new StringContent(dto.AddressLongitude.ToString()), "AddressLongitude");
+            content.Add(new StringContent(dto.Address), "Address");
+            content.Add(new StringContent(dto.Info), "Info");
+            content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+           
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+            var res1 = await response.Content.ReadAsStringAsync();
+            return false;
         }
     }
 }
