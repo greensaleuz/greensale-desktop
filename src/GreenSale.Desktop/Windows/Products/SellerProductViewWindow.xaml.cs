@@ -55,6 +55,9 @@ namespace GreenSale.Desktop.Windows.Products
             Application.Current.Shutdown();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

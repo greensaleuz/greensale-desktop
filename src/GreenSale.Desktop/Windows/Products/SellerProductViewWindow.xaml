@@ -10,7 +10,8 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -134,8 +135,10 @@
                             BorderBrush="{DynamicResource FifthBackground}"
                             Margin="5 0 30 10"
                             >
-                        <TextBlock Text="Sifatli yetishtirilgan olma"
-                                   FontSize="24"
+                        <TextBox x:Name="txtTitle"
+                                  Text="Sifatli yetishtirilgan olma"
+                                  FontSize="24"
+                                  BorderThickness="0"
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
                                    FontWeight="SemiBold"
@@ -156,11 +159,15 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Jannat olma"
-                                   FontWeight="SemiBold"                                   
-                                   FontSize="20"
-                                   Margin="0 1 5 0"
-                                   Foreground="{DynamicResource FifthTextColor}"
+                            <TextBox x:Name="txtType"
+                                     Text="Jannat olma"
+                                     FontWeight="SemiBold" 
+                                     VerticalAlignment="Center"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="20"
+                                     Margin="0 1 5 0"
+                                     Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
                     </Border>
@@ -179,14 +186,21 @@
                                    Margin="10 1 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="800"
-                                   FontWeight="SemiBold"                                   
-                                   FontSize="20"
+                            <TextBox x:Name="txtCapacity"
+                                     Text="800"
+                                     FontWeight="SemiBold"                                   
+                                     FontSize="20"
+                                     VerticalAlignment="Center"
+                                     BorderThickness="0"
+                                     Background="Transparent"
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="kg"
-                                   FontWeight="SemiBold"                                   
+                            <TextBox Text="kg"
+                                   FontWeight="SemiBold" 
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"
                                    FontSize="20"
                                    Margin="0 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -206,14 +220,20 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="14000"
-                                   FontWeight="SemiBold"                                   
+                            <TextBox Text="14000"
+                                   FontWeight="SemiBold" 
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <Label Content="so'm"
-                                   FontWeight="SemiBold"                                   
+                                   FontWeight="SemiBold"   
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"                                 
                                    FontSize="20"
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -233,9 +253,12 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Farg'ona"
+                            <TextBox Text="Farg'ona"
                                    FontWeight="SemiBold"                                   
-                                   FontSize="20"
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"
                                    Margin="0 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
@@ -255,9 +278,12 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Qo'qon"
+                            <TextBox Text="Qo'qon"
                                    FontWeight="SemiBold"                                   
-                                   FontSize="20"
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"
                                    Margin="0 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
@@ -275,10 +301,14 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                        <Label Content="+998977771747"
+                            <TextBox x:Name="txtPhone"
+                                    Text="+998977771747"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
-                                   Margin="0 1 5 0"
+                                   Margin="0 1 5 0" 
+                                   VerticalAlignment="Center"
+                                   BorderThickness="0"
+                                   Background="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                     </StackPanel>
@@ -303,12 +333,14 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                                <TextBlock Text="1 gektar olma sotiladi. " 
+                                <TextBox x:Name="txtDescription"
+                                         Text="1 gektar olma sotiladi. " 
                                          FontSize="20"
                                          FontWeight="SemiBold"
-                                         Margin="0 5 0 5"
-                                         Background="{DynamicResource SixthBackground}"
+                                         Margin="0 5 0 5" 
                                          VerticalAlignment="Center"
+                                         BorderThickness="0"
+                                         Background="Transparent"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>

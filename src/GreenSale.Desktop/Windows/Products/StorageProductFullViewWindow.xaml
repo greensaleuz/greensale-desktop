@@ -58,11 +58,12 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     VerticalAlignment="Center"
                                     Margin="0 5 0 0">
-                                <TextBlock
+                                <TextBox
                                          x:Name="txtbName"
                                          FontSize="26"
                                          Text="Oltiariq  yukxonasi"
                                          Margin="0 5"
+                                         BorderThickness="0"
                                          Background="{DynamicResource SecondaryBackground}"
                                          VerticalAlignment="Center"
                                          Foreground="{DynamicResource FifthTextColor}"/>
@@ -213,6 +214,7 @@
                                         Text="Qo'rg'ontepa mahallasi" 
                                          FontSize="18"
                                          Margin="-5 5"
+                                         BorderThickness="0"
                                          Background="{DynamicResource SixthBackground}"
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
@@ -241,11 +243,12 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
                             
-                            <TextBlock   
+                            <TextBox   
                                          x:Name="txtbDescription"
                                          Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
                                          FontSize="18"
                                          Margin="0 5 0 5"
+                                         BorderThickness="0"
                                          Background="{DynamicResource SixthBackground}"
                                          VerticalAlignment="Center"
                                          TextWrapping="Wrap"                                         
