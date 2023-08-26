@@ -24,7 +24,7 @@ namespace GreenSale.Desktop.Companents.Products
     /// </summary>
     public partial class SellerProductViewUserControl : UserControl
     {
-        public static long ID { get; set; }
+        private long ID { get; set; }
 
         public static long sellerId { get; set; }
 
