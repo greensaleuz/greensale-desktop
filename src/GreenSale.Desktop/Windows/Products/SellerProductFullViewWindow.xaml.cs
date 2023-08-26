@@ -2,6 +2,7 @@
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,6 +132,32 @@ namespace GreenSale.Desktop.Windows.Products
                     Img4.ImageSource = new BitmapImage(imageUri);
                 }
                 i++;
+            }
+        }
+
+        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string imgPath = openFileDialog.FileName;
+                    Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                }
+        }
+
+        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (ImgUpdateMain.IsMouseOver == true)
+            {
+                ImgIcon.Visibility = Visibility.Visible;
+                ImgUpdateMain.BorderThickness = new Thickness(2);
+
+            }
+            else
+            {
+                ImgIcon.Visibility = Visibility.Hidden;
+                ImgUpdateMain.BorderThickness = new Thickness(0);
             }
         }
     }

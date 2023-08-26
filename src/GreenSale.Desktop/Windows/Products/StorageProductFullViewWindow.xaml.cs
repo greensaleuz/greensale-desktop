@@ -68,6 +68,10 @@ namespace GreenSale.Desktop.Windows.Products
         
         }
 
+        private void btnPicture_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
 
