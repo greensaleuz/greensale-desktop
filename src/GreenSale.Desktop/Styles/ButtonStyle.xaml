@@ -740,7 +740,8 @@
                     <Border x:Name="categoryBorder"
                             CornerRadius="15"              
                             BorderThickness="2"
-                            BorderBrush="Transparent">
+                            BorderBrush="Transparent"
+                            Cursor="Hand">
                         <Grid x:Name="categoryGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>

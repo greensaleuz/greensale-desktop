@@ -80,14 +80,14 @@ namespace GreenSale.Desktop.Windows.Products
             long id = SellerProductPersonalViewUserControl.sellerId;
             var sellerPost = await _service.GetByIdAsync(id);
 
-            lbCapacity.Content = sellerPost.Capacity.ToString();
-            lbCM.Content = sellerPost.CapacityMeasure;
+            lbCapacity.Text = sellerPost.Capacity.ToString();
+            lbCM.Text = sellerPost.CapacityMeasure;
             txbDescribtion.Text = sellerPost.Description;
-            lbDistrict.Content = sellerPost.District;
-            lbPhone.Content = sellerPost.PostPhoneNumber;
-            lbPrice.Content = sellerPost.Price.ToString();
+            lbDistrict.Text = sellerPost.District;
+            lbPhone.Text = sellerPost.PostPhoneNumber;
+            lbPrice.Text = sellerPost.Price.ToString();
             txbTitle.Text = sellerPost.Title;
-            lbType.Content = sellerPost.Type;
+            lbType.Text = sellerPost.Type;
 
 
             int i = 0;

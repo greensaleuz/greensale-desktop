@@ -20,6 +20,7 @@
                             Orientation="Horizontal"
                             VerticalAlignment="Top">
                 <Button x:Name="btnSellerAd"
+                            Cursor="Hand"
                             Content="Sotuvchi"   
                             Click="btnSellerAd_Click"
                             Style="{DynamicResource AdSellerButton}"     

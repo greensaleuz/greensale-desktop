@@ -41,5 +41,10 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text  = post.capacityMeasure.ToString();
         }
+
+        private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
