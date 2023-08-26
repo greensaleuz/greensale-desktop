@@ -24,6 +24,10 @@ namespace GreenSale.Desktop.Companents.Products
     /// </summary>
     public partial class SellerProductViewUserControl : UserControl
     {
+        public static long ID { get; set; }
+
+        public static long sellerId { get; set; }
+
         public SellerProductViewUserControl()
         {
             InitializeComponent();
@@ -41,10 +45,12 @@ namespace GreenSale.Desktop.Companents.Products
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text  = post.capacityMeasure.ToString();
+            ID = post.Id;
         }
 
         private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            sellerId = ID;
             SellerProductViewWindow seller = new SellerProductViewWindow();
             seller.ShowDialog();
             
