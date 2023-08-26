@@ -196,7 +196,8 @@
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox Text="kg"
+                            <TextBox x:Name="txtCM" 
+                                    Text="kg"
                                    FontWeight="SemiBold" 
                                    VerticalAlignment="Center"
                                    BorderThickness="0"
@@ -220,7 +221,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox Text="14000"
+                            <TextBox x:Name="txtPrice" 
+                                    Text="14000"
                                    FontWeight="SemiBold" 
                                    VerticalAlignment="Center"
                                    BorderThickness="0"
@@ -278,7 +280,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox Text="Qo'qon"
+                            <TextBox x:Name="txtDistrict" 
+                                    Text="Qo'qon"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20" 
                                    VerticalAlignment="Center"
