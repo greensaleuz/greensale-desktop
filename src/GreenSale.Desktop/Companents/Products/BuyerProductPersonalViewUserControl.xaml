@@ -178,7 +178,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="btnReadmore"
+                            <Border  x:Name="btnReadmore"
                                     MouseDown="btnReadmore_MouseDown"
                                     Height="30" Width="120"
                                                 CornerRadius="7"
@@ -189,9 +189,9 @@
                                                 BorderBrush="{DynamicResource FifthTextColor}">
                                 <Label Content="Hammasini ko'rish"
                                                    FontSize="12"
-                                                   Margin="0"
+                                                   Margin="4,0,0,0"
                                                    VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                                   HorizontalAlignment="Left"
                                                    FontFamily="send-series"
                                                    Foreground="{DynamicResource FourthTextColor}"/>
                             </Border>

@@ -69,5 +69,7 @@ namespace GreenSale.Desktop.Companents.Products
             BuyerProductFullViewWindow buyer = new BuyerProductFullViewWindow();
             buyer.Show();
         }
+
+       
     }
 }

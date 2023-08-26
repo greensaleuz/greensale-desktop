@@ -10,6 +10,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Loaded="Window_Loaded"
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -54,7 +55,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush Stretch="UniformToFill" x:Name="Img"
+                                    <ImageBrush  Stretch="UniformToFill" x:Name="Img"
                                                 ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
                                 </Border.Background>
 
@@ -134,7 +135,7 @@
                             BorderBrush="{DynamicResource FifthBackground}"
                             Margin="5 0 30 10"
                             >
-                        <TextBlock Text="Sifatli yetishtirilgan olma"
+                        <TextBox x:Name="txtTitle" Text="Sifatli yetishtirilgan olma"
                                    FontSize="24"
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
@@ -156,15 +157,14 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Jannat olma"
+                            <TextBox x:Name="txtType" Text="Jannat olma"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
-                                   Margin="0 1 5 0"
+                                   Margin="0 7 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
                     </Border>
-
 
                     <Border CornerRadius="10"
                             Width="360"
@@ -179,13 +179,14 @@
                                    Margin="10 1 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="800"
+                            <TextBox x:Name="txtCapacity" Text="800"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="kg"
+                            <TextBox Name="txtCapacityMeasure" 
+                                     Text="kg"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -206,7 +207,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="14000"
+                            <TextBox  Name="txtPrice" Text="14000"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
@@ -233,10 +234,11 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Farg'ona"
+                            <TextBox x:Name="txtRegion" Text="Farg'ona"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
+                                   
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
@@ -255,7 +257,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Qo'qon"
+                            <TextBox Name="txtDistrict" Text="Qo'qon"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -275,7 +277,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="+998977771747"
+                            <TextBox x:Name="txtPhoneNumber" Text="+998977771747"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -303,7 +305,7 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                                <TextBlock Text="1 gektar olma sotiladi. " 
+                                <TextBox  x:Name="txtDescription" Text="1 gektar olma sotiladi. " 
                                          FontSize="20"
                                          FontWeight="SemiBold"
                                          Margin="0 5 0 5"
