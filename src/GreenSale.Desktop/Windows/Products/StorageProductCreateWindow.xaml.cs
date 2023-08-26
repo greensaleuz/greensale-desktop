@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Net.Http;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -54,9 +55,9 @@ namespace GreenSale.Desktop.Windows.Products
 
             string imagePath = ImgStorage.ImageSource.ToString();
 
-         
-         
-           
+            using var fileContent = new ByteArrayContent(await File.ReadAllBytesAsync(imagePath));
+
+            storage.ImagePath = fileContent;
 
             var result = await _service.CreateAsync(storage);
 

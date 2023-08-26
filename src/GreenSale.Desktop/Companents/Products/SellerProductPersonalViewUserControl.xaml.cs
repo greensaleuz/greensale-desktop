@@ -58,5 +58,10 @@ namespace GreenSale.Desktop.Companents.Products
 
             Sellercom.Visibility = Visibility.Collapsed;
         }
+
+        private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

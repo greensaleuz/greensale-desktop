@@ -58,5 +58,10 @@ namespace GreenSale.Desktop.Windows.Products
             ImgMain.ImageSource = Img4.ImageSource;
 
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,7 +1,9 @@
-﻿using GreenSale.Integrated.Interfaces.BuyerPosts;
+﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.Integrated.Services.Storages;
 using GreenSale.ViewModels.Models.BuyerPosts;
+using GreenSale.ViewModels.Models.Storages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace GreenSale.Desktop.Companents.Products
         private IBuyerPostService _service;
 
          private long ID { get; set; }
+        public static long buyerId { get; set; }
+
 
         public BuyerProductPersonalViewUserControl()
         {
@@ -56,6 +60,14 @@ namespace GreenSale.Desktop.Companents.Products
             var result = await _service.DeleteAsync(ID);
 
             Buyercom.Visibility = Visibility.Collapsed;
+            
+        }
+
+        private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            buyerId = ID;
+            BuyerProductFullViewWindow buyer = new BuyerProductFullViewWindow();
+            buyer.Show();
         }
     }
 }

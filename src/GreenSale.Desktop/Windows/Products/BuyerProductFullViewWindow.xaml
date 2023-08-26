@@ -330,8 +330,10 @@
                             Margin="-10 0 20 0"
                             Height="55"
                             >
-                            <Button Style="{DynamicResource ProductDeleteButton}"
-                                Content="O'chirish"/>
+                            <Button x:Name="btnBack"
+                                    Click="btnBack_Click"
+                                    Style="{DynamicResource ProductBackButton}"
+                                    Content="Ortga"/>
                         </Border>
                     </Grid>
                 </StackPanel>
