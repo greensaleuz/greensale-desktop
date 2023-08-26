@@ -132,5 +132,26 @@ namespace GreenSale.Desktop.Windows.Products
            
 
         }
+
+
+        private void btnUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (btnUpdateMain.IsMouseOver == true)
+            {
+                ImgIcon.Visibility = Visibility.Visible;
+                btnUpdateMain.BorderThickness = new Thickness(2);
+
+            }
+            else
+            {
+                ImgIcon.Visibility = Visibility.Hidden;
+                btnUpdateMain.BorderThickness = new Thickness(0);
+            }
+        }
     }
 }
