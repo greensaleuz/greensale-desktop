@@ -33,6 +33,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border x:Name="btnPicture"
+                                IsMouseDirectlyOverChanged="btnPicture_IsMouseDirectlyOverChanged"
                                 MouseDown="btnPicture_MouseDown"
                                 Grid.Column="0" 
                                 CornerRadius="10"
@@ -40,13 +41,18 @@
                                 Width="180"
                                 Cursor="Hand"
                                 Margin="10 15 0 0"  
-                                BorderThickness="1"
+                                BorderThickness="2"
                                 BorderBrush="{DynamicResource SelectedBorderColor}"
                                 >
                             <Border.Background>
                                 <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" 
                                             ImageSource="/assets/images/luik.jpg"/>
                             </Border.Background>
+                            
+                            <Path  x:Name="ImgIcon2" Height="70" Width="70"
+                                    Data="{DynamicResource pilus}"
+                                    Fill="{DynamicResource FourthBackground}"
+                                    Stretch="Uniform"/>
                         </Border>
                         <StackPanel Grid.Column="1"
                                     Margin="10 0 10 0">

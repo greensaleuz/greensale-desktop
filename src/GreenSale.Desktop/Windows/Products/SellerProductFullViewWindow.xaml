@@ -114,13 +114,23 @@
                                 </Border.Background>
                             </Border>
                         </StackPanel>
-                        <Border Grid.Column="1"
+                        <Border x:Name="ImgUpdateMain"
+                                IsMouseDirectlyOverChanged="ImgUpdateMain_IsMouseDirectlyOverChanged"
+                                MouseDown="ImgUpdateMain_MouseDown"
+                                BorderThickness="2"
+                                BorderBrush="{DynamicResource SelectedBorderColor}"
+                                Grid.Column="1"
                                 Margin="10"
                                 >
                             <Border.Background>
                                 <ImageBrush  x:Name="ImgMain" Stretch="UniformToFill"
                                              ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
                             </Border.Background>
+
+                            <Path  x:Name="ImgIcon" Height="70" Width="70"
+                                    Data="{DynamicResource pilus}"
+                                    Fill="{DynamicResource FourthBackground}"
+                                    Stretch="Uniform"/>
                         </Border>
                     </Grid>
 
