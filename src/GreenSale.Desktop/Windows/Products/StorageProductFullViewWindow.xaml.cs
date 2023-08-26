@@ -70,7 +70,17 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnPicture_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if (btnPicture.IsMouseOver == true)
+            {
+                ImgIcon.Visibility = Visibility.Visible;
+                btnPicture.BorderThickness = new Thickness(2);
 
+            }
+            else
+            {
+                ImgIcon.Visibility = Visibility.Hidden;
+                ImgUpdateMain.BorderThickness = new Thickness(0);
+            }
         }
     }
 }
