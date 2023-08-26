@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Integrated.Interfaces.SellerPosts;
+using GreenSale.Integrated.Services.SellerPosts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,13 @@ namespace GreenSale.Desktop.Windows.Products
     /// </summary>
     public partial class SellerProductViewWindow : Window
     {
+        private ISellerPost _service;
+
         public SellerProductViewWindow()
         {
             InitializeComponent();
+            this._service=new SellerPostService ();
+
         }
 
         private void btnPicture3_MouseDown(object sender, MouseButtonEventArgs e)
@@ -55,9 +62,63 @@ namespace GreenSale.Desktop.Windows.Products
             Application.Current.Shutdown();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            long id = SellerProductPersonalViewUserControl.sellerId;
+            var sellerPost = await _service.GetByIdAsync(id);
 
+            txtCapacity.Text = sellerPost.Capacity.ToString();
+            txtCM.Text = sellerPost.CapacityMeasure;
+            txtDescription.Text = sellerPost.Description;
+            txtDistrict.Text = sellerPost.District;
+            txtPhone.Text = sellerPost.PostPhoneNumber;
+            txtPrice.Text = sellerPost.Price.ToString();
+            txtTitle.Text = sellerPost.Title;
+            txtType.Text = sellerPost.Type;
+
+
+            int i = 0;
+            foreach (var item in sellerPost.PostImages)
+            {
+
+                if (i == 0)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img.ImageSource = new BitmapImage(imageUri);
+                    ImgMain.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 1)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img1.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 2)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img2.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 3)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img3.ImageSource = new BitmapImage(imageUri);
+                }
+                else if (i == 4)
+                {
+                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+
+                    Uri imageUri = new Uri(image, UriKind.Absolute);
+                    Img4.ImageSource = new BitmapImage(imageUri);
+                }
+                i++;
+            }
         }
     }
 }

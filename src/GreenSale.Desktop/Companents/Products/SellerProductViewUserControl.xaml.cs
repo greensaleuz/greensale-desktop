@@ -1,4 +1,5 @@
-﻿using GreenSale.Integrated.API.Auth;
+﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,9 @@ namespace GreenSale.Desktop.Companents.Products
 
         private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            SellerProductViewWindow seller = new SellerProductViewWindow();
+            seller.ShowDialog();
+            
         }
     }
 }
