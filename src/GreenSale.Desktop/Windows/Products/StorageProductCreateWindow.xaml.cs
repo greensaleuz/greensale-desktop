@@ -55,8 +55,7 @@ namespace GreenSale.Desktop.Windows.Products
 
             string imagePath = ImgStorage.ImageSource.ToString();
 
-            using var fileContent = new ByteArrayContent(await File.ReadAllBytesAsync(imagePath));
-
+            storage.ImagePath = imagePath;
             //storage.ImagePath = fileContent;
 
             var result = await _service.CreateAsync(storage);
