@@ -1,4 +1,5 @@
-﻿using GreenSale.Integrated.Interfaces.SellerPosts;
+﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.SellerPosts;
 using GreenSale.Integrated.Services.Storages;
@@ -28,6 +29,8 @@ namespace GreenSale.Desktop.Companents.Products
     {
         private ISellerPost _service;
         public static long ID { get; set; }
+        public static long sellerId { get; set; }
+
 
         public SellerProductPersonalViewUserControl()
         {
@@ -61,7 +64,9 @@ namespace GreenSale.Desktop.Companents.Products
 
         private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            sellerId = ID;
+            SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
+            seller.Show();
         }
     }
 }

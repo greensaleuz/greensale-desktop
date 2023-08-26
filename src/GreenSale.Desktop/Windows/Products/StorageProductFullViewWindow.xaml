@@ -266,7 +266,7 @@
                             Height="50"
                             >
                         <Button x:Name="btnDelete"
-                                Style="{DynamicResource ProductDeleteButton}"
+                                Style="{DynamicResource ProductBackButton}"
                                 Content="Ortga"
                                 Click="btnDelete_Click"/>
                     </Border>
