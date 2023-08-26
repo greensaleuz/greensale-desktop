@@ -83,7 +83,7 @@ namespace GreenSale.Desktop.Windows.Products
             else
             {
                 ImgIcon.Visibility = Visibility.Hidden;
-                ImgUpdateMain.BorderThickness = new Thickness(0);
+                btnPicture.BorderThickness = new Thickness(0);
             }
         }
         private void btnPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -94,9 +94,9 @@ namespace GreenSale.Desktop.Windows.Products
             {
                 string imgPath = openFileDialog.FileName;
                 ImgStorage.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                //ImgIcon.Visibility = Visibility.Hidden;
+                ImgIcon.Visibility = Visibility.Hidden;
+                btnPicture.BorderThickness = new Thickness(0);
             }
-            //ImgIcon.Visibility = Visibility.Hidden;
         }
     }
 }
