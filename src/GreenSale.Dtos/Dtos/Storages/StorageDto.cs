@@ -14,8 +14,8 @@ namespace GreenSale.Dtos.Dtos.Storages
         public string Region { get; set; } = string.Empty;
         public string District { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public double AddressLatitude { get; set; } = 12843792940;
-        public double AddressLongitude { get; set; } = 290487375932;
+        public double AddressLatitude { get; set; } = 128439;
+        public double AddressLongitude { get; set; } = 29046;
         public string Info { get; set; } = string.Empty;
         public string ImagePath { get; set; } = string.Empty;
     }

@@ -140,6 +140,8 @@
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
                                    FontWeight="SemiBold"
+                                 Background="Transparent"
+                                 BorderBrush="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                     </Border>
@@ -161,6 +163,8 @@
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 7 5 0"
+                                   BorderBrush="Transparent"
+                                   Background="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
@@ -183,12 +187,16 @@
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <TextBox Name="txtCapacityMeasure" 
                                      Text="kg"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
+                                          Background="Transparent"
+                                     BorderBrush="Transparent"
                                    Margin="0 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
@@ -211,6 +219,8 @@
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
+                                   Background="Transparent"
+                                   BorderBrush="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <Label Content="so'm"
@@ -238,7 +248,8 @@
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
-                                   
+                                    Background="Transparent"
+                                     BorderBrush="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
@@ -261,7 +272,9 @@
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
-                                   Foreground="{DynamicResource FifthTextColor}"
+                                    Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     Foreground="{DynamicResource FifthTextColor}"
                                    />
                         </StackPanel>
                     </Border>
@@ -282,7 +295,9 @@
                                    FontSize="20"
                                    Margin="0 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
-                                   />
+                                    Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     />
                         </StackPanel>
                     </Border>
                     <Border CornerRadius="10"
@@ -309,8 +324,9 @@
                                          FontSize="20"
                                          FontWeight="SemiBold"
                                          Margin="0 5 0 5"
-                                         Background="{DynamicResource SixthBackground}"
                                          VerticalAlignment="Center"
+                                           Background="Transparent"
+                                     BorderBrush="Transparent"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>

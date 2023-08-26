@@ -76,12 +76,13 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     VerticalAlignment="Center"
                                     Margin="0 20 0 0">
-                                <TextBlock
+                                <TextBox
                                          x:Name="txtbInfo"
                                          Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
                                          FontSize="18"
-                                         Margin="10 5"
-                                         Background="{DynamicResource SixthBackground}"
+                                         Margin="10 5" 
+                                         Background="Transparent"
+                                         BorderBrush="Transparent"
                                          VerticalAlignment="Center"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
@@ -99,10 +100,11 @@
                                              VerticalAlignment="Center"
                                              TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBlock x:Name="txtbFullName" Text="Aliyev Vali" 
+                                    <TextBox x:Name="txtbFullName" Text="Aliyev Vali" 
                                              FontSize="18"
                                              Margin="-5 5"
-                                             Background="{DynamicResource SixthBackground}"
+                                             Background="Transparent"
+                                             BorderBrush="Transparent"
                                              VerticalAlignment="Center"
                                              TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
@@ -120,12 +122,13 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBlock
+                                    <TextBox
                                          x:Name="txtbPhoneNumber"
                                          Text="+998977771747" 
                                          FontSize="18"
                                          Margin="-5 5"
-                                         Background="{DynamicResource SixthBackground}"
+                                         Background="Transparent"
+                                         BorderBrush="Transparent"
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
@@ -154,11 +157,12 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                            <TextBlock  x:Name="txtbRegion"
+                            <TextBox  x:Name="txtbRegion"
                                         Text="Farg'ona" 
                                          FontSize="18"
                                          Margin="-5 5"
-                                         Background="{DynamicResource SixthBackground}"
+                                         Background="Transparent"
+                                         BorderBrush="Transparent"
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
@@ -179,11 +183,12 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                            <TextBlock x:Name="txtbDistrict"
+                            <TextBox x:Name="txtbDistrict"
                                         Text="Oltiariq" 
                                          FontSize="18"
                                          Margin="-5 5"
-                                         Background="{DynamicResource SixthBackground}"
+                                         Background="Transparent"
+                                         BorderBrush="Transparent"
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
@@ -204,7 +209,7 @@
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
                         
-                        <TextBlock x:Name="txtbAddress"      
+                        <TextBox x:Name="txtbAddress"      
                                         Text="Qo'rg'ontepa mahallasi" 
                                          FontSize="18"
                                          Margin="-5 5"
