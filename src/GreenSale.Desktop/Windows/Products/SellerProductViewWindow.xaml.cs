@@ -59,12 +59,12 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            long id = SellerProductPersonalViewUserControl.sellerId;
+            long id = SellerProductViewUserControl.sellerId;
             var sellerPost = await _service.GetByIdAsync(id);
 
             txtCapacity.Text = sellerPost.Capacity.ToString();
