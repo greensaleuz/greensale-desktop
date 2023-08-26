@@ -146,8 +146,7 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnPicture_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            if (ImgStorage.ImageSource == null)
-            {
+            
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
                 if (openFileDialog.ShowDialog() == true)
@@ -157,7 +156,7 @@ namespace GreenSale.Desktop.Windows.Products
                     ImgIcon.Visibility = Visibility.Hidden;
                 }
                 ImgIcon.Visibility = Visibility.Hidden;
-            }
+            
         }
 
         private void btnCreate_Click_1(object sender, RoutedEventArgs e)

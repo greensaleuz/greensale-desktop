@@ -33,6 +33,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border x:Name="btnPicture"
+                                MouseDown="btnPicture_MouseDown"
                                 Grid.Column="0" 
                                 CornerRadius="10"
                                 Height="200"
@@ -81,10 +82,11 @@
                                          x:Name="txtbInfo"
                                          Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
                                          FontSize="18"
-                                         Margin="10 5" 
+                                        
+                                         Margin="10,0,10,0" 
                                          Background="Transparent"
                                          BorderBrush="Transparent"
-                                         VerticalAlignment="Center"
+                                         VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>
@@ -101,13 +103,13 @@
                                              VerticalAlignment="Center"
                                              TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBox x:Name="txtbFullName" Text="Aliyev Vali" 
+                                    <TextBox x:Name="txtbFullName" Text="12345678901234567892" 
                                              FontSize="18"
                                              Margin="-5 5"
+                                             MaxLength="20"
                                              Background="Transparent"
                                              BorderBrush="Transparent"
                                              VerticalAlignment="Center"
-                                             TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
                                 </StackPanel>
                             </Border>
@@ -209,7 +211,7 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                        
+
                         <TextBox x:Name="txtbAddress"      
                                         Text="Qo'rg'ontepa mahallasi" 
                                          FontSize="18"
@@ -242,7 +244,7 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                            
+
                             <TextBox   
                                          x:Name="txtbDescription"
                                          Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
