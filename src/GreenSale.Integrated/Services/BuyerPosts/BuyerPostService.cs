@@ -50,9 +50,15 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             return posts;
         }
 
-        public Task<BuyerPost> GetByIdAsync(int id)
+        public async Task<BuyerPostGetById> GetByIdAsync(long postId)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/{postId}");
+            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+            string response = await message.Content.ReadAsStringAsync();
+            BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response);
+
+            return posts;
         }
     }
 }
