@@ -2,9 +2,12 @@
 using GreenSale.Dtos.Dtos.Storages;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
+using Microsoft.Win32;
 using System;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -58,10 +61,11 @@ namespace GreenSale.Desktop.Windows.Products
             dto.Description = txtbDescription.Text.ToString();
             dto.District = txtbDistrict.Text.ToString();
             dto.Region = txtbRegion.Text.ToString();
-            dto.AddressLatitude = 2384934637;
-            dto.AddressLongitude = 2093740930846; 
+            dto.AddressLatitude = 238434637;
+            dto.AddressLongitude = 20930846; 
             dto.Name = txtbName.Text.ToString();
             dto.Address = txtbAddress.Text.ToString();
+            dto.ImagePath =  ImgStorage.ImageSource.ToString();
 
             long id = StorageProductPersonalViewUserControl.storageId;
             var storage = await _service.UpdateAsync(id,dto);
@@ -81,6 +85,18 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgIcon.Visibility = Visibility.Hidden;
                 ImgUpdateMain.BorderThickness = new Thickness(0);
             }
+        }
+        private void btnPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+                ImgStorage.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                //ImgIcon.Visibility = Visibility.Hidden;
+            }
+            //ImgIcon.Visibility = Visibility.Hidden;
         }
     }
 }
