@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Dtos.Dtos.SellerPost;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
@@ -6,6 +7,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -71,8 +73,21 @@ namespace GreenSale.Desktop.Windows.Products
             this.Close();
         }
 
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            SellerPostUpdateDto dto = new SellerPostUpdateDto ();
+            dto.Capacity = int.Parse(txtCapacity.Text);
+            dto.CapacityMeasure = txtCapacityMeasure.Text;
+            dto.Title = txtTitle.Text;
+            dto.Type = txtType.Text;
+            dto.Price = double.Parse(txtPrice.Text);
+            dto.District = txtDistrict.Text;
+            dto.Region = txtRegion.Text;
+            dto.PhoneNumber = txtPhoneNumber.Text;
+            dto.Description = txtDescription.Text;
+
+            long id = SellerProductPersonalViewUserControl.sellerId;
+            var result = await _service.UpdateAsync(id, dto);
 
         }
 
@@ -81,14 +96,14 @@ namespace GreenSale.Desktop.Windows.Products
             long id = SellerProductPersonalViewUserControl.sellerId;
             var sellerPost = await _service.GetByIdAsync(id);
 
-            lbCapacity.Text = sellerPost.Capacity.ToString();
-            lbCM.Text = sellerPost.CapacityMeasure;
-            txbDescribtion.Text = sellerPost.Description;
-            lbDistrict.Text = sellerPost.District;
-            lbPhone.Text = sellerPost.PostPhoneNumber;
-            lbPrice.Text = sellerPost.Price.ToString();
-            txbTitle.Text = sellerPost.Title;
-            lbType.Text = sellerPost.Type;
+            txtCapacity.Text = sellerPost.Capacity.ToString();
+            txtCapacityMeasure.Text = sellerPost.CapacityMeasure;
+            txtDescription.Text = sellerPost.Description;
+            txtDistrict.Text = sellerPost.District;
+            txtPhoneNumber.Text = sellerPost.PostPhoneNumber;
+            txtPrice.Text = sellerPost.Price.ToString();
+            txtTitle.Text = sellerPost.Title;
+            txtType.Text = sellerPost.Type;
 
 
             int i = 0;

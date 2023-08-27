@@ -2,15 +2,8 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Security;
-using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GreenSale.Integrated.Services.Storages
 {
@@ -35,7 +28,7 @@ namespace GreenSale.Integrated.Services.Storages
             content.Add(new StringContent(dto.Address), "Address");
             content.Add(new StringContent(dto.Info), "Info");
             content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
-           
+
             request.Content = content;
             var response = await client.SendAsync(request);
             if (response.IsSuccessStatusCode)
@@ -76,10 +69,14 @@ namespace GreenSale.Integrated.Services.Storages
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/all/{userId}");
             HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
-            string response = await message.Content.ReadAsStringAsync();
-            List<Storage> posts = JsonConvert.DeserializeObject<List<Storage>>(response);
 
-            return posts;
+            if (message.StatusCode.ToString() != "NotFound")
+            {
+                string response = await message.Content.ReadAsStringAsync();
+                List<Storage> posts = JsonConvert.DeserializeObject<List<Storage>>(response);
+                return posts;
+            }
+            return new List<Storage>();
         }
 
         public async Task<StorageGetById> GetByIdAsync(long storageId)
@@ -111,7 +108,7 @@ namespace GreenSale.Integrated.Services.Storages
             content.Add(new StringContent(dto.Address), "Address");
             content.Add(new StringContent(dto.Info), "Info");
             content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
-           
+
             request.Content = content;
             var response = await client.SendAsync(request);
             if (response.IsSuccessStatusCode)
