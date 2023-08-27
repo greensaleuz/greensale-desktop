@@ -16,6 +16,42 @@ namespace GreenSale.Integrated.Services.SellerPosts
 {
     public class SellerPostService : ISellerPost
     {
+        public async Task<bool> CreateAsync(SellerPostCreate dto)
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + "/api/client/seller/post");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+            content.Add(new StringContent(dto.Title), "Title");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.Price.ToString()), "Price");
+            content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
+            content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
+            content.Add(new StringContent(dto.Type), "Type");
+            content.Add(new StringContent(dto.Region), "Region");
+            content.Add(new StringContent(dto.District), "District");
+            content.Add(new StringContent(dto.CategoryId.ToString()), "CategoryID");
+            //content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+
+            foreach (var item in dto.ImagePath)
+            {
+                content.Add(new StreamContent(File.OpenRead(item)), "ImagePath", item);
+            }
+
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+            return false;
+        }
+
         public async Task<bool> DeleteAsync(long postId)
         {
             HttpClient client = new HttpClient();
