@@ -30,7 +30,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
     {
         private IStorageService _service;
         public IUserService _serviceUser;
-
+        public long UserId { get; set; }
         public StorageCreateAd()
         {
             InitializeComponent();
@@ -42,21 +42,26 @@ namespace GreenSale.Desktop.Pages.CreateAd
         {
             StorageProductCreateWindow storageProductCreateWindow = new StorageProductCreateWindow();
             storageProductCreateWindow.ShowDialog();
+            
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            await RefreshAsync();
+        }
+
+        public async Task RefreshAsync()
+        {
+            wrpStoragePost.Children.Clear();
             var user = await _serviceUser.GetAsync();
-            long id = user.Id;
-            var storagePost = await _service.GetAllUserId(id);
+            UserId = user.Id;
+            var storagePost = await _service.GetAllUserId((UserId));
             foreach (var post in storagePost)
             {
                 StorageProductPersonalViewUserControl control = new StorageProductPersonalViewUserControl();
                 control.SetData(post);
-
-                wrpCourses.Children.Add(control);
+                wrpStoragePost.Children.Add(control);
             }
-
         }
     }
 }
