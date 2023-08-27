@@ -51,9 +51,21 @@ namespace GreenSale.Desktop.Pages.CreateAd
             {
                 SellerProductPersonalViewUserControl control = new SellerProductPersonalViewUserControl();
                 control.SetData(post);
-
                 wrpSellerPost.Children.Add(control);
             }
+        }
+
+        public async Task RefreshAsync()
+        {
+            var user = await _serviceUser.GetAsync();
+            long id = user.Id;
+            var sellerPost = await _service.GetAllUserId(id);
+            foreach (var post in sellerPost)
+            {
+                SellerProductPersonalViewUserControl control = new SellerProductPersonalViewUserControl();
+                control.SetData(post);
+                wrpSellerPost.Children.Add(control);
+            } 
         }
     }
 }
