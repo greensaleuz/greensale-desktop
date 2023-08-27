@@ -114,13 +114,21 @@
                                 </Border.Background>
                             </Border>
                         </StackPanel>
-                        <Border Grid.Column="1"
+                        <Border x:Name="btnUpdateMain"
+                                MouseDown="btnUpdateMain_MouseDown"
+                                IsMouseDirectlyOverChanged="btnUpdateMain_IsMouseDirectlyOverChanged"
+                                Grid.Column="1"
                                 Margin="10"
                                 >
                             <Border.Background>
                                 <ImageBrush  x:Name="ImgMain" Stretch="UniformToFill"
                                              ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
                             </Border.Background>
+
+                            <Path  x:Name="ImgIcon" Height="70" Width="70"
+                                    Data="{DynamicResource pilus}"
+                                    Fill="{DynamicResource FourthBackground}"
+                                    Stretch="Uniform"/>
                         </Border>
                     </Grid>
 
@@ -348,7 +356,9 @@
                                 Height="55"
                                 Margin="-10 0 0 0"
                                 >
-                            <Button Style="{DynamicResource ProductUpdateButton}"
+                            <Button
+                                
+                                Style="{DynamicResource ProductUpdateButton}"
                                 Content="Tahrirlash"/>
                         </Border>
                         <Border Grid.Column="1"

@@ -28,7 +28,7 @@ namespace GreenSale.Desktop.Companents.Products
     {
         private IBuyerPostService _service;
 
-         private long ID { get; set; }
+        private long ID { get; set; }
         public static long buyerId { get; set; }
 
 

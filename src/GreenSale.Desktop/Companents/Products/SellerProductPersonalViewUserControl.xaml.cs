@@ -28,7 +28,7 @@ namespace GreenSale.Desktop.Companents.Products
     public partial class SellerProductPersonalViewUserControl : UserControl
     {
         private ISellerPost _service;
-        public static long ID { get; set; }
+        private long ID { get; set; }
         public static long sellerId { get; set; }
 
 
@@ -58,7 +58,6 @@ namespace GreenSale.Desktop.Companents.Products
         private async void btnSellerDelete_Click(object sender, RoutedEventArgs e)
         {
             var result = await _service.DeleteAsync(ID);
-
             Sellercom.Visibility = Visibility.Collapsed;
         }
 
@@ -66,7 +65,7 @@ namespace GreenSale.Desktop.Companents.Products
         {
             sellerId = ID;
             SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
-            seller.Show();
+            seller.ShowDialog();
         }
     }
 }

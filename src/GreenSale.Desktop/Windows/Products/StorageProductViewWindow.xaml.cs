@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Integrated.Interfaces.Storages;
+using GreenSale.Integrated.Services.Storages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +22,41 @@ namespace GreenSale.Desktop.Windows.Products
     /// </summary>
     public partial class StorageProductViewWindow : Window
     {
+        private IStorageService _service;
+
         public StorageProductViewWindow()
         {
             InitializeComponent();
+            this._service = new StorageService();
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            long id = StorageProductViewUserControl.storageId;
+            var storagePost = await _service.GetByIdAsync(id);
+
+            txbStorageName.Text = storagePost.StorageName;
+            txbInfo.Text = storagePost.Info;
+            txbFullName.Text = storagePost.FullName.Split()[0];
+            txbPhone.Text = storagePost.PhoneNumber;
+            txbRegion.Text = storagePost.Region;
+            txbDistrict.Text = storagePost.District;
+            txbAddress.Text = storagePost.Address;
+            txbDescription.Text = storagePost.Description;
+            
+            string image = "http://95.130.227.68:8080/" + storagePost.ImagePath;
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+            Img.ImageSource = new BitmapImage(imageUri);
         }
     }
 }

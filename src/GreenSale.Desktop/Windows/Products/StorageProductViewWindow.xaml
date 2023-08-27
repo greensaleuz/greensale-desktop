@@ -10,7 +10,8 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -60,7 +61,8 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     VerticalAlignment="Center"
                                     Margin="0 5 0 0">
-                                <TextBlock FontSize="26"
+                                <TextBlock x:Name="txbStorageName" 
+                                           FontSize="26"
                                          Text="Oltiariq  yukxonasi"
                                          Margin="0 5"
                                          Background="{DynamicResource SecondaryBackground}"
@@ -76,7 +78,8 @@
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     VerticalAlignment="Center"
                                     Margin="0 20 0 0">
-                                <TextBlock Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
+                                <TextBlock x:Name="txbInfo"
+                                           Text="Yukxonaga sveji olma, anor, nok, gilos va o'rik olamiz." 
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -97,7 +100,8 @@
                                              VerticalAlignment="Center"
                                              TextWrapping="Wrap"                                         
                                              Foreground="{DynamicResource FifthTextColor}"/>
-                                    <TextBlock Text="Aliyev Vali" 
+                                    <TextBlock x:Name="txbFullName"
+                                               Text="Aliyev Vali" 
                                              FontSize="18"
                                              Margin="-5 5"
                                              Background="{DynamicResource SixthBackground}"
@@ -118,7 +122,7 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                                <TextBlock Text="+998977771747" 
+                                <TextBlock x:Name="txbPhone" Text="+998977771747" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -150,7 +154,8 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                        <TextBlock Text="Farg'ona" 
+                        <TextBlock x:Name="txbRegion" 
+                                   Text="Farg'ona" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -174,7 +179,7 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                        <TextBlock Text="Oltiariq" 
+                        <TextBlock x:Name="txbDistrict" Text="Oltiariq" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -189,7 +194,7 @@
                         Background="{DynamicResource SixthBackground}">
                     <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center"
-                            Margin="20 3 0 3">
+                            Margin="0 3 0 3">
                     <TextBlock Text="Manzil:"
                                          FontSize="18"
                                          Margin="10 5"
@@ -197,7 +202,8 @@
                                          VerticalAlignment="Top"
                                          TextWrapping="Wrap"                                         
                                          Foreground="{DynamicResource FifthTextColor}"/>
-                    <TextBlock Text="Qo'rg'ontepa mahallasi" 
+                    <TextBlock x:Name="txbAddress"
+                               Text="Qo'rg'ontepa mahallasi" 
                                          FontSize="18"
                                          Margin="-5 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -211,8 +217,8 @@
                         Margin="20 10 30 0"
                         Background="{DynamicResource SixthBackground}">
                     <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            Margin="20 5 5 5">
+                            VerticalAlignment="Top"
+                            Margin="0 0 5 5">
                         <TextBlock Text="Tasnif:"
                                          FontSize="18"
                                          Margin="10 5"
@@ -227,7 +233,8 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                            <TextBlock Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
+                            <TextBlock x:Name="txbDescription"
+                                       Text="asdasd asda dasd asd asd sadasd as dasd as das asd a asdas asd asd " 
                                          FontSize="18"
                                          Margin="0 5 0 5"
                                          Background="{DynamicResource SixthBackground}"
