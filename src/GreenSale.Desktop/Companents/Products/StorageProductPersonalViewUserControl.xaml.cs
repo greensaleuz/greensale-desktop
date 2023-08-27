@@ -27,6 +27,7 @@ namespace GreenSale.Desktop.Companents.Products
         private IStorageService _service;
         private long ID { get; set; }
         public static long storageId { get; set; }
+
         public StorageProductPersonalViewUserControl()
         {
             InitializeComponent();

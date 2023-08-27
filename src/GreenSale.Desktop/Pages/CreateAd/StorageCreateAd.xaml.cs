@@ -38,10 +38,11 @@ namespace GreenSale.Desktop.Pages.CreateAd
             this._serviceUser = new UserService();
         }
 
-        private void btnStorageCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnStorageCreate_Click(object sender, RoutedEventArgs e)
         {
             StorageProductCreateWindow storageProductCreateWindow = new StorageProductCreateWindow();
             storageProductCreateWindow.ShowDialog();
+            await RefreshAsync();
             
         }
 

@@ -55,5 +55,18 @@ namespace GreenSale.Desktop.Pages.CreateAd
                 wrpCourses.Children.Add(control);
             }
         }
+        public async Task RefreshAsync()
+        {
+            var user = await _serviceUser.GetAsync();
+            long id = user.Id;
+            var buyerPost = await _service.GetAllUserId(id);
+            foreach (var post in buyerPost)
+            {
+                BuyerProductPersonalViewUserControl control = new BuyerProductPersonalViewUserControl();
+                control.SetData(post);
+
+                wrpCourses.Children.Add(control);
+            }
+        }
     }
 }
