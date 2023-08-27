@@ -19,22 +19,6 @@ namespace GreenSale.Integrated.Services.Storages
     {
         public async Task<bool> CreateAsync(StorageDto dto)
         {
-            //HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri(AuthAPI.BASE_URL + "/api/client/storages");
-            //MultipartFormDataContent multipart = new MultipartFormDataContent();
-
-            //string json = JsonConvert.SerializeObject(dto);
-            //StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            //var token = IdentitySingelton.GetInstance().Token;
-            //client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-
-            //var res = await client.PostAsync(client.BaseAddress, content);
-            //var response = await res.Content.ReadAsStringAsync();
-
-
-            //return response == "true";
-
 
             var token = IdentitySingelton.GetInstance().Token;
             var client = new HttpClient();

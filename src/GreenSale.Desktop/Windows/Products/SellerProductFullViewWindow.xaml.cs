@@ -33,7 +33,7 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             this.Close();
         }
 

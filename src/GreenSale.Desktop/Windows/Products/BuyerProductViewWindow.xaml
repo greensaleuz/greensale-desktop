@@ -10,7 +10,8 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
@@ -134,7 +135,8 @@
                             BorderBrush="{DynamicResource FifthBackground}"
                             Margin="5 0 30 10"
                             >
-                        <TextBlock Text="Sifatli yetishtirilgan olma"
+                        <TextBlock x:Name="txbTitle"
+                                    Text="Sifatli yetishtirilgan olma"
                                    FontSize="24"
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
@@ -156,7 +158,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Jannat olma"
+                            <Label x:Name="lbType"
+                                    Content="Jannat olma"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -179,13 +182,15 @@
                                    Margin="10 1 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="800"
+                            <Label x:Name="lbCapacity"
+                                   Content="800"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="kg"
+                            <Label x:Name="lbCM" 
+                                   Content="kg"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -206,7 +211,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="14000"
+                            <Label x:Name="lbPrice"
+                                   Content="14000"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 1 0"
@@ -233,7 +239,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Farg'ona"
+                            <Label x:Name="lbRegion"
+                                   Content="Farg'ona"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -255,7 +262,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="Qo'qon"
+                            <Label x:Name="lbDistrict"
+                                   Content="Qo'qon"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -275,7 +283,8 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <Label Content="+998977771747"
+                            <Label x:Name="lbPhone"
+                                   Content="+998977771747"
                                    FontWeight="SemiBold"                                   
                                    FontSize="20"
                                    Margin="0 1 5 0"
@@ -303,7 +312,8 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                                <TextBlock Text="1 gektar olma sotiladi. " 
+                                <TextBlock x:Name="txbDescription" 
+                                           Text="1 gektar olma sotiladi. " 
                                          FontSize="20"
                                          FontWeight="SemiBold"
                                          Margin="0 5 0 5"

@@ -35,7 +35,7 @@ namespace GreenSale.Desktop.Windows.Products
             var storage = await _service.GetByIdAsync(id);
 
             txtbName.Text = storage.StorageName;
-            txtbFullName.Text = storage.FullName;
+            txtbFullName.Text = storage.FullName.Split()[0];
             txtbDescription.Text = storage.Description;
             txtbDistrict.Text = storage.District;
             txtbAddress.Text = storage.Address;

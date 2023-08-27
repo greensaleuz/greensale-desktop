@@ -25,7 +25,6 @@ namespace GreenSale.Desktop.Companents.Products
     public partial class StorageProductPersonalViewUserControl : UserControl
     {
         private IStorageService _service;
-
         private long ID { get; set; }
         public static long storageId { get; set; }
         public StorageProductPersonalViewUserControl()
@@ -43,7 +42,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtbDescription.Text = post.Description;
             txtbUpdate.Text = post.UpdatedAt.ToString();
             txtInfo.Text = post.Info;
-            txtbUser.Text = post.FullName.ToString().Split()[1];
+            txtbUser.Text = post.FullName.Split()[0];
             txtbPhoneNumber.Text = post.PhoneNumber;
             ID = post.Id;
         }
@@ -51,7 +50,6 @@ namespace GreenSale.Desktop.Companents.Products
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var result = await _service.DeleteAsync(ID);
-
             Storagecom.Visibility = Visibility.Collapsed;
         }
 
@@ -59,8 +57,7 @@ namespace GreenSale.Desktop.Companents.Products
         {
             storageId = ID;
             StorageProductFullViewWindow storage = new StorageProductFullViewWindow();
-            storage.Show();
-
+            storage.ShowDialog();
         }
     }
 }
