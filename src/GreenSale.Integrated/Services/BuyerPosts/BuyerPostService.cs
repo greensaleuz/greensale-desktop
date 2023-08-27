@@ -1,20 +1,51 @@
-﻿using GreenSale.Integrated.API.Auth;
+﻿using GreenSale.Dtos.Dtos.BuyerPost;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Security;
 using GreenSale.ViewModels.Models.BuyerPosts;
-using GreenSale.ViewModels.Models.SellerPosts;
-using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GreenSale.Integrated.Services.BuyerPosts
 {
     public class BuyerPostService : IBuyerPostService
     {
+        public async Task<bool> CreateAsync(BuyerPostCreateDto dto)
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + "/api/client/buyer/post");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+            content.Add(new StringContent(dto.Title), "Title");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.Price.ToString()), "Price");
+            content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
+            content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
+            content.Add(new StringContent(dto.Type), "Type");
+            content.Add(new StringContent(dto.Region), "Region");
+            content.Add(new StringContent(dto.District), "District");
+            content.Add(new StringContent(dto.Address), "Address");
+            content.Add(new StringContent(dto.CategoryID.ToString()), "CategoryID");
+            //content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+
+            foreach (var item in dto.ImagePath)
+            {
+                content.Add(new StreamContent(File.OpenRead(item)), "ImagePath", item);
+            }
+
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+            return false;
+        }
+
         public async Task<bool> DeleteAsync(long postId)
         {
             HttpClient client = new HttpClient();

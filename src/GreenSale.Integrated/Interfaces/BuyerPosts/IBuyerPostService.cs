@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.BuyerPosts;
+﻿using GreenSale.Dtos.Dtos.BuyerPost;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using System;
@@ -16,6 +17,7 @@ namespace GreenSale.Integrated.Interfaces.BuyerPosts
 
         public Task<List<BuyerPost>> GetAllUserId(long userId);
         public Task<bool> DeleteAsync(long postId);
+        public Task<bool> CreateAsync(BuyerPostCreateDto dto);
 
 
     }

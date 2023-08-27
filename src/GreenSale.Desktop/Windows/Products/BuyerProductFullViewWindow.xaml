@@ -348,7 +348,9 @@
                                 Height="55"
                                 Margin="-10 0 0 0"
                                 >
-                            <Button Style="{DynamicResource ProductUpdateButton}"
+                            <Button
+                                
+                                Style="{DynamicResource ProductUpdateButton}"
                                 Content="Tahrirlash"/>
                         </Border>
                         <Border Grid.Column="1"
