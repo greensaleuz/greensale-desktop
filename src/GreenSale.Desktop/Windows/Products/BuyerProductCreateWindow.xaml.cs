@@ -213,7 +213,7 @@ namespace GreenSale.Desktop.Windows.Products
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-           BuyerPostCreateDto dto = new BuyerPostCreateDto();
+            BuyerPostCreateDto dto = new BuyerPostCreateDto();
             dto.Capacity = int.Parse(txtCapacity.Text);
             dto.CapacityMeasure = cmbCapacityMeasure.Text;
             dto.Address = txtAddress.Text;

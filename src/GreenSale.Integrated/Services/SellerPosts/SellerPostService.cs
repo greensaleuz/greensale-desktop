@@ -1,4 +1,5 @@
-﻿using GreenSale.Integrated.API.Auth;
+﻿using GreenSale.Dtos.Dtos.SellerPost;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Security;
 using GreenSale.ViewModels.Models.BuyerPosts;

@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Dtos.Dtos.BuyerPost;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.ViewModels.Enums.BuyerPost;
@@ -26,6 +27,7 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class BuyerProductFullViewWindow : Window
     {
         public IBuyerPostService _service;
+
         public BuyerProductFullViewWindow()
         {
             InitializeComponent();
@@ -152,6 +154,15 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgIcon.Visibility = Visibility.Hidden;
                 btnUpdateMain.BorderThickness = new Thickness(0);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
+            //dto.Capacity = int.Parse(txtCapacity.Text);
+            //dto.Title= txtTitle.Text;
+            //dto.Type= txtType.Text;
+           
         }
     }
 }

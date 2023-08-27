@@ -14,10 +14,10 @@ namespace GreenSale.Integrated.Interfaces.BuyerPosts
     {
         public Task<List<BuyerPost>> GetAllAsync();
         public Task<BuyerPostGetById> GetByIdAsync(long postId);
-
         public Task<List<BuyerPost>> GetAllUserId(long userId);
         public Task<bool> DeleteAsync(long postId);
         public Task<bool> CreateAsync(BuyerPostCreateDto dto);
+        public Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto);
 
 
     }

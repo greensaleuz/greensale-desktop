@@ -91,5 +91,10 @@ namespace GreenSale.Integrated.Services.BuyerPosts
 
             return posts;
         }
+
+        public Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
