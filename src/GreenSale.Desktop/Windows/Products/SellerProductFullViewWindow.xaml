@@ -145,7 +145,7 @@
                             BorderBrush="{DynamicResource FifthBackground}"
                             Margin="5 0 30 10"
                             >
-                        <TextBox x:Name="txbTitle"
+                        <TextBox x:Name="txtTitle"
                                    Text="Sifatli yetishtirilgan olma"
                                    FontSize="24"                                             VerticalAlignment="Center"
                                     BorderThickness="0"
@@ -169,7 +169,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbType"
+                            <TextBox x:Name="txtType"
                                      Text="Jannat olma"
                                      Background="Transparent"
                                      BorderBrush="Transparent"
@@ -196,7 +196,7 @@
                                    Margin="10 1 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbCapacity"
+                            <TextBox x:Name="txtCapacity"
                                      Text="800"
                                      VerticalAlignment="Center"
                                      Background="Transparent"
@@ -206,7 +206,7 @@
                                      Margin="0 1 1 0"
                                      Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbCM"
+                            <TextBox x:Name="txtCapacityMeasure"
                                      Text="kg"
                                      FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
@@ -231,7 +231,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbPrice"
+                            <TextBox x:Name="txtPrice"
                                     Text="14000"
                                    FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
@@ -262,7 +262,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbRegion"
+                            <TextBox x:Name="txtRegion"
                                     Text="Farg'ona"
                                    FontWeight="SemiBold"  
                                      VerticalAlignment="Center"
@@ -288,7 +288,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbDistrict"
+                            <TextBox x:Name="txtDistrict"
                                    Text="Qo'qon"
                                    FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
@@ -312,7 +312,7 @@
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
-                            <TextBox x:Name="lbPhone"
+                            <TextBox x:Name="txtPhoneNumber"
                                    Text="+998977771747"
                                    FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
@@ -344,7 +344,7 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                                <TextBox  x:Name="txbDescribtion" 
+                                <TextBox  x:Name="txtDescription" 
                                             Text="1 gektar olma sotiladi. " 
                                              FontSize="20"                                             
                                              VerticalAlignment="Center"
