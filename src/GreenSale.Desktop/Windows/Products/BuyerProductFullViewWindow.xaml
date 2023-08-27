@@ -40,83 +40,98 @@
                             Margin="0 30 0 10">
 
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel>
-                            <Border x:Name="btnPicture"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="90"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1"
+                                CornerRadius="10"
+                                Margin="10"
+                                Background="{DynamicResource SixthBackground}">
+                            <StackPanel Grid.Row="1" 
+                                    Orientation="Horizontal"
+                                    >
+                                <Border x:Name="btnPicture"
+                                    CornerRadius="10"
                                         Height="70"
                                         Width="70"
                                         Cursor="Hand"
-                                        Margin="20 10 0 0"  
+                                        Margin="0 0 0 0"  
                                         BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture_MouseDown">
-                                <Border.Background>
-                                    <ImageBrush  Stretch="UniformToFill" x:Name="Img"
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" x:Name="Img"
                                                 ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
-                                </Border.Background>
+                                    </Border.Background>
 
-                            </Border>
-                            <Border x:Name="btnPicture1"
+                                </Border>
+                                <Border x:Name="btnPicture1"
+                                    CornerRadius="10"
                                         Height="70"
                                         Width="70"
                                         Cursor="Hand"
-                                        Margin="20 10 0 0"  
+                                        Margin="7 0 0 0"  
                                         BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture1_MouseDown">
-                                <Border.Background>
-                                    <ImageBrush Stretch="UniformToFill" x:Name="Img1"
+                                    <Border.Background>
+                                        <ImageBrush Stretch="UniformToFill" x:Name="Img1"
                                                 ImageSource="/assets/images/Salomaka.png"/>
-                                </Border.Background>
+                                    </Border.Background>
 
-                            </Border>
-                            <Border x:Name="btnPicture2"
+                                </Border>
+                                <Border x:Name="btnPicture2"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 0"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture2_MouseDown">
-                                <Border.Background>
-                                    <ImageBrush  x:Name="Img2" Stretch="UniformToFill"
+                                    <Border.Background>
+                                        <ImageBrush  x:Name="Img2" Stretch="UniformToFill"
                                                  ImageSource="/assets/images/Users.png"/>
-                                </Border.Background>
-                            </Border>
-                            <Border x:Name="btnPicture3"
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="btnPicture3"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 0"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture3_MouseDown">
-                                <Border.Background>
-                                    <ImageBrush  x:Name="Img3" Stretch="UniformToFill"
+                                    <Border.Background>
+                                        <ImageBrush  x:Name="Img3" Stretch="UniformToFill"
                                                  ImageSource="/assets/images/Elonlar.png"/>
-                                </Border.Background>
-                            </Border>
-                            <Border x:Name="btnPicture4"
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="btnPicture4"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 10"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture4_MouseDown">
-                                <Border.Background>
-                                    <ImageBrush  x:Name="Img4" Stretch="UniformToFill"
+                                    <Border.Background>
+                                        <ImageBrush  x:Name="Img4" Stretch="UniformToFill"
                                                  ImageSource="/assets/images/Kelishilganlar.png"/>
-                                </Border.Background>
-                            </Border>
-                        </StackPanel>
-                        <Border x:Name="btnUpdateMain"
-                                MouseDown="btnUpdateMain_MouseDown"
-                                IsMouseDirectlyOverChanged="btnUpdateMain_IsMouseDirectlyOverChanged"
+                                    </Border.Background>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border Height="360"
+                                x:Name="ImgUpdateMain"
+                                CornerRadius="10"
+                                IsMouseDirectlyOverChanged="ImgUpdateMain_IsMouseDirectlyOverChanged"
+                                MouseDown="ImgUpdateMain_MouseDown"
+                                BorderThickness="2"
+                                BorderBrush="{DynamicResource SelectedBorderColor}"
                                 Grid.Column="1"
                                 Margin="10"
                                 >
@@ -131,7 +146,10 @@
                                     Stretch="Uniform"/>
                         </Border>
                     </Grid>
-
+                    <Button Style="{DynamicResource ProductUpdateButton}"
+                            Content="Tahrirlash"
+                            Height="55"
+                            Margin="10 13 10 0"/>
                 </StackPanel>
             </Border>
             <Border Grid.Column="1"
