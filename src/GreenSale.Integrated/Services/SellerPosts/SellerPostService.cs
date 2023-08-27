@@ -19,7 +19,7 @@ namespace GreenSale.Integrated.Services.SellerPosts
         public async Task<bool> DeleteAsync(long postId)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/storages/{postId}");
+            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/seller/post/{postId}");
 
             var token = IdentitySingelton.GetInstance().Token;
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");

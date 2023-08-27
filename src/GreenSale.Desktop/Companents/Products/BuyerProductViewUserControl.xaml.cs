@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.BuyerPosts;
+﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,10 @@ namespace GreenSale.Desktop.Companents.Products
     /// </summary>
     public partial class BuyerProductViewUserControl : UserControl
     {
+        private long ID { get; set; }
+
+        public static long storageId { get; set; }
+
         public BuyerProductViewUserControl()
         {
             InitializeComponent();
@@ -39,10 +44,18 @@ namespace GreenSale.Desktop.Companents.Products
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
+            ID = post.Id;
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            storageId = ID;
+            BuyerProductViewWindow buyer = new BuyerProductViewWindow();
+            buyer.ShowDialog();
         }
     }
 }
