@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenSale.Desktop.Windows.Products"
         mc:Ignorable="d"
-        Title="BuyerProductFullViewWindow" Height="590" Width="800"
+        Title="BuyerProductFullViewWindow" Height="620" Width="800"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -153,7 +153,38 @@
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                     </Border>
+                    <Border CornerRadius="10"
+                            Width="360"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Left"
+                            Background="{DynamicResource SixthBackground}">
+                        <StackPanel Margin="5"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <Label Content="Toifasi:"
+                                   FontSize="20"
+                                   Margin="10 1 5 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                            <ComboBox x:Name="txbCatecory"
+                                      Width="250"
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     BorderThickness="0"
+                                     VerticalAlignment="Center"
+                                     FontWeight="SemiBold"                                   
+                                     FontSize="20"
+                                     Margin="0 1 5 0"
+                                     Foreground="{DynamicResource FifthTextColor}"
+                                      SelectedIndex="0">
+                                <ComboBoxItem Content="Sabzavot"/>
+                                <ComboBoxItem Content="Poliz ekini"/>
+                                <ComboBoxItem Content="Meva"/>
 
+                            </ComboBox>
+
+                        </StackPanel>
+                    </Border>
                     <Border CornerRadius="10"
                             Width="360"
                             Margin="0 0 0 10"
