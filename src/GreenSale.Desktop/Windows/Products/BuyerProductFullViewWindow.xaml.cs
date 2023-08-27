@@ -5,6 +5,7 @@ using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.ViewModels.Enums.BuyerPost;
 using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.Storages;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -151,18 +152,18 @@ namespace GreenSale.Desktop.Windows.Products
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
-            //dto.Capacity = int.Parse(txtCapacity.Text);
-            //dto.Title= txtTitle.Text;
-            //dto.Type= txtType.Text;
-           
-        }
 
         private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                ImgIcon.Visibility = Visibility.Hidden;
+                ImgUpdateMain.BorderThickness = new Thickness(0);
+            }
         }
     }
 }
