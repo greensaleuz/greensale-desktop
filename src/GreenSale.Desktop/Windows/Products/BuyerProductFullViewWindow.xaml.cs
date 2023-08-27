@@ -165,5 +165,15 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgUpdateMain.BorderThickness = new Thickness(0);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
