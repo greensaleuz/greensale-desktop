@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Net.Http;
+using GreenSale.Desktop.Companents.Products;
+using System.Threading.Tasks;
+using GreenSale.Desktop.Pages.CreateAd;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -43,6 +46,7 @@ namespace GreenSale.Desktop.Windows.Products
         }
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            StorageCreateAd storageCreateAd = new StorageCreateAd();
             StorageDto storage = new StorageDto()
             {
                 Name = txtbName.Text.ToString(),
@@ -57,9 +61,9 @@ namespace GreenSale.Desktop.Windows.Products
 
             storage.ImagePath = imagePath;
             //storage.ImagePath = fileContent;
-
             var result = await _service.CreateAsync(storage);
-
+            await storageCreateAd.RefreshAsync();
+            
             if (result)
             {
                 MessageBox.Show("Muvafaqqiyatli saqlandi");
@@ -71,6 +75,8 @@ namespace GreenSale.Desktop.Windows.Products
 
             this.Close();
         }
+
+        
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
