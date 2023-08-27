@@ -55,5 +55,10 @@ namespace GreenSale.Desktop.Companents.Products
             seller.ShowDialog();
             
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
