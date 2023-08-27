@@ -1,4 +1,8 @@
-﻿using Microsoft.Win32;
+﻿using GreenSale.Dtos.Dtos.BuyerPost;
+using GreenSale.Dtos.Dtos.SellerPost;
+using GreenSale.Integrated.Interfaces.SellerPosts;
+using GreenSale.Integrated.Services.SellerPosts;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -14,9 +18,12 @@ namespace GreenSale.Desktop.Windows.Products
     /// </summary>
     public partial class SellerProductCreateWindow : Window
     {
+        private ISellerPost _service;
+
         public SellerProductCreateWindow()
         {
             InitializeComponent();
+            this._service = new SellerPostService();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -37,14 +44,14 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Img.ImageSource == null)
+            if (Img1.ImageSource == null)
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
                 if (openFileDialog.ShowDialog() == true)
                 {
                     string imgPath = openFileDialog.FileName;
-                    Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                    Img1.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
                     ImgIcon.Visibility = Visibility.Hidden;
                     btnPicture2.Visibility = Visibility.Visible;
                 }
@@ -205,6 +212,41 @@ namespace GreenSale.Desktop.Windows.Products
             {
                 cmbDistrict.ItemsSource = lstJizzax;
             }
+        }
+
+        private async void Create_Click(object sender, RoutedEventArgs e)
+        {
+            SellerPostCreate dto = new SellerPostCreate();
+            dto.Capacity = int.Parse(txtCapacity.Text);
+            dto.CapacityMeasure = cmbCapacityMeasure.Text;
+            dto.District = cmbDistrict.Text;
+            dto.Region = cmbRegion.Text;
+            dto.Price = double.Parse(txtPrice.Text);
+            dto.Title = txtTitle.Text;
+            dto.Description = txtDescription.Text;
+            dto.Type = txtType.Text;
+            dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
+            dto.PhoneNumber = txtPhoneNumber.Text;
+
+            dto.ImagePath = new List<string>();
+
+            if (Img1.ImageSource is not null)
+                dto.ImagePath.Add(Img1.ImageSource.ToString());
+
+            if (Img2.ImageSource is not null)
+                dto.ImagePath.Add(Img2.ImageSource.ToString());
+
+            if (Img3.ImageSource is not null)
+                dto.ImagePath.Add(Img3.ImageSource.ToString());
+
+            if (Img4.ImageSource is not null)
+                dto.ImagePath.Add(Img4.ImageSource.ToString());
+
+            if (Img5.ImageSource is not null)
+                dto.ImagePath.Add(Img5.ImageSource.ToString());
+
+
+            var res = await _service.CreateAsync(dto);
         }
     }
 }

@@ -359,7 +359,7 @@
                             <Button
                                 
                                 Style="{DynamicResource ProductUpdateButton}"
-                                Content="Tahrirlash"/>
+                                Content="Tahrirlash" Click="Button_Click"/>
                         </Border>
                         <Border Grid.Column="1"
                             Margin="-10 0 20 0"

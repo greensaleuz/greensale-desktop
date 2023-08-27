@@ -49,7 +49,7 @@
                                 BorderBrush="{DynamicResource SelectedBorderColor}"
                                 MouseDown="btnPicture_MouseDown">
                             <Border.Background>
-                                <ImageBrush Stretch="UniformToFill" x:Name="Img"/>
+                                <ImageBrush Stretch="UniformToFill" x:Name="Img1"/>
                             </Border.Background>
                             <Path  x:Name="ImgIcon" Height="70" Width="70"
                                     Data="{DynamicResource pilus}"
@@ -190,7 +190,7 @@
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource FourthTextColor}"
                                     VerticalAlignment="Center">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtTitle" FontSize="16"
                                          Margin="10 5"
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
@@ -215,7 +215,7 @@
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource FourthTextColor}"
                                     VerticalAlignment="Center">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtType" FontSize="16"
                                          Margin="10 5"
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
@@ -247,7 +247,7 @@
                                     BorderBrush="{DynamicResource FourthTextColor}"
                                     VerticalAlignment="Center"
                                     Margin="10 0 0 0">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtCapacity" FontSize="16"
                                          Margin="10 5"
                                          TextChanged="TextBox_TextChanged"
                                          Background="{DynamicResource SixthBackground}"
@@ -267,7 +267,7 @@
                                     VerticalAlignment="Center"
                                     Background="{DynamicResource SixthBackground}"
                                     CornerRadius="10">
-                                <ComboBox Height="35" Width="95"
+                                <ComboBox x:Name="cmbCapacityMeasure" Height="35" Width="95"
                                       Margin="-0 0 0 0"
                                       FontSize="16"
                                       BorderThickness="0"
@@ -303,7 +303,7 @@
                                     BorderBrush="{DynamicResource FourthTextColor}"
                                     VerticalAlignment="Center"
                                     Margin="17 0 0 0">
-                                <TextBox FontSize="16"
+                                <TextBox x:Name="txtPrice" FontSize="16"
                                          Margin="10 5"
                                          TextChanged="txtPrice_TextChanged"                                         
                                     Background="{DynamicResource SixthBackground}"
@@ -346,7 +346,7 @@
                             BorderThickness="1"
                             BorderBrush="{DynamicResource FourthTextColor}"
                             VerticalAlignment="Center">
-                        <TextBox FontSize="16"
+                        <TextBox x:Name="txtPhoneNumber" FontSize="16"
                                  Margin="10 5"
                                     Background="{DynamicResource SixthBackground}"
                                  BorderThickness="0"
@@ -436,7 +436,7 @@
                             BorderThickness="1"
                             BorderBrush="{DynamicResource FourthTextColor}"
                             VerticalAlignment="Center">
-                        <TextBox FontSize="16"
+                        <TextBox x:Name="txtDescription" FontSize="16"
                                  Margin="10 5 10 5"
                                     Background="{DynamicResource SixthBackground}"
                                  BorderThickness="0"
@@ -445,11 +445,11 @@
                                  Foreground="{DynamicResource FifthTextColor}"/>
                     </Border>
 
-                    <Button Style="{DynamicResource ProductCreateButton}"
+                    <Button x:Name="btnCreate" Style="{DynamicResource ProductCreateButton}"
                             Content="Yaratish"
                             Width="400"
                             Height="50"
-                            Margin="0 28 0 0"
+                            Margin="0 28 0 0" Click="Create_Click"
                             />
                 </StackPanel>
             </Border>
