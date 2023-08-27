@@ -16,6 +16,7 @@ using System.Net.Http;
 using GreenSale.Desktop.Companents.Products;
 using System.Threading.Tasks;
 using GreenSale.Desktop.Pages.CreateAd;
+using System.Windows.Navigation;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -24,9 +25,7 @@ namespace GreenSale.Desktop.Windows.Products
     /// </summary>
     public partial class StorageProductCreateWindow : Window
     {
-        List<string> viloyatlar = new List<string>() { "Toshkent", "Samarqand" };
         private IStorageService _service;
-        private SerializationInfo imgPath;
 
         public StorageProductCreateWindow()
         {
@@ -62,8 +61,8 @@ namespace GreenSale.Desktop.Windows.Products
             storage.ImagePath = imagePath;
             //storage.ImagePath = fileContent;
             var result = await _service.CreateAsync(storage);
-            await storageCreateAd.RefreshAsync();
-            
+            //await storageCreateAd.RefreshAsync();
+            storageCreateAd.ShowsNavigationUI = true;
             if (result)
             {
                 MessageBox.Show("Muvafaqqiyatli saqlandi");

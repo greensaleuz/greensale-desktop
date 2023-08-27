@@ -36,13 +36,18 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         }
 
-        private void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
         {
             BuyerProductCreateWindow buyerProductCreateWindow = new BuyerProductCreateWindow();
             buyerProductCreateWindow.ShowDialog();
+            await RefreshAsync();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await RefreshAsync();
+        }
+        public async Task RefreshAsync()
         {
             var user = await _serviceUser.GetAsync();
             long id = user.Id;
