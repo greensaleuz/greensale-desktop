@@ -40,17 +40,23 @@
                             Margin="0 30 0 10">
 
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="120"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="90"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1"
+                                CornerRadius="10"
+                                Margin="10"
+                                Background="{DynamicResource SixthBackground}">
+                            <StackPanel Grid.Row="1" 
+                                    Orientation="Horizontal"
+                                    >
                             <Border x:Name="btnPicture"
+                                    CornerRadius="10"
                                         Height="70"
                                         Width="70"
                                         Cursor="Hand"
-                                        Margin="20 10 0 0"  
+                                        Margin="0 0 0 0"  
                                         BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture_MouseDown">
@@ -61,10 +67,11 @@
 
                             </Border>
                             <Border x:Name="btnPicture1"
+                                    CornerRadius="10"
                                         Height="70"
                                         Width="70"
                                         Cursor="Hand"
-                                        Margin="20 10 0 0"  
+                                        Margin="7 0 0 0"  
                                         BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture1_MouseDown">
@@ -75,10 +82,11 @@
 
                             </Border>
                             <Border x:Name="btnPicture2"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 0"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture2_MouseDown">
@@ -88,10 +96,11 @@
                                 </Border.Background>
                             </Border>
                             <Border x:Name="btnPicture3"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 0"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture3_MouseDown">
@@ -101,10 +110,11 @@
                                 </Border.Background>
                             </Border>
                             <Border x:Name="btnPicture4"
+                                    CornerRadius="10"
                                     Height="70"
                                     Width="70"
                                     Cursor="Hand"
-                                    Margin="20 10 0 10"  
+                                    Margin="7 0 0 0"  
                                     BorderThickness="1"
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture4_MouseDown">
@@ -114,7 +124,10 @@
                                 </Border.Background>
                             </Border>
                         </StackPanel>
-                        <Border x:Name="ImgUpdateMain"
+                        </Border>
+                        <Border Height="360"
+                                x:Name="ImgUpdateMain"
+                                CornerRadius="10"
                                 IsMouseDirectlyOverChanged="ImgUpdateMain_IsMouseDirectlyOverChanged"
                                 MouseDown="ImgUpdateMain_MouseDown"
                                 BorderThickness="2"
@@ -133,7 +146,10 @@
                                     Stretch="Uniform"/>
                         </Border>
                     </Grid>
-
+                    <Button Style="{DynamicResource ProductUpdateButton}"
+                            Content="Tahrirlash"
+                            Height="55"
+                            Margin="10 11 10 0"/>
                 </StackPanel>
             </Border>
             <Border Grid.Column="1"
@@ -201,7 +217,9 @@
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <TextBox x:Name="lbType"
+                                     IsReadOnly="False"
                                      Text="Jannat olma"
+                                   BorderThickness="0"
                                      Background="Transparent"
                                      BorderBrush="Transparent"
                                      VerticalAlignment="Center"
@@ -228,9 +246,11 @@
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <TextBox x:Name="lbCapacity"
+                                     IsReadOnly="False"
                                      Text="800"
                                      VerticalAlignment="Center"
                                      Background="Transparent"
+                                   BorderThickness="0"
                                      BorderBrush="Transparent"
                                      FontWeight="SemiBold"                                   
                                      FontSize="20"
@@ -238,10 +258,12 @@
                                      Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <TextBox x:Name="lbCM"
+                                     IsReadOnly="False"
                                      Text="kg"
                                      FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
                                      Background="Transparent"
+                                   BorderThickness="0"
                                      BorderBrush="Transparent"                                  
                                      FontSize="20"
                                      Margin="0 1 5 0"
@@ -264,6 +286,8 @@
                                    />
                             <TextBox x:Name="lbPrice"
                                     Text="14000"
+                                     IsReadOnly="False"
+                                   BorderThickness="0"
                                    FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
                                      Background="Transparent"
@@ -294,7 +318,9 @@
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                             <TextBox x:Name="lbRegion"
+                                     IsReadOnly="False"
                                     Text="Farg'ona"
+                                   BorderThickness="0"
                                    FontWeight="SemiBold"  
                                      VerticalAlignment="Center"
                                      Background="Transparent"
@@ -321,6 +347,8 @@
                                    />
                             <TextBox x:Name="lbDistrict"
                                    Text="Qo'qon"
+                                     IsReadOnly="False"
+                                   BorderThickness="0"
                                    FontWeight="SemiBold" 
                                      VerticalAlignment="Center"
                                      Background="Transparent"
@@ -346,6 +374,8 @@
                             <TextBox x:Name="lbPhone"
                                    Text="+998977771747"
                                    FontWeight="SemiBold" 
+                                   BorderThickness="0"
+                                     IsReadOnly="False"
                                      VerticalAlignment="Center"
                                      Background="Transparent"
                                      BorderBrush="Transparent"                                   
@@ -378,6 +408,8 @@
                                 <TextBox  x:Name="txbDescribtion" 
                                             Text="1 gektar olma sotiladi. " 
                                              FontSize="20"                                             
+                                             BorderThickness="0"
+                                             IsReadOnly="False"
                                              VerticalAlignment="Center"
                                              Background="Transparent"
                                              BorderBrush="Transparent"
