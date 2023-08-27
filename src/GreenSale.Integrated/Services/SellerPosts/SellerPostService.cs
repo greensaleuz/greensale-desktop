@@ -97,6 +97,27 @@ namespace GreenSale.Integrated.Services.SellerPosts
             return posts;
         }
 
+        public async Task<bool> ImageUpdateAsync(long postImageId, SellerPostUpdateImageDto dto)
+        {
+            
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + "/api/client/seller/post");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+            return false;
+        }
+
         public async Task<bool> UpdateAsync(long postId, SellerPostUpdateDto dto)
         {
             var token = IdentitySingelton.GetInstance().Token;
