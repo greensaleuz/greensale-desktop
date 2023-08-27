@@ -36,24 +36,16 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         }
 
-        private void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnBuyerCreate_Click(object sender, RoutedEventArgs e)
         {
             BuyerProductCreateWindow buyerProductCreateWindow = new BuyerProductCreateWindow();
             buyerProductCreateWindow.ShowDialog();
+            await RefreshAsync();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var user = await _serviceUser.GetAsync();
-            long id = user.Id;
-            var buyerPost = await _service.GetAllUserId(id);
-            foreach (var post in buyerPost)
-            {
-                BuyerProductPersonalViewUserControl control = new BuyerProductPersonalViewUserControl();
-                control.SetData(post);
-
-                wrpCourses.Children.Add(control);
-            }
+            await RefreshAsync();
         }
         public async Task RefreshAsync()
         {
