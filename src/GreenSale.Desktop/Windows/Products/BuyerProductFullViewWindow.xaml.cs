@@ -88,7 +88,7 @@ namespace GreenSale.Desktop.Windows.Products
             txtPrice.Text = buyerPost.Price.ToString();
             txtTitle.Text = buyerPost.Title;
             txtType.Text = buyerPost.Type;
-
+            txtAddress.Text = buyerPost.Address;
 
             int i = 0;
             foreach (var item in buyerPost.BuyerPostsImages)
