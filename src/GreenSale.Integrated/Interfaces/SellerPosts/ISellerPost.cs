@@ -18,7 +18,7 @@ namespace GreenSale.Integrated.Interfaces.SellerPosts
         public Task<List<SellerPost>> GetAllUserId(long userId);
         public Task<bool> DeleteAsync(long postId);
         public Task<bool> UpdateAsync(long postId, SellerPostUpdateDto dto);
-        public Task<bool> ImageUpdateAsync(long postImageId, SellerPostUpdateImageDto dto);
+        public Task<bool> ImageUpdateAsync(long imageId, SellerPostUpdateImageDto dto);
 
     }
 }
