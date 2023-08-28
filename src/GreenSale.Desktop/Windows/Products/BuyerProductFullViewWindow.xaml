@@ -140,10 +140,10 @@
                                     Stretch="Uniform"/>
                         </Border>
                     </Grid>
-                    <Button x:Name="btnImageUpdate" Style="{DynamicResource ProductUpdateButton}"
+                    <!-- <Button x:Name="btnImageUpdate" Style="{DynamicResource ProductUpdateButton}"
                             Content="Tahrirlash"
                             Height="55"
-                            Margin="10 13 10 0" Click="btnImageUpdate_Click"/>
+                            Margin="10 13 10 0" Click="btnImageUpdate_Click"/>-->
                 </StackPanel>
             </Border>
             <Border Grid.Column="1"

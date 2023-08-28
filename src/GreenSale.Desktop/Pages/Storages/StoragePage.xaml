@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Storages"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"      
       Loaded="Page_Loaded"
       d:DesignHeight="780" d:DesignWidth="1040"
       Title="StoragePage">
@@ -78,6 +79,15 @@
 
             </Grid>
         </Border>
+        <fa:ImageAwesome
+            Grid.Row="1"
+            x:Name="loader"
+            Icon="Spinner"
+            Visibility="Visible"
+            Spin="True"
+            Height="200"
+            Width="200"
+            />
         <ScrollViewer Margin="5 5 0 5"
                           Grid.Row="1">
             <WrapPanel x:Name="wrpStorage">

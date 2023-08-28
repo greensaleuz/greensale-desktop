@@ -33,6 +33,7 @@ namespace GreenSale.Desktop.Pages.Sellers
         private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
             var sellerpost = await _service.GetAllAsync();
+            loader.Visibility = Visibility.Collapsed;
             foreach (var post in sellerpost)
             {
                 SellerProductViewUserControl userControl = new SellerProductViewUserControl();

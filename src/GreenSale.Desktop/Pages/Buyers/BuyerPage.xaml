@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Buyers"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"     
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1040"
       Title="BuyerPage"
@@ -78,6 +79,15 @@
 
             </Grid>
         </Border>
+        <fa:ImageAwesome
+            x:Name="loader"
+            Grid.Row="1"
+            Icon="Spinner"
+            Visibility="Visible"
+            Spin="True"
+            Height="200"
+            Width="200"
+            />
         <ScrollViewer Margin="5 5 0 5"
                           Grid.Row="1">
             <WrapPanel x:Name="wrpCourses" >
