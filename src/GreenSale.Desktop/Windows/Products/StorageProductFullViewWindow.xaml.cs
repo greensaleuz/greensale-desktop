@@ -4,6 +4,7 @@ using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using Microsoft.Win32;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
@@ -18,6 +19,7 @@ namespace GreenSale.Desktop.Windows.Products
     {
         private IStorageService _service;
 
+        public Func<Task> Refresh { get; set; }
         public StorageProductFullViewWindow()
         {
             InitializeComponent();

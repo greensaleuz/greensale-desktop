@@ -33,13 +33,18 @@ namespace GreenSale.Desktop.Pages.Storages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            await RefreshAsync();
+        }
+
+        public async Task RefreshAsync()
+        {
             var storagepost = await _service.GetAllAsync();
 
             foreach (var post in storagepost)
             {
                 StorageProductViewUserControl control = new StorageProductViewUserControl();
                 control.SetData(post);
-                wrpStorage.Children.Add(control);  
+                wrpStorage.Children.Add(control);
             }
         }
     }

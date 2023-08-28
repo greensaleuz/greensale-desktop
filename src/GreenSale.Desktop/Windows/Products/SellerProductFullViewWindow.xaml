@@ -61,8 +61,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush Stretch="UniformToFill" x:Name="Img"
-                                                ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
+                                    <ImageBrush Stretch="UniformToFill" x:Name="Img" />
                                 </Border.Background>
 
                             </Border>
@@ -76,8 +75,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture1_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush Stretch="UniformToFill" x:Name="Img1"
-                                                ImageSource="/assets/images/Salomaka.png"/>
+                                    <ImageBrush Stretch="UniformToFill" x:Name="Img1"/>
                                 </Border.Background>
 
                             </Border>
@@ -91,8 +89,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture2_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush  x:Name="Img2" Stretch="UniformToFill"
-                                                 ImageSource="/assets/images/Users.png"/>
+                                    <ImageBrush  x:Name="Img2" Stretch="UniformToFill"/>
                                 </Border.Background>
                             </Border>
                             <Border x:Name="btnPicture3"
@@ -105,8 +102,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture3_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush  x:Name="Img3" Stretch="UniformToFill"
-                                                 ImageSource="/assets/images/Elonlar.png"/>
+                                    <ImageBrush  x:Name="Img3" Stretch="UniformToFill"/>
                                 </Border.Background>
                             </Border>
                             <Border x:Name="btnPicture4"
@@ -119,8 +115,7 @@
                                     BorderBrush="{DynamicResource SelectedBorderColor}"
                                     MouseDown="btnPicture4_MouseDown">
                                 <Border.Background>
-                                    <ImageBrush  x:Name="Img4" Stretch="UniformToFill"
-                                                 ImageSource="/assets/images/Kelishilganlar.png"/>
+                                    <ImageBrush  x:Name="Img4" Stretch="UniformToFill"/>
                                 </Border.Background>
                             </Border>
                         </StackPanel>
@@ -136,8 +131,7 @@
                                 Margin="10"
                                 >
                             <Border.Background>
-                                <ImageBrush  x:Name="ImgMain" Stretch="UniformToFill"
-                                             ImageSource="/assets/images/apple-tree-garden-green.jpg"/>
+                                <ImageBrush  x:Name="ImgMain" Stretch="UniformToFill"/>
                             </Border.Background>
 
                             <Path  x:Name="ImgIcon" Height="70" Width="70"

@@ -27,6 +27,7 @@ namespace GreenSale.Desktop.Companents.Products
         private IStorageService _service;
         private long ID { get; set; }
         public static long storageId { get; set; }
+        public  Func<Task>  Refresh { get; set; }
 
         public StorageProductPersonalViewUserControl()
         {
@@ -54,11 +55,12 @@ namespace GreenSale.Desktop.Companents.Products
             Storagecom.Visibility = Visibility.Collapsed;
         }
 
-        private void Border_MouseEnter(object sender, MouseButtonEventArgs e)
+        private async void Border_MouseEnter(object sender, MouseButtonEventArgs e)
         {
             storageId = ID;
             StorageProductFullViewWindow storage = new StorageProductFullViewWindow();
             storage.ShowDialog();
+            await Refresh();
         }
     }
 }

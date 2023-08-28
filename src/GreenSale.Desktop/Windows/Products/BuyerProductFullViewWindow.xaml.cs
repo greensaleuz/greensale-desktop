@@ -136,8 +136,25 @@ namespace GreenSale.Desktop.Windows.Products
 
         }
 
+        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string imgPath = openFileDialog.FileName;
+                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                ImgIcon.Visibility = Visibility.Hidden;
+                ImgUpdateMain.BorderThickness = new Thickness(0);
+            }
+        }
 
-        private void btnUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (ImgUpdateMain.IsMouseOver == true)
             {
@@ -147,20 +164,6 @@ namespace GreenSale.Desktop.Windows.Products
             }
             else
             {
-                ImgIcon.Visibility = Visibility.Hidden;
-                ImgUpdateMain.BorderThickness = new Thickness(0);
-            }
-        }
-
-
-        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
                 ImgIcon.Visibility = Visibility.Hidden;
                 ImgUpdateMain.BorderThickness = new Thickness(0);
             }
