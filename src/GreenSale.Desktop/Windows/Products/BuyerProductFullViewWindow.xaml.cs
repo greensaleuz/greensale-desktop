@@ -193,9 +193,5 @@ namespace GreenSale.Desktop.Windows.Products
             else MessageBox.Show("Qayerdadur xatolik yuz berdi, qayta urunib koring");
         }
 
-        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
     }
 }
