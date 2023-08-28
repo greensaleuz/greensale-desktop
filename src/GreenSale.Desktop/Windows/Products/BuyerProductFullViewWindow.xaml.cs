@@ -138,16 +138,27 @@ namespace GreenSale.Desktop.Windows.Products
 
         }
 
-        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
+            string path = ImgMain.ImageSource.ToString();
+
+            foreach (var item in data)
             {
-                string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                ImgIcon.Visibility = Visibility.Hidden;
-                ImgUpdateMain.BorderThickness = new Thickness(0);
+                if (item.Value == path)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        string imgPath = openFileDialog.FileName;
+                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                        ImgIcon.Visibility = Visibility.Hidden;
+                        ImgUpdateMain.BorderThickness = new Thickness(0);
+                    }
+
+                    long id = item.Key;
+                    var result = await _service.UpdateImageAsync(id, ImgMain.ImageSource.ToString());
+                }
             }
         }
 
@@ -172,36 +183,7 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
 
-        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            string path = ImgMain.ImageSource.ToString();
-
-            foreach (var item in data)
-            {
-                if (item.Value == path)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-                    if (openFileDialog.ShowDialog() == true)
-                    {
-                        string imgPath = openFileDialog.FileName;
-                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                        ImgIcon.Visibility = Visibility.Hidden;
-                        ImgUpdateMain.BorderThickness = new Thickness(0);
-                    }
-
-                    long id = item.Key;
-                    var result = await _service.UpdateImageAsync(id, ImgMain.ImageSource.ToString());
-                }
-            }
-
-
-          
-
-
-
-        }
-
+       
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
            BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
@@ -225,12 +207,6 @@ namespace GreenSale.Desktop.Windows.Products
             }
             else MessageBox.Show("Qayerdadur xatolik yuz berdi, qayta urunib koring");
         }
-
-        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-
 
         private async void btnImageUpdate_Click(object sender, RoutedEventArgs e)
         {
