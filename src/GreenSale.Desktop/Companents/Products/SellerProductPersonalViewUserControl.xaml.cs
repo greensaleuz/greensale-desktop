@@ -30,6 +30,8 @@ namespace GreenSale.Desktop.Companents.Products
         private ISellerPost _service;
         private long ID { get; set; }
         public static long sellerId { get; set; }
+        public Func<Task> Refresh { get; set; }
+
 
 
         public SellerProductPersonalViewUserControl()
@@ -61,11 +63,12 @@ namespace GreenSale.Desktop.Companents.Products
             Sellercom.Visibility = Visibility.Collapsed;
         }
 
-        private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             sellerId = ID;
             SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
             seller.ShowDialog();
+            await Refresh();
         }
     }
 }

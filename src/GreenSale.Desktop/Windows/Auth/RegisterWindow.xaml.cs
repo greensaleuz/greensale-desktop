@@ -2,6 +2,7 @@
 using GreenSale.Dtos.Dtos.Auth;
 using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Services.Auth;
+using System.Net.NetworkInformation;
 using System.Windows;
 
 namespace GreenSale.Desktop.Windows
@@ -31,13 +32,35 @@ namespace GreenSale.Desktop.Windows
             loginWindow.Show();
             this.Close();
         }
-
+        private bool IsInternetAvailable()
+        {
+            try
+            {
+                using (Ping ping = new Ping())
+                {
+                    PingReply reply = ping.Send("www.google.com");
+                    return (reply.Status == IPStatus.Success);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
         }
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            if (IsInternetAvailable())
+            {
+                //MessageBox.Show("Internetga ulanish mavjud.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Internetga ulanmagansiz.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             UserRegisterDto dto = new UserRegisterDto()
             {
                 FirstName = txtFirstName.Text.ToString(),

@@ -5,6 +5,7 @@ using GreenSale.Integrated.Services.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -37,9 +38,31 @@ namespace GreenSale.Desktop.Windows
             Application.Current.Shutdown();
         }
 
-
+        private bool IsInternetAvailable()
+        {
+            try
+            {
+                using (Ping ping = new Ping())
+                {
+                    PingReply reply = ping.Send("www.google.com");
+                    return (reply.Status == IPStatus.Success);
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (IsInternetAvailable())
+            {
+                //MessageBox.Show("Internetga ulanish mavjud.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Internetga ulanmagansiz.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             UserLoginDto dto = new UserLoginDto()
             {
                 PhoneNumber =("+998"+ txtPhoneNumber.Text.ToString()),
@@ -59,8 +82,6 @@ namespace GreenSale.Desktop.Windows
             {
 
             }
-
-
         }
 
         private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)

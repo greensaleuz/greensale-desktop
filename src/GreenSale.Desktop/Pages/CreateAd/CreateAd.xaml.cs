@@ -57,6 +57,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
             {
                 SellerProductPersonalViewUserControl control = new SellerProductPersonalViewUserControl();
                 control.SetData(post);
+                control.Refresh = RefreshAsync;
                 wrpSellerPost.Children.Add(control);
             } 
         }

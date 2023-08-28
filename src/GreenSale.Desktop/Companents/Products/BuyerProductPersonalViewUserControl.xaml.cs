@@ -31,6 +31,8 @@ namespace GreenSale.Desktop.Companents.Products
         private long ID { get; set; }
         public static long buyerId { get; set; }
 
+        public Func<Task> Refresh { get; set; }
+
 
         public BuyerProductPersonalViewUserControl()
         {
@@ -63,11 +65,12 @@ namespace GreenSale.Desktop.Companents.Products
             
         }
 
-        private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             buyerId = ID;
             BuyerProductFullViewWindow buyer = new BuyerProductFullViewWindow();
             buyer.Show();
+            await Refresh();
         }
 
        

@@ -26,15 +26,6 @@ namespace GreenSale.Desktop.Windows.Products
             this._service = new SellerPostService();
         }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnClose_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
@@ -247,6 +238,7 @@ namespace GreenSale.Desktop.Windows.Products
 
 
             var res = await _service.CreateAsync(dto);
+            this.Close();
         }
     }
 }

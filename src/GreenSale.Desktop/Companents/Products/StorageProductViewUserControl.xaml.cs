@@ -30,6 +30,7 @@ namespace GreenSale.Desktop.Companents.Products
 
         private long ID { get; set; }
         public static long storageId { get; set; }
+        public Func<Task> Refresh { get; set; }
 
         public StorageProductViewUserControl()
         {
@@ -51,7 +52,7 @@ namespace GreenSale.Desktop.Companents.Products
             ID = post.Id;
         }
 
-        private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             storageId = ID;
             StorageProductViewWindow window = new StorageProductViewWindow();

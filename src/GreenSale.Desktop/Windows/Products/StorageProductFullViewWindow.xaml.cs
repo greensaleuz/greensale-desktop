@@ -4,7 +4,9 @@ using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using Microsoft.Win32;
 using System;
+using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
@@ -19,6 +21,7 @@ namespace GreenSale.Desktop.Windows.Products
     {
         private IStorageService _service;
 
+        public Func<Task> Refresh { get; set; }
         public StorageProductFullViewWindow()
         {
             InitializeComponent();
@@ -54,9 +57,37 @@ namespace GreenSale.Desktop.Windows.Products
         {
             this.Close();
         }
+        private string DowlaodImage(string url)
+        {
+            try
+            {
+                string saveDirectory = "D:\\path\\to\\save\\"; 
+                string fileName = Path.GetFileName(url);
 
+                string localFilePath = Path.Combine(saveDirectory, fileName);
+
+                if (!Directory.Exists(saveDirectory))
+                {
+                    Directory.CreateDirectory(saveDirectory);
+                }
+
+                using (WebClient client = new WebClient())
+                {
+                    if(!File.Exists(localFilePath))
+                        client.DownloadFile(url, localFilePath);
+                }
+
+                return localFilePath;
+            }
+            catch 
+            {
+                return "";
+            }
+            
+        }
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            
             StorageUpdateDto dto = new StorageUpdateDto();
             dto.Info = txtbInfo.Text.ToString(); 
             dto.Description = txtbDescription.Text.ToString();
@@ -66,7 +97,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.AddressLongitude = 20930846; 
             dto.Name = txtbName.Text.ToString();
             dto.Address = txtbAddress.Text.ToString();
-            dto.ImagePath = ImgStorage.ImageSource.ToString();
+            dto.ImagePath = DowlaodImage(ImgStorage.ImageSource.ToString());
 
             long id = StorageProductPersonalViewUserControl.storageId;
             var storage = await _service.UpdateAsync(id,dto);

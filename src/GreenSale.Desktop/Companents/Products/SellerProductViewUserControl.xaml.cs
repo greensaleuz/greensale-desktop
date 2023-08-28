@@ -1,4 +1,5 @@
-﻿using GreenSale.Desktop.Windows.Products;
+﻿using GreenSale.Desktop.Companents.Loader;
+using GreenSale.Desktop.Windows.Products;
 using GreenSale.Integrated.API.Auth;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
@@ -58,7 +59,8 @@ namespace GreenSale.Desktop.Companents.Products
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            PictureLoader loader = new PictureLoader();
+           
         }
     }
 }

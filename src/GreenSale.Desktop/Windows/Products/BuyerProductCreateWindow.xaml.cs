@@ -245,6 +245,7 @@ namespace GreenSale.Desktop.Windows.Products
 
 
             var res = await _service.CreateAsync(dto);
+            this.Close();
         }
     }
 }
