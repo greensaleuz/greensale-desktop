@@ -2,23 +2,13 @@
 using GreenSale.Dtos.Dtos.BuyerPost;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
-using GreenSale.ViewModels.Enums.BuyerPost;
-using GreenSale.ViewModels.Models.BuyerPosts;
-using GreenSale.ViewModels.Models.Storages;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -90,13 +80,13 @@ namespace GreenSale.Desktop.Windows.Products
             txtType.Text = buyerPost.Type;
             txtAddress.Text = buyerPost.Address;
 
-            
+
             int i = 0;
             foreach (var item in buyerPost.BuyerPostsImages)
             {
 
                 data.Add(item.Id, item.ImagePath);
-                if(i==0)
+                if (i == 0)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
@@ -104,28 +94,28 @@ namespace GreenSale.Desktop.Windows.Products
                     Img.ImageSource = new BitmapImage(imageUri);
                     ImgMain.ImageSource = new BitmapImage(imageUri);
                 }
-               else if (i == 1)
+                else if (i == 1)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img1.ImageSource = new BitmapImage(imageUri);
                 }
-               else if (i == 2)
+                else if (i == 2)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img2.ImageSource = new BitmapImage(imageUri);
                 }
-               else if (i == 3)
+                else if (i == 3)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img3.ImageSource = new BitmapImage(imageUri);
                 }
-               else if (i == 4)
+                else if (i == 4)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
 
@@ -134,27 +124,37 @@ namespace GreenSale.Desktop.Windows.Products
                 }
                 i++;
             }
-           
+
 
         }
 
-        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
+            string path = Path.GetFileName(ImgMain.ImageSource.ToString());
+
+            foreach (var item in data)
             {
-                string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                ImgIcon.Visibility = Visibility.Hidden;
-                ImgUpdateMain.BorderThickness = new Thickness(0);
+                string str = Path.GetFileName(item.Value);
+                if (str == path)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        string imgPath = openFileDialog.FileName;
+                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                        ImgIcon.Visibility = Visibility.Hidden;
+                        ImgUpdateMain.BorderThickness = new Thickness(0);
+
+                        long id = item.Key;
+                        var result = await _service.UpdateImageAsync(id, imgPath);
+                    }
+
+                }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -172,49 +172,21 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
 
-        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            string path = ImgMain.ImageSource.ToString();
 
-            foreach (var item in data)
-            {
-                if (item.Value == path)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-                    if (openFileDialog.ShowDialog() == true)
-                    {
-                        string imgPath = openFileDialog.FileName;
-                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                        ImgIcon.Visibility = Visibility.Hidden;
-                        ImgUpdateMain.BorderThickness = new Thickness(0);
-                    }
-
-                    long id = item.Key;
-                    var result = await _service.UpdateImageAsync(id, ImgMain.ImageSource.ToString());
-                }
-            }
-
-
-          
-
-
-
-        }
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-           BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
+            BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
             dto.Address = txtAddress.Text;
             dto.Description = txtDescription.Text;
             dto.District = txtDistrict.Text;
             dto.Capacity = int.Parse(txtCapacity.Text);
             dto.CapacityMeasure = txtCapacityMeasure.Text;
             dto.Title = txtTitle.Text;
-            dto.Region= txtRegion.Text;
-            dto.PhoneNumber= txtPhoneNumber.Text;
+            dto.Region = txtRegion.Text;
+            dto.PhoneNumber = txtPhoneNumber.Text;
             dto.Price = double.Parse(txtPrice.Text);
-            dto.Type= txtType.Text;
+            dto.Type = txtType.Text;
 
             long id = BuyerProductPersonalViewUserControl.buyerId;
             var res = await _service.UpdateAsync(id, dto);
@@ -226,19 +198,16 @@ namespace GreenSale.Desktop.Windows.Products
             else MessageBox.Show("Qayerdadur xatolik yuz berdi, qayta urunib koring");
         }
 
-        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
 
-        }
 
 
         private async void btnImageUpdate_Click(object sender, RoutedEventArgs e)
         {
-            string path =  ImgMain.ImageSource.ToString();
+            string path = ImgMain.ImageSource.ToString();
 
             foreach (var item in data)
             {
-                if(item.Value == path)
+                if (item.Value == path)
                 {
                     long id = item.Key;
                     var result = await _service.UpdateImageAsync(id, path);

@@ -2,22 +2,13 @@
 using GreenSale.Dtos.Dtos.SellerPost;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
-using GreenSale.ViewModels.Models.Storages;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -31,11 +22,11 @@ namespace GreenSale.Desktop.Windows.Products
         public SellerProductFullViewWindow()
         {
             InitializeComponent();
-            this._service=new SellerPostService ();
+            this._service = new SellerPostService();
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             this.Close();
         }
 
@@ -75,7 +66,7 @@ namespace GreenSale.Desktop.Windows.Products
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            SellerPostUpdateDto dto = new SellerPostUpdateDto ();
+            SellerPostUpdateDto dto = new SellerPostUpdateDto();
             dto.Capacity = int.Parse(txtCapacity.Text);
             dto.CapacityMeasure = txtCapacityMeasure.Text;
             dto.Title = txtTitle.Text;
@@ -90,7 +81,7 @@ namespace GreenSale.Desktop.Windows.Products
             var result = await _service.UpdateAsync(id, dto);
 
         }
-
+        public static Dictionary<long, string> data = new Dictionary<long, string>();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             long id = SellerProductPersonalViewUserControl.sellerId;
@@ -105,11 +96,11 @@ namespace GreenSale.Desktop.Windows.Products
             txtTitle.Text = sellerPost.Title;
             txtType.Text = sellerPost.Type;
 
-
+            
             int i = 0;
             foreach (var item in sellerPost.PostImages)
             {
-
+                data.Add(item.Id, item.ImagePath);
                 if (i == 0)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
@@ -150,16 +141,29 @@ namespace GreenSale.Desktop.Windows.Products
             }
         }
 
-        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-                if (openFileDialog.ShowDialog() == true)
+            string path = Path.GetFileName(ImgMain.ImageSource.ToString());
+
+            foreach (var item in data)
+            {
+                string str = Path.GetFileName(item.Value);
+                if (str == path)
                 {
-                    string imgPath = openFileDialog.FileName;
-                    Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                    ImgIcon.Visibility = Visibility.Hidden;
-                    ImgUpdateMain.BorderThickness = new Thickness(0);
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        string imgPath = openFileDialog.FileName;
+                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                        ImgIcon.Visibility = Visibility.Hidden;
+                        ImgUpdateMain.BorderThickness = new Thickness(0);
+
+                        long id = item.Key;
+                        var result = await _service.ImageUpdateAsync(id, imgPath);
+                    }
+
+                }
             }
         }
 
