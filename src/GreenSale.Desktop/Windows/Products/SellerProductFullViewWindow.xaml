@@ -395,7 +395,8 @@
                                     BorderThickness="0"
                                     BorderBrush="{DynamicResource SixthBackground}"
                                     Margin="0 0 0 0">
-                                <TextBox  x:Name="txtDescription" 
+                                <TextBox    Height="30"
+                                            x:Name="txtDescription" 
                                             Text="1 gektar olma sotiladi. " 
                                              FontSize="20"                                             
                                              BorderThickness="0"
