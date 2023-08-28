@@ -22,7 +22,7 @@ namespace GreenSale.Desktop.Pages.Buyers
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var buyerpost = await _service.GetAllAsync();
-
+            loader.Visibility = Visibility.Collapsed;
             foreach (var post in buyerpost)
             {
                 BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();

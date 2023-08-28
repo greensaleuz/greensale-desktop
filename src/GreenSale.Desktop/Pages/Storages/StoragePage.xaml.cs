@@ -39,6 +39,7 @@ namespace GreenSale.Desktop.Pages.Storages
         public async Task RefreshAsync()
         {
             var storagepost = await _service.GetAllAsync();
+            loader.Visibility = Visibility.Collapsed;
 
             foreach (var post in storagepost)
             {

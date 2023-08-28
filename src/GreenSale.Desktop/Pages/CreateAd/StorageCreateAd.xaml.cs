@@ -57,6 +57,8 @@ namespace GreenSale.Desktop.Pages.CreateAd
             var user = await _serviceUser.GetAsync();
             UserId = user.Id;
             var storagePost = await _service.GetAllUserId((UserId));
+            loader.Visibility = Visibility.Collapsed;
+
             foreach (var post in storagePost)
             {
                 StorageProductPersonalViewUserControl control = new StorageProductPersonalViewUserControl();
