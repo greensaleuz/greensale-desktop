@@ -61,6 +61,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
             {
                 StorageProductPersonalViewUserControl control = new StorageProductPersonalViewUserControl();
                 control.SetData(post);
+                control.Refresh = RefreshAsync;
                 wrpStoragePost.Children.Add(control);
             }
         }
