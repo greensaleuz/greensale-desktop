@@ -10,5 +10,8 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
     {
         public long BuyerpostId { get; set; }
         public string ImagePath { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public long Id { get; set; }
     }
 }

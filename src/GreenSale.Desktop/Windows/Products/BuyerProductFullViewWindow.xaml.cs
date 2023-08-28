@@ -74,7 +74,7 @@ namespace GreenSale.Desktop.Windows.Products
         {
             this.Close();
         }
-
+        public static Dictionary<long, string> data = new Dictionary<long, string>();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             long id = BuyerProductPersonalViewUserControl.buyerId;
@@ -90,10 +90,12 @@ namespace GreenSale.Desktop.Windows.Products
             txtType.Text = buyerPost.Type;
             txtAddress.Text = buyerPost.Address;
 
+            
             int i = 0;
             foreach (var item in buyerPost.BuyerPostsImages)
             {
-           
+
+                data.Add(item.Id, item.ImagePath);
                 if(i==0)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
@@ -153,17 +155,34 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
 
-        private void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-            if (openFileDialog.ShowDialog() == true)
+            string path = ImgMain.ImageSource.ToString();
+
+            foreach (var item in data)
             {
-                string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                ImgIcon.Visibility = Visibility.Hidden;
-                ImgUpdateMain.BorderThickness = new Thickness(0);
+                if (item.Value == path)
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        string imgPath = openFileDialog.FileName;
+                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                        ImgIcon.Visibility = Visibility.Hidden;
+                        ImgUpdateMain.BorderThickness = new Thickness(0);
+                    }
+
+                    long id = item.Key;
+                    var result = await _service.UpdateImageAsync(id, ImgMain.ImageSource.ToString());
+                }
             }
+
+
+          
+
+
+
         }
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -193,6 +212,21 @@ namespace GreenSale.Desktop.Windows.Products
         private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
+        }
+
+
+        private async void btnImageUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            string path =  ImgMain.ImageSource.ToString();
+
+            foreach (var item in data)
+            {
+                if(item.Value == path)
+                {
+                    long id = item.Key;
+                    var result = await _service.UpdateImageAsync(id, path);
+                }
+            }
         }
     }
 }

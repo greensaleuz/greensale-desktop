@@ -4,6 +4,7 @@ using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
@@ -65,7 +66,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.AddressLongitude = 20930846; 
             dto.Name = txtbName.Text.ToString();
             dto.Address = txtbAddress.Text.ToString();
-            dto.ImagePath =  ImgStorage.ImageSource.ToString();
+            dto.ImagePath = ImgStorage.ImageSource.ToString();
 
             long id = StorageProductPersonalViewUserControl.storageId;
             var storage = await _service.UpdateAsync(id,dto);

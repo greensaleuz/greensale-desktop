@@ -149,7 +149,7 @@
                     <Button Style="{DynamicResource ProductUpdateButton}"
                             Content="Tahrirlash"
                             Height="55"
-                            Margin="10 11 10 0"/>
+                            Margin="10 11 10 0" Click="Button_Click"/>
                 </StackPanel>
             </Border>
             <Border Grid.Column="1"
