@@ -65,7 +65,7 @@ namespace GreenSale.Desktop.Windows.Products
             storageCreateAd.ShowsNavigationUI = true;
             if (result)
             {
-                MessageBox.Show("Muvafaqqiyatli saqlandi");
+                MessageBox.Show("E'loningiz yaratildi");
             }
             else
             {

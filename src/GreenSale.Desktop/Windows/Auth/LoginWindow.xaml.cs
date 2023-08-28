@@ -65,8 +65,8 @@ namespace GreenSale.Desktop.Windows
             }
             UserLoginDto dto = new UserLoginDto()
             {
-                PhoneNumber =("+998"+ txtPhoneNumber.Text.ToString()),
-                password  = txtParol.Text.ToString(),
+                PhoneNumber = ("+998" + txtPhoneNumber.Text.ToString()),
+                password = txtParol.Password.ToString()
             };
 
             var res = await _authService.LoginAsync(dto);
