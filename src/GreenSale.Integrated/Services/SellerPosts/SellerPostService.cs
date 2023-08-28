@@ -97,16 +97,16 @@ namespace GreenSale.Integrated.Services.SellerPosts
             return posts;
         }
 
-        public async Task<bool> ImageUpdateAsync(long imageId, SellerPostUpdateImageDto dto)
+        public async Task<bool> ImageUpdateAsync(long imageId, string dto)
         {
             
             var token = IdentitySingelton.GetInstance().Token;
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/seller/post/image/{imageId}");
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/image/{imageId}");
             request.Headers.Add("Authorization", $"Bearer {token}");
 
             var content = new MultipartFormDataContent();
-            content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+            content.Add(new StreamContent(File.OpenRead(dto)), "ImagePath", dto);
 
             request.Content = content;
             var response = await client.SendAsync(request);

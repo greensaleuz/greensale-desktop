@@ -130,7 +130,7 @@ namespace GreenSale.Integrated.Services.BuyerPosts
         {
             var token = IdentitySingelton.GetInstance().Token;
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/buyer/post/image/{imageId}");
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/buyer/post/image/{imageId}");
             request.Headers.Add("Authorization", $"Bearer {token}");
 
             var content = new MultipartFormDataContent();
