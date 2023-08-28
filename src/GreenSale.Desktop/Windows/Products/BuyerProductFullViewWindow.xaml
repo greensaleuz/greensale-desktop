@@ -166,38 +166,7 @@
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
                     </Border>
-                    <Border CornerRadius="10"
-                            Width="360"
-                            Margin="0 0 0 10"
-                            HorizontalAlignment="Left"
-                            Background="{DynamicResource SixthBackground}">
-                        <StackPanel Margin="5"
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                            <Label Content="Toifasi:"
-                                   FontSize="20"
-                                   Margin="10 1 5 0"
-                                   Foreground="{DynamicResource FifthTextColor}"
-                                   />
-                            <ComboBox x:Name="txbCatecory"
-                                      Width="250"
-                                     Background="Transparent"
-                                     BorderBrush="Transparent"
-                                     BorderThickness="0"
-                                     VerticalAlignment="Center"
-                                     FontWeight="SemiBold"                                   
-                                     FontSize="20"
-                                     Margin="0 1 5 0"
-                                     Foreground="{DynamicResource FifthTextColor}"
-                                      SelectedIndex="0">
-                                <ComboBoxItem Content="Sabzavot"/>
-                                <ComboBoxItem Content="Poliz ekini"/>
-                                <ComboBoxItem Content="Meva"/>
-
-                            </ComboBox>
-
-                        </StackPanel>
-                    </Border>
+                  
                     <Border CornerRadius="10"
                             Width="360"
                             Margin="0 0 0 10"
@@ -344,6 +313,33 @@
                     </Border>
                     <Border CornerRadius="10"
                             Width="360"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Left"
+                            Background="{DynamicResource SixthBackground}">
+                        <StackPanel Margin="5"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <Label Content="Address:"
+                                   FontSize="20"
+                                   Margin="10 1 5 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                            <TextBox x:Name="txtAddress"
+                                      Width="250"
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
+                                     BorderThickness="0"
+                                     VerticalAlignment="Center"
+                                     FontWeight="SemiBold"                                   
+                                     FontSize="20"
+                                     Margin="0 1 5 0"
+                                     Foreground="{DynamicResource FifthTextColor}">
+                            </TextBox>
+
+                        </StackPanel>
+                    </Border>
+                    <Border CornerRadius="10"
+                            Width="360"
                             HorizontalAlignment="Left"
                             Background="{DynamicResource SixthBackground}">
                         <StackPanel Margin="5"
@@ -409,9 +405,9 @@
                                 Margin="-10 0 0 0"
                                 >
                             <Button
-                                
+                                x:Name="btnUpdate"
                                 Style="{DynamicResource ProductUpdateButton}"
-                                Content="Tahrirlash" Click="Button_Click"/>
+                                Content="Tahrirlash" Click="btnUpdate_Click"/>
                         </Border>
                         <Border Grid.Column="1"
                             Margin="-10 0 20 0"

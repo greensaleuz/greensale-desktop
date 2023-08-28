@@ -88,7 +88,7 @@ namespace GreenSale.Desktop.Windows.Products
             txtPrice.Text = buyerPost.Price.ToString();
             txtTitle.Text = buyerPost.Title;
             txtType.Text = buyerPost.Type;
-
+            txtAddress.Text = buyerPost.Address;
 
             int i = 0;
             foreach (var item in buyerPost.BuyerPostsImages)
@@ -167,6 +167,35 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgIcon.Visibility = Visibility.Hidden;
                 ImgUpdateMain.BorderThickness = new Thickness(0);
             }
+        }
+
+        private async void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+           BuyerPostUpdateDto dto = new BuyerPostUpdateDto();
+            dto.Address = txtAddress.Text;
+            dto.Description = txtDescription.Text;
+            dto.District = txtDistrict.Text;
+            dto.Capacity = int.Parse(txtCapacity.Text);
+            dto.CapacityMeasure = txtCapacityMeasure.Text;
+            dto.Title = txtTitle.Text;
+            dto.Region= txtRegion.Text;
+            dto.PhoneNumber= txtPhoneNumber.Text;
+            dto.Price = double.Parse(txtPrice.Text);
+            dto.Type= txtType.Text;
+
+            long id = BuyerProductPersonalViewUserControl.buyerId;
+            var res = await _service.UpdateAsync(id, dto);
+
+            if (res)
+            {
+                MessageBox.Show("Malumotlar muvafaqqiyatli o'zgartirildi");
+            }
+            else MessageBox.Show("Qayerdadur xatolik yuz berdi, qayta urunib koring");
+        }
+
+        private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
         }
     }
 }

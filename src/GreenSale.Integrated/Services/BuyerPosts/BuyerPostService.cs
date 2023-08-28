@@ -96,9 +96,33 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             return posts;
         }
 
-        public Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto)
+        public async Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto)
         {
-            throw new NotImplementedException();
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/buyer/post/{postId}");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+            content.Add(new StringContent(dto.Title), "Title");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.Price.ToString()), "Price");
+            content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
+            content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
+            content.Add(new StringContent(dto.Type), "Type");
+            content.Add(new StringContent(dto.Region), "Region");
+            content.Add(new StringContent(dto.District), "District");
+            content.Add(new StringContent(dto.Address), "Address");
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            var res = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
