@@ -18,6 +18,5 @@ namespace GreenSale.Dtos.Dtos.BuyerPost
         public string Region { get; set; } = string.Empty;
         public string District { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public long CategoryID { get; set; }
     }
 }
