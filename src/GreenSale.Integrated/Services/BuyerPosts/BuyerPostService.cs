@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace GreenSale.Integrated.Services.BuyerPosts
 {
+
     public class BuyerPostService : IBuyerPostService
     {
         public async Task<bool> CreateAsync(BuyerPostCreateDto dto)
@@ -120,6 +121,26 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             var res = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> UpdateImageAsync(long imageId, string dto)
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/buyer/post/image/{imageId}");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StreamContent(File.OpenRead(dto)), "ImagePath", dto);
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var res = await response.Content.ReadAsStringAsync();
                 return true;
             }
             return false;
