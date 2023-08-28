@@ -4,8 +4,6 @@ using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -81,7 +79,7 @@ namespace GreenSale.Desktop.Windows.Products
             var result = await _service.UpdateAsync(id, dto);
 
         }
-        public static Dictionary<long, string> data = new Dictionary<long, string>();
+        // private Dictionary<long, string> data = new Dictionary<long, string>();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             long id = SellerProductPersonalViewUserControl.sellerId;
@@ -96,11 +94,11 @@ namespace GreenSale.Desktop.Windows.Products
             txtTitle.Text = sellerPost.Title;
             txtType.Text = sellerPost.Type;
 
-            
+
             int i = 0;
             foreach (var item in sellerPost.PostImages)
             {
-                data.Add(item.Id, item.ImagePath);
+                // data.Add(item.Id, item.ImagePath);
                 if (i == 0)
                 {
                     string image = "http://95.130.227.68:8080/" + item.ImagePath;
@@ -143,27 +141,15 @@ namespace GreenSale.Desktop.Windows.Products
 
         private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            string path = Path.GetFileName(ImgMain.ImageSource.ToString());
 
-            foreach (var item in data)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
+            if (openFileDialog.ShowDialog() == true)
             {
-                string str = Path.GetFileName(item.Value);
-                if (str == path)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
-                    if (openFileDialog.ShowDialog() == true)
-                    {
-                        string imgPath = openFileDialog.FileName;
-                        Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
-                        ImgIcon.Visibility = Visibility.Hidden;
-                        ImgUpdateMain.BorderThickness = new Thickness(0);
-
-                        long id = item.Key;
-                        var result = await _service.ImageUpdateAsync(id, imgPath);
-                    }
-
-                }
+                string imgPath = openFileDialog.FileName;
+                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                ImgIcon.Visibility = Visibility.Hidden;
+                ImgUpdateMain.BorderThickness = new Thickness(0);
             }
         }
 
