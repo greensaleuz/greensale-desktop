@@ -1,4 +1,5 @@
-﻿using GreenSale.Dtos.Dtos.Auth;
+﻿using GreenSale.Desktop.Windows.Auth;
+using GreenSale.Dtos.Dtos.Auth;
 using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Security;
 using GreenSale.Integrated.Services.Auth;
@@ -103,6 +104,12 @@ namespace GreenSale.Desktop.Windows
                 textBox.Text = filteredText;
                 textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
             }
+        }
+
+        private void Forgot_password(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ForgotPasswordWindow sendCodeWindow = new ForgotPasswordWindow();
+            sendCodeWindow.Show();
         }
     }
 }
