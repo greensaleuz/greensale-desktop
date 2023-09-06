@@ -48,7 +48,7 @@ namespace GreenSale.Desktop.Windows.Products
             txtbRegion.Text = storage.Region;
             
 
-            string image = "http://95.130.227.68:8080/" + storage.ImagePath;
+            string image = "https://localhost:7288/" + storage.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
             ImgStorage.ImageSource = new BitmapImage(imageUri);
         }

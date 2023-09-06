@@ -169,13 +169,32 @@
                             </Grid>
                 </Border>
                         <Border>
-                            <Button x:Name="btnLogin"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"
+                                       x:Name="forgotPassword"
+                                       Content="Parolingizni unitdingizmi?"
+                                       FontSize="16"
+                                       Foreground="{DynamicResource FifthTextColor}"
+                                       Margin=" 190 10 0 0"
+                                       Cursor="Hand"
+                                       MouseDoubleClick="Forgot_password"
+                                       MouseEnter="changeCollor"
+                                       MouseLeave="old_collor"/>
+                                
+                                <Button Grid.Row="1"
+                                    x:Name="btnLogin"
                                     Click="btnLogin_Click"
                                     Height="60"
-                                    Margin="0 40 0 0"
+                                    Margin="0 10 0 0"
                                     Content="Kirish"
                                     Style="{DynamicResource SignSuccessButton}">
-                            </Button>
+                                </Button>
+                            </Grid>
+                            
                         </Border>
             </StackPanel>
         </Border>

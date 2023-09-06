@@ -101,7 +101,7 @@ namespace GreenSale.Desktop.Windows.Products
                 // data.Add(item.Id, item.ImagePath);
                 if (i == 0)
                 {
-                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+                    string image = "https://localhost:7288/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img.ImageSource = new BitmapImage(imageUri);
@@ -109,28 +109,28 @@ namespace GreenSale.Desktop.Windows.Products
                 }
                 else if (i == 1)
                 {
-                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+                    string image = "https://localhost:7288/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img1.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 2)
                 {
-                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+                    string image = "https://localhost:7288/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img2.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 3)
                 {
-                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+                    string image = "https://localhost:7288/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img3.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 4)
                 {
-                    string image = "http://95.130.227.68:8080/" + item.ImagePath;
+                    string image = "https://localhost:7288/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);
