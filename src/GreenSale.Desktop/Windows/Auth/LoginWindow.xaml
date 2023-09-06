@@ -175,10 +175,16 @@
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0"
+                                       x:Name="forgotPassword"
                                        Content="Parolingizni unitdingizmi?"
-                                       Style="{DynamicResource ForgotPassword}"
-                                       Margin=" 170 10 0 0"
-                                       MouseDown="Forgot_password"/>
+                                       FontSize="16"
+                                       Foreground="{DynamicResource FifthTextColor}"
+                                       Margin=" 190 10 0 0"
+                                       Cursor="Hand"
+                                       MouseDoubleClick="Forgot_password"
+                                       MouseEnter="changeCollor"
+                                       MouseLeave="old_collor"/>
+                                
                                 <Button Grid.Row="1"
                                     x:Name="btnLogin"
                                     Click="btnLogin_Click"

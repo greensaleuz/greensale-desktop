@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace GreenSale.Desktop.Windows
 {
@@ -110,6 +111,16 @@ namespace GreenSale.Desktop.Windows
         {
             ForgotPasswordWindow sendCodeWindow = new ForgotPasswordWindow();
             sendCodeWindow.Show();
+        }
+
+        private void changeCollor(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            forgotPassword.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+        }
+
+        private void old_collor(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            forgotPassword.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#083353"));
         }
     }
 }
