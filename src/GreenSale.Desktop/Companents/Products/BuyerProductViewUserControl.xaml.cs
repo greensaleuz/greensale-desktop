@@ -33,7 +33,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(BuyerPost post)
         {
-            string image = "https://localhost:7288/" + post.mainImage;
+            string image = "http://128.199.140.234:3030/" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
