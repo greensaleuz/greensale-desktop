@@ -39,7 +39,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(Storage post)
         {
-            string image = "https://localhost:7288/" + post.ImagePath;
+            string image = "http://128.199.140.234:3030/" + post.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             StorageImage.ImageSource = new BitmapImage(imageUri);
