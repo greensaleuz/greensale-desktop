@@ -4,7 +4,7 @@
     <SolidColorBrush x:Key="PrimaryBackground" Color="#219241"/>
     <SolidColorBrush x:Key="SecondaryBackground" Color="#fff"/>
     <SolidColorBrush x:Key="SelectedBackground" Color="#209240"/>
-    <SolidColorBrush x:Key="FourthBackground" Color="#CCC"/>
+    <SolidColorBrush x:Key="FourthBackground" Color="#209240"/>
     <SolidColorBrush x:Key="FifthBackground" Color="#EEEDEF"/>
     <SolidColorBrush x:Key="SixthBackground" Color="#EBEBEB"/>
 

@@ -165,6 +165,7 @@
                                              Foreground="{DynamicResource FourthTextColor}"                                         
                                              FontFamily="Arial"
                                              BorderThickness="0"
+                                             MaxLength="16"
                                              Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                 </Border>
@@ -178,10 +179,10 @@
                                        x:Name="forgotPassword"
                                        Content="Parolingizni unitdingizmi?"
                                        FontSize="16"
-                                       Foreground="{DynamicResource FifthTextColor}"
+                                       Foreground="{DynamicResource FourthBackground}"
                                        Margin=" 190 10 0 0"
                                        Cursor="Hand"
-                                       MouseDoubleClick="Forgot_password"
+                                       MouseLeftButtonDown="Forgot_password"
                                        MouseEnter="changeCollor"
                                        MouseLeave="old_collor"/>
                                 
