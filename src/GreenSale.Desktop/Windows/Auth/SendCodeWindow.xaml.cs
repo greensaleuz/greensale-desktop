@@ -1,4 +1,5 @@
-﻿using GreenSale.Integrated.Interfaces.Auth;
+﻿using GreenSale.Dtos.Dtos.Auth;
+using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Services.Auth;
 using System;
 using System.Windows;
@@ -131,16 +132,34 @@ namespace GreenSale.Desktop.Windows.Auth
 
         private async void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            string phoneNum = RegisterWindow.phoneNum;
-            var result = await _service.VerifyRegisterAsync(phoneNum, int.Parse(sendCode));
-
-            if (result.Result)
+            var chek = LoginWindow.CheckEnter;
+            if (chek == true)
             {
-                string token = result.Token.ToString();
-                LoginWindow login = new LoginWindow();
-                login.Show();
-                this.Close();
+                string phoneNum = RegisterWindow.phoneNum;
+                var result = await _service.VerifyRegisterAsync(phoneNum, int.Parse(sendCode));
+                if (result.Result)
+                {
+                    string token = result.Token.ToString();
+                    LoginWindow login = new LoginWindow();
+                    login.Show();
+                    this.Close();
+                }
             }
+            else if(chek == false)
+            {
+                string phoneNum = ForgotPasswordWindow.number;
+                var result = await _service.VerifyResetPasswordAsync(phoneNum, int.Parse(sendCode));
+                if (result.Result)
+                {
+                    string token = result.Token.ToString();
+                    LoginWindow login = new LoginWindow();
+                    login.Show();
+                    this.Close();
+                }
+            }
+            
+
+            
         }
 
         private void loaded(object sender, RoutedEventArgs e)

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GreenSale.Dtos.Dtos.Auth;
+using GreenSale.Integrated.Interfaces.Auth;
+using GreenSale.Integrated.Services.Auth;
+using System;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -15,15 +18,14 @@ namespace GreenSale.Desktop.Windows.Auth
     /// </summary>
     public partial class ForgotPasswordWindow : Window
     {
+        public static string number { get; set; }
+        private IAuthService _service;
         public ForgotPasswordWindow()
         {
             InitializeComponent();
+            this._service = new AuthService();
         }
 
-        private void NewPasswordSend(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnCloseResetPassword_Click(object sender, RoutedEventArgs e)
         {
@@ -68,6 +70,26 @@ namespace GreenSale.Desktop.Windows.Auth
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private async void btnResetPasswordSend(object sender, RoutedEventArgs e)
+        {
+            LoginWindow.CheckEnter = false;
+            number = "+998" + txtPhoneNumber.Text.ToString();
+            ForgotPassword forgotPassword = new ForgotPassword()
+            {
+                PhoneNumber = number,
+                NewPassword = txtParol.Password.ToString()
+            };
+
+            var result = await _service.ResetPasswordAsync(forgotPassword);
+
+            if(result)
+            {
+                SendCodeWindow sendCodeWindow = new SendCodeWindow();
+                sendCodeWindow.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

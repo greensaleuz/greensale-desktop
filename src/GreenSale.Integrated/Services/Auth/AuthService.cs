@@ -73,9 +73,30 @@ namespace GreenSale.Integrated.Services.Auth
             
         }
 
-        public Task<bool> ResetPasswordAsync(ForgotPassword dto)
+        public async Task<bool> ResetPasswordAsync(ForgotPassword dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                HttpClient client = new HttpClient();
+                //client.BaseAddress = new Uri(AuthAPI.BASE_URL);
+                HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, $"{AuthAPI.BASE_URL}/api/auth/password/reset");
+                var content = new StringContent(JsonConvert.SerializeObject(dto), null, "application/json");
+                httpRequestMessage.Content = content;
+                var response = await client.SendAsync(httpRequestMessage);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public async Task<bool> SendCodeForRegisterAsync(string phoneNumber)
@@ -138,9 +159,35 @@ namespace GreenSale.Integrated.Services.Auth
 
         }
 
-        public Task<bool> VerifyResetPasswordAsync(string phoneNumber, int code)
+        public async Task<(bool Result, string Token)> VerifyResetPasswordAsync(string phoneNumber, int code)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Post,
+                        AuthAPI.BASE_URL + "/api/auth/password/verify" + $"?phoneNumber=%2B" +
+                        $"\"{phoneNumber.Substring(1)}\"&code={code}");
+
+                    var content = new StringContent($"{{ \"phoneNumber\": \"{phoneNumber}\"," +
+                        $" \"code\": {code}}}", null, "application/json");
+                    request.Content = content;
+                    var response = await client.SendAsync(request);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                        string token = jsonResponse.token.ToString();
+
+                        return (Result: jsonResponse.result, Token: token);
+                    }
+                    return (Result: false, Token: "");
+                }
+            }
+            catch
+            {
+                return (Result: false, Token: "");
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace GreenSale.Desktop.Windows
     public partial class LoginWindow : Window
     {
         private readonly IAuthService _authService;
+        public static bool CheckEnter {  get; set; } = true;
 
         public LoginWindow()
         {
@@ -70,7 +71,7 @@ namespace GreenSale.Desktop.Windows
                 PhoneNumber = ("+998" + txtPhoneNumber.Text.ToString()),
                 password = txtParol.Password.ToString()
             };
-
+            CheckEnter = true;
             var res = await _authService.LoginAsync(dto);
 
             if (res.Result)

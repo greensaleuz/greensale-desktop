@@ -15,7 +15,7 @@ namespace GreenSale.Integrated.Interfaces.Auth
         public Task<(bool Result, string Token)> VerifyRegisterAsync(string phoneNumber, int code);
         public Task<(bool Result, string Token)> LoginAsync(UserLoginDto dto);
         public Task<bool> ResetPasswordAsync(ForgotPassword dto);
-        public Task<bool> VerifyResetPasswordAsync(string phoneNumber, int code);
+        public Task<(bool Result, string Token)> VerifyResetPasswordAsync(string phoneNumber, int code);
         public Task<bool> CheckTokenAsync(AuthorizationDto token);
     }
 }
