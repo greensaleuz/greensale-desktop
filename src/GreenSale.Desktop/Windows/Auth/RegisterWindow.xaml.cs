@@ -109,7 +109,7 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 ism_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
             }
             else if (txtFirstName.Text.Length < 3)
             {
