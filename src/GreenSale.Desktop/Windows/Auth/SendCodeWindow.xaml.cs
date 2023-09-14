@@ -4,6 +4,9 @@ using GreenSale.Integrated.Services.Auth;
 using System;
 using System.Windows;
 using System.Windows.Threading;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
 
 namespace GreenSale.Desktop.Windows.Auth
 {
@@ -54,6 +57,20 @@ namespace GreenSale.Desktop.Windows.Auth
             _timer.Start();
         }
 
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(5),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

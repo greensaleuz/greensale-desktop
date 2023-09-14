@@ -11,6 +11,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Window.Loaded ="Window_Loaded_Main"
         ResizeMode="NoResize">
     
     <Border CornerRadius="25" 

@@ -18,6 +18,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace GreenSale.Desktop
 {
@@ -26,10 +30,26 @@ namespace GreenSale.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        public  bool suscs { get; set; } = false;
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.BottomRight,
+                offsetX: 10,
+                offsetY: 10);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -118,6 +138,19 @@ namespace GreenSale.Desktop
         private void brdUser_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded_Main(object sender, RoutedEventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            FrameFilter.Content = dashboard;
+            notifier.ShowSuccess("Mufaqiyatli kirdingiz.");
+        }
+        
+
+        public void Succses()
+        {
+            notifier.ShowSuccess("Mufaqiyatli kirdingiz.");
         }
     }
 }

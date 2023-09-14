@@ -157,6 +157,9 @@
             
             <ResourceDictionary.MergedDictionaries>
 
+                <ResourceDictionary Source="/WPFNotification;component/Assets/NotificationUI.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
                 <!--begin:theme-->
                 <ResourceDictionary Source="Themes/LightTheme.xaml"/>
                 <!--end:theme-->
@@ -170,6 +173,9 @@
                 <!--end:styles-->
 
             </ResourceDictionary.MergedDictionaries>
+
+
+
         </ResourceDictionary>
 
     </Application.Resources>

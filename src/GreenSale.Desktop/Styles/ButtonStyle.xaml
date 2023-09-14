@@ -276,6 +276,7 @@
                             </LinearGradientBrush>
                         </Border.Background>
                         <Label FontSize="24"
+                               x:Name="lbSucses"
                                Margin="10 0"
                                FontFamily="send-series"
                                FontWeight="SemiBold"
@@ -287,13 +288,16 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#24A649"/>
+                            <Setter TargetName="B" Property="Background" Value="white"/>
+                            <Setter TargetName="lbSucses" Property="Foreground" Value="green"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
                             <Setter TargetName="B" Property="Background" Value="#209240"/>
+                            <Setter TargetName="lbSucses" Property="Foreground" Value="white"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
+                            <Setter TargetName="lbSucses" Property="Foreground" Value="white"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -310,9 +314,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="B" CornerRadius="28"
-                            BorderThickness="1"
-                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                    <Border x:Name="sgnBr" CornerRadius="28"
+                            BorderThickness="2"
+                            BorderBrush="#24A649">
                         <Border.Background>
                             <LinearGradientBrush>
                                 <GradientStop Color="#219241"/>
@@ -321,6 +325,7 @@
                         </Border.Background>
                         <Label FontSize="24"
                                Margin="10 0"
+                               x:Name="sgn_label"
                                FontFamily="send-series"
                                FontWeight="SemiBold"
                                Foreground="White"
@@ -331,13 +336,21 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#24A649"/>
+                            <Setter TargetName="sgnBr" Property="Background" Value="white"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="#24A649"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#209240"/>
+                            <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
+                            <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="LightGreen"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1084,6 +1097,16 @@
     </Style>
     
     <!--label-->
+    <Style x:Key="lbunder" TargetType="Label">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextDecorations="Underline"
+                               Foreground="Red"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style x:Key="ForgotPassword" TargetType="{x:Type Label}">
         <Setter Property="Height" Value="30"/>
@@ -1118,5 +1141,34 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
+    
+    <!--Texbox-->
+    
+
+    <Style x:Key="text_styl" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="Border_skns" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Border_skns" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border_skns" Value="Red"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border_skns" Value="Orange"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 
 </ResourceDictionary>
