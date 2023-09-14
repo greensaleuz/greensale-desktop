@@ -4,15 +4,17 @@ using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Security;
 using GreenSale.Integrated.Services.Auth;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace GreenSale.Desktop.Windows
 {
@@ -21,14 +23,29 @@ namespace GreenSale.Desktop.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private readonly IAuthService _authService;
-        public static bool CheckEnter {  get; set; } = true;
+        private  IAuthService _authService;
+        public static bool CheckEnter { get; set; } = true;
 
         public LoginWindow()
         {
             InitializeComponent();
             this._authService = new AuthService();
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.MainWindow,
+                corner: Corner.TopRight,
+                offsetX: 20 ,
+                offsetY: 20);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(5),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -58,32 +75,83 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            /*WindowLoader windowLoader = new WindowLoader();
+            windowLoader.Show();
+            this.Close();*/
+            bool succses = true;
+            if (txtPhoneNumber.Text.Length < 9)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    Border_skns.Effect = dropShadowEffect;
+                }
+                succses = false;
+            }
+
+
+            if (txtParol is null || txtParol.SecurePassword.Length < 8)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    Border_pasword.Effect = dropShadowEffect;
+                }
+                succses = false;
+            }
+
             if (IsInternetAvailable())
             {
                 //MessageBox.Show("Internetga ulanish mavjud.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (succses)
+                {
+                    UserLoginDto dto = new UserLoginDto()
+                    {
+                        PhoneNumber = ("+998" + txtPhoneNumber.Text.ToString()),
+                        password = txtParol.Password.ToString()
+                    };
+                    CheckEnter = true;
+                    var res = await _authService.LoginAsync(dto);
+
+                    if (res.Result)
+                    {
+                        IdentitySingelton.GetInstance().Token = res.Token;
+                        MainWindow window = new MainWindow();
+                        window.Show();
+                        /* * */
+                        notifier.Dispose();
+                        //((MainWindow)Application.Current.MainWindow).suscs = true;
+                        //((MainWindow)System.Windows.Application.Current.MainWindow).Succses();
+                        this.Close();
+                    }
+                    else
+                    {
+                        notifier.ShowWarning("Internetingiz sekin!");
+                    }
+                }
+                else
+                {
+                    notifier.ShowInformation("Telefon yoki Parol natogri kiritildi!");
+                }
+
             }
             else
             {
-                MessageBox.Show("Internetga ulanmagansiz.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            UserLoginDto dto = new UserLoginDto()
-            {
-                PhoneNumber = ("+998" + txtPhoneNumber.Text.ToString()),
-                password = txtParol.Password.ToString()
-            };
-            CheckEnter = true;
-            var res = await _authService.LoginAsync(dto);
-
-            if (res.Result)
-            {
-                IdentitySingelton.GetInstance().Token = res.Token;
-                MainWindow window = new MainWindow();
-                window.Show();
-                this.Close();
-            }
-            else
-            {
-
+                notifier.ShowError("Internetga ulanmagansiz !");
             }
         }
 
@@ -91,6 +159,8 @@ namespace GreenSale.Desktop.Windows
         {
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Show();
+            /* * */
+            notifier.Dispose();
             this.Close();
         }
 
@@ -122,6 +192,102 @@ namespace GreenSale.Desktop.Windows
         private void old_collor(object sender, System.Windows.Input.MouseEventArgs e)
         {
             forgotPassword.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#083353"));
+        }
+
+        private void txtPhoneNumber_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            //Border_skns.BorderBrush = Brushes.Red;
+        }
+
+        private void Border_skns_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Border_skns.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#209240"));
+            Border border = sender as Border;
+            /*if (border != null)
+            {
+                border.BorderThickness = new Thickness(2);
+            }*/
+
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 20;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
+            }
+        }
+
+        private void Border_skns_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Border_skns.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F8F8F"));
+            Border_skns = sender as Border;
+            if (Border_skns != null)
+            {
+                Border_skns.BorderThickness = new Thickness(1);
+            }
+
+
+            if (Border_skns != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 0;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                Border_skns.Effect = dropShadowEffect;
+            }
+
+        }
+
+        private void Border_pasword_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Border_pasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#209240"));
+            Border border = sender as Border;
+            /*if (border != null)
+            {
+                border.BorderThickness = new Thickness(2);
+            }*/
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 20;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
+            }
+        }
+
+        private void Border_pasword_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Border_pasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F8F8F"));
+            Border border = sender as Border;
+            if (border != null)
+            {
+                border.BorderThickness = new Thickness(1);
+            }
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 0;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
+            }
         }
     }
 }

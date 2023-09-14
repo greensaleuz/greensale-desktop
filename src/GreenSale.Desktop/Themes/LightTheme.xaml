@@ -13,6 +13,10 @@
     <SolidColorBrush x:Key="SelectedBorderColor" Color="#8F8F8F"/>
 
     <SolidColorBrush x:Key="PrimarytextColor" Color="#fff"/>
+    <SolidColorBrush x:Key="Nopassword" Color="#FF0000"/>
+    <SolidColorBrush x:Key="slowpassword" Color="#FF8000"/>
+    <SolidColorBrush x:Key="Midpassword" Color="#FFFF00"/>
+    <SolidColorBrush x:Key="Strongpassword" Color="#00E100"/>
     <SolidColorBrush x:Key="SecondaryTextColor" Color="#Fb7154"/>
     <SolidColorBrush x:Key="SelectedTextColor" Color="#000"/>
     <SolidColorBrush x:Key="FourthTextColor" Color="#6c879a"/>

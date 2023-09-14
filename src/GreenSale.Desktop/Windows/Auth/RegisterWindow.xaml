@@ -100,17 +100,40 @@
                                Margin="0 0 0 20"
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
-                        <Label Height="40" Width="350"
+                        <Grid Margin="30 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label  Grid.Column="0"
+                                Height="40" Width="350"
+                               x:Name="ism_rgs"
                                Content="Ism"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="ism_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="-5 10 300 0">
+                                
+                            </Label>
+                        </Grid>
+                        
+                        
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
+                                x:Name="name_regs"
+                                MouseEnter="name_regs_MouseEnter"
+                                MouseLeave="name_regs_MouseLeave"
                                 Background="{DynamicResource FifthBackground}"
                                 BorderThickness="1"
-                                BorderBrush="{DynamicResource SelectedBorderColor}">
+                                BorderBrush="#8F8F8F">
+                            
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="55"/>
@@ -131,23 +154,45 @@
                                          Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                         </Border>
-                       
 
-                     
-                        
 
-                   
-                        <Label Height="40" Width="350"
+
+
+                        <Grid Margin="30 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label 
+                                Grid.Column="0"
+                               Height="40" Width="350"
                                Content="Familiya"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="sure_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 240 0">
+
+                            </Label>
+                        </Grid>
+
+                        
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
+                                x:Name="sure_br"
+                                MouseEnter="sure_regs_MouseEnter"
+                                MouseLeave="sure_regs_MouseLeave"
+                                
                                 Background="{DynamicResource FifthBackground}"
                                 BorderThickness="1"
-                                BorderBrush="{DynamicResource SelectedBorderColor}">
+                                BorderBrush="#8F8F8F">
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -170,20 +215,44 @@
                             </Grid>
 
                         </Border>
-                        <Label Height="40" Width="350"
+
+                        <Grid Margin="30 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                Height="40" Width="350"
                                Content="Telefon nomer"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="phone_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 0 0">
+
+                            </Label>
+                        </Grid>
+
+
                         <Border Height="55" Width="350"
                                 CornerRadius="28"
+                                x:Name="phone_br"
+                                MouseEnter="phone_Border_MouseEnter"
+                                MouseLeave="phone_br_MouseLeave"
                                 Background="{DynamicResource FifthBackground}"
                                 BorderThickness="1"
-                                BorderBrush="{DynamicResource SelectedBorderColor}">
+                                BorderBrush="#8F8F8F">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Path Grid.Column="0"
@@ -191,8 +260,13 @@
                                       Stretch="Uniform"
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
-
-                                <TextBox x:Name="txtPhoneNumber" Grid.Column="1"
+                                <Label Grid.Column="1"
+                                        Content="+998"
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontFamily="arial"
+                                       Foreground="{DynamicResource FourthTextColor}"/>
+                                <TextBox x:Name="txtPhoneNumber" Grid.Column="2"
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
@@ -208,30 +282,66 @@
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
                         <Border Height="55" Width="350"
+                                x:Name="paswr_br"
                                 CornerRadius="28"
+                                MouseEnter="paswr_br_MouseEnter"
+                                MouseLeave="paswr_br_MouseLeave"
                                 Background="{DynamicResource FifthBackground}"                                
                                 BorderThickness="1"
-                                BorderBrush="{DynamicResource SelectedBorderColor}">
+                                BorderBrush="#8F8F8F">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="55"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Path Grid.Column="0"
+
+                                <Border Grid.Column="0"
+                                    x:Name="loc_br"
+                                    MouseDown="loc_br_MouseDown">
+                                    <Path Grid.Column="0"
+                                      x:Name="loc_icon"
+                                      Visibility="Visible"
                                       Data="{DynamicResource password}"
                                       Stretch="Uniform"
                                       Fill="{DynamicResource FourthBackground}"
                                       Margin="16"/>
+                                </Border>
+
 
                                 <TextBox x:Name="txtPassword" Grid.Column="1"
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
+                                         
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                         </Border>
+
+                        <Grid Height="10"
+                              Width="350">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" 
+                                    Margin="2" 
+                                    Background="{DynamicResource Nopassword}"/>
+                            <Border Grid.Column="1" 
+                                    Margin="2"
+                                    Background="{DynamicResource slowpassword}"/>
+                            <Border Grid.Column="2" 
+                                    Margin="2"
+                                    Background="{DynamicResource Midpassword}"/>
+                            <Border Grid.Column="3" 
+                                    Margin="2"
+                                    Background="{DynamicResource Strongpassword}"/>
+                        </Grid>
+                        
                         <TextBlock Height="40" Width="350"
                                    Text="Parolda katta va kichik harflar,raqamlar va belgilardan foydalaning."
                                    Margin="0 10 0 0"    
@@ -242,11 +352,13 @@
                         <Border>
                             <Button x:Name="btnRegister"
                                     Click="btnRegister_Click"
+                                    
                                     Height="60"
                                     Margin="0 10 0 0"
                                     Content="Ro'yhatdan o'tish"
                                     Style="{DynamicResource SignSuccessButton}">
                             </Button>
+
                         </Border>
                     </StackPanel>
                 </Border>
