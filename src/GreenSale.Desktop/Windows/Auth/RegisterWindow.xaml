@@ -149,6 +149,7 @@
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
+                                         MaxLength="25"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
@@ -209,6 +210,7 @@
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
+                                         MaxLength="25"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
@@ -268,19 +270,41 @@
                                        Foreground="{DynamicResource FourthTextColor}"/>
                                 <TextBox x:Name="txtPhoneNumber" Grid.Column="2"
                                          Margin="8"
+                                         PreviewTextInput="txtPhoneNumber_PreviewTextInput"
                                          VerticalAlignment="Center"
                                          FontSize="18"
+                                         MaxLength="9"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
                             </Grid>
                         </Border>
-                        <Label Height="40" Width="350"
+
+                        <Grid Margin="30 0 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                                Height="40" Width="350"
                                Content="Parol"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                FontFamily="send-series"
                                Foreground="{DynamicResource FifthTextColor}"/>
+                            <Label Grid.Column="1"
+                                   x:Name="password_lv_rgs"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                   Margin="0 10 0 0">
+
+                            </Label>
+                        </Grid>
+
+                        
                         <Border Height="55" Width="350"
                                 x:Name="paswr_br"
                                 CornerRadius="28"
@@ -308,11 +332,11 @@
                                 </Border>
 
 
-                                <TextBox x:Name="txtPassword" Grid.Column="1"
+                                <PasswordBox x:Name="txtPassword" Grid.Column="1"
                                          Margin="8"
                                          VerticalAlignment="Center"
                                          FontSize="18"
-                                         
+                                         MaxLength="25"
                                          FontFamily="Arial"
                                          BorderThickness="0"
                                          Background="{DynamicResource FifthBackground}"/>
@@ -320,6 +344,7 @@
                         </Border>
 
                         <Grid Height="10"
+                              Visibility="Hidden"
                               Width="350">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>

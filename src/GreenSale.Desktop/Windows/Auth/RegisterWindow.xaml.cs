@@ -3,7 +3,9 @@ using GreenSale.Dtos.Dtos.Auth;
 using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Services.Auth;
 using System;
+using System.Linq;
 using System.Net.NetworkInformation;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -34,7 +36,7 @@ namespace GreenSale.Desktop.Windows
         Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
+                parentWindow: Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive),
                 corner: Corner.TopRight,
                 offsetX: 10,
                 offsetY: 10);
@@ -109,7 +111,7 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 ism_lv_rgs.Visibility = Visibility.Visible;
-                //  notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
+                notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
             }
             else if (txtFirstName.Text.Length < 3)
             {
@@ -126,7 +128,7 @@ namespace GreenSale.Desktop.Windows
                     ism_lv_rgs.Visibility = Visibility.Visible;
                     name_regs.Effect = dropShadowEffect;
                 }
-                //notifier.ShowInformation("Ism uzunligi 3 dan katta bo'lishi kerek!");
+                notifier.ShowInformation("Ism uzunligi 3 dan katta bo'lishi kerek!");
             }
             else
             {
@@ -153,7 +155,7 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 sure_lv_rgs.Visibility = Visibility.Visible;
-                //notifier.ShowInformation("Familya bo'sh bo'lmasligi kerek!");
+                notifier.ShowInformation("Familya bo'sh bo'lmasligi kerek!");
             }
             else if (txtLastName.Text.Length < 3)
             {
@@ -170,7 +172,7 @@ namespace GreenSale.Desktop.Windows
                     sure_lv_rgs.Visibility = Visibility.Visible;
                     sure_br.Effect = dropShadowEffect;
                 }
-                //notifier.ShowInformation("Familya uzunligi 3 dan katta bo'lishi kerek!");
+                notifier.ShowInformation("Familya uzunligi 3 dan katta bo'lishi kerek!");
             }
             else
             {
@@ -197,7 +199,7 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 phone_lv_rgs.Visibility = Visibility.Visible;
-                //notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
             }
             else if (txtPhoneNumber.Text.Length < 3)
             {
@@ -221,6 +223,50 @@ namespace GreenSale.Desktop.Windows
                 phone_lv_rgs.Visibility = Visibility.Collapsed;
             }
 
+            // parol
+
+            if (txtPassword.Password.Length == 0)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    paswr_br.Effect = dropShadowEffect;
+                }
+                /*  //string myColor = "Red";
+                  Color myColor = Colors.Red;
+                  string myColorString = myColor.ToString();*/
+                password_lv_rgs.Visibility = Visibility.Visible;
+                notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+            }
+            else if (txtPassword.Password.Length < 3)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    paswr_br.Visibility = Visibility.Visible;
+                    paswr_br.Effect = dropShadowEffect;
+                }
+                notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+            }
+            else
+            {
+                paswr_br.Visibility = Visibility.Collapsed;
+            }
+
             if (IsInternetAvailable())
             {
                 UserRegisterDto dto = new UserRegisterDto()
@@ -228,7 +274,7 @@ namespace GreenSale.Desktop.Windows
                     FirstName = txtFirstName.Text.ToString(),
                     LastName = txtLastName.Text.ToString(),
                     PhoneNumber = "+998" + txtPhoneNumber.Text.ToString(),
-                    Password = txtPassword.Text.ToString()
+                    Password = txtPassword.Password.ToString()
                 };
 
                 var res = await _service.RegisterAsync(dto);
@@ -245,12 +291,12 @@ namespace GreenSale.Desktop.Windows
                 }
                 else
                 {
-                    //notifier.ShowInformation("Bu nomerdan avval ro'yxatdan o'tgan!");
+                    notifier.ShowInformation("Bu nomerdan avval ro'yxatdan o'tgan!");
                 }
             }
             else if (IsInternetAvailable())
             {
-                //notifier.ShowError("Internetga ulanmagansiz!");
+                notifier.ShowError("Internetga ulanmagansiz!");
             }
 
         }
@@ -445,6 +491,12 @@ namespace GreenSale.Desktop.Windows
             {
                 loc_icon.Data = resource as Geometry;
             }
+        }
+
+        private void txtPhoneNumber_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

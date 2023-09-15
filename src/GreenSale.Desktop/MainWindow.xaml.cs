@@ -39,7 +39,7 @@ namespace GreenSale.Desktop
         Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
+                parentWindow: Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive),
                 corner: Corner.BottomRight,
                 offsetX: 10,
                 offsetY: 10);
