@@ -49,6 +49,24 @@ namespace GreenSale.Desktop.Companents.Products
             ID = post.Id;
         }
 
+
+        public void SetData(SellerPostViewModelSearch post)
+        {
+            string image = "http://128.199.140.234:3030/" + post.MainImage;
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+
+            SellePostImage.ImageSource = new BitmapImage(imageUri);
+            txtbRegion.Text = post.Region;
+            txtbDescription.Text = post.Description;
+            txtbPrice.Text = post.Price.ToString();
+            txtbUpdate.Text = post.UpdatedAt.ToString();
+            txtTitle.Text = post.Title;
+            txtbCapacity.Text = post.Capacity.ToString();
+
+            txtbCapacityMeasure.Text = post.CapacityMeasure.ToString();
+            ID = post.Id;
+        }
+
         private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             sellerId = ID;

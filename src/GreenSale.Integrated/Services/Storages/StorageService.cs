@@ -2,6 +2,7 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
 
@@ -90,6 +91,27 @@ namespace GreenSale.Integrated.Services.Storages
             return posts;
         }
 
+        public async Task<StorageSearchViewModel> SearchAsync(string info)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/search/info?search={info}");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+
+                if (message.StatusCode.ToString() != "NotFound")
+                {
+                    var respons = await message.Content.ReadAsStringAsync();
+                    StorageSearchViewModel StoragePost = JsonConvert.DeserializeObject<StorageSearchViewModel>(respons)!;
+                    return StoragePost;
+                }
+                return new StorageSearchViewModel { };
+            }
+            catch
+            {
+                return new StorageSearchViewModel { };
+            }
+        }
 
         public async Task<bool> UpdateAsync(long storageId, StorageUpdateDto dto)
         {

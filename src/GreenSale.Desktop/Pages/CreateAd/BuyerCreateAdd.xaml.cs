@@ -62,5 +62,15 @@ namespace GreenSale.Desktop.Pages.CreateAd
                 wrpCourses.Children.Add(control);
             }
         }
+
+        private void By_Pst_TextBoxSearch_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void By_Pst_TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

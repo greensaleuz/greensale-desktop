@@ -52,6 +52,21 @@ namespace GreenSale.Desktop.Companents.Products
             ID = post.Id;
         }
 
+        public void SetData(StorageViewModel post)
+        {
+            string image = "http://128.199.140.234:3030/" + post.ImagePath;
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+
+            StorageImage.ImageSource = new BitmapImage(imageUri);
+            txtbRegion.Text = post.Region;
+            txtbDescription.Text = post.Description;
+            txtbUpdate.Text = post.UpdatedAt.ToString();
+            txtInfo.Text = post.Info;
+            txtbUser.Text = post.FullName.Split()[0];
+            txtbPhoneNumber.Text = post.PhoneNumber;
+            ID = post.Id;
+        }
+
         private async void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             storageId = ID;

@@ -55,6 +55,10 @@
                                      Style="{DynamicResource searchTextBox}"
                                      Grid.Column="0"
                                      Width="352"
+                                     MaxLength="30"
+                                     VerticalAlignment="Center"
+                                     PreviewKeyDown="By_Pst_TextBoxSearch_PreviewKeyDown"
+                                     TextChanged="By_Pst_TextBoxSearch_TextChanged"
                                      Height="40"
                                      Margin="15 5 0 5">
 

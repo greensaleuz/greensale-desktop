@@ -48,5 +48,26 @@ namespace GreenSale.Desktop.Pages.Storages
                 wrpStorage.Children.Add(control);
             }
         }
+
+        private async void By_Pst_TextBoxSearch_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && TextBoxSearch.Text.Length > 0)
+            {
+                var buyerpost = await _service.SearchAsync(TextBoxSearch.Text.ToString());
+                wrpStorage.Children.Clear();
+                foreach (var post in buyerpost.item2)
+                {
+                    StorageProductViewUserControl buyerProductViewUserControl = new StorageProductViewUserControl();
+                    buyerProductViewUserControl.SetData(post);
+                    wrpStorage.Children.Add(buyerProductViewUserControl);
+                }
+            }
+        }
+
+        private  async void By_Pst_TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBoxSearch.Text.Length == 0)
+                await RefreshAsync();
+        }
     }
 }
