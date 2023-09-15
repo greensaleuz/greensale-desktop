@@ -78,9 +78,9 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
             if (message.StatusCode.ToString() != "NotFound")
             {
-            string response = await message.Content.ReadAsStringAsync();
-            List<BuyerPost> posts = JsonConvert.DeserializeObject<List<BuyerPost>>(response);
-            return posts;
+                string response = await message.Content.ReadAsStringAsync();
+                List<BuyerPost> posts = JsonConvert.DeserializeObject<List<BuyerPost>>(response)!;
+                return posts;
                 
             }
             return new List<BuyerPost>();
@@ -95,6 +95,28 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response);
 
             return posts;
+        }
+
+        public async Task<BuyerPostSearch> SearchAsync(string title)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/search/title?search={title}");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+
+                if (message.StatusCode.ToString() != "NotFound")
+                {
+                    var respons = await message.Content.ReadAsStringAsync();
+                    BuyerPostSearch buyerPost = JsonConvert.DeserializeObject<BuyerPostSearch> (respons)!;
+                    return buyerPost;
+                }
+                return new BuyerPostSearch { };
+            }
+            catch
+            {
+                return new BuyerPostSearch { };
+            }
         }
 
         public async Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto)

@@ -46,6 +46,23 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
         }
+
+        public void SetData(BuyerPosrtSearchViewModel post)
+        {
+            string image = "http://128.199.140.234:3030/" + post.MainImage;
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+
+            BuyerPostImage.ImageSource = new BitmapImage(imageUri);
+            txtbRegion.Text = post.Region;
+            txtbDescription.Text = post.Description;
+            txtbPrice.Text = post.Price.ToString();
+            txtbUpdate.Text = post.UpdatedAt.ToString();
+            txtTitle.Text = post.Title;
+            txtbCapacity.Text = post.Capacity.ToString();
+            txtbCapacityMeasure.Text = post.CapacityMeasure.ToString();
+            ID = post.Id;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
 

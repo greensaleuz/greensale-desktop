@@ -257,14 +257,14 @@ namespace GreenSale.Desktop.Windows
                     dropShadowEffect.Color = Colors.Red;
 
                     // Border ga effektni qo'shish
-                    paswr_br.Visibility = Visibility.Visible;
+                    password_lv_rgs.Visibility = Visibility.Visible;
                     paswr_br.Effect = dropShadowEffect;
                 }
                 notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
             }
             else
             {
-                paswr_br.Visibility = Visibility.Collapsed;
+                password_lv_rgs.Visibility = Visibility.Collapsed;
             }
 
             if (IsInternetAvailable())

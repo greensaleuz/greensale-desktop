@@ -51,9 +51,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="43"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="TextBoxSearch" 
+                            <TextBox x:Name="By_Pst_TextBoxSearch" 
                                      Style="{DynamicResource searchTextBox}"
                                      Grid.Column="0"
+                                     MaxLength="30"
+                                     VerticalAlignment="Center"
+                                     PreviewKeyDown="By_Pst_TextBoxSearch_PreviewKeyDown"
+                                     TextChanged="By_Pst_TextBoxSearch_TextChanged"
                                      Width="352"
                                      Height="40"
                                      Margin="15 5 0 5">

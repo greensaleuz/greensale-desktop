@@ -2,6 +2,7 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using Newtonsoft.Json;
 
@@ -116,6 +117,28 @@ namespace GreenSale.Integrated.Services.SellerPosts
                 return true;
             }
             return false;
+        }
+
+        public async Task<SellerPostSearch> SearchAsync(string title)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/search/title?search={title}");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+
+                if (message.StatusCode.ToString() != "NotFound")
+                {
+                    var respons = await message.Content.ReadAsStringAsync();
+                    SellerPostSearch SellerPost = JsonConvert.DeserializeObject<SellerPostSearch>(respons)!;
+                    return SellerPost;
+                }
+                return new SellerPostSearch { };
+            }
+            catch
+            {
+                return new SellerPostSearch { };
+            }
         }
 
         public async Task<bool> UpdateAsync(long postId, SellerPostUpdateDto dto)

@@ -19,5 +19,6 @@ namespace GreenSale.Integrated.Interfaces.BuyerPosts
         public Task<bool> CreateAsync(BuyerPostCreateDto dto);
         public Task<bool> UpdateAsync(long postId, BuyerPostUpdateDto dto);
         public Task<bool> UpdateImageAsync(long imageId, string dto);
+        public Task<BuyerPostSearch> SearchAsync(string title);
     }
 }

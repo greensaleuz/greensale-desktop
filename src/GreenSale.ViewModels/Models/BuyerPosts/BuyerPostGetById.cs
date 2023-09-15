@@ -22,7 +22,7 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
         public BuyerPostEnums Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public List<BuyerPostImage> BuyerPostsImages { get; set; }
+        public List<BuyerPostImage> BuyerPostsImages { get; set; } = new List<BuyerPostImage>();
         public string MainImage { get; set; } = string.Empty;
     }
 }
