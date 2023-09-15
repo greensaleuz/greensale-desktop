@@ -2,11 +2,15 @@
 using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Services.Auth;
 using System;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
+using static GreenSale.Desktop.Windows.Auth.BlurWindow.BlurEffect;
 
 namespace GreenSale.Desktop.Windows.Auth
 {
@@ -57,6 +61,30 @@ namespace GreenSale.Desktop.Windows.Auth
             _timer.Start();
         }
 
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal void EnableBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
+        }
+
         Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
@@ -73,14 +101,20 @@ namespace GreenSale.Desktop.Windows.Auth
         });
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.Show();
-            this.Close();
+            var chek = LoginWindow.CheckEnter;
+            if (chek == true)
+            {
+                RegisterWindow login = new RegisterWindow();
+                login.Show();
+                this.Close();
+            }
+            else if (chek == false)
+            {
+                ForgotPasswordWindow forgotPasswordWindow = new ForgotPasswordWindow();
+                forgotPasswordWindow.Show();
+                this.Close();
+            }
+            //Application.Current.Shutdown();
         }
 
         private void txtCode_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -108,7 +142,11 @@ namespace GreenSale.Desktop.Windows.Auth
             if (txtCode5.Text.Length > 0)
             {
                 sendCode += txtCode5.Text.ToString();
-                txtCode4.Focus(); 
+                
+            }
+            else
+            {
+                txtCode4.Focus();
             }
         }
 
@@ -182,6 +220,38 @@ namespace GreenSale.Desktop.Windows.Auth
         private void loaded(object sender, RoutedEventArgs e)
         {
             txtPhoneNum.Content = RegisterWindow.phoneNum;
+            EnableBlur();
+        }
+
+        private void txtCode1_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void txtCode2_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+        }
+
+        private void txtCode3_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void txtCode4_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void txtCode5_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

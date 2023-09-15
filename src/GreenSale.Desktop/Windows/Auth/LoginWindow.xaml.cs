@@ -35,7 +35,7 @@ namespace GreenSale.Desktop.Windows
         Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(
-                parentWindow: Application.Current.MainWindow,
+                parentWindow: Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive),
                 corner: Corner.TopRight,
                 offsetX: 20 ,
                 offsetY: 20);
@@ -75,9 +75,6 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            /*WindowLoader windowLoader = new WindowLoader();
-            windowLoader.Show();
-            this.Close();*/
             bool succses = true;
             if (txtPhoneNumber.Text.Length < 9)
             {
@@ -116,7 +113,6 @@ namespace GreenSale.Desktop.Windows
 
             if (IsInternetAvailable())
             {
-                //MessageBox.Show("Internetga ulanish mavjud.", "Xabar", MessageBoxButton.OK, MessageBoxImage.Information);
                 if (succses)
                 {
                     UserLoginDto dto = new UserLoginDto()
@@ -132,10 +128,8 @@ namespace GreenSale.Desktop.Windows
                         IdentitySingelton.GetInstance().Token = res.Token;
                         MainWindow window = new MainWindow();
                         window.Show();
-                        /* * */
                         notifier.Dispose();
-                        //((MainWindow)Application.Current.MainWindow).suscs = true;
-                        //((MainWindow)System.Windows.Application.Current.MainWindow).Succses();
+                        
                         this.Close();
                     }
                     else
@@ -203,10 +197,6 @@ namespace GreenSale.Desktop.Windows
         {
             Border_skns.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#209240"));
             Border border = sender as Border;
-            /*if (border != null)
-            {
-                border.BorderThickness = new Thickness(2);
-            }*/
 
 
             if (border != null)

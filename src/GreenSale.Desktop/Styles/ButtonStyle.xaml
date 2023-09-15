@@ -560,7 +560,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="B" CornerRadius="20"
                             BorderThickness="1"
-                            BorderBrush="{DynamicResource SecondaryBorderColor}">
+                            BorderBrush="ForestGreen">
                         <Border.Background>
                             <LinearGradientBrush>
                                 <GradientStop Color="#219241"/>
@@ -568,6 +568,7 @@
                             </LinearGradientBrush>
                         </Border.Background>
                         <Label FontSize="24"
+                               x:Name="sendcode_lb"
                                Margin="10 0"
                                FontFamily="send-series"
                                FontWeight="SemiBold"
@@ -580,12 +581,15 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="B" Property="Background" Value="#24A649"/>
+                            <Setter TargetName="sendcode_lb" Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#209240"/>
+                            <Setter TargetName="B" Property="Background" Value="White"/>
+                            <Setter TargetName="sendcode_lb" Property="Foreground" Value="#209240"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="B" Property="Background" Value="#1B7C37"/>
+                            <Setter TargetName="sendcode_lb" Property="Foreground" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
