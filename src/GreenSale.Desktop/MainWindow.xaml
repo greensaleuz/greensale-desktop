@@ -142,7 +142,9 @@
                             <TextBlock Text="Biz bilan bog'lanish" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-                    <RadioButton Style="{DynamicResource menuButton}">
+                    <RadioButton x:Name="setting"
+                                 Click="setting_Click"
+                        Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="StarSettings" Style="{DynamicResource menuButtonIcon}"/>
                             <TextBlock Text="Sozlamalar" Style="{DynamicResource menuButtonText}"/>

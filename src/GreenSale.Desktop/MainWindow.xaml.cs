@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Pages;
+using GreenSale.Desktop.Pages.Accunt;
 using GreenSale.Desktop.Pages.Buyers;
 using GreenSale.Desktop.Pages.CreateAd;
 using GreenSale.Desktop.Pages.Dashbord;
@@ -151,6 +152,12 @@ namespace GreenSale.Desktop
         public void Succses()
         {
             notifier.ShowSuccess("Mufaqiyatli kirdingiz.");
+        }
+
+        private void setting_Click(object sender, RoutedEventArgs e)
+        {
+            UserAccaunt userAccaunt = new UserAccaunt();
+            FrameFilter.Content = userAccaunt;
         }
     }
 }
