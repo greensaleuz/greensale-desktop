@@ -70,7 +70,7 @@ namespace GreenSale.Desktop.Companents.Products
             buyerId = ID;
             BuyerProductFullViewWindow buyer = new BuyerProductFullViewWindow();
             await Refresh();
-            buyer.Show();
+            buyer.ShowDialog();
         }
 
        

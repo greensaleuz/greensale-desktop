@@ -42,16 +42,19 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="1"
                                 CornerRadius="10"
                                 Margin="10"
-                                Background="{DynamicResource SixthBackground}">
+                                Background="Transparent">
                             <StackPanel Grid.Row="1" 
                                     Orientation="Horizontal"
                                     >
-                            <Border x:Name="btnPicture"
+                                <WrapPanel x:Name="wrpImgSeller">
+
+                                </WrapPanel>
+                            <!--<Border x:Name="btnPicture"
                                     CornerRadius="10"
                                         Height="70"
                                         Width="70"
@@ -117,7 +120,7 @@
                                 <Border.Background>
                                     <ImageBrush  x:Name="Img4" Stretch="UniformToFill"/>
                                 </Border.Background>
-                            </Border>
+                            </Border>-->
                         </StackPanel>
                         </Border>
                         <Border Height="360"
@@ -151,19 +154,30 @@
                     Background="{DynamicResource SecondaryBackground}"
                     CornerRadius="0 0 10 0">
                 <StackPanel Margin="10 10 0 0">
-                    <Border BorderThickness=" 0 0 0 1"
-                            BorderBrush="{DynamicResource FifthBackground}"
-                            Margin="5 0 30 10"
-                            >
-                        <TextBox x:Name="txtTitle"
+                    <Border CornerRadius="10"
+                            Width="360"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Left"
+                            Background="{DynamicResource SixthBackground}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nomi:"
+                                   FontSize="20"
+                                   Margin="10 1 5 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                            <TextBox x:Name="txtTitle"
                                    Text="Sifatli yetishtirilgan olma"
                                    FontSize="24"                                             VerticalAlignment="Center"
-                                    BorderThickness="0"
+                                  BorderThickness="0"
+                                     Background="Transparent"
+                                     BorderBrush="Transparent"
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
                                    FontWeight="SemiBold"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
+                        </StackPanel>
+                        
                     </Border>
                     <Border CornerRadius="10"
                             Width="360"

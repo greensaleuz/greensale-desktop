@@ -50,6 +50,7 @@ namespace GreenSale.Desktop.Pages.CreateAd
 
         public async Task RefreshAsync()
         {
+            wrpSellerPost.Children.Clear();
             var user = await _serviceUser.GetAsync();
             long id = user.Id;
             var sellerPost = await _service.GetAllUserId(id);
