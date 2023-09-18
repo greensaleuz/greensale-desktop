@@ -180,6 +180,7 @@
                                    />
                             <ComboBox x:Name="txbCatecory"
                                       Width="250"
+                                      IsEnabled="False"
                                      Background="Transparent"
                                      BorderBrush="Transparent"
                                      BorderThickness="0"
