@@ -1,9 +1,12 @@
-﻿using GreenSale.Desktop.Companents.Products;
+﻿using GreenSale.Desktop.Companents.Images;
+using GreenSale.Desktop.Companents.Products;
 using GreenSale.Dtos.Dtos.SellerPost;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
 using Microsoft.Win32;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -16,7 +19,9 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class SellerProductFullViewWindow : Window
     {
         private ISellerPost _service;
-
+        public long MainImg_Id { get; set; }
+        public bool updated = false;
+        public long updated_Id { get; set; }
         public SellerProductFullViewWindow()
         {
             InitializeComponent();
@@ -28,7 +33,7 @@ namespace GreenSale.Desktop.Windows.Products
             this.Close();
         }
 
-        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
+/*        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ImgMain.ImageSource = Img.ImageSource;
         }
@@ -56,10 +61,27 @@ namespace GreenSale.Desktop.Windows.Products
             ImgMain.ImageSource = Img.ImageSource;
 
         }
-
+*/
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        public Task RefreshAsync(long id, string ImagePath)
+        {
+            string image = "http://128.199.140.234:3030/" + ImagePath;
+            if (updated == false)
+            {
+                MainImg_Id = id;
+            }
+            else if (updated == true)
+            {
+                MainImg_Id = updated_Id;
+            }
+
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+            ImgMain.ImageSource = new BitmapImage(imageUri);
+            return Task.CompletedTask;
         }
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -78,12 +100,21 @@ namespace GreenSale.Desktop.Windows.Products
             long id = SellerProductPersonalViewUserControl.sellerId;
             var result = await _service.UpdateAsync(id, dto);
 
+            if (result)
+            {
+                MessageBox.Show("Malumotlar muvafaqqiyatli o'zgartirildi");
+            }
+            else MessageBox.Show("Qayerdadur xatolik yuz berdi, qayta urunib koring");
+
         }
         // private Dictionary<long, string> data = new Dictionary<long, string>();
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+
+
+        public async Task RefreshWindowSeller()
         {
             long id = SellerProductPersonalViewUserControl.sellerId;
             var sellerPost = await _service.GetByIdAsync(id);
+            var sellerAllImg = sellerPost.PostImages.OrderBy(item => item.Id).ToList();
 
             txtCapacity.Text = sellerPost.Capacity.ToString();
             txtCapacityMeasure.Text = sellerPost.CapacityMeasure;
@@ -96,18 +127,24 @@ namespace GreenSale.Desktop.Windows.Products
 
 
             int i = 0;
-            foreach (var item in sellerPost.PostImages)
+            foreach (var item in sellerAllImg)
             {
                 // data.Add(item.Id, item.ImagePath);
+
+                SellerUpdateImageComponent sellerUpdate = new SellerUpdateImageComponent();
+                sellerUpdate.Refresh = RefreshAsync;
+                sellerUpdate.SetData(item);
+                wrpImgSeller.Children.Add(sellerUpdate);
+
                 if (i == 0)
                 {
                     string image = "http://128.199.140.234:3030/" + item.ImagePath;
-
+                    MainImg_Id = item.Id;
                     Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img.ImageSource = new BitmapImage(imageUri);
                     ImgMain.ImageSource = new BitmapImage(imageUri);
+                    i++;
                 }
-                else if (i == 1)
+                /*else if (i == 1)
                 {
                     string image = "http://128.199.140.234:3030/" + item.ImagePath;
 
@@ -134,23 +171,41 @@ namespace GreenSale.Desktop.Windows.Products
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);
-                }
-                i++;
+                }*/
+                
             }
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await RefreshWindowSeller();
         }
 
         private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            wrpImgSeller.Children.Clear();
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
             {
                 string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+               // Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
                 ImgIcon.Visibility = Visibility.Hidden;
                 ImgUpdateMain.BorderThickness = new Thickness(0);
+
+                long id = MainImg_Id;
+                var result = await _service.ImageUpdateAsync(id, imgPath);
+
+                if (result)
+                {
+                    await RefreshWindowSeller();
+
+                    updated_Id = id;
+                }
             }
+
+
         }
 
         private void ImgUpdateMain_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)

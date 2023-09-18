@@ -29,6 +29,6 @@ namespace GreenSale.ViewModels.Models.SellerPosts
         public DateTime UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
         public SellerPostEnum Status { get; set; }
-        public List<SellerPostImage> PostImages { get; set; }
+        public List<SellerPostImage> PostImages { get; set; } = new List<SellerPostImage>();
     }
 }

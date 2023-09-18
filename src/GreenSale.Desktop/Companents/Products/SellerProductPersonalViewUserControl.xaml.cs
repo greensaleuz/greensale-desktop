@@ -67,8 +67,8 @@ namespace GreenSale.Desktop.Companents.Products
         {
             sellerId = ID;
             SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
-            seller.ShowDialog();
             await Refresh();
+            seller.ShowDialog();
         }
     }
 }

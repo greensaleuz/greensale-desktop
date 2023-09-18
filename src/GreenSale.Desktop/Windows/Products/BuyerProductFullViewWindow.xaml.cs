@@ -90,7 +90,7 @@ namespace GreenSale.Desktop.Windows.Products
         {
             long id = BuyerProductPersonalViewUserControl.buyerId;
             var buyerPost = await _service.GetByIdAsync(id);
-            var imglist = buyerPost.BuyerPostsImages.OrderBy(item => item.Id).ToList();
+            var buyerPostImgSDFv = buyerPost.BuyerPostsImages.OrderBy(item => item.Id).ToList();
              
             txtCapacity.Text = buyerPost.Capacity.ToString();
             txtCapacityMeasure.Text = buyerPost.CapacityMeasure;
@@ -104,7 +104,7 @@ namespace GreenSale.Desktop.Windows.Products
 
 
             int i = 0;
-            foreach (var item in imglist)
+            foreach (var item in buyerPostImgSDFv)
             {
                 BuyerUpdateImageComponent buyerUpdateImageComponent = new BuyerUpdateImageComponent();
                 buyerUpdateImageComponent.Refresh = RefreshAsync;
