@@ -43,13 +43,13 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="90"/>
+                            <RowDefinition Height="110"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="1"
                                 CornerRadius="10"
                                 Margin="10"
-                                Background="{DynamicResource SixthBackground}">
-                            <StackPanel Grid.Row="1" 
+                                Background="Transparent">
+                            <!--<StackPanel Grid.Row="1" 
                                     Orientation="Horizontal"
                                     >
                                 <Border x:Name="btnPicture"
@@ -119,7 +119,18 @@
                                         <ImageBrush  x:Name="Img4" Stretch="UniformToFill"/>
                                     </Border.Background>
                                 </Border>
+                            </StackPanel>-->
+                           
+                            <StackPanel Orientation="Horizontal">
+                                <WrapPanel x:Name="wrpImg">
+
+                                </WrapPanel>
                             </StackPanel>
+                            <!--<ScrollViewer
+                                HorizontalScrollBarVisibility="Visible"
+                                VerticalScrollBarVisibility="Disabled">
+                                
+                            </ScrollViewer>-->
                         </Border>
                         <Border Height="360"
                                 x:Name="ImgUpdateMain"
@@ -151,21 +162,34 @@
                     BorderThickness="0"
                     Background="{DynamicResource SecondaryBackground}"
                     CornerRadius="0 0 10 0">
-                <StackPanel Margin="10 10 0 0">
+                <StackPanel Margin="5 0 0 0">
+                    
                     <Border BorderThickness=" 0 0 0 1"
+                            CornerRadius="10"
+                            Width="360"
+                            Height="45"
                             BorderBrush="{DynamicResource FifthBackground}"
-                            Margin="5 0 30 10"
+                            Background="{DynamicResource SixthBackground}"
+                            Margin="0 10 30 10"
                             >
-                        <TextBox x:Name="txtTitle" Text="Sifatli yetishtirilgan olma"
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Nomi:"
+                                   FontSize="20"
+                                   Margin="10 1 0 0"
+                                   Foreground="{DynamicResource FifthTextColor}"
+                                   />
+                            <TextBox x:Name="txtTitle" Text="Sifatli yetishtirilgan olma"
                                    FontSize="24"
                                    TextWrapping="Wrap"
                                    Margin="10 1 5 0"
                                    BorderThickness="0"
                                    FontWeight="SemiBold"
-                                 Background="Transparent"
-                                 BorderBrush="Transparent"
+                                   Background="Transparent"
+                                   BorderBrush="Transparent"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
+                        </StackPanel>
+                        
                     </Border>
                   
                     <Border CornerRadius="10"

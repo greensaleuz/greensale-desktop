@@ -1,14 +1,15 @@
-﻿using GreenSale.Desktop.Companents.Products;
+﻿using GreenSale.Desktop.Companents.Images;
+using GreenSale.Desktop.Companents.Products;
 using GreenSale.Dtos.Dtos.BuyerPost;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Path = System.IO.Path;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -18,7 +19,7 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class BuyerProductFullViewWindow : Window
     {
         public IBuyerPostService _service;
-
+        public long MainImg_Id { get; set; }
         public BuyerProductFullViewWindow()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace GreenSale.Desktop.Windows.Products
             this.Close();
         }
 
-        private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
+       /* private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ImgMain.ImageSource = Img.ImageSource;
 
@@ -58,18 +59,29 @@ namespace GreenSale.Desktop.Windows.Products
         {
             ImgMain.ImageSource = Img4.ImageSource;
 
-        }
+        }*/
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-      //  public static Dictionary<long, string> data = new Dictionary<long, string>();
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        //  public static Dictionary<long, string> data = new Dictionary<long, string>();
+        public Task RefreshAsync(long id, string ImagePath)
+        {
+            string image = "http://128.199.140.234:3030/" + ImagePath;
+
+            Uri imageUri = new Uri(image, UriKind.Absolute);
+            ImgMain.ImageSource = new BitmapImage(imageUri);
+            return Task.CompletedTask;
+        }
+
+
+        public async Task RefreshWindow()
         {
             long id = BuyerProductPersonalViewUserControl.buyerId;
             var buyerPost = await _service.GetByIdAsync(id);
-
+            var imglist = buyerPost.BuyerPostsImages.OrderBy(item => item.Id).ToList();
+             
             txtCapacity.Text = buyerPost.Capacity.ToString();
             txtCapacityMeasure.Text = buyerPost.CapacityMeasure;
             txtDescription.Text = buyerPost.Description;
@@ -82,19 +94,24 @@ namespace GreenSale.Desktop.Windows.Products
 
 
             int i = 0;
-            foreach (var item in buyerPost.BuyerPostsImages)
+            foreach (var item in imglist)
             {
+                BuyerUpdateImageComponent buyerUpdateImageComponent = new BuyerUpdateImageComponent();
+                buyerUpdateImageComponent.Refresh = RefreshAsync;
+                buyerUpdateImageComponent.SetData(item);
+                wrpImg.Children.Add(buyerUpdateImageComponent);
 
-              //  data.Add(item.Id, item.ImagePath);
+
+                //  data.Add(item.Id, item.ImagePath);
                 if (i == 0)
                 {
                     string image = "http://128.199.140.234:3030/" + item.ImagePath;
-
+                    MainImg_Id = item.Id;
                     Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img.ImageSource = new BitmapImage(imageUri);
                     ImgMain.ImageSource = new BitmapImage(imageUri);
+                    i++;
                 }
-                else if (i == 1)
+                /*else if (i == 1)
                 {
                     string image = "http://128.199.140.234:3030/" + item.ImagePath;
 
@@ -122,14 +139,18 @@ namespace GreenSale.Desktop.Windows.Products
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);
                 }
-                i++;
+                i++;*/
             }
+        }
 
-
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await RefreshWindow();
         }
 
         private async void ImgUpdateMain_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            wrpImg.Children.Clear();
             //  string path = Path.GetFileName(ImgMain.ImageSource.ToString());
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -137,24 +158,18 @@ namespace GreenSale.Desktop.Windows.Products
             if (openFileDialog.ShowDialog() == true)
             {
                 string imgPath = openFileDialog.FileName;
-                Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+                //Img.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
                 ImgIcon.Visibility = Visibility.Hidden;
                 ImgUpdateMain.BorderThickness = new Thickness(0);
 
-                //long id = item.Key;
-                //var result = await _service.UpdateImageAsync(id, imgPath);
+                long id = MainImg_Id;
+                var result = await _service.UpdateImageAsync(id, imgPath);
+
+                if (result)
+                {
+                    await RefreshWindow();
+                }
             }
-
-
-            //foreach (var item in data)
-            //{
-            //    string str = Path.GetFileName(item.Value);
-            //    if (str == path)
-            //    {
-                   
-
-            //    }
-            //}
         }
 
 
