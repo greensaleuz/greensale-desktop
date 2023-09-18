@@ -17,16 +17,24 @@ namespace GreenSale.Integrated.Services.Users
     {
         public async Task<UserModel> GetAsync()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(AuthAPI.BASE_URL + "/api/account");
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(AuthAPI.BASE_URL + "/api/account");
 
-            var token = IdentitySingelton.GetInstance().Token;
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                var token = IdentitySingelton.GetInstance().Token;
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-            var result = client.GetAsync(client.BaseAddress);
-            string response = await result.Result.Content.ReadAsStringAsync();
-            var user = JsonConvert.DeserializeObject<UserModel>(response);
-            return user!;
+                var result = client.GetAsync(client.BaseAddress);
+                string response = await result.Result.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<UserModel>(response);
+                return user!;
+            }
+            catch
+            {
+                return new UserModel();
+            }
+            
         }
 
         public async Task<bool> UpdateAsync(UserDto dto)

@@ -20,6 +20,8 @@ namespace GreenSale.Desktop.Windows.Products
     {
         public IBuyerPostService _service;
         public long MainImg_Id { get; set; }
+        public bool updated = false;
+        public long updated_Id { get; set; }
         public BuyerProductFullViewWindow()
         {
             InitializeComponent();
@@ -69,7 +71,15 @@ namespace GreenSale.Desktop.Windows.Products
         public Task RefreshAsync(long id, string ImagePath)
         {
             string image = "http://128.199.140.234:3030/" + ImagePath;
-
+            if (updated == false)
+            {
+                MainImg_Id = id;
+            }
+            else if (updated == true)
+            {
+                MainImg_Id = updated_Id;
+            }
+            
             Uri imageUri = new Uri(image, UriKind.Absolute);
             ImgMain.ImageSource = new BitmapImage(imageUri);
             return Task.CompletedTask;
@@ -168,6 +178,8 @@ namespace GreenSale.Desktop.Windows.Products
                 if (result)
                 {
                     await RefreshWindow();
+
+                    updated_Id = id;
                 }
             }
         }
