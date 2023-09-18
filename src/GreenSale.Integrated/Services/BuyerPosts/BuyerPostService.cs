@@ -39,6 +39,9 @@ namespace GreenSale.Integrated.Services.BuyerPosts
 
             request.Content = content;
             var response = await client.SendAsync(request);
+
+            var resultContent = await response.Content.ReadAsStringAsync();
+
             if (response.IsSuccessStatusCode)
             {
                 var res = await response.Content.ReadAsStringAsync();
