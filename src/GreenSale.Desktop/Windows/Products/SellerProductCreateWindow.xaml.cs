@@ -1,13 +1,18 @@
 ﻿using GreenSale.Dtos.Dtos.BuyerPost;
 using GreenSale.Dtos.Dtos.SellerPost;
+using GreenSale.Integrated.Interfaces.Categories;
 using GreenSale.Integrated.Interfaces.SellerPosts;
+using GreenSale.Integrated.Services.Categories;
 using GreenSale.Integrated.Services.SellerPosts;
+using GreenSale.ViewModels.Models.Categories;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -19,11 +24,14 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class SellerProductCreateWindow : Window
     {
         private ISellerPost _service;
+        private ICategoryGetAll _serviceCategory;
 
+        List<CategoryViewModel> list = new List<CategoryViewModel>();
         public SellerProductCreateWindow()
         {
             InitializeComponent();
             this._service = new SellerPostService();
+            this._serviceCategory = new Category();
         }
 
 
@@ -216,7 +224,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.Title = txtTitle.Text;
             dto.Description = txtDescription.Text;
             dto.Type = txtType.Text;
-            dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
+            //dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
             dto.PhoneNumber = txtPhoneNumber.Text;
 
             dto.ImagePath = new List<string>();
@@ -236,9 +244,27 @@ namespace GreenSale.Desktop.Windows.Products
             if (Img5.ImageSource is not null)
                 dto.ImagePath.Add(Img5.ImageSource.ToString());
 
+            foreach (var item in list)
+            {
+                if (item.Name == cmbCategory.SelectedValue.ToString())
+                {
+                    dto.CategoryId = item.Id;
+                }
+            }
 
             var res = await _service.CreateAsync(dto);
             this.Close();
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var result = await _serviceCategory.GetAllAsync();
+
+            foreach (var item in result)
+            {
+                list.Add(item);
+                cmbCategory.Items.Add(item.Name);
+            }
         }
     }
 }

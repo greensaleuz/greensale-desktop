@@ -12,42 +12,49 @@ namespace GreenSale.Integrated.Services.BuyerPosts
     {
         public async Task<bool> CreateAsync(BuyerPostCreateDto dto)
         {
-            var token = IdentitySingelton.GetInstance().Token;
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + "/api/client/buyer/post");
-            request.Headers.Add("Authorization", $"Bearer {token}");
-
-            var content = new MultipartFormDataContent();
-            content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
-            content.Add(new StringContent(dto.Title), "Title");
-            content.Add(new StringContent(dto.Description), "Description");
-            content.Add(new StringContent(dto.Price.ToString()), "Price");
-            content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
-            content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
-            content.Add(new StringContent(dto.Type), "Type");
-            content.Add(new StringContent(dto.Region), "Region");
-            content.Add(new StringContent(dto.District), "District");
-            content.Add(new StringContent(dto.Address), "Address");
-            content.Add(new StringContent(dto.CategoryID.ToString()), "CategoryID");
-            //content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
-
-            foreach (var item in dto.ImagePath)
+            try
             {
-                content.Add(new StreamContent(File.OpenRead(item)), "ImagePath", item);
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + "/api/client/buyer/post");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+                content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+                content.Add(new StringContent(dto.Title), "Title");
+                content.Add(new StringContent(dto.Description), "Description");
+                content.Add(new StringContent(dto.Price.ToString()), "Price");
+                content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
+                content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
+                content.Add(new StringContent(dto.Type), "Type");
+                content.Add(new StringContent(dto.Region), "Region");
+                content.Add(new StringContent(dto.District), "District");
+                content.Add(new StringContent(dto.Address), "Address");
+                content.Add(new StringContent(dto.CategoryID.ToString()), "CategoryID");
+                //content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+
+                foreach (var item in dto.ImagePath)
+                {
+                    content.Add(new StreamContent(File.OpenRead(item)), "ImagePath", item);
+                }
+
+
+                request.Content = content;
+                var response = await client.SendAsync(request);
+
+                var resultContent = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                return false;
             }
-
-
-            request.Content = content;
-            var response = await client.SendAsync(request);
-
-            var resultContent = await response.Content.ReadAsStringAsync();
-
-            if (response.IsSuccessStatusCode)
+            catch
             {
-                var res = await response.Content.ReadAsStringAsync();
-                return true;
+                return false;
             }
-            return false;
         }
 
         public async Task<bool> DeleteAsync(long postId)

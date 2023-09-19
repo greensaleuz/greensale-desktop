@@ -1,6 +1,9 @@
 ﻿using GreenSale.Dtos.Dtos.BuyerPost;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
+using GreenSale.Integrated.Interfaces.Categories;
 using GreenSale.Integrated.Services.BuyerPosts;
+using GreenSale.Integrated.Services.Categories;
+using GreenSale.ViewModels.Models.Categories;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -25,10 +28,13 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class BuyerProductCreateWindow : Window
     {
         public IBuyerPostService _service;
+        public ICategoryGetAll _servicecategory;
+        List<CategoryViewModel> list = new List<CategoryViewModel>();
         public BuyerProductCreateWindow()
         {
             InitializeComponent();
             this._service = new BuyerPostService();
+            this._servicecategory = new Category();
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
@@ -223,7 +229,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.Title = txtTitle.Text;
             dto.Description = txtDescription.Text;
             dto.Type= txtType.Text;
-            dto.CategoryID = cmbCategory.SelectedIndex + 1;
+            //dto.CategoryID = cmbCategory.SelectedIndex;
             dto.PhoneNumber= txtPhoneNumber.Text;
 
             dto.ImagePath = new List<string>();
@@ -243,9 +249,28 @@ namespace GreenSale.Desktop.Windows.Products
             if(Img5.ImageSource is not null)
                 dto.ImagePath.Add(Img5.ImageSource.ToString());
 
+            foreach(var item in list)
+            {
+                if(item.Name == cmbCategory.SelectedValue.ToString())
+                {
+                    dto.CategoryID = item.Id;
+                }
+            }
 
             var res = await _service.CreateAsync(dto);
             this.Close();
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            var result = await _servicecategory.GetAllAsync();
+
+            foreach (var item in result)
+            {
+                list.Add(item);
+                cmbCategory.Items.Add(item.Name);
+            }
         }
     }
 }
