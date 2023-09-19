@@ -153,6 +153,8 @@ namespace GreenSale.Integrated.Services.Storages
 
                 var content = new MultipartFormDataContent();
                 content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+                content.Add(new StringContent(dto.StorageId.ToString()), "StorageId");
+
 
                 request.Content = content;
                 var response = await client.SendAsync(request);
