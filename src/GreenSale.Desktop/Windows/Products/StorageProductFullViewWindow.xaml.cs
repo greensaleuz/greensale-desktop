@@ -11,6 +11,11 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+using GreenSale.ViewModels.Models.Storages;
+using Microsoft.Identity.Client.Extensions.Msal;
+using MessageBox = System.Windows.MessageBox;
+using Application = System.Windows.Application;
+using System.Reflection;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -20,7 +25,7 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class StorageProductFullViewWindow : Window
     {
         private IStorageService _service;
-
+        public long storageId { get; set; }
         public Func<Task> Refresh { get; set; }
         public StorageProductFullViewWindow()
         {
@@ -36,6 +41,7 @@ namespace GreenSale.Desktop.Windows.Products
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             long id = StorageProductPersonalViewUserControl.storageId;
+            storageId = id;
             var storage = await _service.GetByIdAsync(id);
 
             txtbName.Text = storage.StorageName;
@@ -61,7 +67,8 @@ namespace GreenSale.Desktop.Windows.Products
         {
             try
             {
-                string saveDirectory = "D:\\path\\to\\save\\"; 
+                string saveDirectory = "C:\\Users\\Lenovo\\source\\repos\\greensale-desktop\\src\\GreenSale.Desktop\\Assets\\Dowloands\\Images\\";
+                //string currentAssemblyPath = Assembly.GetExecutingAssembly().Location;
                 string fileName = Path.GetFileName(url);
 
                 string localFilePath = Path.Combine(saveDirectory, fileName);
@@ -118,8 +125,9 @@ namespace GreenSale.Desktop.Windows.Products
                 btnPicture.BorderThickness = new Thickness(0);
             }
         }
-        private void btnPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void btnPicture_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            var CurrentImage = ImgStorage.ImageSource.ToString();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png";
             if (openFileDialog.ShowDialog() == true)
@@ -128,6 +136,23 @@ namespace GreenSale.Desktop.Windows.Products
                 ImgStorage.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
                 ImgIcon.Visibility = Visibility.Hidden;
                 btnPicture.BorderThickness = new Thickness(0);
+
+                StorageImageDto storageImageDto = new StorageImageDto()
+                {
+                    ImagePath = imgPath,
+                    StorageId = storageId
+                };
+
+                var result = await _service.UpdateImageStorageAsync(storageImageDto);
+
+                if (result)
+                {
+                    MessageBox.Show("Yangilandi");
+                }
+                else
+                {
+                    MessageBox.Show("yangilanmadi ");
+                }
             }
         }
     }
