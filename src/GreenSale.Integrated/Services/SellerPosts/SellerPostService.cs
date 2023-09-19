@@ -50,75 +50,111 @@ namespace GreenSale.Integrated.Services.SellerPosts
 
         public async Task<bool> DeleteAsync(long postId)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/seller/post/{postId}");
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/seller/post/{postId}");
 
-            var token = IdentitySingelton.GetInstance().Token;
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+                var token = IdentitySingelton.GetInstance().Token;
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-            var result = await client.DeleteAsync(client.BaseAddress);
-            string response = await result.Content.ReadAsStringAsync();
-            return response == "true";
+                var result = await client.DeleteAsync(client.BaseAddress);
+                string response = await result.Content.ReadAsStringAsync();
+                return response == "true";
+            }
+            catch
+            {
+                return false;
+            }
+            
         }
 
         public async Task<List<SellerPost>> GetAllAsync()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/seller/post");
-            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
-            string response = await message.Content.ReadAsStringAsync();
-            List<SellerPost> posts = JsonConvert.DeserializeObject<List<SellerPost>>(response);
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/seller/post");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+                string response = await message.Content.ReadAsStringAsync();
+                List<SellerPost> posts = JsonConvert.DeserializeObject<List<SellerPost>>(response)!;
 
-            return posts;
-
+                return posts;
+            }
+            catch
+            {
+                return new List<SellerPost>();
+            }
         }
 
         public async Task<List<SellerPost>> GetAllUserId(long userId)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/all/{userId}");
-            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
-
-            if (message.StatusCode.ToString() != "NotFound")
+            try
             {
-                string response = await message.Content.ReadAsStringAsync();
-                List<SellerPost> posts = JsonConvert.DeserializeObject<List<SellerPost>>(response);
-                return posts;
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/all/{userId}");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+
+                if (message.StatusCode.ToString() != "NotFound")
+                {
+                    string response = await message.Content.ReadAsStringAsync();
+                    List<SellerPost> posts = JsonConvert.DeserializeObject<List<SellerPost>>(response)!;
+                    return posts;
+                }
+
+                return new List<SellerPost>();
             }
-            return new List<SellerPost>();
+            catch
+            {
+                return new List<SellerPost>();
+            }
         }
 
 
         public async Task<SellerGetById> GetByIdAsync(long postId)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/{postId}");
-            HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
-            string response = await message.Content.ReadAsStringAsync();
-            SellerGetById posts = JsonConvert.DeserializeObject<SellerGetById>(response);
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/{postId}");
+                HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
+                string response = await message.Content.ReadAsStringAsync();
+                SellerGetById posts = JsonConvert.DeserializeObject<SellerGetById>(response)!;
 
-            return posts;
+                return posts;
+            }
+            catch
+            {
+                return new SellerGetById();
+            }
+            
         }
 
         public async Task<bool> ImageUpdateAsync(long imageId, string dto)
         {
-            
-            var token = IdentitySingelton.GetInstance().Token;
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/image/{imageId}");
-            request.Headers.Add("Authorization", $"Bearer {token}");
-
-            var content = new MultipartFormDataContent();
-            content.Add(new StreamContent(File.OpenRead(dto)), "ImagePath", dto);
-
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var res = await response.Content.ReadAsStringAsync();
-                return true;
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/image/{imageId}");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+                content.Add(new StreamContent(File.OpenRead(dto)), "ImagePath", dto);
+
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
         public async Task<SellerPostSearch> SearchAsync(string title)
@@ -145,31 +181,38 @@ namespace GreenSale.Integrated.Services.SellerPosts
 
         public async Task<bool> UpdateAsync(long postId, SellerPostUpdateDto dto)
         {
-            var token = IdentitySingelton.GetInstance().Token;
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/{postId}");
-            request.Headers.Add("Authorization", $"Bearer {token}");
-
-            var content = new MultipartFormDataContent();
-            content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
-            content.Add(new StringContent(dto.Title), "Title");
-            content.Add(new StringContent(dto.Description), "Description");
-            content.Add(new StringContent(dto.Price.ToString()), "Price");
-            content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
-            content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
-            content.Add(new StringContent(dto.Type), "Type");
-            content.Add(new StringContent(dto.Region), "Region");
-            content.Add(new StringContent(dto.District), "District");
-
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var res = await response.Content.ReadAsStringAsync();
-                return true;
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/{postId}");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+                content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+                content.Add(new StringContent(dto.Title), "Title");
+                content.Add(new StringContent(dto.Description), "Description");
+                content.Add(new StringContent(dto.Price.ToString()), "Price");
+                content.Add(new StringContent(dto.Capacity.ToString()), "Capacity");
+                content.Add(new StringContent(dto.CapacityMeasure.ToString()), "CapacityMeasure");
+                content.Add(new StringContent(dto.Type), "Type");
+                content.Add(new StringContent(dto.Region), "Region");
+                content.Add(new StringContent(dto.District), "District");
+
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                var res1 = await response.Content.ReadAsStringAsync();
+                return false;
             }
-            var res1 = await response.Content.ReadAsStringAsync();
-            return false;
+            catch
+            {
+                return false;
+            }
         }
     }
 }

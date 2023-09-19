@@ -24,4 +24,5 @@ public class SellerPostViewModelSearch
     public SellerPostEnum Status { get; set; }
     public List<SellerPostImage> PostImages { get; set; }
     public string MainImage { get; set; } = string.Empty;
+    public double AverageStars { get; set; }
 }

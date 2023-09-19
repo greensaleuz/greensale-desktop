@@ -35,7 +35,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(SellerPost post)
         {
-            string image ="http://128.199.140.234:3030/"+ post.mainImage;
+            string image ="http://139.59.96.168:3030/"+ post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
@@ -52,7 +52,7 @@ namespace GreenSale.Desktop.Companents.Products
 
         public void SetData(SellerPostViewModelSearch post)
         {
-            string image = "http://128.199.140.234:3030/" + post.MainImage;
+            string image = "http://139.59.96.168:3030/" + post.MainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);

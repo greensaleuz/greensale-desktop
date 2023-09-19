@@ -23,7 +23,7 @@ public partial class BuyerUpdateImageComponent : UserControl
     public void SetData(BuyerPostImage buyerPostImage)
     {
         this.buyerPost = buyerPostImage;
-        string image = "http://128.199.140.234:3030/" + buyerPostImage.ImagePath;
+        string image = "http://139.59.96.168:3030/" + buyerPostImage.ImagePath;
 
         Uri imageUri = new Uri(image, UriKind.Absolute);
         ImgBuyer.ImageSource = new BitmapImage(imageUri);

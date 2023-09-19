@@ -28,6 +28,7 @@ namespace GreenSale.ViewModels.Models.SellerPosts
         public string District { get; set; } = string.Empty;
         public DateTime UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
+        public double AverageStars { get; set; }
         public SellerPostEnum Status { get; set; }
         public List<SellerPostImage> PostImages { get; set; } = new List<SellerPostImage>();
     }
