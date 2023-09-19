@@ -141,5 +141,34 @@ namespace GreenSale.Integrated.Services.Storages
             var res1 = await response.Content.ReadAsStringAsync();
             return false;
         }
+
+        public async Task<bool> UpdateImageStorageAsync(StorageImageDto dto)
+        {
+            try
+            {
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/storages/image/{dto.StorageId}");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+                content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+
+                request.Content = content;
+                var response = await client.SendAsync(request);
+
+                var res = await response.Content.ReadAsStringAsync();
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

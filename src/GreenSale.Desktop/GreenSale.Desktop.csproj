@@ -52,4 +52,8 @@
     <Resource Include="Assets\Images\Salomaka.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Dowloands\Images\" />
+  </ItemGroup>
+
 </Project>

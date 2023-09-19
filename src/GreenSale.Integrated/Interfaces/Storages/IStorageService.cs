@@ -17,5 +17,7 @@ namespace GreenSale.Integrated.Interfaces.Storages
         public Task<StorageGetById> GetByIdAsync(long storageId);
         public Task<bool> UpdateAsync(long storageId, StorageUpdateDto dto);
         public Task<StorageSearchViewModel> SearchAsync(string info);
+
+        public Task<bool> UpdateImageStorageAsync(StorageImageDto dto);
     }
 }
