@@ -10,6 +10,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Loaded="Window_Loaded"
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -162,9 +163,6 @@
                                       Foreground="{DynamicResource FifthTextColor}"
                                       VerticalAlignment="Center"
                                       SelectedIndex="0">
-                                <ComboBoxItem Content="Sabzovot"/>
-                                <ComboBoxItem Content="Poliz Ekini"/>
-                                <ComboBoxItem Content="Meva"/>
                             </ComboBox>
                         </Border>
                     </StackPanel>
