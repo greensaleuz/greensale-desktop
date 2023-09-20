@@ -35,7 +35,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(SellerPost post)
         {
-            string image ="http://139.59.96.168:3030/"+ post.mainImage;
+            string image ="http://139.59.96.168:89/"+ post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
@@ -46,7 +46,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text  = post.capacityMeasure.ToString();
-            if(post.AverageStars != 0)
+            if(post.AverageStars.ToString().Length > 1)
             {
                 var str = post.AverageStars.ToString().Split(',');
                 starAvareg.Content = str[0] + "." + str[1];
@@ -83,7 +83,7 @@ namespace GreenSale.Desktop.Companents.Products
 
         public void SetData(SellerPostViewModelSearch post)
         {
-            string image = "http://139.59.96.168:3030/" + post.MainImage;
+            string image = "http://139.59.96.168:89/" + post.MainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
