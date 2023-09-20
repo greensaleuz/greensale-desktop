@@ -70,7 +70,7 @@ namespace GreenSale.Desktop.Windows.Products
         //  public static Dictionary<long, string> data = new Dictionary<long, string>();
         public Task RefreshAsync(long id, string ImagePath)
         {
-            string image = "http://139.59.96.168:3030/" + ImagePath;
+            string image = "http://139.59.96.168:89/" + ImagePath;
             if (updated == false)
             {
                 MainImg_Id = id;
@@ -115,7 +115,7 @@ namespace GreenSale.Desktop.Windows.Products
                 //  data.Add(item.Id, item.ImagePath);
                 if (i == 0)
                 {
-                    string image = "http://139.59.96.168:3030/" + item.ImagePath;
+                    string image = "http://139.59.96.168:89/" + item.ImagePath;
                     MainImg_Id = item.Id;
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     ImgMain.ImageSource = new BitmapImage(imageUri);
@@ -123,28 +123,28 @@ namespace GreenSale.Desktop.Windows.Products
                 }
                 /*else if (i == 1)
                 {
-                    string image = "http://139.59.96.168:3030/" + item.ImagePath;
+                    string image = "http://139.59.96.168:89/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img1.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 2)
                 {
-                    string image = "http://139.59.96.168:3030/" + item.ImagePath;
+                    string image = "http://139.59.96.168:89/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img2.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 3)
                 {
-                    string image = "http://139.59.96.168:3030/" + item.ImagePath;
+                    string image = "http://139.59.96.168:89/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img3.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 4)
                 {
-                    string image = "http://139.59.96.168:3030/" + item.ImagePath;
+                    string image = "http://139.59.96.168:89/" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);
