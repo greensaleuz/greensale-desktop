@@ -42,10 +42,41 @@ namespace GreenSale.Desktop.Companents.Products
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
-            txtbUpdate.Text = post.updatedAt.ToString();
+            txtbUpdate.Text = post.updatedAt.ToString("hh:mm") + " " + post.updatedAt.ToString("dd-MM-yy");
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text  = post.capacityMeasure.ToString();
+            if(post.AverageStars != 0)
+            {
+                var str = post.AverageStars.ToString().Split(',');
+                starAvareg.Content = str[0] + "." + str[1];
+            }
+            else
+            {
+                starAvareg.Content = post.AverageStars.ToString();
+            }
+            
+
+            if (post.status == 0)
+            {
+                txtbStatus.Text = "Yangi";
+                statusPost.Background = new SolidColorBrush(Colors.Green);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else if (post.status == 1)
+            {
+                txtbStatus.Text = "Kelishilgan";
+                statusPost.Background = new SolidColorBrush(Colors.Yellow);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Yellow);
+
+            }
+            else if (post.status == 2) 
+            {
+                txtbStatus.Text = " Sotib olingan";
+                statusPost.Background = new SolidColorBrush(Colors.Red);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Red);
+
+            }
             ID = post.Id;
         }
 
