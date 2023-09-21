@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
@@ -89,7 +90,7 @@ namespace GreenSale.Desktop.Windows.Products
 
                 if (i == 0)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img.ImageSource = new BitmapImage(imageUri);
@@ -97,28 +98,28 @@ namespace GreenSale.Desktop.Windows.Products
                 }
                 else if (i == 1)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img1.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 2)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img2.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 3)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img3.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 4)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);

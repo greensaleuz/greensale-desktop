@@ -2,6 +2,7 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.SellerPosts;
 using Newtonsoft.Json;
 
@@ -9,12 +10,46 @@ namespace GreenSale.Integrated.Services.SellerPosts;
 
 public class SellerPostService : ISellerPost
 {
+    public async Task<long> CountAgreedAsync()
+    {
+        try
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{AuthAPI.BASE_URL}" + "/api/common/seller/post/agreed/count");
+            var response = await client.SendAsync(request);
+            var result = await response.Content.ReadAsStringAsync();
+
+            return long.Parse(result);
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
     public async Task<long> CountAsync()
     {
         try
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{AuthAPI.BASE_URL}" + "/api/common/seller/post/count");
+            var response = await client.SendAsync(request);
+            var result = await response.Content.ReadAsStringAsync();
+
+            return long.Parse(result);
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public async Task<long> CountNewAsync()
+    {
+        try
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{AuthAPI.BASE_URL}" + "/api/common/seller/post/new/count");
             var response = await client.SendAsync(request);
             var result = await response.Content.ReadAsStringAsync();
 
@@ -199,6 +234,44 @@ public class SellerPostService : ISellerPost
         catch
         {
             return new SellerPostSearch { };
+        }
+    }
+
+    public async Task<List<PostCreatedAt>> SellerDaylilyCreatedAsync(int day)
+    {
+        try
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/created/daylily/count?day={day}");
+            HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+            string response = await responseMessage.Content.ReadAsStringAsync();
+
+            List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+            return posts;
+        }
+        catch
+        {
+            return new List<PostCreatedAt>();
+        }
+    }
+
+    public async Task<List<PostCreatedAt>> SellerMonthlyCreatedAsync(int month)
+    {
+        try
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/created/monthly/count?month={month}");
+            HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+            string response = await responseMessage.Content.ReadAsStringAsync();
+
+            List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+            return posts;
+        }
+        catch
+        {
+            return new List<PostCreatedAt>();
         }
     }
 

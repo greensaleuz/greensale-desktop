@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Companents.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using System;
@@ -54,7 +55,7 @@ namespace GreenSale.Desktop.Windows.Products
             txbAddress.Text = storagePost.Address;
             txbDescription.Text = storagePost.Description;
             
-            string image = "http://139.59.96.168:89/" + storagePost.ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + storagePost.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
             Img.ImageSource = new BitmapImage(imageUri);
         }

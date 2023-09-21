@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
 using GreenSale.ViewModels.Models.Storages;
@@ -36,7 +37,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(Storage post)
         {
-            string image = "http://139.59.96.168:89/" + post.ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             StorageImage.ImageSource = new BitmapImage(imageUri);

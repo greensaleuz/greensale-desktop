@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.BuyerPosts;
+﻿using GreenSale.Integrated.API.Auth;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -23,7 +24,7 @@ public partial class BuyerUpdateImageComponent : UserControl
     public void SetData(BuyerPostImage buyerPostImage)
     {
         this.buyerPost = buyerPostImage;
-        string image = "http://139.59.96.168:89/" + buyerPostImage.ImagePath;
+        string image = $"{AuthAPI.BASE_URL_IMG}" + buyerPostImage.ImagePath;
 
         Uri imageUri = new Uri(image, UriKind.Absolute);
         ImgBuyer.ImageSource = new BitmapImage(imageUri);

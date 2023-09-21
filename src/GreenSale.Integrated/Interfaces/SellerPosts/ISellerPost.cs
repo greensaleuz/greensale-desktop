@@ -1,4 +1,5 @@
 ﻿using GreenSale.Dtos.Dtos.SellerPost;
+using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.SellerPosts;
 
 namespace GreenSale.Integrated.Interfaces.SellerPosts;
@@ -14,5 +15,9 @@ public interface ISellerPost
     public Task<bool> UpdateAsync(long postId, SellerPostUpdateDto dto);
     public Task<bool> ImageUpdateAsync(long imageId, string dto);
     public Task<SellerPostSearch> SearchAsync(string title);
+    public Task<long > CountNewAsync();
+    public Task<long > CountAgreedAsync();
+    public Task<List<PostCreatedAt>> SellerDaylilyCreatedAsync(int day);
+    public Task<List<PostCreatedAt>> SellerMonthlyCreatedAsync(int month);
 
 }

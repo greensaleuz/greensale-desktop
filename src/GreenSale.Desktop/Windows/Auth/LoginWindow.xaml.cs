@@ -175,7 +175,7 @@ namespace GreenSale.Desktop.Windows
         private void Forgot_password(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ForgotPasswordWindow sendCodeWindow = new ForgotPasswordWindow();
-            sendCodeWindow.Show();
+            sendCodeWindow.ShowDialog();
         }
 
         private void changeCollor(object sender, System.Windows.Input.MouseEventArgs e)
