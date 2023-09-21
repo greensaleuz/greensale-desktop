@@ -55,14 +55,31 @@
                             <RowDefinition Height="0.8*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
-                        <Label Grid.Row="0"
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
                                Content="Ism"
                                VerticalContentAlignment="Bottom"
                                FontSize="25"
                                Margin="20 0 0 0">
 
-                        </Label>
+                            </Label>
+                            <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="ism_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 5 220 0">
+
+                            </Label>
+                        </Grid>
+                        
                         <Border Grid.Row="1"
                                 Background="Transparent"
                                 Margin="20 5 5 5"
@@ -98,7 +115,28 @@
                              
                             
                         </Border>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="115"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                               Content="Familya"
+                               VerticalContentAlignment="Top"
+                               FontSize="25"
+                               Margin="20 0 0 0">
 
+                            </Label>
+                            <Label Grid.Column="1"
+                                   x:Name="ism_lv_stting"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 5 220 0">
+
+                            </Label>
+                        </Grid>
                         <Label Grid.Row="2"
                                Content="Familya"
                                VerticalContentAlignment="Top"
@@ -148,13 +186,29 @@
                             <RowDefinition Height="1.8*"/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0"
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
                                Content="Telefon"
                                VerticalContentAlignment="Bottom"
                                FontSize="25"
                                Margin="20 0 0 0">
 
-                        </Label>
+                            </Label>
+                            <Label Grid.Column="1"
+                                   x:Name="ism_lv_phone"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 5 220 0">
+
+                            </Label>
+                        </Grid>
+                        
                         <Border Grid.Row="1"
                                 Background="Transparent"
                                 Margin="20 5 5 5"
@@ -289,19 +343,39 @@
 
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"/>
+                            <RowDefinition Height="0.9*"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.8*"/>
+                            <RowDefinition Height="0.9*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0"
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
                                Content="Viloyat"
                                VerticalContentAlignment="Top"
-                               FontSize="20"
+                               FontSize="25"
                                Margin="20 0 0 0">
 
-                        </Label>
+                            </Label>
+                            <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="regn_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 0 220 0">
+
+                            </Label>
+                        </Grid>
+
+
+                       
                         <Border Grid.Row="1"
                                 Background="Transparent"
                                 Margin="20 5 5 5"
@@ -366,13 +440,32 @@
 
                         </Border>
 
-                        <Label Grid.Row="2"
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                               Grid.Row="2"
                                Content="Tuman"
                                VerticalContentAlignment="Top"
                                FontSize="20"
                                Margin="20 0 0 0">
 
-                        </Label>
+                            </Label>
+                            <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="distrkt_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 0 220 5">
+
+                            </Label>
+                        </Grid>
+
                         <Border Grid.Row="3"
                                 Background="Transparent"
                                 Margin="20 5 5 5"
@@ -405,7 +498,7 @@
 
                                 <ComboBox Grid.Column="1"
                                       x:Name="cmbDistrict"
-                                      Height="45" Width="420"
+                                       Height="45" Width="400"
                                       FontSize="16"       
                                       HorizontalAlignment="Left"
                                       BorderThickness="0"
@@ -426,13 +519,31 @@
                             <RowDefinition Height="1.8*"/>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0"
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="95"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
                                Content="Adres"
                                VerticalContentAlignment="Bottom"
                                FontSize="25"
                                Margin="20 0 0 0">
 
-                        </Label>
+                            </Label>
+                            <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="addres_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 5 220 0">
+
+                            </Label>
+                        </Grid>
+
                         <Border Grid.Row="1"
                                 Background="Transparent"
                                 Margin="20 5 5 5"
@@ -519,6 +630,7 @@
                         <Button Grid.Row="3"
                                     x:Name="saqlsh_location"
                                     Height="60"
+                                    Click="saqlsh_location_Click"
                                     HorizontalAlignment="Right"
                                     Margin="0 20 7 0"
                                     Content="Saqlash"
@@ -549,7 +661,7 @@
                     <Label Grid.Row="0" 
                             Content="Hafsizlik malumotlari"
                             FontSize="25"
-                            VerticalAlignment="Top">
+                            VerticalAlignment="Top" Margin="27,-21,-27,0">
 
                     </Label>
                 </Border>
@@ -572,20 +684,82 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0"
-                               Content="Eski Parol"
-                               VerticalContentAlignment="Top"
-                               FontSize="20"
-                               Margin="20 10 0 0">
 
-                            </Label>
-                            <Label Grid.Column="1"
-                               Content="Yangi Parol"
-                               VerticalContentAlignment="Top"
-                               FontSize="20"
-                               Margin="20 10 0 0">
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="115"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Content="Eski Parol"
+                                       VerticalContentAlignment="Top"
+                                       FontSize="20"
+                                       Margin="20 10 0 0">
 
-                            </Label>
+                                </Label>
+                                <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="oldpwr_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 0 20 0">
+
+                                </Label>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Content="Yangi Parol"
+                                       VerticalContentAlignment="Top"
+                                       FontSize="20"
+                                       Margin="20 10 0 0">
+
+                                </Label>
+                                <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="newpasw_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 0 20 0">
+
+                                </Label>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Content="Yangi Parol"
+                                       VerticalContentAlignment="Top"
+                                       FontSize="20"
+                                       Margin="20 10 0 0">
+
+                                </Label>
+                                <Label Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   x:Name="rertrnnewpasw_lv_lgn"
+                                   Foreground="Red"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="25"
+                                   Margin="-5 0 20 0">
+
+                                </Label>
+                            </Grid>
+
                             <Label Grid.Column="2"
                                Content="Yangi Parol"
                                VerticalContentAlignment="Top"
@@ -622,7 +796,7 @@
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
                                          FontSize="20"
-                                         MaxLength="30"
+                                         MaxLength="16"
                                          BorderBrush="Transparent"
                                          Background="Transparent">
 
@@ -652,7 +826,7 @@
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
                                          FontSize="20"
-                                         MaxLength="30"
+                                         MaxLength="16"
                                          BorderBrush="Transparent"
                                          Background="Transparent">
 
@@ -681,7 +855,7 @@
                                          BorderThickness="0"
                                          VerticalAlignment="Center"
                                          FontSize="20"
-                                         MaxLength="30"
+                                         MaxLength="16"
                                          BorderBrush="Transparent"
                                          Background="Transparent">
 
