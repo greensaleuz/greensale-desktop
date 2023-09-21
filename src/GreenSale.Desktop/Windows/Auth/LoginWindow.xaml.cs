@@ -76,7 +76,7 @@ namespace GreenSale.Desktop.Windows
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             bool succses = true;
-            if (txtPhoneNumber.Text.Length < 9)
+            if (txtPhoneNumber.Text.Length == 0)
             {
                 Border border = sender as Border;
                 if (border == null)
@@ -90,7 +90,29 @@ namespace GreenSale.Desktop.Windows
                     // Border ga effektni qo'shish
                     Border_skns.Effect = dropShadowEffect;
                 }
+                ism_lv_lgn.Visibility = Visibility.Visible;
                 succses = false;
+            }
+            else if(txtPhoneNumber.Text.Length < 9)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    Border_skns.Effect = dropShadowEffect;
+                }
+                ism_lv_lgn.Visibility = Visibility.Visible;
+                succses = false;
+            }
+            else
+            {
+                ism_lv_lgn.Visibility = Visibility.Collapsed;
             }
 
 
@@ -108,9 +130,13 @@ namespace GreenSale.Desktop.Windows
                     // Border ga effektni qo'shish
                     Border_pasword.Effect = dropShadowEffect;
                 }
+                parol_lv_lgn.Visibility= Visibility.Visible;
                 succses = false;
             }
-
+            else
+            {
+                parol_lv_lgn.Visibility = Visibility.Collapsed;
+            }
             if (IsInternetAvailable())
             {
                 if (succses)
