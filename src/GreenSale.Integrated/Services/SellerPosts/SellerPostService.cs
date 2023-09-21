@@ -14,12 +14,11 @@ public class SellerPostService : ISellerPost
         try
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/seller/posts/count");
-            HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
-            var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{AuthAPI.BASE_URL}" + "/api/common/seller/post/count");
+            var response = await client.SendAsync(request);
+            var result = await response.Content.ReadAsStringAsync();
 
-            return response;
-
+            return long.Parse(result);
         }
         catch
         {

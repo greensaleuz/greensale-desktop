@@ -15,7 +15,7 @@ public class StorageService : IStorageService
         try
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/posts/count");
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/storage/count");
             HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
             var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
 

@@ -63,6 +63,11 @@ namespace GreenSale.Desktop.Companents.ProductControls
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            Slider.Value = (double)e.NewValue;
+        }
+
+        private void Slider_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
 
         }
     }

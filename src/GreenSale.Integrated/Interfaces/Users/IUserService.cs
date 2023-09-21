@@ -13,5 +13,7 @@ namespace GreenSale.Integrated.Interfaces.Users
         public Task<UserModel> GetAsync();
         public Task<bool> UpdateAsync(UserDto dto);
         public Task<bool> UpdateSecurityAsync(UsersecurtyDto dto);
+        public Task<long> CountAsync();
+        public Task<bool> DeleteAsync();
     }
 }
