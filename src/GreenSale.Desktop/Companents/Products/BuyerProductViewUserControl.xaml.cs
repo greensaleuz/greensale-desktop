@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
@@ -33,7 +34,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(BuyerPost post)
         {
-            string image = "http://139.59.96.168:89/" + post.mainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
@@ -49,7 +50,7 @@ namespace GreenSale.Desktop.Companents.Products
 
         public void SetData(BuyerPosrtSearchViewModel post)
         {
-            string image = "http://139.59.96.168:89/" + post.MainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.MainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);

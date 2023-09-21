@@ -16,6 +16,7 @@ using Microsoft.Identity.Client.Extensions.Msal;
 using MessageBox = System.Windows.MessageBox;
 using Application = System.Windows.Application;
 using System.Reflection;
+using GreenSale.Integrated.API.Auth;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -54,7 +55,7 @@ namespace GreenSale.Desktop.Windows.Products
             txtbRegion.Text = storage.Region;
             
 
-            string image = "http://139.59.96.168:89/" + storage.ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + storage.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
             ImgStorage.ImageSource = new BitmapImage(imageUri);
         }

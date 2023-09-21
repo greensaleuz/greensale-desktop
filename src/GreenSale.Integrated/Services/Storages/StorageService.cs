@@ -2,6 +2,7 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.Storages;
 using Newtonsoft.Json;
 
@@ -227,6 +228,43 @@ public class StorageService : IStorageService
         catch
         {
             return false;
+        }
+    }
+    public async Task<List<PostCreatedAt>> StorageDaylilyCreatedAsync(int day)
+    {
+        try
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/created/daylily/count?day={day}");
+            HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+            string response = await responseMessage.Content.ReadAsStringAsync();
+
+            List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+            return posts;
+        }
+        catch
+        {
+            return new List<PostCreatedAt>();
+        }
+    }
+
+    public async Task<List<PostCreatedAt>> StorageMonthlyCreatedAsync(int month)
+    {
+        try
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/storage/created/monthly/count?month={month}");
+            HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+            string response = await responseMessage.Content.ReadAsStringAsync();
+
+            List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+            return posts;
+        }
+        catch
+        {
+            return new List<PostCreatedAt>();
         }
     }
 }

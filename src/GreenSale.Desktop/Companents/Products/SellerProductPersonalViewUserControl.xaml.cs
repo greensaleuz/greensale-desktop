@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.SellerPosts;
@@ -42,7 +43,7 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(SellerPost post)
         {
-            string image = "http://139.59.96.168:89/" + post.mainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);

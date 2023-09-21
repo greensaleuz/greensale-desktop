@@ -1,4 +1,5 @@
-﻿using GreenSale.ViewModels.Models.SellerPosts;
+﻿using GreenSale.Integrated.API.Auth;
+using GreenSale.ViewModels.Models.SellerPosts;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -23,7 +24,7 @@ namespace GreenSale.Desktop.Companents.Images
         public void SetData(SellerPostImage sellerPostImage)
         {
             this.sellerPostImage = sellerPostImage;
-            string image = "http://139.59.96.168:89/" + sellerPostImage.ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + sellerPostImage.ImagePath;
 
             Uri imageUri = new Uri(image, UriKind.Absolute);
             ImgBuyer.ImageSource = new BitmapImage(imageUri);

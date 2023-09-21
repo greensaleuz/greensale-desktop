@@ -89,6 +89,7 @@
             </Grid.ColumnDefinitions>
            
             <!--Card-->
+            
             <uc:ProductCountControl
                 x:Name="post_count"
                 Grid.Column="0" 
@@ -168,7 +169,7 @@
                     <lvc:CartesianChart.AxisY>
                         <lvc:Axis Foreground="#90a3b2" 
                                   ShowLabels="True" MinValue="0" 
-                                  MaxValue="10" >
+                                  MaxValue="100" >
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0" />
                             </lvc:Axis.Separator>

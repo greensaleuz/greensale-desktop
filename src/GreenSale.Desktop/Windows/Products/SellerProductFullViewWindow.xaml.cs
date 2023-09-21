@@ -1,6 +1,7 @@
 ﻿using GreenSale.Desktop.Companents.Images;
 using GreenSale.Desktop.Companents.Products;
 using GreenSale.Dtos.Dtos.SellerPost;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Services.SellerPosts;
 using Microsoft.Win32;
@@ -69,7 +70,7 @@ namespace GreenSale.Desktop.Windows.Products
 
         public Task RefreshAsync(long id, string ImagePath)
         {
-            string image = "http://139.59.96.168:89/" + ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + ImagePath;
             if (updated == false)
             {
                 MainImg_Id = id;
@@ -138,7 +139,7 @@ namespace GreenSale.Desktop.Windows.Products
 
                 if (i == 0)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
                     MainImg_Id = item.Id;
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     ImgMain.ImageSource = new BitmapImage(imageUri);
@@ -146,28 +147,28 @@ namespace GreenSale.Desktop.Windows.Products
                 }
                 /*else if (i == 1)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img1.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 2)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img2.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 3)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img3.ImageSource = new BitmapImage(imageUri);
                 }
                 else if (i == 4)
                 {
-                    string image = "http://139.59.96.168:89/" + item.ImagePath;
+                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
 
                     Uri imageUri = new Uri(image, UriKind.Absolute);
                     Img4.ImageSource = new BitmapImage(imageUri);

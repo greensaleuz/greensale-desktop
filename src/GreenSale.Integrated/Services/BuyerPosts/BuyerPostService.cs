@@ -2,6 +2,7 @@
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.BuyerPosts;
 using Newtonsoft.Json;
 
@@ -10,12 +11,86 @@ namespace GreenSale.Integrated.Services.BuyerPosts
 
     public class BuyerPostService : IBuyerPostService
     {
+        public async Task<List<PostCreatedAt>> BuyerDaylilyCreatedAsync(int day)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/created/daylily/count?day={day}");
+                HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+                string response = await responseMessage.Content.ReadAsStringAsync();
+
+                List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+                return posts;
+            }
+            catch
+            {
+                return new List<PostCreatedAt>();
+            }
+        }
+
+        public async Task<List<PostCreatedAt>> BuyerMonthlyCreatedAsync(int month)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/created/monthly/count?month={month}");
+                HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+                string response = await responseMessage.Content.ReadAsStringAsync();
+
+                List<PostCreatedAt> posts = JsonConvert.DeserializeObject<List<PostCreatedAt>>(response)!;
+
+                return posts;
+            }
+            catch
+            {
+                return new List<PostCreatedAt>();
+            }
+        }
+
+        public async Task<long> CountAgreeAsync()
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/posts/agreed/count");
+                HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+                var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
+
+                return response;
+
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public async Task<long> CountAsync()
         {
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/posts/count");
+                HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+                var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
+
+                return response;
+
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public async Task<long> CountNewAsync()
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/buyer/posts/new/count");
                 HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
                 var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
 
