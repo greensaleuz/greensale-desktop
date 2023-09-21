@@ -118,7 +118,7 @@ namespace GreenSale.Desktop.Windows.Auth
                 phone_lv_rgs.Visibility = Visibility.Visible;
                 notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
             }
-            else if (txtPhoneNumber.Text.Length < 3)
+            else if (txtPhoneNumber.Text.Length < 9)
             {
                 Border border = sender as Border;
                 if (border == null)
@@ -162,7 +162,7 @@ namespace GreenSale.Desktop.Windows.Auth
                 password_lv_rgs.Visibility = Visibility.Visible;
                 notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
             }
-            else if (txtParol.Password.Length < 3)
+            else if (txtParol.Password.Length < 8)
             {
                 Border border = sender as Border;
                 if (border == null)
@@ -200,6 +200,93 @@ namespace GreenSale.Desktop.Windows.Auth
                 SendCodeWindow sendCodeWindow = new SendCodeWindow();
                 sendCodeWindow.ShowDialog();
                 this.Close();
+            }
+        }
+
+        private void Border_skns_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            telForgotPasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#209240"));
+            Border border = sender as Border;
+
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 20;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
+            }
+        }
+
+        private void Border_skns_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            telForgotPasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F8F8F"));
+            telForgotPasword = sender as Border;
+            if (telForgotPasword != null)
+            {
+                telForgotPasword.BorderThickness = new Thickness(1);
+            }
+
+
+            if (telForgotPasword != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 0;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                telForgotPasword.Effect = dropShadowEffect;
+            }
+
+        }
+
+        private void Border_pasword_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            nepasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#209240"));
+            Border border = sender as Border;
+            /*if (border != null)
+            {
+                border.BorderThickness = new Thickness(2);
+            }*/
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 20;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
+            }
+        }
+
+        private void Border_pasword_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            nepasword.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F8F8F"));
+            Border border = sender as Border;
+            if (border != null)
+            {
+                border.BorderThickness = new Thickness(1);
+            }
+
+            if (border != null)
+            {
+                // Effektni yaratish va sozlash
+                DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                dropShadowEffect.ShadowDepth = 0;
+                dropShadowEffect.BlurRadius = 0;
+                dropShadowEffect.Color = Colors.LightGreen;
+
+                // Border ga effektni qo'shish
+                border.Effect = dropShadowEffect;
             }
         }
     }
