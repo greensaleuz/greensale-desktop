@@ -17,7 +17,7 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
         public string capacityMeasure { get; set; } = string.Empty;
         public string type { get; set; } = string.Empty;
         public DateTime updatedAt { get; set; }
-        public string status { get; set; } = string.Empty;
+        public int status { get; set; } 
         public string mainImage { get; set; } = string.Empty;
     }
 }

@@ -11,6 +11,7 @@ public class SellerPost
     public string capacityMeasure { get; set; } = string.Empty;
     public string type { get; set; } = string.Empty;
     public DateTime updatedAt { get; set; }
+    public DateTime createdAt { get; set; }
     public int status { get; set; }
     public string mainImage { get; set; } = string.Empty;
     public double AverageStars { get; set; }

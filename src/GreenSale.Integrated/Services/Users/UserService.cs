@@ -15,6 +15,28 @@ namespace GreenSale.Integrated.Services.Users
 {
     public class UserService : IUserService
     {
+        public async Task<long> CountAsync()
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + "/api/common/users/count");
+                HttpResponseMessage responseMessage = await client.GetAsync(client.BaseAddress);
+                var response = long.Parse(await responseMessage.Content.ReadAsStringAsync());
+
+                return response;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public Task<bool> DeleteAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<UserModel> GetAsync()
         {
             try

@@ -6,6 +6,7 @@ namespace GreenSale.Integrated.Interfaces.SellerPosts;
 public interface ISellerPost
 {
     public Task<List<SellerPost>> GetAllAsync();
+    public Task<long> CountAsync();
     public Task<SellerGetById> GetByIdAsync(long postId);
     public Task<bool> CreateAsync(SellerPostCreate dto);
     public Task<List<SellerPost>> GetAllUserId(long userId);

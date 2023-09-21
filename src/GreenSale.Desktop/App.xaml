@@ -4,11 +4,11 @@
              xmlns:local="clr-namespace:GreenSale.Desktop"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              
-             StartupUri="Windows/Auth/LoginWindow.xaml">
+             StartupUri="MainWindow.xaml">
     
     <Application.Resources>
         <ResourceDictionary>
-            
+            <!--Windows/Auth/LoginWindow -->
             <!--Begin Slider Style -->
             
             <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
