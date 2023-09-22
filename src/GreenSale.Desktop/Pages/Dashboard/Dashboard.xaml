@@ -178,6 +178,7 @@
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries x:Name="seller_post_dg"
                                         Fill="Transparent" 
+                                       
                                         Opacity="0.1"
                                         StrokeThickness="3"
                                         PointGeometrySize="10"

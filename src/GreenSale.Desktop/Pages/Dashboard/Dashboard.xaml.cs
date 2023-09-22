@@ -79,9 +79,9 @@ public partial class Dashboard : Page
         var buyer_post = await _serviceBuyer.BuyerDaylilyCreatedAsync(7);
         var seller_post = await _serviceSeller.SellerDaylilyCreatedAsync(7);
 
-        seller_post.Reverse();
+        /*seller_post.Reverse();
         storage_post.Reverse();
-        buyer_post.Reverse();
+        buyer_post.Reverse();*/
 
         for (int i = 0; i < 8; i++)
         {
