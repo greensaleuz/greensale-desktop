@@ -352,7 +352,7 @@ namespace GreenSale.Desktop.Windows.Products
                 dto.Description = txtDescription.Text;
                 dto.Type = txtType.Text;
                 //dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
-                dto.PhoneNumber = txtPhoneNumber.Text;
+                dto.PhoneNumber = "+998" + txtPhoneNumber.Text;
 
                 dto.ImagePath = new List<string>();
 

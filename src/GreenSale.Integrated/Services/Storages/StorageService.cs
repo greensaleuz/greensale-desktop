@@ -210,8 +210,7 @@ public class StorageService : IStorageService
             request.Headers.Add("Authorization", $"Bearer {token}");
 
             var content = new MultipartFormDataContent();
-            content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
-            content.Add(new StringContent(dto.StorageId.ToString()), "StorageId");
+            content.Add(new StreamContent(File.OpenRead(dto.StorageImagePath)), "StorageImagePath", dto.StorageImagePath);
 
 
             request.Content = content;
