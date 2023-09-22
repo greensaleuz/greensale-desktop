@@ -53,12 +53,30 @@
                         </Border>
                         <StackPanel Grid.Column="1"
                                     Margin="10 0 10 0">
-                            <Label Content="Yukxona nomi"
-                                   FontSize="16"
-                                   HorizontalAlignment="Left"
-                                   Margin="5 5 5 0"
-                                   Foreground="{DynamicResource FifthTextColor}"
-                                   />
+                            <StackPanel Grid.Column="0"
+                                    Margin="0"
+                                    VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Yukxona nomi"
+                                           FontSize="16"
+                                           HorizontalAlignment="Left"
+                                           Margin="5 5 0 0"
+                                           Foreground="{DynamicResource FifthTextColor}"
+                                           />
+                                    <Label 
+                                           x:Name="lb_nomi"
+                                           Foreground="Red"
+                                               HorizontalAlignment="Left"
+                                           Visibility="Hidden"
+                                           Content="*"
+                                           FontSize="20"
+                                            Height="25"
+                                           Margin="0 0 380 0">
+
+                                    </Label>
+                                </StackPanel>
+                            </StackPanel>
+                                
                             <Border Height="40"
                                     Width="260"
                                     HorizontalAlignment="Left"
@@ -76,12 +94,28 @@
                                          MaxLength="30"
                                          Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>
-                            <Label Content="Ma'lumot"
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Ma'lumot"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    Margin="5 5 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
+                                <Label 
+                                   x:Name="lb_malumoti"
+                                   Foreground="Red"
+                                       HorizontalAlignment="Left"
+                                   Visibility="Hidden"
+                                   Content="*"
+                                   FontSize="20"
+                                    Height="25"
+                                   Margin="-5 0 320 0">
+
+                                </Label>
+                            </StackPanel>
+
+                            
                             <Border Height="100"
                                     Width="260"                                    
                                     HorizontalAlignment="Left"
@@ -111,11 +145,27 @@
                     <StackPanel Grid.Column="0"
                                     Margin="0 0"
                                     VerticalAlignment="Center">
-                        <Label Content="Viloyat"
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Viloyat"
                                    FontSize="16"
                                    Margin="11 5 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
+                            <Label
+                                       x:Name="lb_regn"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Left"
+                                       Visibility="Hidden"
+                                       Content="*"
+                                       FontSize="20"
+                                       Height="25"
+                                       Margin="-10 0 320 0">
+
+                            </Label>
+                        </StackPanel>
+
+                       
                         <Border Height="40" Width="235"
                                 HorizontalAlignment="Left"
                                     Margin="10 0 0 0"
@@ -148,11 +198,27 @@
                     <StackPanel Grid.Column="1"
                                     Margin="0"
                                     VerticalAlignment="Bottom">
-                        <Label Content="Tuman"
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Tuman"
                                    FontSize="16"
                                    Margin="10 5 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
                                    />
+                            <Label
+                                       x:Name="lb_disk"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Left"
+                                       Visibility="Hidden"
+                                       Content="*"
+                                       FontSize="20"
+                                       Height="25"
+                                       Margin="-10 0 320 0">
+
+                            </Label>
+                        </StackPanel>
+
+                        
 
                         <Border Height="40" Width="235"
                                 HorizontalAlignment="Left"
@@ -171,12 +237,28 @@
                         </Border>
                     </StackPanel>
                 </Grid>
-                <Label Content="Manzil"
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Manzil"
                        FontSize="16"
                        HorizontalAlignment="Left"
                        Margin="30 5 5 0"
                        Foreground="{DynamicResource FifthTextColor}"
                                    />
+                    <Label
+                                       x:Name="lb_manzil"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Left"
+                                       Visibility="Hidden"
+                                       Content="*"
+                                       FontSize="20"
+                                       Height="25"
+                                       Margin="-10 0 320 0">
+
+                    </Label>
+                </StackPanel>
+
+                
                 <Border Height="40"
                         Width="490"
                         HorizontalAlignment="Left"
@@ -193,11 +275,27 @@
                              VerticalAlignment="Center"
                              Foreground="{DynamicResource FifthTextColor}"/>
                 </Border>
-                <Label Content="Tasnif"
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Tasnif"
                        FontSize="16"
                        HorizontalAlignment="Left"
                        Margin="30 5 5 0"
                        Foreground="{DynamicResource FifthTextColor}" />
+                    <Label
+                                       x:Name="lb_taasnif"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Left"
+                                       Visibility="Hidden"
+                                       Content="*"
+                                       FontSize="20"
+                                       Height="25"
+                                       Margin="-10 0 320 0">
+
+                    </Label>
+                </StackPanel>
+
+                
                 <Border Height="80"
                         Width="490"
                         HorizontalAlignment="Left"
