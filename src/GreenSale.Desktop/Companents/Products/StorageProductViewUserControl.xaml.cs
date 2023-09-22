@@ -46,7 +46,7 @@ namespace GreenSale.Desktop.Companents.Products
             StorageImage.ImageSource = new BitmapImage(imageUri);
             txtbRegion.Text = post.Region;
             txtbDescription.Text = post.Description;
-            txtbUpdate.Text = post.UpdatedAt.ToString();
+            txtbUpdate.Text = post.UpdatedAt.ToString("hh:mm") + " " + post.UpdatedAt.ToString("dd-MM-yy");
             txtInfo.Text = post.Info;
             txtbUser.Text = post.FullName.Split()[0];
             txtbPhoneNumber.Text = post.PhoneNumber;

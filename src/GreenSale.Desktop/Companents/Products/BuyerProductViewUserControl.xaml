@@ -21,7 +21,9 @@
                                     BorderBrush="{DynamicResource SecondaryBorderColor}"
                                     CornerRadius="8 8 0 0"
                                     Background="{DynamicResource SecondaryBackground}">
-                    <Border Margin="0" CornerRadius="7 7 0 0">
+                    <Border Margin="0" CornerRadius="7 7 7 7"
+                            BorderThickness="1"
+                            BorderBrush="Green">
 
                         <Border.Background>
                             <ImageBrush 
@@ -49,7 +51,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Margin="0 0 0 0"
                                                 Orientation="Horizontal">
-                                    <Path Width="15" Height="15"
+                                    <Path Width="12" Height="12"
                                                       Margin="0"
                                                       Data="{DynamicResource Location}"
                                                       Stretch="Uniform"
@@ -66,7 +68,7 @@
                                 <StackPanel Grid.Column="1" Margin="0"
                                             Orientation="Horizontal"
                                             HorizontalAlignment="Right">
-                                    <Path Width="15" Height="15"
+                                    <Path Width="12" Height="12"
                                                       Margin="5"
                                                       Data="{DynamicResource Calendar}"
                                                       Stretch="Uniform"
