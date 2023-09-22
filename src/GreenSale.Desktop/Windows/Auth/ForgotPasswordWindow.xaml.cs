@@ -2,19 +2,19 @@
 using GreenSale.Integrated.Interfaces.Auth;
 using GreenSale.Integrated.Services.Auth;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
-using System.Windows.Media.Effects;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using ToastNotifications;
-using static GreenSale.Integrated.Services.UseWindowServices.BlurBehindDemo;
-using System.Linq;
 using ToastNotifications.Lifetime;
-using ToastNotifications.Position;
 using ToastNotifications.Messages;
+using ToastNotifications.Position;
+using static GreenSale.Integrated.Services.UseWindowServices.BlurBehindDemo;
 
 namespace GreenSale.Desktop.Windows.Auth
 {
@@ -43,19 +43,21 @@ namespace GreenSale.Desktop.Windows.Auth
                 offsetY: 10);
 
             cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(5),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(2));
 
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
 
         private void btnCloseResetPassword_Click(object sender, RoutedEventArgs e)
         {
+            notifier.Dispose();
             this.Close();
         }
 
         private void btnBackResetPassword_Click(object sender, RoutedEventArgs e)
         {
+            notifier.Dispose();
             this.Close();
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,8 +98,9 @@ namespace GreenSale.Desktop.Windows.Auth
 
         private async void btnResetPasswordSend(object sender, RoutedEventArgs e)
         {
+            bool Isvalid = true;
 
-
+            notifier.Dispose();
             if (txtPhoneNumber.Text.Length == 0)
             {
                 Border border = sender as Border;
@@ -116,7 +119,8 @@ namespace GreenSale.Desktop.Windows.Auth
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 phone_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                Isvalid = false;
             }
             else if (txtPhoneNumber.Text.Length < 9)
             {
@@ -134,10 +138,13 @@ namespace GreenSale.Desktop.Windows.Auth
                     telForgotPasword.Effect = dropShadowEffect;
                 }
                 //notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+                Isvalid = false;
             }
             else
             {
                 phone_lv_rgs.Visibility = Visibility.Collapsed;
+                notifier.Dispose();
+                Isvalid = true;
             }
 
             // parol
@@ -161,6 +168,7 @@ namespace GreenSale.Desktop.Windows.Auth
                   string myColorString = myColor.ToString();*/
                 password_lv_rgs.Visibility = Visibility.Visible;
                 notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                Isvalid = false;
             }
             else if (txtParol.Password.Length < 8)
             {
@@ -177,30 +185,43 @@ namespace GreenSale.Desktop.Windows.Auth
                     password_lv_rgs.Visibility = Visibility.Visible;
                     nepasword.Effect = dropShadowEffect;
                 }
-                notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+                notifier.ShowInformation("Password 8 belgidan oshmasligi kerek!");
+                Isvalid = false;
             }
             else
             {
+                notifier.Dispose();
                 password_lv_rgs.Visibility = Visibility.Collapsed;
+                Isvalid = true;
             }
 
-
-            LoginWindow.CheckEnter = false;
-            number = "+998" + txtPhoneNumber.Text.ToString();
-            ForgotPassword forgotPassword = new ForgotPassword()
+            if (Isvalid)
             {
-                PhoneNumber = number,
-                NewPassword = txtParol.Password.ToString()
-            };
+                LoginWindow.CheckEnter = false;
+                number = "+998" + txtPhoneNumber.Text.ToString();
+                ForgotPassword forgotPassword = new ForgotPassword()
+                {
+                    PhoneNumber = number,
+                    NewPassword = txtParol.Password.ToString()
+                };
 
-            var result = await _service.ResetPasswordAsync(forgotPassword);
+                var result = await _service.ResetPasswordAsync(forgotPassword);
 
-            if(result)
-            {
-                SendCodeWindow sendCodeWindow = new SendCodeWindow();
-                sendCodeWindow.ShowDialog();
-                this.Close();
+                if (result)
+                {
+                    SendCodeWindow sendCodeWindow = new SendCodeWindow();
+                    sendCodeWindow.ShowDialog();
+                    notifier.Dispose();
+                    this.Close();
+                }
+                else
+                {
+                    notifier.ShowInformation("Code Natogri kiritildi !");
+                    notifier.Dispose();
+                }
+                notifier.Dispose();
             }
+
         }
 
         private void Border_skns_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)

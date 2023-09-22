@@ -197,6 +197,7 @@ namespace GreenSale.Desktop.Windows.Auth
                     string token = result.Token.ToString();
                     LoginWindow login = new LoginWindow();
                     login.Show();
+                    notifier.Dispose();
                     this.Close();
                 }
             }
@@ -209,6 +210,7 @@ namespace GreenSale.Desktop.Windows.Auth
                     string token = result.Token.ToString();
                     LoginWindow login = new LoginWindow();
                     login.Show();
+                    notifier.Dispose();
                     this.Close();
                 }
             }
