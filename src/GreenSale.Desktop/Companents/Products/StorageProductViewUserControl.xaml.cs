@@ -51,6 +51,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtbUser.Text = post.FullName.Split()[0];
             txtbPhoneNumber.Text = post.PhoneNumber;
             ID = post.Id;
+            starAvareg.Content = post.AverageStars;
         }
 
         public void SetData(StorageViewModel post)
