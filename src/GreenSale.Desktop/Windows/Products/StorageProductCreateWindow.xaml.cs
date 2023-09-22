@@ -43,36 +43,138 @@ namespace GreenSale.Desktop.Windows.Products
             }
             return @string.ToString();
         }
-        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+
+
+        public bool IsValid()
         {
-            StorageCreateAd storageCreateAd = new StorageCreateAd();
-            StorageDto storage = new StorageDto()
+            bool isValid = false;
+            if (txtbName.Text.Length == 0)
             {
-                Name = txtbName.Text.ToString(),
-                Info = txtbInfo.Text.ToString(),
-                Region = cmbRegion.Text.ToString(),
-                District = cmbDistrict.Text.ToString(),
-                Address = txtbAddress.Text.ToString(),
-                Description = txtbDescription.Text.ToString(),
-            };
-
-            string imagePath = ImgStorage.ImageSource.ToString();
-
-            storage.ImagePath = imagePath;
-            //storage.ImagePath = fileContent;
-            var result = await _service.CreateAsync(storage);
-            //await storageCreateAd.RefreshAsync();
-            storageCreateAd.ShowsNavigationUI = true;
-            if (result)
+                lb_nomi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtbName.Text.Length < 3)
             {
-                MessageBox.Show("E'loningiz yaratildi");
+                lb_nomi.Visibility = Visibility.Visible;
+                isValid = false;
             }
             else
             {
-                MessageBox.Show("Qayerdadur xatolik ketdi");
+                lb_nomi.Visibility = Visibility.Collapsed;
+                isValid = true;
             }
 
-            this.Close();
+            if (txtbInfo.Text.Length == 0)
+            {
+                lb_malumoti.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtbInfo.Text.Length < 3)
+            {
+                lb_malumoti.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_malumoti.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            if (cmbRegion.Text.Length == 0)
+            {
+                lb_regn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_regn.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            if (cmbDistrict.Text.Length == 0)
+            {
+                lb_disk.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_disk.Visibility = Visibility.Hidden;
+                isValid = true;              
+            }
+
+            if (txtbAddress.Text.Length == 0)
+            {
+                lb_manzil.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtbAddress.Text.Length < 3)
+            {
+                lb_manzil.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_manzil.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+
+            if (txtbDescription.Text.Length == 0)
+            {
+                lb_taasnif.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtbDescription.Text.Length < 3)
+            {
+                lb_taasnif.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_taasnif.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            return isValid;
+
+        }
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            if(IsValid() != false)
+            {
+                StorageCreateAd storageCreateAd = new StorageCreateAd();
+                StorageDto storage = new StorageDto()
+                {
+                    Name = txtbName.Text.ToString(),
+                    Info = txtbInfo.Text.ToString(),
+                    Region = cmbRegion.Text.ToString(),
+                    District = cmbDistrict.Text.ToString(),
+                    Address = txtbAddress.Text.ToString(),
+                    Description = txtbDescription.Text.ToString(),
+                };
+
+                string imagePath = ImgStorage.ImageSource.ToString();
+
+                storage.ImagePath = imagePath;
+                //storage.ImagePath = fileContent;
+                var result = await _service.CreateAsync(storage);
+                //await storageCreateAd.RefreshAsync();
+                storageCreateAd.ShowsNavigationUI = true;
+                if (result)
+                {
+                    MessageBox.Show("E'loningiz yaratildi");
+                }
+                else
+                {
+                    MessageBox.Show("Qayerdadur xatolik ketdi");
+                }
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("xaro");
+            }
         }
 
         
