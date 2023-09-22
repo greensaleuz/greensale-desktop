@@ -50,7 +50,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
-            txtbUpdate.Text = post.updatedAt.ToString();
+            txtbUpdate.Text = post.updatedAt.ToString("hh:mm") + " " + post.updatedAt.ToString("dd-MM-yy");
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
