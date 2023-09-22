@@ -47,7 +47,7 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnPicture1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ImgMain.ImageSource = Img2.ImageSource;
+            ImgMain.ImageSource = Img1.ImageSource;
 
         }
 
