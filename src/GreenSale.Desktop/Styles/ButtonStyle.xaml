@@ -479,21 +479,17 @@
                             BorderThickness="2"
                             BorderBrush="#24A649">
                         <!-- Spinner -->
+                        <StackPanel Orientation="Horizontal">
                         <fa:ImageAwesome x:Name="loader"
                                     Icon="Spinner"
                                     Visibility="Collapsed"
                                     Spin="True"
-                                    Height="20"
-                                    Width="20"
-                                         Foreground="Red"/>
-                        <Border.Background>
-                            <LinearGradientBrush>
-                                <GradientStop Color="#219241"/>
-                                <GradientStop Color="#209240"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <!--<Label FontSize="24"
-                               Margin="10 0"
+                                    Height="50"
+                                    Width="50"
+                                    Margin="150 0 0 0"
+                                    Foreground="Green"/>
+                        <Label FontSize="24"
+                               Margin="150 0"
                                x:Name="sgn_label"
                                FontFamily="send-series"
                                FontWeight="SemiBold"
@@ -501,20 +497,31 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Content="{TemplateBinding Content}"
-                               />-->
+                               />
+                        </StackPanel>
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#219241"/>
+                                <GradientStop Color="#209240"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                       
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="sgnBr" Property="Background" Value="white"/>
-                            <!--<Setter TargetName="sgn_label" Property="Foreground" Value="#24A649"/>-->
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="green"/>
+                            <Setter TargetName="loader" Property="Foreground" Value="#24A649"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
                             <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
-                            <!--<Setter TargetName="sgn_label" Property="Foreground" Value="white"/>-->
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+                            <Setter TargetName="loader" Property="Foreground" Value="white"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
-                            <!--<Setter TargetName="sgn_label" Property="Foreground" Value="white"/>-->
+                            <!--<Setter TargetName="sgnBr"  Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="sgn_label" Property="Visibility" Value="Hidden"/>
                             <Setter TargetName="sgnBr" Property="Effect">
                                 <Setter.Value>
                                     <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="LightGreen"/>
