@@ -46,6 +46,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
+            starAvareg.Content = post.AverageStars;
         }
 
         public void SetData(BuyerPosrtSearchViewModel post)
@@ -62,6 +63,7 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacity.Text = post.Capacity.ToString();
             txtbCapacityMeasure.Text = post.CapacityMeasure.ToString();
             ID = post.Id;
+            starAvareg.Content = post.AverageStars;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
