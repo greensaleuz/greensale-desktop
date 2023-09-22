@@ -246,7 +246,7 @@
                                     Height="60"
                                     Margin="0 10 0 0"
                                     Content="Kirish"
-                                    Style="{DynamicResource SignSuccessButton}">
+                                    Style="{DynamicResource SaveBtn}">
                                 </Button>
                             </Grid>
                             

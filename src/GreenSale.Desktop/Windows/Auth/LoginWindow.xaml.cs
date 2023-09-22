@@ -75,6 +75,8 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            var loader = btnLogin.Template.FindName("loader", btnLogin) as FontAwesome.WPF.ImageAwesome;
+            loader.Visibility=Visibility.Visible;
             bool succses = true;
             if (txtPhoneNumber.Text.Length == 0)
             {
@@ -155,7 +157,7 @@ namespace GreenSale.Desktop.Windows
                         MainWindow window = new MainWindow();
                         window.Show();
                         notifier.Dispose();
-                        
+                        loader.Visibility = Visibility.Collapsed;
                         this.Close();
                     }
                     else
@@ -173,6 +175,7 @@ namespace GreenSale.Desktop.Windows
             {
                 notifier.ShowError("Internetga ulanmagansiz !");
             }
+            
         }
 
         private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)
