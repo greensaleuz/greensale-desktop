@@ -41,8 +41,8 @@ namespace GreenSale.Desktop.Windows
                 offsetY: 20);
 
             cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(5),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(2));
 
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
@@ -75,9 +75,9 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+            notifier.Dispose();
             var loader = btnLogin.Template.FindName("loader", btnLogin) as FontAwesome.WPF.ImageAwesome;
-            loader.Visibility=Visibility.Visible;
+            loader.Visibility = Visibility.Visible;
             bool succses = true;
             if (txtPhoneNumber.Text.Length == 0)
             {
@@ -116,6 +116,7 @@ namespace GreenSale.Desktop.Windows
             else
             {
                 ism_lv_lgn.Visibility = Visibility.Collapsed;
+                notifier.Dispose();
             }
 
 
@@ -139,6 +140,7 @@ namespace GreenSale.Desktop.Windows
             else
             {
                 parol_lv_lgn.Visibility = Visibility.Collapsed;
+                notifier.Dispose();
             }
             if (IsInternetAvailable())
             {
@@ -163,16 +165,18 @@ namespace GreenSale.Desktop.Windows
                     }
                     else
                     {
-                        notifier.ShowWarning("Internetingiz sekin!");
+                        notifier.ShowWarning("Bunday foydalanuvchi mavjud eams !");
+                        
                         loader.Visibility = Visibility.Collapsed;
                     }
+                    notifier.Dispose();
                 }
                 else
                 {
                     notifier.ShowInformation("Telefon yoki Parol natogri kiritildi!");
                     loader.Visibility = Visibility.Collapsed;
                 }
-
+                notifier.Dispose();
             }
             else
             {
@@ -180,6 +184,7 @@ namespace GreenSale.Desktop.Windows
                 loader.Visibility = Visibility.Collapsed;
             }
             loader.Visibility = Visibility.Collapsed;
+            notifier.Dispose();
         }
 
         private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace GreenSale.Integrated.Services.Auth
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                    dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent)!;
                     string token = jsonResponse.token.ToString();
                     //save to identity
                     return (Result: true, Token: token);
@@ -83,6 +83,7 @@ namespace GreenSale.Integrated.Services.Auth
                 var content = new StringContent(JsonConvert.SerializeObject(dto), null, "application/json");
                 httpRequestMessage.Content = content;
                 var response = await client.SendAsync(httpRequestMessage);
+                var res = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -173,10 +174,11 @@ namespace GreenSale.Integrated.Services.Auth
                         $" \"code\": {code}}}", null, "application/json");
                     request.Content = content;
                     var response = await client.SendAsync(request);
+                    string responseContent = await response.Content.ReadAsStringAsync();
                     if (response.IsSuccessStatusCode)
                     {
-                        string responseContent = await response.Content.ReadAsStringAsync();
-                        dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                        
+                        dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent)!;
                         string token = jsonResponse.token.ToString();
 
                         return (Result: jsonResponse.result, Token: token);

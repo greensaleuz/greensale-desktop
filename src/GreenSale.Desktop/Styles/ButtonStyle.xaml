@@ -535,6 +535,83 @@
     </Style>
 
 
+    <Style x:Key="RegisterSuccessButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="Width" Value="350"/>
+        <Setter Property="Margin" Value="10 0"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="sgnBr" CornerRadius="28"
+                            BorderThickness="2"
+                            BorderBrush="#24A649">
+                        <!-- Spinner -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <fa:ImageAwesome Grid.Column="0"
+                                x:Name="loader"
+                                    Icon="Spinner"
+                                    Visibility="Collapsed"
+                                    Spin="True"
+                                    Height="50"
+                                    Width="80"
+                                    Margin="0 0 0 0"
+                                    Foreground="White"/>
+                            <Label Grid.Column="1"
+                                FontSize="24"
+                               Margin="25 0 0 0"
+                               x:Name="sgn_label"
+                               FontFamily="send-series"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Content="{TemplateBinding Content}"
+                               />
+                        </Grid>
+                        <!--<StackPanel Orientation="Horizontal">
+                            
+                        </StackPanel>-->
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#219241"/>
+                                <GradientStop Color="#209240"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="sgnBr" Property="Background" Value="white"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="green"/>
+                            <Setter TargetName="loader" Property="Foreground" Value="green"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="sgnBr" Property="Background" Value="#209240"/>
+                            <Setter TargetName="sgn_label" Property="Foreground" Value="white"/>
+                            <Setter TargetName="loader" Property="Foreground" Value="white"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="loader" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="sgnBr" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="20" Color="LightGreen"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="SaveBtn" TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
