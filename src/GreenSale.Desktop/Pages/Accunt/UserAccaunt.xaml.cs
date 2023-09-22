@@ -152,53 +152,157 @@ namespace GreenSale.Desktop.Pages.Accunt
             }
         }
 
-
-        private async void shaxsiy_info(object sender, RoutedEventArgs e)
+        public bool IsValid()
         {
-            UserDto userDto = new UserDto()
+            bool isValid = false;
+            if(txt_name.Text.Length == 0)
             {
-                FirstName = txt_name.Text,
-                LastName = txt_lastname.Text,
-                PhoneNumber = "+998" + txt_phone.Text,
-                Region = cmbRegion.Text,
-                District = cmbDistrict.Text,
-                Address = txt_adres.Text
-            };
-
-            var result = await _service.UpdateAsync(userDto);
-            if (result)
+                ism_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txt_name.Text.Length < 3)
             {
-                MessageBox.Show("oxshadi");
-
+                ism_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
             }
             else
             {
-                MessageBox.Show("oxshamadi");
+                ism_lv_lgn.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            if (txt_lastname.Text.Length == 0)
+            {
+                ism_lv_stting.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txt_lastname.Text.Length < 3)
+            {
+                ism_lv_stting.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                ism_lv_stting.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            if (txt_phone.Text.Length < 9 || txt_phone.Text.Length == 0)
+            {
+                ism_lv_phone.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                ism_lv_phone.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            //----------------------------------------
+
+            if(cmbRegion.Text.Length == 0)
+            {
+                regn_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                regn_lv_lgn.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            if(cmbDistrict.Text.Length == 0)
+            {
+                distrkt_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                distrkt_lv_lgn.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            if(txt_adres.Text.Length == 0)
+            {
+                addres_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txt_adres.Text.Length  < 3)
+            {
+                addres_lv_lgn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                addres_lv_lgn.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            return isValid;
+        }
+
+
+
+        private async void shaxsiy_info(object sender, RoutedEventArgs e)
+        {
+            if (IsValid())
+            {
+                UserDto userDto = new UserDto()
+                {
+                    FirstName = txt_name.Text,
+                    LastName = txt_lastname.Text,
+                    PhoneNumber = "+998" + txt_phone.Text,
+                    Region = cmbRegion.Text,
+                    District = cmbDistrict.Text,
+                    Address = txt_adres.Text
+                };
+
+                var result = await _service.UpdateAsync(userDto);
+                if (result)
+                {
+                    MessageBox.Show("oxshadi");
+
+                }
+                else
+                {
+                    MessageBox.Show("oxshamadi");
+                }
+            }
+            else
+            {
+                MessageBox.Show("validator");
             }
         }
 
 
         private async void saqlsh_location_Click(object sender, RoutedEventArgs e)
         {
-            UserDto userDto = new UserDto()
+            if (IsValid())
             {
-                FirstName = txt_name.Text,
-                LastName = txt_lastname.Text,
-                PhoneNumber = "+998" + txt_phone.Text,
-                Region = cmbRegion.Text,
-                District = cmbDistrict.Text,
-                Address = txt_adres.Text
-            };
+                UserDto userDto = new UserDto()
+                {
+                    FirstName = txt_name.Text,
+                    LastName = txt_lastname.Text,
+                    PhoneNumber = "+998" + txt_phone.Text,
+                    Region = cmbRegion.Text,
+                    District = cmbDistrict.Text,
+                    Address = txt_adres.Text
+                };
 
-            var result = await _service.UpdateAsync(userDto);
-            if (result)
-            {
-                MessageBox.Show("oxshadi");
+                var result = await _service.UpdateAsync(userDto);
+                if (result)
+                {
+                    MessageBox.Show("oxshadi");
 
+                }
+                else
+                {
+                    MessageBox.Show("oxshamadi");
+                }
             }
             else
             {
-                MessageBox.Show("oxshamadi");
+                MessageBox.Show("validator");
             }
         }
 
@@ -224,5 +328,7 @@ namespace GreenSale.Desktop.Pages.Accunt
             }
 
         }
+
+        
     }
 }

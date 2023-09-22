@@ -75,6 +75,9 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            
+            var loader = btnLogin.Template.FindName("loader", btnLogin) as FontAwesome.WPF.ImageAwesome;
+            loader.Visibility=Visibility.Visible;
             bool succses = true;
             if (txtPhoneNumber.Text.Length == 0)
             {
@@ -155,24 +158,28 @@ namespace GreenSale.Desktop.Windows
                         MainWindow window = new MainWindow();
                         window.Show();
                         notifier.Dispose();
-                        
+                        loader.Visibility = Visibility.Collapsed;
                         this.Close();
                     }
                     else
                     {
                         notifier.ShowWarning("Internetingiz sekin!");
+                        loader.Visibility = Visibility.Collapsed;
                     }
                 }
                 else
                 {
                     notifier.ShowInformation("Telefon yoki Parol natogri kiritildi!");
+                    loader.Visibility = Visibility.Collapsed;
                 }
 
             }
             else
             {
                 notifier.ShowError("Internetga ulanmagansiz !");
+                loader.Visibility = Visibility.Collapsed;
             }
+            loader.Visibility = Visibility.Collapsed;
         }
 
         private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)

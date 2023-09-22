@@ -140,8 +140,8 @@ namespace GreenSale.Desktop.Windows.Products
 
                 StorageImageDto storageImageDto = new StorageImageDto()
                 {
-                    ImagePath = imgPath,
-                    StorageId = storageId
+                    StorageId = storageId,
+                    StorageImagePath = imgPath,
                 };
 
                 var result = await _service.UpdateImageStorageAsync(storageImageDto);
