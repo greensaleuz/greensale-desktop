@@ -19,5 +19,6 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
         public DateTime updatedAt { get; set; }
         public int status { get; set; } 
         public string mainImage { get; set; } = string.Empty;
+        public double AverageStars { get; set; }
     }
 }

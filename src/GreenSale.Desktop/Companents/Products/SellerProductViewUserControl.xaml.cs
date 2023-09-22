@@ -46,15 +46,16 @@ namespace GreenSale.Desktop.Companents.Products
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text  = post.capacityMeasure.ToString();
-            if(post.AverageStars.ToString().Length > 1)
+            starAvareg.Content = post.AverageStars;
+            /*if(post.AverageStars.ToString().Length > 1)
             {
-                var str = post.AverageStars.ToString().Split(',');
-                starAvareg.Content = str[0] + "." + str[1];
+                var str = post.AverageStars.ToString("0.0");
+                starAvareg.Content =str;
             }
             else
             {
                 starAvareg.Content = post.AverageStars.ToString();
-            }
+            }*/
             
 
             if (post.status == 0)
