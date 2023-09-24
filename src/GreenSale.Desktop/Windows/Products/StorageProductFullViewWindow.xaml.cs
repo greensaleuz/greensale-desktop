@@ -105,7 +105,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.AddressLongitude = 20930846; 
             dto.Name = txtbName.Text.ToString();
             dto.Address = txtbAddress.Text.ToString();
-            dto.ImagePath = DowlaodImage(ImgStorage.ImageSource.ToString());
+           // dto.ImagePath = DowlaodImage(ImgStorage.ImageSource.ToString());
 
             long id = StorageProductPersonalViewUserControl.storageId;
             var storage = await _service.UpdateAsync(id,dto);

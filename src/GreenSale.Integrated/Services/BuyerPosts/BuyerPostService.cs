@@ -5,6 +5,7 @@ using GreenSale.Integrated.Security;
 using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.BuyerPosts;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GreenSale.Integrated.Services.BuyerPosts
 {
@@ -170,6 +171,31 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             }
         }
 
+        public async Task<bool> DeleteImageAsync(long imageId)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/buyer/post/image/{imageId}");
+
+                var token = IdentitySingelton.GetInstance().Token;
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+                var result = await client.DeleteAsync(client.BaseAddress);
+                string response = await result.Content.ReadAsStringAsync();
+                
+                if(result.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public async Task<List<BuyerPost>> GetAllAsync()
         {
             try
@@ -217,8 +243,9 @@ namespace GreenSale.Integrated.Services.BuyerPosts
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/{postId}");
                 HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
-                string response = await message.Content.ReadAsStringAsync();
-                BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response)!;
+
+                var response = await message.Content.ReadAsStringAsync();
+                BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response);
 
                 return posts;
             }
@@ -311,6 +338,59 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             {
                 return false;
             }
+        }
+
+        public async Task<bool> UpdateStartAsync(long postId, int start)
+        {
+            try
+            {
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/buyer/star");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+                content.Add(new StringContent("2"), "PostId");
+                content.Add(new StringContent("2"), "Stars");
+                
+                request.Content = content;
+                var response = await client.SendAsync(request);
+
+                await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
+        public async Task<bool> UpdateStatusAsync(long postId, int status)
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/buyer/star");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(postId.ToString()), "PostId");
+            content.Add(new StringContent(status.ToString()), "Stars");
+            request.Content = content;
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -113,7 +113,7 @@ public class StorageService : IStorageService
             if (message.StatusCode.ToString() != "NotFound")
             {
                 string response = await message.Content.ReadAsStringAsync();
-                List<Storage> posts = JsonConvert.DeserializeObject<List<Storage>>(response);
+                List<Storage> posts = JsonConvert.DeserializeObject<List<Storage>>(response)!;
                 return posts;
             }
             return new List<Storage>();
@@ -182,7 +182,7 @@ public class StorageService : IStorageService
             content.Add(new StringContent(dto.AddressLongitude.ToString()), "AddressLongitude");
             content.Add(new StringContent(dto.Address), "Address");
             content.Add(new StringContent(dto.Info), "Info");
-            content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
+            //content.Add(new StreamContent(File.OpenRead(dto.ImagePath)), "ImagePath", dto.ImagePath);
 
             request.Content = content;
             var response = await client.SendAsync(request);
