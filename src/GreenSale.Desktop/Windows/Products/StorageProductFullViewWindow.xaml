@@ -32,28 +32,101 @@
                             <ColumnDefinition Width="240"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="btnPicture"
-                                IsMouseDirectlyOverChanged="btnPicture_IsMouseDirectlyOverChanged"
-                                MouseDown="btnPicture_MouseDown"
-                                Grid.Column="0" 
-                                CornerRadius="10"
-                                Height="200"
-                                Width="180"
-                                Cursor="Hand"
-                                Margin="10 15 0 0"  
-                                BorderThickness="2"
-                                BorderBrush="{DynamicResource SelectedBorderColor}"
-                                >
-                            <Border.Background>
-                                <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" 
-                                            ImageSource="/assets/images/luik.jpg"/>
-                            </Border.Background>
+                        <StackPanel>
                             
-                            <Path  x:Name="ImgIcon" Height="70" Width="70"
-                                    Data="{DynamicResource pilus}"
-                                    Fill="{DynamicResource FourthBackground}"
-                                    Stretch="Uniform"/>
-                        </Border>
+                            <Border x:Name="btnPicture"
+                                    IsMouseDirectlyOverChanged="btnPicture_IsMouseDirectlyOverChanged"
+                                    MouseDown="btnPicture_MouseDown"
+                                    Grid.Column="0" 
+                                    CornerRadius="10"
+                                    Height="200"
+                                    Width="180"
+                                    Cursor="Hand"
+                                    Margin="10 15 0 0"  
+                                    BorderThickness="2"
+                                    BorderBrush="{DynamicResource SelectedBorderColor}"
+                                    >
+                                <Border.Background>
+                                    <ImageBrush x:Name="ImgStorage" Stretch="UniformToFill" 
+                                                ImageSource="/assets/images/luik.jpg"/>
+                                </Border.Background>
+                            
+                                <Path  x:Name="ImgIcon" Height="70" Width="70"
+                                        Data="{DynamicResource pilus}"
+                                        Fill="{DynamicResource FourthBackground}"
+                                        Stretch="Uniform"/>
+                            </Border>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Cursor="Hand"
+                                        x:Name="br_star_1"
+                                        MouseDown="click_star_1"
+                                        Margin="50 10 0 0">
+                                    <Path x:Name="star_1"
+                                          Width="25" Height="25"
+                                          StrokeThickness="1"
+                                          Stroke="Yellow"
+                                          Margin="0"
+                                          Data="{DynamicResource star}"
+                                          Stretch="Uniform"
+                                          Fill="Transparent"/>
+                                </Border>
+                                <Border Cursor="Hand"
+                                        x:Name="br_star_2"
+                                        MouseDown="click_star_2"
+                                        Margin="5 10 0 0">
+                                    <Path Width="25" Height="25"
+                                          x:Name="star_2"
+                                          StrokeThickness="1"
+                                          Stroke="Yellow"
+                                          Margin="0"
+                                          Data="{DynamicResource star}"
+                                          Stretch="Uniform"
+                                          Fill="Transparent"/>
+                                </Border>
+                                <Border Cursor="Hand"
+                                        x:Name="br_star_3"
+                                        MouseDown="click_star_3"
+                                        Margin="5 10 0 0">
+
+                                    <Path  Width="25" Height="25"
+                                          x:Name="star_3"
+                                          StrokeThickness="1"
+                                          Stroke="Yellow"
+                                          Margin="0"
+                                          Data="{DynamicResource star}"
+                                          Stretch="Uniform"
+                                          Fill="Transparent"/>
+                                </Border>
+                                <Border Cursor="Hand"
+                                        x:Name="br_star_4"
+                                        MouseDown="click_star_4"
+                                        Margin="5 10 0 0">
+
+                                    <Path  Width="25" Height="25"
+                                          x:Name="star_4"
+                                          StrokeThickness="1"
+                                          Stroke="Yellow"
+                                          Margin="0"
+                                          Data="{DynamicResource star}"
+                                          Stretch="Uniform"
+                                          Fill="Transparent"/>
+                                </Border>
+                                <Border Cursor="Hand"
+                                        x:Name="br_star_5"
+                                        MouseDown="click_star_5"
+                                        Margin="5 10 0 0">
+
+                                    <Path  Width="25" Height="25"
+                                          x:Name="star_5"
+                                          StrokeThickness="1"
+                                          Stroke="Yellow"
+                                          Margin="0"
+                                          Data="{DynamicResource star}"
+                                          Stretch="Uniform"
+                                          Fill="Transparent"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
                         <StackPanel Grid.Column="1"
                                     Margin="10 0 10 0">
 
