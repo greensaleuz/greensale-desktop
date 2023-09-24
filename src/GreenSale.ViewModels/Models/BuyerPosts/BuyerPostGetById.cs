@@ -49,5 +49,6 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
         public DateTime UpdatedAt { get; set; }
         public List<BuyerPostImage> BuyerPostsImages { get; set; } = new List<BuyerPostImage>();
         public string MainImage { get; set; } = string.Empty;
+
     }
 }
