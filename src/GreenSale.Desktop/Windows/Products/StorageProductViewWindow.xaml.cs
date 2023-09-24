@@ -24,6 +24,8 @@ namespace GreenSale.Desktop.Windows.Products
     public partial class StorageProductViewWindow : Window
     {
         private IStorageService _service;
+        public int Star_CountUP { get; set; }
+        public int Star_Count { get; set; }
 
         public StorageProductViewWindow()
         {
@@ -58,6 +60,61 @@ namespace GreenSale.Desktop.Windows.Products
             string image = $"{AuthAPI.BASE_URL_IMG}" + storagePost.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
             Img.ImageSource = new BitmapImage(imageUri);
+        }
+
+        private void click_star_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Transparent);
+            star_3.Fill = new SolidColorBrush(Colors.Transparent);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 1;
+        }
+
+        private void click_star_2(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Transparent);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 2;
+        }
+
+        private void click_star_3(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 3;
+        }
+
+        private void click_star_4(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Yellow);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 4;
+        }
+
+        private void click_star_5(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Yellow);
+            star_5.Fill = new SolidColorBrush(Colors.Yellow);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 5;
         }
     }
 }
