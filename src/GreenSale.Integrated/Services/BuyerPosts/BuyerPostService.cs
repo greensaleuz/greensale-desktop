@@ -245,7 +245,7 @@ namespace GreenSale.Integrated.Services.BuyerPosts
                 HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
 
                 var response = await message.Content.ReadAsStringAsync();
-                BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response);
+                BuyerPostGetById posts = JsonConvert.DeserializeObject<BuyerPostGetById>(response)!;
 
                 return posts;
             }

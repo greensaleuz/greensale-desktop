@@ -8,13 +8,13 @@
              d:DesignHeight="75" d:DesignWidth="75">
     <Border x:Name="btnPicture"
             CornerRadius="10"
-            Height="70"
-            Width="70"
+            Height="80"
+            Width="80"
             Cursor="Hand"
-            Margin="1"
-            Padding="5"
+            Margin="1 0 2 0"
+            Padding="0"
             BorderThickness="1"
-            BorderBrush="{DynamicResource SelectedBorderColor}"
+            BorderBrush="Green"
             MouseDown="btnPicture_MouseDown">
         <Border.Background>
             <ImageBrush Stretch="UniformToFill" x:Name="ImgBuyer"/>

@@ -24,6 +24,7 @@ namespace GreenSale.Desktop.Pages.Sellers
     public partial class SellerPage : Page
     {
         private ISellerPost _service;
+        public Action RefreshPage { get; set; }
         public SellerPage()
         {
             InitializeComponent();
@@ -32,6 +33,12 @@ namespace GreenSale.Desktop.Pages.Sellers
 
         private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
+            await Refresh();
+        }
+
+        public async Task Refresh()
+        {
+            wrpSellerPost.Children.Clear();
             var sellerpost = await _service.GetAllAsync();
             loader.Visibility = Visibility.Collapsed;
             foreach (var post in sellerpost)
@@ -41,7 +48,6 @@ namespace GreenSale.Desktop.Pages.Sellers
                 wrpSellerPost.Children.Add(userControl);
             }
         }
-
         private async void By_Pst_TextBoxSearch_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && TextBoxSearch.Text.Length > 0)
