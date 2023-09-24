@@ -20,5 +20,6 @@ namespace GreenSale.ViewModels.Models.BuyerPosts
         public int status { get; set; } 
         public string mainImage { get; set; } = string.Empty;
         public double AverageStars { get; set; }
+        public double UserStars { get; set; }
     }
 }
