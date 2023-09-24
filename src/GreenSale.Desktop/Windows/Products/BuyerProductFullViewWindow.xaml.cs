@@ -26,8 +26,10 @@ namespace GreenSale.Desktop.Windows.Products
         public IBuyerPostService _service;
         public long MainImg_Id { get; set; }
         public int Star_Count { get; set; }
+        public int Star_CountUP { get; set; }
         public long PosrtId { get; set; }
         public bool updated = false;
+        public int status { get; set; }
         public long updated_Id { get; set; }
         public BuyerProductFullViewWindow()
         {
@@ -60,8 +62,10 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
 
-        private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
+        private async void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
+            var result = await _service.UpdateStatusAsync(PosrtId, status);
+            var star_result = await _service.UpdateStartAsync(PosrtId, Star_CountUP);
             this.Close();
         }
 
@@ -95,8 +99,10 @@ namespace GreenSale.Desktop.Windows.Products
 
         }*/
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private async void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            var result = await _service.UpdateStatusAsync(PosrtId, status);
+            var star_result = await _service.UpdateStartAsync(PosrtId, Star_CountUP);
             this.Close();
         }
         //  public static Dictionary<long, string> data = new Dictionary<long, string>();
@@ -329,7 +335,8 @@ namespace GreenSale.Desktop.Windows.Products
             long id = BuyerProductPersonalViewUserControl.buyerId;
             var res = await _service.UpdateAsync(id, dto);
 
-            var result = await _service.UpdateStatusAsync(PosrtId, Star_Count);
+            var result = await _service.UpdateStatusAsync(PosrtId, status);
+            var star_result = await _service.UpdateStartAsync(PosrtId, Star_CountUP);
 
 
             if (res)
@@ -375,8 +382,8 @@ namespace GreenSale.Desktop.Windows.Products
 
             new_border.Background = new SolidColorBrush(Colors.Green);
             lb_new.Foreground = new SolidColorBrush(Colors.White);
-
-            var res = await _service.UpdateStatusAsync(PosrtId, 0);
+            status = 0;
+            //var res = await _service.UpdateStatusAsync(PosrtId, 0);
         }
 
         private async void agree_status(object sender, MouseButtonEventArgs e)
@@ -389,8 +396,8 @@ namespace GreenSale.Desktop.Windows.Products
 
             new_border.Background = new SolidColorBrush(Colors.Transparent);
             lb_new.Foreground = new SolidColorBrush(Colors.Green);
-
-            var res = await _service.UpdateStatusAsync(PosrtId, 1);
+            status = 1;
+            //var res = await _service.UpdateStatusAsync(PosrtId, 1);
         }
 
         private async void byed_status(object sender, MouseButtonEventArgs e)
@@ -403,8 +410,8 @@ namespace GreenSale.Desktop.Windows.Products
 
             new_border.Background = new SolidColorBrush(Colors.Transparent);
             lb_new.Foreground = new SolidColorBrush(Colors.Green);
-
-            var res = await _service.UpdateStatusAsync(PosrtId, 2);
+            status = 2;
+            //var res = await _service.UpdateStatusAsync(PosrtId, 2);
         }
 
        
@@ -417,7 +424,7 @@ namespace GreenSale.Desktop.Windows.Products
             star_5.Fill = new SolidColorBrush(Colors.Transparent);
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
-            Star_Count = 1;
+            Star_CountUP = 1;
         }
 
         private void click_star_2(object sender, MouseButtonEventArgs e)
@@ -428,7 +435,7 @@ namespace GreenSale.Desktop.Windows.Products
             star_5.Fill = new SolidColorBrush(Colors.Transparent);
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
-            Star_Count = 2;
+            Star_CountUP = 2;
         }
 
         private void click_star_3(object sender, MouseButtonEventArgs e)
@@ -439,7 +446,7 @@ namespace GreenSale.Desktop.Windows.Products
             star_5.Fill = new SolidColorBrush(Colors.Transparent);
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
-            Star_Count = 3;
+            Star_CountUP = 3;
         }
 
         private void click_star_4(object sender, MouseButtonEventArgs e)
@@ -450,7 +457,7 @@ namespace GreenSale.Desktop.Windows.Products
             star_5.Fill = new SolidColorBrush(Colors.Transparent);
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
-            Star_Count = 4;
+            Star_CountUP = 4;
         }
 
         private void click_star_5(object sender, MouseButtonEventArgs e)
@@ -461,7 +468,7 @@ namespace GreenSale.Desktop.Windows.Products
             star_5.Fill = new SolidColorBrush(Colors.Yellow);
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
-            Star_Count = 5;
+            Star_CountUP = 5;
         }
     }
 }

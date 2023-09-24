@@ -346,13 +346,13 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             {
                 var token = IdentitySingelton.GetInstance().Token;
                 var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/buyer/star");
+                var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/buyer/star");
                 request.Headers.Add("Authorization", $"Bearer {token}");
 
                 var content = new MultipartFormDataContent();
-                content.Add(new StringContent("2"), "PostId");
-                content.Add(new StringContent("2"), "Stars");
-                
+                content.Add(new StringContent(postId.ToString()), "PostId");
+                content.Add(new StringContent(start.ToString()), "Stars");
+
                 request.Content = content;
                 var response = await client.SendAsync(request);
 
@@ -373,24 +373,28 @@ namespace GreenSale.Integrated.Services.BuyerPosts
 
         public async Task<bool> UpdateStatusAsync(long postId, int status)
         {
-            var token = IdentitySingelton.GetInstance().Token;
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/buyer/star");
-            request.Headers.Add("Authorization", $"Bearer {token}");
-
-            var content = new MultipartFormDataContent();
-
-            content.Add(new StringContent(postId.ToString()), "PostId");
-            content.Add(new StringContent(status.ToString()), "Stars");
-            request.Content = content;
-
-            var response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                return true;
+                var token = IdentitySingelton.GetInstance().Token;
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/buyer/post/status/{postId}");
+                request.Headers.Add("Authorization", $"Bearer {token}");
+
+                var content = new MultipartFormDataContent();
+
+                content.Add(new StringContent(status.ToString()), "PostStatus");
+                request.Content = content;
+
+                var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch { return false; }
+            
         }
     }
 }
