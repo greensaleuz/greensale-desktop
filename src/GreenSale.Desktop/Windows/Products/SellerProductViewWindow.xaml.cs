@@ -45,31 +45,7 @@ namespace GreenSale.Desktop.Windows.Products
             this.mainWindow = new MainWindow ();
         }
 
-        /*     private void btnPicture3_MouseDown(object sender, MouseButtonEventArgs e)
-             {
-                 ImgMain.ImageSource = Img3.ImageSource;
-             }
-
-             private void btnPicture4_MouseDown(object sender, MouseButtonEventArgs e)
-             {
-                 ImgMain.ImageSource = Img4.ImageSource;
-             }
-
-             private void btnPicture_MouseDown(object sender, MouseButtonEventArgs e)
-             {
-                 ImgMain.ImageSource = Img.ImageSource;
-             }
-
-             private void btnPicture1_MouseDown(object sender, MouseButtonEventArgs e)
-             {
-                 ImgMain.ImageSource = Img1.ImageSource;
-             }
-
-             private void btnPicture2_MouseDown(object sender, MouseButtonEventArgs e)
-             {
-                 ImgMain.ImageSource = Img2.ImageSource;
-
-             }*/
+        
 
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
@@ -206,36 +182,6 @@ namespace GreenSale.Desktop.Windows.Products
                     ImgMain.ImageSource = new BitmapImage(imageUri);
                     i++;
                 }
-
-                /*else if (i == 1)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img1.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 2)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img2.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 3)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img3.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 4)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img4.ImageSource = new BitmapImage(imageUri);
-                }
-                i++;*/
             }
         }
 
@@ -243,60 +189,7 @@ namespace GreenSale.Desktop.Windows.Products
         {
             await RefreshWindow();
             EnableBlur();
-            /*long id = SellerProductViewUserControl.sellerId;
-            var sellerPost = await _service.GetByIdAsync(id);
-
-            txtCapacity.Text = sellerPost.Capacity.ToString();
-            txtCM.Text = sellerPost.CapacityMeasure;
-            txtDescription.Text = sellerPost.Description;
-            txtDistrict.Text = sellerPost.District;
-            txtPhone.Text = sellerPost.PostPhoneNumber;
-            txtPrice.Text = sellerPost.Price.ToString();
-            txtTitle.Text = sellerPost.Title;
-            txtType.Text = sellerPost.Type;
-
-
-            int i = 0;
-            foreach (var item in sellerPost.PostImages)
-            {
-
-                if (i == 0)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-                    MainImg_Id = item.Id;
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    ImgMain.ImageSource = new BitmapImage(imageUri);
-                    i++;
-                }
-               *//* else if (i == 1)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img1.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 2)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img2.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 3)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img3.ImageSource = new BitmapImage(imageUri);
-                }
-                else if (i == 4)
-                {
-                    string image = $"{AuthAPI.BASE_URL_IMG}" + item.ImagePath;
-
-                    Uri imageUri = new Uri(image, UriKind.Absolute);
-                    Img4.ImageSource = new BitmapImage(imageUri);
-                }*//*
-            }*/
+           
         }
 
         int star_count = 0;
