@@ -25,7 +25,7 @@ namespace GreenSale.Desktop.Companents.Products
     public partial class BuyerProductViewUserControl : UserControl
     {
         private long ID { get; set; }
-
+        public Func<Task> Refresh { get; set; }
         public static long storageId { get; set; }
 
         public BuyerProductViewUserControl()
@@ -52,6 +52,10 @@ namespace GreenSale.Desktop.Companents.Products
         public void SetData(BuyerPosrtSearchViewModel post)
         {
             string image = $"{AuthAPI.BASE_URL_IMG}" + post.MainImage;
+            if(image is not null)
+            {
+                loader.Visibility = Visibility.Hidden;
+            }
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
@@ -68,7 +72,7 @@ namespace GreenSale.Desktop.Companents.Products
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            loader.Visibility = Visibility.Visible;
         }
 
         private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)

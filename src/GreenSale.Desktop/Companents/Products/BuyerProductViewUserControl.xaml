@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products"
+             xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products" xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d"             
              d:DesignHeight="370" d:DesignWidth="300">
     <Grid Height="350" Width="270"
           Margin="30 20 0 0">
+        
         <Border x:Name="B" Style="{DynamicResource BorderProduct}"
                             Cursor="Hand"
                             CornerRadius="10">
@@ -16,6 +17,7 @@
                     <RowDefinition Height="44*"/>
                     <RowDefinition Height="56*"/>
                 </Grid.RowDefinitions>
+                
                 <Border Grid.Row="0"
                                     BorderThickness="2 2 2 0"
                                     BorderBrush="{DynamicResource SecondaryBorderColor}"
@@ -24,12 +26,21 @@
                     <Border Margin="0" CornerRadius="7 7 7 7"
                             BorderThickness="1"
                             BorderBrush="Green">
-
+                        <fa:ImageAwesome
+                            Grid.Row="1"
+                            x:Name="loader"
+                            Icon="Spinner"
+                            Visibility="Collapsed"
+                            Spin="True"
+                            Foreground="LawnGreen"
+                            Height="100"
+                            Width="100"
+                            />
                         <Border.Background>
                             <ImageBrush 
                                 x:Name="BuyerPostImage" 
                                 Stretch="UniformToFill"
-                                ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                                />
                         </Border.Background>
 
                     </Border>
