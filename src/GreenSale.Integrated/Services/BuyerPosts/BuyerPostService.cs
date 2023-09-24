@@ -241,7 +241,9 @@ namespace GreenSale.Integrated.Services.BuyerPosts
             try
             {
                 HttpClient client = new HttpClient();
+                var token = IdentitySingelton.GetInstance().Token;
                 client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/buyer/posts/{postId}");
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
                 HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
 
                 var response = await message.Content.ReadAsStringAsync();
