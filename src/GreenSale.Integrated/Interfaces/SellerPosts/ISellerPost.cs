@@ -19,5 +19,7 @@ public interface ISellerPost
     public Task<long > CountAgreedAsync();
     public Task<List<PostCreatedAt>> SellerDaylilyCreatedAsync(int day);
     public Task<List<PostCreatedAt>> SellerMonthlyCreatedAsync(int month);
+    public Task<bool> UpdateStatusAsync(long postId, int status);
+    public Task<bool> UpdateStartAsync(long postId, int start);
 
 }

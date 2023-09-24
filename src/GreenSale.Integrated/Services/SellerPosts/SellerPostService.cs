@@ -5,6 +5,7 @@ using GreenSale.Integrated.Security;
 using GreenSale.ViewModels.Models;
 using GreenSale.ViewModels.Models.SellerPosts;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GreenSale.Integrated.Services.SellerPosts;
 
@@ -174,7 +175,10 @@ public class SellerPostService : ISellerPost
         try
         {
             HttpClient client = new HttpClient();
+            var token = IdentitySingelton.GetInstance().Token;
             client.BaseAddress = new Uri($"{AuthAPI.BASE_URL}" + $"/api/common/seller/post/{postId}");
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
             HttpResponseMessage message = await client.GetAsync(client.BaseAddress);
             string response = await message.Content.ReadAsStringAsync();
             SellerGetById posts = JsonConvert.DeserializeObject<SellerGetById>(response)!;
@@ -311,5 +315,40 @@ public class SellerPostService : ISellerPost
         {
             return false;
         }
+    }
+
+    public async Task<bool> UpdateStartAsync(long postId, int start)
+    {
+        try
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/seller/post/star");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(postId.ToString()), "PostId");
+            content.Add(new StringContent(start.ToString()), "Stars");
+
+            request.Content = content;
+            var response = await client.SendAsync(request);
+
+            await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public Task<bool> UpdateStatusAsync(long postId, int status)
+    {
+        throw new NotImplementedException();
     }
 }

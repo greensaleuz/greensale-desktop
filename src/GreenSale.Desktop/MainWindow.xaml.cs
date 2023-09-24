@@ -104,6 +104,11 @@ namespace GreenSale.Desktop
             FrameFilter.Content = sellerPage;
         }
 
+        public  void refresh()
+        {
+            SellerPage sellerPage = new SellerPage();
+            FrameFilter.Content = sellerPage;
+        }
         private void btnStorage_Click(object sender, RoutedEventArgs e)
         {
             StoragePage storagePage = new StoragePage();
