@@ -64,35 +64,7 @@ namespace GreenSale.Desktop.Windows.Products
         {
             this.Close();
         }
-        private string DowlaodImage(string url)
-        {
-            try
-            {
-                string saveDirectory = "C:\\Users\\Lenovo\\source\\repos\\greensale-desktop\\src\\GreenSale.Desktop\\Assets\\Dowloands\\Images\\";
-                //string currentAssemblyPath = Assembly.GetExecutingAssembly().Location;
-                string fileName = Path.GetFileName(url);
-
-                string localFilePath = Path.Combine(saveDirectory, fileName);
-
-                if (!Directory.Exists(saveDirectory))
-                {
-                    Directory.CreateDirectory(saveDirectory);
-                }
-
-                using (WebClient client = new WebClient())
-                {
-                    if(!File.Exists(localFilePath))
-                        client.DownloadFile(url, localFilePath);
-                }
-
-                return localFilePath;
-            }
-            catch 
-            {
-                return "";
-            }
-            
-        }
+       
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             

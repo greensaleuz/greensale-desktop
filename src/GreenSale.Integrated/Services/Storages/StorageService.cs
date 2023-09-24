@@ -206,7 +206,7 @@ public class StorageService : IStorageService
         {
             var token = IdentitySingelton.GetInstance().Token;
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, AuthAPI.BASE_URL + $"/api/client/storages/image/{dto.StorageId}");
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/storages/image/{dto.StorageId}");
             request.Headers.Add("Authorization", $"Bearer {token}");
 
             var content = new MultipartFormDataContent();

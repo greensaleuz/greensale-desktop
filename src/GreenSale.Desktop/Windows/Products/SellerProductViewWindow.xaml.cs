@@ -36,6 +36,7 @@ namespace GreenSale.Desktop.Windows.Products
         public long updated_Id { get; set; }
         public int Star_CountUP { get; set; }
         private MainWindow mainWindow;
+        public Func<Task> Refresh { get; set; }
         public SellerProductViewWindow()
         {
             InitializeComponent();

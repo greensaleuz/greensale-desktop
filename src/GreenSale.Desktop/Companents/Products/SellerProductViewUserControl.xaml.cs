@@ -27,6 +27,8 @@ namespace GreenSale.Desktop.Companents.Products
     {
         private long ID { get; set; }
 
+        public Func<Task> Refresh { get; set; }
+
         public static long sellerId { get; set; }
 
         public SellerProductViewUserControl()
@@ -104,6 +106,7 @@ namespace GreenSale.Desktop.Companents.Products
             sellerId = ID;
             SellerProductViewWindow seller = new SellerProductViewWindow();
             seller.ShowDialog();
+            Refresh();
             
         }
 

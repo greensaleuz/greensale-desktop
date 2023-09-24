@@ -34,9 +34,10 @@
                     </Border>
                 </Border>
                 <Border Grid.Row="1"
-                                    CornerRadius="0 0 7 7"
+                                    CornerRadius="7 7 7 7"
                                     BorderThickness="2 0 2 2"
-                                    BorderBrush="{DynamicResource SecondaryBorderColor}"
+                        Padding="1"
+                                    BorderBrush="Green"
                                     Background="{DynamicResource SecondaryBackground}">
                     <StackPanel>
                         <Border Height="40"
@@ -89,6 +90,8 @@
                             <Border Grid.Column="0"
                                     Height="35" 
                                     HorizontalAlignment="Left"
+                                    BorderBrush="Black"
+                                    
                                     Margin="10 0 0 0">
                                 <TextBlock x:Name="txtTitle" Text="Olma"
                                                        VerticalAlignment="Center"
