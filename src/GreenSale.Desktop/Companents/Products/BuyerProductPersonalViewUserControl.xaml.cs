@@ -47,6 +47,12 @@ namespace GreenSale.Desktop.Companents.Products
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
+
+            if (BuyerPostImage.ImageSource is not null)
+            {
+                loader.Visibility = Visibility.Collapsed;
+            }
+
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
@@ -55,7 +61,6 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
-
         }
 
         private async void btnBuyerDelete_Click(object sender, RoutedEventArgs e)

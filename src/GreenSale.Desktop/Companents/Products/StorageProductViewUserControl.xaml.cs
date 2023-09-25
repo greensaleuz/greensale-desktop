@@ -3,6 +3,7 @@ using GreenSale.Desktop.Windows.Products;
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.Storages;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using System;
@@ -44,6 +45,11 @@ namespace GreenSale.Desktop.Companents.Products
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             StorageImage.ImageSource = new BitmapImage(imageUri);
+            if (StorageImage.ImageSource is not null)
+            {
+                loader.Visibility = Visibility.Collapsed;
+            }
+
             txtbRegion.Text = post.Region;
             txtbDescription.Text = post.Description;
             txtbUpdate.Text = post.UpdatedAt.ToString("hh:mm") + " " + post.UpdatedAt.ToString("dd-MM-yy");

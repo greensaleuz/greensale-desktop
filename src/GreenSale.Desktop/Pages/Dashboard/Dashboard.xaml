@@ -64,7 +64,7 @@
                 
 
                 <!--Search TextBox-->
-                <Grid Width="300" HorizontalAlignment="Right">
+                <!--<Grid Width="300" HorizontalAlignment="Right">
                     <TextBlock Margin="15 0"
                                VerticalAlignment="Center"
                                Foreground="#868686" 
@@ -83,7 +83,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Foreground="#209240"/>
-                </Grid>
+                </Grid>-->
             </Grid>
         </Border>
         
