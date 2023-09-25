@@ -71,5 +71,13 @@ namespace GreenSale.Desktop.Companents.Products
             await Refresh();
             seller.ShowDialog();
         }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            sellerId = ID;
+            SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
+            await Refresh();
+            seller.ShowDialog();
+        }
     }
 }

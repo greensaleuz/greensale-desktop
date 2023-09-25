@@ -63,5 +63,13 @@ namespace GreenSale.Desktop.Companents.Products
             storage.ShowDialog();
             await Refresh();
         }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            storageId = ID;
+            StorageProductFullViewWindow storage = new StorageProductFullViewWindow();
+            storage.ShowDialog();
+            await Refresh();
+        }
     }
 }

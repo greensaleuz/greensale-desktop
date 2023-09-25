@@ -7,6 +7,7 @@ using GreenSale.Integrated.Services.SellerPosts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,9 +15,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static GreenSale.Desktop.Windows.Auth.BlurWindow.BlurEffect;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -45,8 +48,32 @@ namespace GreenSale.Desktop.Windows.Products
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            BuyerProductViewWindow buyerProductViewWindow = new BuyerProductViewWindow();
             this.Close();
+        }
+
+
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal void EnableBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
         }
 
         public async Task RefreshWindow()
@@ -61,6 +88,8 @@ namespace GreenSale.Desktop.Windows.Products
             lbPhone.Content = buyerPost.PostPhoneNumber;
             lbPrice.Content = buyerPost.Price.ToString();
             lbType.Content = buyerPost.Type;
+            PostId = buyerPost.Id;
+            Star_Count = buyerPost.UserStars;
 
             if (Star_Count == 1)
             {
@@ -121,10 +150,10 @@ namespace GreenSale.Desktop.Windows.Products
             foreach (var item in buyerPostImage)
             {
 
-                BuyerUpdateImageComponent sellerUpdateImageComponent = new BuyerUpdateImageComponent();
-                sellerUpdateImageComponent.Refresh = RefreshAsync;
-                sellerUpdateImageComponent.SetData(item);
-                wrpImg.Children.Add(sellerUpdateImageComponent);
+                BuyerUpdateImageComponent buyerresfresh = new BuyerUpdateImageComponent();
+                buyerresfresh.Refresh = RefreshAsync;
+                buyerresfresh.SetData(item);
+                wrpImg.Children.Add(buyerresfresh);
 
                 //  data.Add(item.Id, item.ImagePath);
                 if (i == 0)
@@ -155,6 +184,7 @@ namespace GreenSale.Desktop.Windows.Products
         }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            EnableBlur();
             await RefreshWindow();
         }
 

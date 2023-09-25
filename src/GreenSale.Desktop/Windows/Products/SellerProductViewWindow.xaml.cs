@@ -75,7 +75,6 @@ namespace GreenSale.Desktop.Windows.Products
         private async  void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            //((MainWindow)System.Windows.Application.Current.MainWindow).refresh();
         }
         public Task RefreshAsync(long id, string ImagePath)
         {

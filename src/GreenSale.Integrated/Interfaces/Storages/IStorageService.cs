@@ -23,5 +23,6 @@ namespace GreenSale.Integrated.Interfaces.Storages
         public Task<bool> UpdateImageStorageAsync(StorageImageDto dto);
         public Task<List<PostCreatedAt>> StorageDaylilyCreatedAsync(int day);
         public Task<List<PostCreatedAt>> StorageMonthlyCreatedAsync(int month);
+        public Task<bool> UpdateStartAsync(long postId, int start);
     }
 }
