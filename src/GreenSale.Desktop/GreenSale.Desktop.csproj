@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UserSecretsId>582fbb0e-0154-429e-b691-d1af87d1ffad</UserSecretsId>
+    <ApplicationIcon>imge.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,10 @@
     <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
     <None Remove="Assets\Images\Users.png" />
     <None Remove="Assets\Images\YangiElonlar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="imge.ico" />
   </ItemGroup>
 
   <ItemGroup>
