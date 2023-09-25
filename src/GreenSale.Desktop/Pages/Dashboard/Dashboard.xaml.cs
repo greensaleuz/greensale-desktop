@@ -1,4 +1,6 @@
-﻿using GreenSale.Integrated.Interfaces.BuyerPosts;
+﻿using GreenSale.Desktop.Pages.Accunt;
+using GreenSale.Desktop.Pages.CreateAd;
+using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Interfaces.Users;
@@ -9,6 +11,7 @@ using GreenSale.Integrated.Services.Users;
 using GreenSale.ViewModels.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,14 +39,15 @@ public partial class Dashboard : Page
 
     private void User_MouseDown(object sender, MouseButtonEventArgs e)
     {
-
+        NavigationService?.Navigate(new UserAccaunt());
     }
 
     public async void Page_Loaded_Dashbord(object sender, RoutedEventArgs e)
     {
         long buoyed_count = 0;
         long new_post = 0;
-
+        var result = await _serviseUser.GetAsync();
+        user_name.Text = result.FirstName.ToString();
         var seller_count = await _serviceSeller.CountAsync();
         var buyer_count = await _serviceBuyer.CountAsync();
         var user_count = await _serviseUser.CountAsync();
