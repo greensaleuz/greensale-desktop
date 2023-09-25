@@ -29,7 +29,7 @@
                             x:Name="loader"
                             Grid.Row="1"
                             Icon="Spinner"
-                            Visibility="Visible"
+                            Visibility="Collapsed"
                             Spin="True"
                             Foreground="LawnGreen"
                             Height="100"

@@ -43,10 +43,8 @@ namespace GreenSale.Desktop.Companents.Products
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
 
-            if (SellePostImage.ImageSource is not null)
-            {
-                loader.Visibility = Visibility.Collapsed;
-            }
+            loader.Visibility = Visibility.Collapsed;
+
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();

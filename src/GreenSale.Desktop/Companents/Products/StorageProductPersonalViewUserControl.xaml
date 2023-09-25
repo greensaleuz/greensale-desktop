@@ -31,7 +31,7 @@
                             Grid.Row="1"
                             Icon="Spinner"
                             Foreground="LawnGreen"
-                            Visibility="Visible"
+                            Visibility="Collapsed"
                             Spin="True"
                             Height="100"
                             Width="100"
