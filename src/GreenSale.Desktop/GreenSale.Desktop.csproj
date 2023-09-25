@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UserSecretsId>582fbb0e-0154-429e-b691-d1af87d1ffad</UserSecretsId>
-    <ApplicationIcon>imge.ico</ApplicationIcon>
+    <ApplicationIcon>imge-removebg-preview.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="imge.ico" />
+    <Content Include="imge-removebg-preview.ico" />
   </ItemGroup>
 
   <ItemGroup>
