@@ -1,6 +1,7 @@
 ﻿using GreenSale.Desktop.Companents.Loader;
 using GreenSale.Desktop.Windows.Products;
 using GreenSale.Integrated.API.Auth;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,11 @@ namespace GreenSale.Desktop.Companents.Products
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
+
+            if (SellePostImage.ImageSource is not null)
+            {
+                loader.Visibility = Visibility.Collapsed;
+            }
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();

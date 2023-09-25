@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products"
+             xmlns:local="clr-namespace:GreenSale.Desktop.Companents.Products" xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" 
              x:Name="Sellercom"
              d:DesignHeight="370" d:DesignWidth="300">
@@ -26,9 +26,18 @@
                     <Border Margin="0" CornerRadius="7 7 7 7"
                             BorderThickness="1"
                             BorderBrush="Green">
-
+                        <fa:ImageAwesome
+                            x:Name="loader"
+                            Grid.Row="1"
+                            Icon="Spinner"
+                            Foreground="LawnGreen"
+                            Visibility="Visible"
+                            Spin="True"
+                            Height="100"
+                            Width="100"
+                            />
                         <Border.Background>
-                            <ImageBrush x:Name="SellePostImage" ImageSource="/Assets/Images/apple-tree-garden-green.jpg"/>
+                            <ImageBrush x:Name="SellePostImage" />
                         </Border.Background>
 
                     </Border>

@@ -31,32 +31,40 @@
               Style="{DynamicResource border}">
 
             <Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Border x:Name="User"
+                <Border Margin="0,0,500,0" 
+                        Cursor="Hand"
+                        MouseDown="User_MouseDown">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Border x:Name="User"
                             MouseDown="User_MouseDown"
                             Width="50" Height="50" 
                             CornerRadius="10" 
                             Margin="5 0 20 0"
                             Cursor="Hand"
                             >
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#219241"/>
-                                <GradientStop Color="#209240"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#219241"/>
+                                    <GradientStop Color="#209240"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
 
-                        <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
-                    </Border>
-                        <StackPanel  VerticalAlignment="Center">
-                            <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
-                            <TextBlock Text="kuningiz xayrli o'tsin" Foreground="#6c879a" Margin="0 1 0 0"/>
-
-                        </StackPanel>
-                </StackPanel>
+                            <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
+                        </Border>
+                        <Border>
+                            <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                                <TextBlock Text="Salom " FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
+                                <TextBlock x:Name="user_name" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
+                            </StackPanel>
+                        </Border>
+    
+                    </StackPanel>
+                </Border>
+                
 
                 <!--Search TextBox-->
-                <Grid Width="300" HorizontalAlignment="Right">
+                <!--<Grid Width="300" HorizontalAlignment="Right">
                     <TextBlock Margin="15 0"
                                VerticalAlignment="Center"
                                Foreground="#868686" 
@@ -75,7 +83,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Foreground="#209240"/>
-                </Grid>
+                </Grid>-->
             </Grid>
         </Border>
         

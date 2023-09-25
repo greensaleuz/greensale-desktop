@@ -9,6 +9,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="StorageProductFullViewWindow" Height="560" Width="550">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
