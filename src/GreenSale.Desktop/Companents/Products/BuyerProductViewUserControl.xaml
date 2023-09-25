@@ -111,13 +111,21 @@
                                                        FontFamily="send-series"
                                                        Foreground="{DynamicResource FifthTextColor}"/>
                             </Border>
+                            
                             <StackPanel Grid.Column="1"
                                         Height="35"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 0"
                                         Orientation="Horizontal"
                                         >
+                                <Border x:Name="statusPost"
+                                        Margin="5"
+                                        Height="10"
+                                        Width="10"
+                                        CornerRadius="5"
+                                        Background="Green">
 
+                                </Border>
                                 <TextBlock x:Name="txtbStatus" Text="Kelishilgan"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"

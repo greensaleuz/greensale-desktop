@@ -128,6 +128,31 @@ public class SellerPostService : ISellerPost
 
     }
 
+    public async Task<bool> DeleteImageAsync(long imageId)
+    {
+        try
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(AuthAPI.BASE_URL + $"/api/client/seller/post/image/{imageId}");
+
+            var token = IdentitySingelton.GetInstance().Token;
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            var result = await client.DeleteAsync(client.BaseAddress);
+            string response = await result.Content.ReadAsStringAsync();
+
+            if (result.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     public async Task<List<SellerPost>> GetAllAsync()
     {
         try
@@ -347,8 +372,28 @@ public class SellerPostService : ISellerPost
         }
     }
 
-    public Task<bool> UpdateStatusAsync(long postId, int status)
+    public async Task<bool> UpdateStatusAsync(long postId, int status)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var token = IdentitySingelton.GetInstance().Token;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Put, AuthAPI.BASE_URL + $"/api/client/seller/post/status/{postId}");
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(status.ToString()), "PostStatus");
+            request.Content = content;
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch { return false; }
     }
 }

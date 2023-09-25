@@ -58,10 +58,6 @@ namespace GreenSale.Desktop.Companents.Products
 
         private async void Border_MouseEnter(object sender, MouseButtonEventArgs e)
         {
-            storageId = ID;
-            StorageProductFullViewWindow storage = new StorageProductFullViewWindow();
-            storage.ShowDialog();
-            await Refresh();
         }
 
         private async void B_MouseDown(object sender, MouseButtonEventArgs e)
