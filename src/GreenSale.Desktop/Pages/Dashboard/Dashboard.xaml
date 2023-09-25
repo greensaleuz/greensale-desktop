@@ -149,7 +149,8 @@
                     <TextBlock 
                         TextWrapping="Wrap" 
                         Margin="30 0 0 0" 
-                        Foreground="#b7b7b7" 
+                        FontSize="18"
+                        Foreground="Black"
                         Text="Bu yerda siz kunlik el'onlarni ko'rishingiz mumkun"/>
                 </Grid>
                 <fa:ImageAwesome
