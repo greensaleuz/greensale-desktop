@@ -4,10 +4,10 @@
     <StackPanel Orientation="Horizontal"
                 Margin="0 0 0 0">
         <Border Width="12" Height="12" Background="Yellow" CornerRadius="3"/>
-        <TextBlock Text="Storage post" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
+        <TextBlock Text="Yuhona e'loni" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
         <Border Width="12" Height="12" Background="{DynamicResource PrimaryBackground}" CornerRadius="3"/>
-        <TextBlock Text="Buyer Post" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
+        <TextBlock Text="Oluvchi  e'loni" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
         <Border Width="12" Height="12" Background="Red" CornerRadius="3"/>
-        <TextBlock Text="Seller Post" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
+        <TextBlock Text="Sotuvchi e'loni" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#6c879a" />
     </StackPanel>
 </UserControl>
