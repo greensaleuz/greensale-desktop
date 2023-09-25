@@ -63,9 +63,9 @@ namespace GreenSale.Desktop.Pages.Buyers
             if(By_Pst_TextBoxSearch.Text.Length == 0)
             {
                 wrpCourses.Children.Clear();
+                wrpCourses.Visibility = Visibility.Collapsed;
                 loader.Visibility = Visibility.Visible;
                 var buyerpost = await _service.GetAllAsync();
-                loader.Visibility = Visibility.Collapsed;
                 foreach (var post in buyerpost)
                 {
                     BuyerProductViewUserControl buyerProductViewUserControl = new BuyerProductViewUserControl();
@@ -74,6 +74,7 @@ namespace GreenSale.Desktop.Pages.Buyers
 
                 }
                 loader.Visibility = Visibility.Collapsed;
+                wrpCourses.Visibility = Visibility.Visible;
             }
             
         }

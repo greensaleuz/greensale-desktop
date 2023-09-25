@@ -48,10 +48,7 @@ namespace GreenSale.Desktop.Companents.Products
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
-            if (SellePostImage.ImageSource is not null)
-            {
-                loader.Visibility = Visibility.Collapsed;
-            }
+            loader.Visibility = Visibility.Collapsed;
 
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
