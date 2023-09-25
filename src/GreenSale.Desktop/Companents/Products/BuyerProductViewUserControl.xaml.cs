@@ -56,7 +56,7 @@ namespace GreenSale.Desktop.Companents.Products
             {
                 loader.Visibility = Visibility.Hidden;
             }
-            Uri imageUri = new Uri(image, UriKind.Absolute);
+            Uri imageUri = new Uri(image!, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
             txtbRegion.Text = post.Region;
@@ -75,11 +75,20 @@ namespace GreenSale.Desktop.Companents.Products
             loader.Visibility = Visibility.Visible;
         }
 
-        private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
             storageId = ID;
             BuyerProductViewWindow buyer = new BuyerProductViewWindow();
             buyer.ShowDialog();
+            await Refresh();
+        }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
+        { 
+            storageId = ID;
+            BuyerProductViewWindow buyer = new BuyerProductViewWindow();
+            buyer.ShowDialog();
+            await Refresh();
         }
     }
 }

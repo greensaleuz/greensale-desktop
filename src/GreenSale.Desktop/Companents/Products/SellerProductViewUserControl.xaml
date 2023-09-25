@@ -12,7 +12,8 @@
           Margin="30 20 0 0">
         <Border x:Name="B" Style="{DynamicResource BorderProduct}"
                 Cursor="Hand"
-                CornerRadius="10">
+                CornerRadius="10"
+                MouseDown="B_MouseDown">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="44*"/>
@@ -36,7 +37,7 @@
                 <Border Grid.Row="1"
                                     CornerRadius="7 7 7 7"
                                     BorderThickness="2 0 2 2"
-                        Padding="1"
+                                    Padding="1"
                                     BorderBrush="Green"
                                     Background="{DynamicResource SecondaryBackground}">
                     <StackPanel>

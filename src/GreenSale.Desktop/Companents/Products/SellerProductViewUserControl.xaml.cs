@@ -113,7 +113,14 @@ namespace GreenSale.Desktop.Companents.Products
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PictureLoader loader = new PictureLoader();
-           
+        }
+
+        private void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            sellerId = ID;
+            SellerProductViewWindow seller = new SellerProductViewWindow();
+            seller.ShowDialog();
+            Refresh();
         }
     }
 }
