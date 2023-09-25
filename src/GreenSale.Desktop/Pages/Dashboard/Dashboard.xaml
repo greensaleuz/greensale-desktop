@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Dashbord"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:uc="clr-namespace:GreenSale.Desktop.Companents.ProductControls"
-      xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"   
+      xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1040"
       Title="Dashboard"
@@ -152,6 +152,16 @@
                         Foreground="#b7b7b7" 
                         Text="Bu yerda siz kunlik el'onlarni ko'rishingiz mumkun"/>
                 </Grid>
+                <fa:ImageAwesome
+                    x:Name="loader"
+                    Grid.Row="1"
+                    Icon="Spinner"
+                    Foreground="LawnGreen"
+                    Visibility="Visible"
+                    Spin="True"
+                    Height="220"
+                    Width="220"
+                    />
                 <lvc:CartesianChart Grid.Row="1" 
                                     Margin="5 40 0 60" 
                                     LegendLocation="None" Loaded="CartesianChart_Loaded">
