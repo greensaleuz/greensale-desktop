@@ -116,6 +116,7 @@ public partial class Dashboard : Page
         seller_post.Reverse();
 
         chart(seller_post, buyer_post, storage_post);
+        loader.Visibility = Visibility.Collapsed;
     }
 
 
