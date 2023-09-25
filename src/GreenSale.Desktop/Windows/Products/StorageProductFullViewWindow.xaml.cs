@@ -18,6 +18,9 @@ using Application = System.Windows.Application;
 using System.Reflection;
 using GreenSale.Integrated.API.Auth;
 using System.Windows.Media;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
+using static GreenSale.Desktop.Windows.Auth.BlurWindow.BlurEffect;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -30,6 +33,7 @@ namespace GreenSale.Desktop.Windows.Products
         public long storageId { get; set; }
         public int Star_CountUP { get; set; }
         public int Star_Count { get; set; }
+        public int PostId { get; set; }
 
         public Func<Task> Refresh { get; set; }
         public StorageProductFullViewWindow()
@@ -38,12 +42,41 @@ namespace GreenSale.Desktop.Windows.Products
             this._service = new StorageService();
         }
 
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal void EnableBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
+        }
+
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshwinstorage();
+        }
+
+        public async void refreshwinstorage()
         {
             long id = StorageProductPersonalViewUserControl.storageId;
             storageId = id;
@@ -57,7 +90,7 @@ namespace GreenSale.Desktop.Windows.Products
             txtbInfo.Text = storage.Info;
             txtbPhoneNumber.Text = storage.PhoneNumber;
             txtbRegion.Text = storage.Region;
-            
+            PostId = Convert.ToInt32(storage.Id);
 
             string image = $"{AuthAPI.BASE_URL_IMG}" + storage.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
@@ -68,7 +101,9 @@ namespace GreenSale.Desktop.Windows.Products
         {
             this.Close();
         }
-       
+
+        
+
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             
@@ -134,7 +169,7 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
         int star_count = 0;
-        private void click_star_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void click_star_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             star_2.Fill = new SolidColorBrush(Colors.Transparent);
             star_3.Fill = new SolidColorBrush(Colors.Transparent);
@@ -143,9 +178,10 @@ namespace GreenSale.Desktop.Windows.Products
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
             Star_CountUP = 1;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
 
-        private void click_star_2(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void click_star_2(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             star_2.Fill = new SolidColorBrush(Colors.Yellow);
             star_3.Fill = new SolidColorBrush(Colors.Transparent);
@@ -154,9 +190,10 @@ namespace GreenSale.Desktop.Windows.Products
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
             Star_CountUP = 2;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
 
-        private void click_star_3(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void click_star_3(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             star_2.Fill = new SolidColorBrush(Colors.Yellow);
             star_3.Fill = new SolidColorBrush(Colors.Yellow);
@@ -165,9 +202,10 @@ namespace GreenSale.Desktop.Windows.Products
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
             Star_CountUP = 3;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
 
-        private void click_star_4(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void click_star_4(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             star_2.Fill = new SolidColorBrush(Colors.Yellow);
             star_3.Fill = new SolidColorBrush(Colors.Yellow);
@@ -176,9 +214,10 @@ namespace GreenSale.Desktop.Windows.Products
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
             Star_CountUP = 4;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
 
-        private void click_star_5(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private async void click_star_5(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             star_2.Fill = new SolidColorBrush(Colors.Yellow);
             star_3.Fill = new SolidColorBrush(Colors.Yellow);
@@ -187,6 +226,7 @@ namespace GreenSale.Desktop.Windows.Products
             //-------
             star_1.Fill = new SolidColorBrush(Colors.Yellow);
             Star_CountUP = 5;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
     }
 }

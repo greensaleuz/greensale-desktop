@@ -129,7 +129,7 @@
 
 
 
-                    <TextBlock Text="Yordam" Style="{DynamicResource menuTitle}"/>
+                    <!--<TextBlock Text="Yordam" Style="{DynamicResource menuTitle}"/>
                     <RadioButton Style="{DynamicResource menuButton}" Click="Button_Click">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="AccountCheck" Style="{DynamicResource menuButtonIcon}"/>
@@ -141,7 +141,7 @@
                             <icon:PackIconMaterial Kind="HomeGroup" Style="{DynamicResource menuButtonIcon}"/>
                             <TextBlock Text="Biz bilan bog'lanish" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
-                    </RadioButton>
+                    </RadioButton>-->
                     <RadioButton x:Name="setting"
                                  Click="setting_Click"
                         Style="{DynamicResource menuButton}">
