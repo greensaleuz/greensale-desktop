@@ -47,6 +47,27 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
             starAvareg.Content = post.AverageStars;
+
+            if(post.status == 0)
+            {
+                txtbStatus.Text = "Yangi";
+                statusPost.Background = new SolidColorBrush(Colors.Green);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else if (post.status == 1)
+            {
+                txtbStatus.Text = "Kelishilgan";
+                statusPost.Background = new SolidColorBrush(Colors.Yellow);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Yellow);
+
+            }
+            else if (post.status == 2)
+            {
+                txtbStatus.Text = " Sotib olingan";
+                statusPost.Background = new SolidColorBrush(Colors.Red);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Red);
+
+            }
         }
 
         public void SetData(BuyerPosrtSearchViewModel post)
@@ -77,10 +98,6 @@ namespace GreenSale.Desktop.Companents.Products
 
         private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            storageId = ID;
-            BuyerProductViewWindow buyer = new BuyerProductViewWindow();
-            buyer.ShowDialog();
-            await Refresh();
         }
 
         private async void B_MouseDown(object sender, MouseButtonEventArgs e)

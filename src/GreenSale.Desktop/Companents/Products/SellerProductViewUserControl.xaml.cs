@@ -103,10 +103,6 @@ namespace GreenSale.Desktop.Companents.Products
 
         private void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            sellerId = ID;
-            SellerProductViewWindow seller = new SellerProductViewWindow();
-            seller.ShowDialog();
-            Refresh();
             
         }
 

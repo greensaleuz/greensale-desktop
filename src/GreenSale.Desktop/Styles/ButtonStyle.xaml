@@ -1203,7 +1203,6 @@
                             <Setter TargetName="icon" Property="Fill" Value="{DynamicResource FifthTextColor}"/>
                             <Setter TargetName="lblAd" Property="Foreground" Value="{DynamicResource FifthTextColor}"/>
                         </Trigger>
-
                         <Trigger Property="IsMouseOver" Value="False">
 
 

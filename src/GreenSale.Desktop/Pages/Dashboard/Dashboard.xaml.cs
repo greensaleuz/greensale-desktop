@@ -66,7 +66,7 @@ public partial class Dashboard : Page
         new_post += await _serviceBuyer.CountNewAsync();
 
 
-        var res = await CanCulateAsync(count, buoyed_count);
+        var res = CanCulateAsync(count, buoyed_count);
         post_buyed.SubTitle = $"Bir yillik kelishilgan e'lonlar soni {buoyed_count}";
         post_buyed.Amount = Convert.ToInt32(res);
 
@@ -115,12 +115,19 @@ public partial class Dashboard : Page
     }
 
 
-    public Task<long> CanCulateAsync(long count, long statsus)
+    public long CanCulateAsync(long count, long statsus)
     {
+        try
+        {
+            var x = (statsus * 100) / count;
 
-        var x = (statsus * 100) / count;
-
-        return Task.FromResult(x);
+            return x;
+        }
+        catch
+        {
+            return 0;
+        }
+        
     }
 
     private void CartesianChart_Loaded(object sender, RoutedEventArgs e)

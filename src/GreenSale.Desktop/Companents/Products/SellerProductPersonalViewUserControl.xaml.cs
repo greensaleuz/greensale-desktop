@@ -66,10 +66,6 @@ namespace GreenSale.Desktop.Companents.Products
 
         private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            sellerId = ID;
-            SellerProductFullViewWindow seller = new SellerProductFullViewWindow();
-            await Refresh();
-            seller.ShowDialog();
         }
 
         private async void B_MouseDown(object sender, MouseButtonEventArgs e)
