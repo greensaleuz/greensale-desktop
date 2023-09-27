@@ -1,6 +1,8 @@
 ﻿using GreenSale.Dtos.Dtos.Auth;
 using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.Auth;
+using GreenSale.Integrated.Security;
+using GreenSale.ViewModels.Models.Auth;
 using Newtonsoft.Json;
 
 namespace GreenSale.Integrated.Services.Auth
@@ -189,6 +191,27 @@ namespace GreenSale.Integrated.Services.Auth
             catch
             {
                 return (Result: false, Token: "");
+            }
+        }
+
+        public async Task<UserRole> VerifyUserRole()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(AuthAPI.BASE_URL + "/api/auth/check/user/role");
+
+                var token = IdentitySingelton.GetInstance().Token;
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+                var result = client.GetAsync(client.BaseAddress);
+                string response = await result.Result.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<UserRole>(response);
+                return user!;
+            }
+            catch
+            {
+                return new UserRole();
             }
         }
     }

@@ -20,6 +20,7 @@
     <None Remove="Assets\Images\Salomaka.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <None Remove="Assets\Images\Screenshot 2023-08-15 215526.png" />
+    <None Remove="Assets\Images\SecurityImage.jpg" />
     <None Remove="Assets\Images\Users.png" />
     <None Remove="Assets\Images\YangiElonlar.png" />
   </ItemGroup>
@@ -30,6 +31,9 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.10.1" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="Emgu.CV" Version="4.8.0.5324" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.0.5324" />
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
@@ -50,6 +54,9 @@
     <Resource Include="Assets\Images\luik.jpg" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 214117.png" />
     <Resource Include="Assets\Images\Screenshot 2023-08-15 215526.png" />
+    <Resource Include="Assets\Images\SecurityImage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\Users.png" />
     <Resource Include="Assets\Images\YangiElonlar.png" />
     <Resource Include="Assets\Images\Kelishilganlar.png" />
