@@ -1,0 +1,22 @@
+﻿<Window x:Class="GreenSale.Desktop.Windows.FullImageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GreenSale.Desktop.Windows"
+        mc:Ignorable="d"
+        Title="FullImageWindow" 
+         AllowsTransparency="True"
+        WindowState="Maximized"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
+    <Border Height="665" Width="800"
+            x:Name="imgwindow">
+        <Border.Background>
+            <ImageBrush  x:Name="ImgMain" Stretch="UniformToFill"/>
+        </Border.Background>
+    </Border>
+</Window>

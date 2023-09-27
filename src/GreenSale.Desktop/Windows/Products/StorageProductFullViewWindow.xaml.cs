@@ -21,6 +21,7 @@ using System.Windows.Media;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using static GreenSale.Desktop.Windows.Auth.BlurWindow.BlurEffect;
+using System.Security.Policy;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -102,7 +103,7 @@ namespace GreenSale.Desktop.Windows.Products
             this.Close();
         }
 
-        
+       
 
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
