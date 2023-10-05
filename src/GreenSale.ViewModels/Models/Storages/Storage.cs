@@ -17,5 +17,6 @@ namespace GreenSale.ViewModels.Models.Storages
         public string Info { get; set; } = string.Empty;
         public string ImagePath { get; set; } = string.Empty;
         public DateTime UpdatedAt { get; set; }
+        public double AverageStars { get; set; }
     }
 }

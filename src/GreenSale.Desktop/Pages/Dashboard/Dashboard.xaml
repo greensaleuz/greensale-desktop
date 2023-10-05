@@ -6,10 +6,11 @@
       xmlns:local="clr-namespace:GreenSale.Desktop.Pages.Dashbord"
       xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:uc="clr-namespace:GreenSale.Desktop.Companents.ProductControls"
-      xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"   
+      xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="1040"
-      Title="Dashboard">
+      Title="Dashboard"
+      Loaded="Page_Loaded_Dashbord">
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVisConv"/>
     </Page.Resources>
@@ -30,32 +31,40 @@
               Style="{DynamicResource border}">
 
             <Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Border x:Name="User"
+                <Border Margin="0,0,500,0" 
+                        Cursor="Hand"
+                        MouseDown="User_MouseDown">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Border x:Name="User"
                             MouseDown="User_MouseDown"
                             Width="50" Height="50" 
                             CornerRadius="10" 
                             Margin="5 0 20 0"
                             Cursor="Hand"
                             >
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#219241"/>
-                                <GradientStop Color="#209240"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#219241"/>
+                                    <GradientStop Color="#209240"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
 
-                        <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
-                    </Border>
-                        <StackPanel  VerticalAlignment="Center">
-                            <TextBlock Text="Salom, Aka" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
-                            <TextBlock Text="kuningiz xayrli o'tsin" Foreground="#6c879a" Margin="0 1 0 0"/>
-
-                        </StackPanel>
-                </StackPanel>
+                            <Image Width="40" Height="40" Source="/Assets/Images/Salomaka.png"/>
+                        </Border>
+                        <Border>
+                            <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                                <TextBlock Text="Salom " FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
+                                <TextBlock x:Name="user_name" FontSize="26" FontWeight="Bold" Style="{DynamicResource titleText}"/>
+                            </StackPanel>
+                        </Border>
+    
+                    </StackPanel>
+                </Border>
+                
 
                 <!--Search TextBox-->
-                <Grid Width="300" HorizontalAlignment="Right">
+                <!--<Grid Width="300" HorizontalAlignment="Right">
                     <TextBlock Margin="15 0"
                                VerticalAlignment="Center"
                                Foreground="#868686" 
@@ -74,7 +83,7 @@
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Foreground="#209240"/>
-                </Grid>
+                </Grid>-->
             </Grid>
         </Border>
         
@@ -88,10 +97,36 @@
             </Grid.ColumnDefinitions>
            
             <!--Card-->
-            <uc:ProductCountControl Grid.Column="0" Title="E'lonlar" SubTitle="Bir yillik e'lonlar soni 9997" Amount="3" Image= "/Assets/Images/Elonlar.png" />
-            <uc:ProductCountControl Grid.Column="1" Title="Olinganlar" SubTitle="Bir yillik kelishilganlar soni 7778" Amount="7" Image="/Assets/Images/Kelishilganlar.png"/>
-            <uc:ProductCountControl Grid.Column="2" Title="Yangi" SubTitle="Band qilinmagan e'lonlar soni 8887" Amount="5" Image="/Assets/Images/YangiElonlar.png"/>
-            <uc:ProductCountControl Grid.Column="3" Title="Mijozlar" SubTitle="Foydalanuvchilar soni 5578" Amount="5" Image="/Assets/Images/Users.png"/>
+            
+            <uc:ProductCountControl
+                x:Name="post_count"
+                Grid.Column="0" 
+                Title="E'lonlar"
+                Amount="100" 
+                IsEnabled="False"
+                Image= "/Assets/Images/Elonlar.png" />
+            
+            <uc:ProductCountControl 
+                Grid.Column="1" 
+                Title="Olinganlar" 
+                x:Name="post_buyed"
+                IsEnabled="False" 
+                Amount="0" 
+                Image="/Assets/Images/Kelishilganlar.png"/>
+            <uc:ProductCountControl 
+                Grid.Column="2" 
+                x:Name="post_new"
+                Title="Yangi" 
+                Amount="0"
+                IsEnabled="False"
+                Image="/Assets/Images/YangiElonlar.png"/>
+            <uc:ProductCountControl 
+                Grid.Column="3" 
+                x:Name="user_counthml"
+                Amount="100"
+                Title="Mijozlar" 
+                IsEnabled="False" 
+                Image="/Assets/Images/Users.png"/>
 
         </Grid>
         
@@ -108,32 +143,65 @@
                  
                     <!--Note-->
                 <Grid VerticalAlignment="Bottom" >
-                    <icon:PackIconMaterial Kind="Information" Foreground ="{DynamicResource PrimaryBackground}"/>
-                    <TextBlock TextWrapping="Wrap" Margin="30 0 0 0" Foreground="#b7b7b7" Text="Bu yerda siz kunlik el'onlarni ko'rishingiz mumkun"/>
+                    <icon:PackIconMaterial 
+                        Kind="Information" 
+                        Foreground ="{DynamicResource PrimaryBackground}"/>
+                    <TextBlock 
+                        TextWrapping="Wrap" 
+                        Margin="30 0 0 0" 
+                        FontSize="18"
+                        Foreground="Black"
+                        Text="Bu yerda siz kunlik el'onlarni ko'rishingiz mumkun"/>
                 </Grid>
-                <lvc:CartesianChart Grid.Row="1" Margin="5 40 0 60" LegendLocation="None">
+                <fa:ImageAwesome
+                    x:Name="loader"
+                    Grid.Row="1"
+                    Icon="Spinner"
+                    Foreground="LawnGreen"
+                    Visibility="Visible"
+                    Spin="True"
+                    Height="220"
+                    Width="220"
+                    />
+                <lvc:CartesianChart Grid.Row="1" 
+                                    Margin="5 40 0 60" 
+                                    LegendLocation="None" Loaded="CartesianChart_Loaded">
                     <lvc:CartesianChart.DataTooltip>
-                        <lvc:DefaultTooltip Background="Red" Foreground="#ffffff" BulletSize="10" Opacity="0.7"/>
+                        <lvc:DefaultTooltip 
+                            Background="Red" 
+                            Foreground="#ffffff" 
+                            BulletSize="5" 
+                           
+                            Opacity="0.7"/>
                     </lvc:CartesianChart.DataTooltip>
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Foreground="#90a3b2" ShowLabels="True">
+                        <lvc:Axis 
+                            Foreground="#90a3b2" 
+                            ShowLabels="True">
                             <lvc:Axis.Separator>
-                                <lvc:Separator StrokeThickness="0" Step="2"/>
+                                <lvc:Separator StrokeThickness="1" 
+                                               Step="1"
+                                               Stroke="Aqua"/>
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisX>
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis Foreground="#90a3b2" ShowLabels="True" MinValue="20" MaxValue="250" >
+                        <lvc:Axis Foreground="#90a3b2" 
+                                  ShowLabels="True" MinValue="0" 
+                                  MaxValue="100" >
                             <lvc:Axis.Separator>
                                 <lvc:Separator StrokeThickness="0" />
                             </lvc:Axis.Separator>
                         </lvc:Axis>
                     </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.Series>
-                        <lvc:LineSeries Fill="Transparent" 
+                        <lvc:LineSeries x:Name="seller_post_dg"
+                                        Fill="Transparent" 
+                                       
+                                        Opacity="0.1"
                                         StrokeThickness="3"
-                                        PointGeometrySize="0"
-                                        Values="50,120,150,200,170,100,200">
+                                        PointGeometrySize="10"
+                                        Values="0">
                             <lvc:LineSeries.Stroke>
                                 <LinearGradientBrush>
                                     <GradientStop Color="#ffffff" Offset="0.06"/>
@@ -143,13 +211,28 @@
                             </lvc:LineSeries.Stroke>
                         </lvc:LineSeries>
                         <lvc:LineSeries Fill="Transparent" 
+                                        x:Name="buyer_post_dg"
                                         StrokeThickness="3"
-                                        PointGeometrySize="0"
-                                        Values="50,70,100,180,150,170,200,80">
+                                        PointGeometrySize="10"
+                                        Values="0">
                             <lvc:LineSeries.Stroke>
                                 <LinearGradientBrush>
                                     <GradientStop Color="#ffffff" Offset="0.06"/>
                                     <GradientStop Color="Green" Offset="0.5"/>
+                                    <GradientStop Color="#ffffff" Offset="0.93"/>
+                                </LinearGradientBrush>
+                            </lvc:LineSeries.Stroke>
+                        </lvc:LineSeries>
+                        <lvc:LineSeries Fill="Transparent" 
+                                        Opacity="0.3"
+                                        x:Name="storage_post_dg"
+                                        StrokeThickness="3"
+                                        PointGeometrySize="10"
+                                        Values="0">
+                            <lvc:LineSeries.Stroke>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="#ffffff" Offset="0.06"/>
+                                    <GradientStop Color="Yellow" Offset="0.5"/>
                                     <GradientStop Color="#ffffff" Offset="0.93"/>
                                 </LinearGradientBrush>
                             </lvc:LineSeries.Stroke>

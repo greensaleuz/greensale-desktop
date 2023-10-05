@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using System;
@@ -24,7 +25,7 @@ namespace GreenSale.Desktop.Companents.Products
     public partial class BuyerProductViewUserControl : UserControl
     {
         private long ID { get; set; }
-
+        public Func<Task> Refresh { get; set; }
         public static long storageId { get; set; }
 
         public BuyerProductViewUserControl()
@@ -33,24 +34,51 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(BuyerPost post)
         {
-            string image = "http://139.59.96.168:3030/" + post.mainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
+            loader.Visibility = Visibility.Collapsed;
+
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
-            txtbUpdate.Text = post.updatedAt.ToString();
+            txtbUpdate.Text = post.updatedAt.ToString("hh:mm") + " " + post.updatedAt.ToString("dd-MM-yy");
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
+            starAvareg.Content = post.AverageStars;
+            if(post.status == 0)
+            {
+                txtbStatus.Text = "Yangi";
+                statusPost.Background = new SolidColorBrush(Colors.Green);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else if (post.status == 1)
+            {
+                txtbStatus.Text = "Kelishilgan";
+                statusPost.Background = new SolidColorBrush(Colors.Yellow);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Yellow);
+
+            }
+            else if (post.status == 2)
+            {
+                txtbStatus.Text = " Sotib olingan";
+                statusPost.Background = new SolidColorBrush(Colors.Red);
+                txtbStatus.Foreground = new SolidColorBrush(Colors.Red);
+
+            }
         }
 
         public void SetData(BuyerPosrtSearchViewModel post)
         {
-            string image = "http://139.59.96.168:3030/" + post.MainImage;
-            Uri imageUri = new Uri(image, UriKind.Absolute);
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.MainImage;
+            if(image is not null)
+            {
+                loader.Visibility = Visibility.Hidden;
+            }
+            Uri imageUri = new Uri(image!, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
             txtbRegion.Text = post.Region;
@@ -61,18 +89,24 @@ namespace GreenSale.Desktop.Companents.Products
             txtbCapacity.Text = post.Capacity.ToString();
             txtbCapacityMeasure.Text = post.CapacityMeasure.ToString();
             ID = post.Id;
+            starAvareg.Content = post.AverageStars;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            loader.Visibility = Visibility.Visible;
         }
 
-        private void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
         {
+        }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
+        { 
             storageId = ID;
             BuyerProductViewWindow buyer = new BuyerProductViewWindow();
             buyer.ShowDialog();
+            await Refresh();
         }
     }
 }

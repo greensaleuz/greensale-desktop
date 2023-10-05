@@ -1,8 +1,10 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.SellerPosts;
 using GreenSale.Integrated.Interfaces.Storages;
 using GreenSale.Integrated.Services.SellerPosts;
 using GreenSale.Integrated.Services.Storages;
+using GreenSale.ViewModels.Models.BuyerPosts;
 using GreenSale.ViewModels.Models.SellerPosts;
 using GreenSale.ViewModels.Models.Storages;
 using System;
@@ -42,14 +44,16 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(SellerPost post)
         {
-            string image = "http://139.59.96.168:3030/" + post.mainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             SellePostImage.ImageSource = new BitmapImage(imageUri);
+            loader.Visibility = Visibility.Collapsed;
+
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
-            txtbUpdate.Text = post.updatedAt.ToString();
+            txtbUpdate.Text = post.updatedAt.ToString("hh:mm") + " " + post.updatedAt.ToString("dd-MM-yy");
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
@@ -64,6 +68,10 @@ namespace GreenSale.Desktop.Companents.Products
         }
 
         private async void btnReadMore_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
         {
             sellerId = ID;
             SellerProductFullViewWindow seller = new SellerProductFullViewWindow();

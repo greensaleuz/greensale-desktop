@@ -10,7 +10,7 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Background="red">
+        Background="Transparent">
     <Grid>
         
     </Grid>

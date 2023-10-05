@@ -3,5 +3,5 @@
 public class StorageImageDto
 {
     public long StorageId { get; set; }
-    public string ImagePath { get; set; } = string.Empty;
+    public string StorageImagePath { get; set; } = string.Empty;
 }

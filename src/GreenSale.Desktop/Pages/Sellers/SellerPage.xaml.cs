@@ -32,20 +32,29 @@ namespace GreenSale.Desktop.Pages.Sellers
 
         private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
+            await Refresh();
+        }
+
+        public async Task Refresh()
+        {
+            loader.Visibility = Visibility.Visible;
+            wrpSellerPost.Children.Clear();
             var sellerpost = await _service.GetAllAsync();
-            loader.Visibility = Visibility.Collapsed;
             foreach (var post in sellerpost)
             {
                 SellerProductViewUserControl userControl = new SellerProductViewUserControl();
+                userControl.Refresh = Refresh;
                 userControl.SetData(post);
                 wrpSellerPost.Children.Add(userControl);
             }
+            loader.Visibility = Visibility.Collapsed;
         }
-
         private async void By_Pst_TextBoxSearch_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && TextBoxSearch.Text.Length > 0)
             {
+                loader.Visibility = Visibility.Visible;
+                wrpSellerPost.Visibility = Visibility.Collapsed;
                 var buyerpost = await _service.SearchAsync(TextBoxSearch.Text.ToString());
                 wrpSellerPost.Children.Clear();
                 foreach (var post in buyerpost.item2)
@@ -54,6 +63,8 @@ namespace GreenSale.Desktop.Pages.Sellers
                     buyerProductViewUserControl.SetData(post);
                     wrpSellerPost.Children.Add(buyerProductViewUserControl);
                 }
+                wrpSellerPost.Visibility = Visibility.Visible;
+                loader.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -61,15 +72,16 @@ namespace GreenSale.Desktop.Pages.Sellers
         {
             if (TextBoxSearch.Text.Length == 0)
             {
+                loader.Visibility = Visibility.Visible;
                 wrpSellerPost.Children.Clear();
                 var sellerPost = await _service.GetAllAsync();
-                loader.Visibility = Visibility.Collapsed;
                 foreach (var post in sellerPost)
                 {
                     SellerProductViewUserControl buyerProductViewUserControl = new SellerProductViewUserControl();
                     buyerProductViewUserControl.SetData(post);
                     wrpSellerPost.Children.Add(buyerProductViewUserControl);
                 }
+                loader.Visibility = Visibility.Collapsed;
             }
         }
     }

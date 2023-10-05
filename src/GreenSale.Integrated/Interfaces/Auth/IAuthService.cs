@@ -1,4 +1,5 @@
 ﻿using GreenSale.Dtos.Dtos.Auth;
+using GreenSale.ViewModels.Models.Auth;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,6 @@ namespace GreenSale.Integrated.Interfaces.Auth
         public Task<bool> ResetPasswordAsync(ForgotPassword dto);
         public Task<(bool Result, string Token)> VerifyResetPasswordAsync(string phoneNumber, int code);
         public Task<bool> CheckTokenAsync(AuthorizationDto token);
+        public Task<UserRole> VerifyUserRole();
     }
 }

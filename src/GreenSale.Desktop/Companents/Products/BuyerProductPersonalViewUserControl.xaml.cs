@@ -1,4 +1,5 @@
 ﻿using GreenSale.Desktop.Windows.Products;
+using GreenSale.Integrated.API.Auth;
 using GreenSale.Integrated.Interfaces.BuyerPosts;
 using GreenSale.Integrated.Services.BuyerPosts;
 using GreenSale.Integrated.Services.Storages;
@@ -42,19 +43,20 @@ namespace GreenSale.Desktop.Companents.Products
         }
         public void SetData(BuyerPost post)
         {
-            string image = "http://139.59.96.168:3030/" + post.mainImage;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + post.mainImage;
             Uri imageUri = new Uri(image, UriKind.Absolute);
 
             BuyerPostImage.ImageSource = new BitmapImage(imageUri);
+
+            loader.Visibility = Visibility.Collapsed;
             txtbRegion.Text = post.region;
             txtbDescription.Text = post.description;
             txtbPrice.Text = post.price.ToString();
-            txtbUpdate.Text = post.updatedAt.ToString();
+            txtbUpdate.Text = post.updatedAt.ToString("hh:mm") + " " + post.updatedAt.ToString("dd-MM-yy");
             txtTitle.Text = post.title;
             txtbCapacity.Text = post.capacity.ToString();
             txtbCapacityMeasure.Text = post.capacityMeasure.ToString();
             ID = post.Id;
-
         }
 
         private async void btnBuyerDelete_Click(object sender, RoutedEventArgs e)
@@ -67,12 +69,15 @@ namespace GreenSale.Desktop.Companents.Products
 
         private async void btnReadmore_MouseDown(object sender, MouseButtonEventArgs e)
         {
+           
+        }
+
+        private async void B_MouseDown(object sender, MouseButtonEventArgs e)
+        {
             buyerId = ID;
             BuyerProductFullViewWindow buyer = new BuyerProductFullViewWindow();
             await Refresh();
             buyer.ShowDialog();
         }
-
-       
     }
 }

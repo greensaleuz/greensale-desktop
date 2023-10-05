@@ -8,7 +8,7 @@
     
     <Application.Resources>
         <ResourceDictionary>
-            
+            <!--Windows/Auth/LoginWindow       Windows/Products/BuyerProductFullViewWindow-->
             <!--Begin Slider Style -->
             
             <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">

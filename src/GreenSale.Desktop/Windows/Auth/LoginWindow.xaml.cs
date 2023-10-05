@@ -41,8 +41,8 @@ namespace GreenSale.Desktop.Windows
                 offsetY: 20);
 
             cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(5),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+                notificationLifetime: TimeSpan.FromSeconds(3),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(2));
 
             cfg.Dispatcher = Application.Current.Dispatcher;
         });
@@ -75,8 +75,11 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            notifier.Dispose();
+            var loader = btnLogin.Template.FindName("loader", btnLogin) as FontAwesome.WPF.ImageAwesome;
+            loader.Visibility = Visibility.Visible;
             bool succses = true;
-            if (txtPhoneNumber.Text.Length < 9)
+            if (txtPhoneNumber.Text.Length == 0)
             {
                 Border border = sender as Border;
                 if (border == null)
@@ -90,7 +93,30 @@ namespace GreenSale.Desktop.Windows
                     // Border ga effektni qo'shish
                     Border_skns.Effect = dropShadowEffect;
                 }
+                ism_lv_lgn.Visibility = Visibility.Visible;
                 succses = false;
+            }
+            else if(txtPhoneNumber.Text.Length < 9)
+            {
+                Border border = sender as Border;
+                if (border == null)
+                {
+                    // Effektni yaratish va sozlash
+                    DropShadowEffect dropShadowEffect = new DropShadowEffect();
+                    dropShadowEffect.ShadowDepth = 0;
+                    dropShadowEffect.BlurRadius = 10;
+                    dropShadowEffect.Color = Colors.Red;
+
+                    // Border ga effektni qo'shish
+                    Border_skns.Effect = dropShadowEffect;
+                }
+                ism_lv_lgn.Visibility = Visibility.Visible;
+                succses = false;
+            }
+            else
+            {
+                ism_lv_lgn.Visibility = Visibility.Collapsed;
+                notifier.Dispose();
             }
 
 
@@ -108,9 +134,14 @@ namespace GreenSale.Desktop.Windows
                     // Border ga effektni qo'shish
                     Border_pasword.Effect = dropShadowEffect;
                 }
+                parol_lv_lgn.Visibility= Visibility.Visible;
                 succses = false;
             }
-
+            else
+            {
+                parol_lv_lgn.Visibility = Visibility.Collapsed;
+                notifier.Dispose();
+            }
             if (IsInternetAvailable())
             {
                 if (succses)
@@ -129,24 +160,31 @@ namespace GreenSale.Desktop.Windows
                         MainWindow window = new MainWindow();
                         window.Show();
                         notifier.Dispose();
-                        
+                        loader.Visibility = Visibility.Collapsed;
                         this.Close();
                     }
                     else
                     {
-                        notifier.ShowWarning("Internetingiz sekin!");
+                        notifier.ShowWarning("Bunday foydalanuvchi mavjud eams !");
+                        
+                        loader.Visibility = Visibility.Collapsed;
                     }
+                    notifier.Dispose();
                 }
                 else
                 {
                     notifier.ShowInformation("Telefon yoki Parol natogri kiritildi!");
+                    loader.Visibility = Visibility.Collapsed;
                 }
-
+                notifier.Dispose();
             }
             else
             {
                 notifier.ShowError("Internetga ulanmagansiz !");
+                loader.Visibility = Visibility.Collapsed;
             }
+            loader.Visibility = Visibility.Collapsed;
+            notifier.Dispose();
         }
 
         private void btnRoyxatdanOtish_Click(object sender, RoutedEventArgs e)
@@ -175,7 +213,7 @@ namespace GreenSale.Desktop.Windows
         private void Forgot_password(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ForgotPasswordWindow sendCodeWindow = new ForgotPasswordWindow();
-            sendCodeWindow.Show();
+            sendCodeWindow.ShowDialog();
         }
 
         private void changeCollor(object sender, System.Windows.Input.MouseEventArgs e)

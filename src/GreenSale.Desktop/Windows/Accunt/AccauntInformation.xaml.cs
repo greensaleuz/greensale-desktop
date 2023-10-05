@@ -33,7 +33,8 @@ namespace GreenSale.Desktop.Windows.Accunt
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

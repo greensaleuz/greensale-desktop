@@ -16,6 +16,12 @@ using Microsoft.Identity.Client.Extensions.Msal;
 using MessageBox = System.Windows.MessageBox;
 using Application = System.Windows.Application;
 using System.Reflection;
+using GreenSale.Integrated.API.Auth;
+using System.Windows.Media;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
+using static GreenSale.Desktop.Windows.Auth.BlurWindow.BlurEffect;
+using System.Security.Policy;
 
 namespace GreenSale.Desktop.Windows.Products
 {
@@ -26,11 +32,39 @@ namespace GreenSale.Desktop.Windows.Products
     {
         private IStorageService _service;
         public long storageId { get; set; }
+        public int Star_CountUP { get; set; }
+        public int Star_Count { get; set; }
+        public int PostId { get; set; }
+
         public Func<Task> Refresh { get; set; }
         public StorageProductFullViewWindow()
         {
             InitializeComponent();
             this._service = new StorageService();
+        }
+
+        [DllImport("user32.dll")]
+        internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+        internal void EnableBlur()
+        {
+            var windowHelper = new WindowInteropHelper(this);
+
+            var accent = new AccentPolicy();
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+            var accentStructSize = Marshal.SizeOf(accent);
+
+            var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accent, accentPtr, false);
+
+            var data = new WindowCompositionAttributeData();
+            data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+            data.SizeOfData = accentStructSize;
+            data.Data = accentPtr;
+
+            SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
         }
 
         private void btnCreateWindowClose_Click(object sender, RoutedEventArgs e)
@@ -39,6 +73,11 @@ namespace GreenSale.Desktop.Windows.Products
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshwinstorage();
+        }
+
+        public async void refreshwinstorage()
         {
             long id = StorageProductPersonalViewUserControl.storageId;
             storageId = id;
@@ -52,9 +91,9 @@ namespace GreenSale.Desktop.Windows.Products
             txtbInfo.Text = storage.Info;
             txtbPhoneNumber.Text = storage.PhoneNumber;
             txtbRegion.Text = storage.Region;
-            
+            PostId = Convert.ToInt32(storage.Id);
 
-            string image = "http://139.59.96.168:3030/" + storage.ImagePath;
+            string image = $"{AuthAPI.BASE_URL_IMG}" + storage.ImagePath;
             Uri imageUri = new Uri(image, UriKind.Absolute);
             ImgStorage.ImageSource = new BitmapImage(imageUri);
         }
@@ -63,35 +102,9 @@ namespace GreenSale.Desktop.Windows.Products
         {
             this.Close();
         }
-        private string DowlaodImage(string url)
-        {
-            try
-            {
-                string saveDirectory = "C:\\Users\\Lenovo\\source\\repos\\greensale-desktop\\src\\GreenSale.Desktop\\Assets\\Dowloands\\Images\\";
-                //string currentAssemblyPath = Assembly.GetExecutingAssembly().Location;
-                string fileName = Path.GetFileName(url);
 
-                string localFilePath = Path.Combine(saveDirectory, fileName);
+       
 
-                if (!Directory.Exists(saveDirectory))
-                {
-                    Directory.CreateDirectory(saveDirectory);
-                }
-
-                using (WebClient client = new WebClient())
-                {
-                    if(!File.Exists(localFilePath))
-                        client.DownloadFile(url, localFilePath);
-                }
-
-                return localFilePath;
-            }
-            catch 
-            {
-                return "";
-            }
-            
-        }
         private async void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
             
@@ -104,7 +117,7 @@ namespace GreenSale.Desktop.Windows.Products
             dto.AddressLongitude = 20930846; 
             dto.Name = txtbName.Text.ToString();
             dto.Address = txtbAddress.Text.ToString();
-            dto.ImagePath = DowlaodImage(ImgStorage.ImageSource.ToString());
+           // dto.ImagePath = DowlaodImage(ImgStorage.ImageSource.ToString());
 
             long id = StorageProductPersonalViewUserControl.storageId;
             var storage = await _service.UpdateAsync(id,dto);
@@ -139,8 +152,8 @@ namespace GreenSale.Desktop.Windows.Products
 
                 StorageImageDto storageImageDto = new StorageImageDto()
                 {
-                    ImagePath = imgPath,
-                    StorageId = storageId
+                    StorageId = storageId,
+                    StorageImagePath = imgPath,
                 };
 
                 var result = await _service.UpdateImageStorageAsync(storageImageDto);
@@ -154,6 +167,67 @@ namespace GreenSale.Desktop.Windows.Products
                     MessageBox.Show("yangilanmadi ");
                 }
             }
+        }
+
+        int star_count = 0;
+        private async void click_star_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Transparent);
+            star_3.Fill = new SolidColorBrush(Colors.Transparent);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 1;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
+        }
+
+        private async void click_star_2(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Transparent);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 2;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
+        }
+
+        private async void click_star_3(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Transparent);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 3;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
+        }
+
+        private async void click_star_4(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Yellow);
+            star_5.Fill = new SolidColorBrush(Colors.Transparent);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 4;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
+        }
+
+        private async void click_star_5(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            star_2.Fill = new SolidColorBrush(Colors.Yellow);
+            star_3.Fill = new SolidColorBrush(Colors.Yellow);
+            star_4.Fill = new SolidColorBrush(Colors.Yellow);
+            star_5.Fill = new SolidColorBrush(Colors.Yellow);
+            //-------
+            star_1.Fill = new SolidColorBrush(Colors.Yellow);
+            Star_CountUP = 5;
+            await _service.UpdateStartAsync(PostId, Star_CountUP);
         }
     }
 }

@@ -213,47 +213,180 @@ namespace GreenSale.Desktop.Windows.Products
             }
         }
 
-        private async void Create_Click(object sender, RoutedEventArgs e)
+        public bool IsValid()
         {
-            SellerPostCreate dto = new SellerPostCreate();
-            dto.Capacity = int.Parse(txtCapacity.Text);
-            dto.CapacityMeasure = cmbCapacityMeasure.Text;
-            dto.District = cmbDistrict.Text;
-            dto.Region = cmbRegion.Text;
-            dto.Price = double.Parse(txtPrice.Text);
-            dto.Title = txtTitle.Text;
-            dto.Description = txtDescription.Text;
-            dto.Type = txtType.Text;
-            //dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
-            dto.PhoneNumber = txtPhoneNumber.Text;
-
-            dto.ImagePath = new List<string>();
-
-            if (Img1.ImageSource is not null)
-                dto.ImagePath.Add(Img1.ImageSource.ToString());
-
-            if (Img2.ImageSource is not null)
-                dto.ImagePath.Add(Img2.ImageSource.ToString());
-
-            if (Img3.ImageSource is not null)
-                dto.ImagePath.Add(Img3.ImageSource.ToString());
-
-            if (Img4.ImageSource is not null)
-                dto.ImagePath.Add(Img4.ImageSource.ToString());
-
-            if (Img5.ImageSource is not null)
-                dto.ImagePath.Add(Img5.ImageSource.ToString());
-
-            foreach (var item in list)
+            bool isValid = false;
+            if (txtTitle.Text.Length == 0)
             {
-                if (item.Name == cmbCategory.SelectedValue.ToString())
-                {
-                    dto.CategoryId = item.Id;
-                }
+                lb_nomi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtTitle.Text.Length < 3)
+            {
+                lb_nomi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_nomi.Visibility = Visibility.Collapsed;
+                isValid = true;
             }
 
-            var res = await _service.CreateAsync(dto);
-            this.Close();
+            if (txtType.Text.Length == 0)
+            {
+                lb_turi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtType.Text.Length < 3)
+            {
+                lb_turi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_turi.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            if (txtPhoneNumber.Text.Length < 9 || txtPhoneNumber.Text.Length == 0)
+            {
+                lb_phone.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_phone.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+            if (txtPrice.Text.Length == 0)
+            {
+                lb_narxi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtPrice.Text.Length < 3)
+            {
+                lb_narxi.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_narxi.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+
+            //----------------------------------------
+
+            if (txtCapacity.Text.Length == 0)
+            {
+                lb_miqdori.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtCapacity.Text.Length < 3)
+            {
+                lb_miqdori.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_miqdori.Visibility = Visibility.Collapsed;
+                isValid = true;
+            }
+
+
+            //----------------------------------------
+
+            if (cmbRegion.Text.Length == 0)
+            {
+                lb_regn.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_regn.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            if (cmbDistrict.Text.Length == 0)
+            {
+                lb_disk.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_disk.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            if (txtDescription.Text.Length == 0)
+            {
+                lb_taasnif.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            if (txtDescription.Text.Length < 3)
+            {
+                lb_taasnif.Visibility = Visibility.Visible;
+                isValid = false;
+            }
+            else
+            {
+                lb_taasnif.Visibility = Visibility.Hidden;
+                isValid = true;
+            }
+
+            return isValid;
+        }
+
+        private async void Create_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsValid() != false)
+            {
+                SellerPostCreate dto = new SellerPostCreate();
+                dto.Capacity = int.Parse(txtCapacity.Text);
+                dto.CapacityMeasure = cmbCapacityMeasure.Text;
+                dto.District = cmbDistrict.Text;
+                dto.Region = cmbRegion.Text;
+                dto.Price = double.Parse(txtPrice.Text);
+                dto.Title = txtTitle.Text;
+                dto.Description = txtDescription.Text;
+                dto.Type = txtType.Text;
+                //dto.CategoryId = (long)(cmbCategory.SelectedIndex + 1);
+                dto.PhoneNumber = "+998" + txtPhoneNumber.Text;
+
+                dto.ImagePath = new List<string>();
+
+                if (Img1.ImageSource is not null)
+                    dto.ImagePath.Add(Img1.ImageSource.ToString());
+
+                if (Img2.ImageSource is not null)
+                    dto.ImagePath.Add(Img2.ImageSource.ToString());
+
+                if (Img3.ImageSource is not null)
+                    dto.ImagePath.Add(Img3.ImageSource.ToString());
+
+                if (Img4.ImageSource is not null)
+                    dto.ImagePath.Add(Img4.ImageSource.ToString());
+
+                if (Img5.ImageSource is not null)
+                    dto.ImagePath.Add(Img5.ImageSource.ToString());
+
+                foreach (var item in list)
+                {
+                    if (item.Name == cmbCategory.SelectedValue.ToString())
+                    {
+                        dto.CategoryId = item.Id;
+                        break;
+                    }
+                }
+
+                var res = await _service.CreateAsync(dto);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Hato");
+            }
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -264,6 +397,20 @@ namespace GreenSale.Desktop.Windows.Products
             {
                 list.Add(item);
                 cmbCategory.Items.Add(item.Name);
+            }
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            string text = textBox.Text;
+            string filteredText = Regex.Replace(text, "[^0-9]+", "");
+
+            if (text != filteredText)
+            {
+                int caretIndex = textBox.CaretIndex;
+                textBox.Text = filteredText;
+                textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
             }
         }
     }

@@ -38,36 +38,44 @@ namespace GreenSale.Desktop.Pages.Storages
 
         public async Task RefreshAsync()
         {
+            wrpStorage.Children.Clear();
+            loader.Visibility = Visibility.Visible;
             var storagepost = await _service.GetAllAsync();
-            loader.Visibility = Visibility.Collapsed;
-
             foreach (var post in storagepost)
             {
                 StorageProductViewUserControl control = new StorageProductViewUserControl();
+                control.Refresh = RefreshAsync;
                 control.SetData(post);
                 wrpStorage.Children.Add(control);
             }
+            loader.Visibility = Visibility.Collapsed;
         }
 
         private async void By_Pst_TextBoxSearch_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && TextBoxSearch.Text.Length > 0)
             {
-                var buyerpost = await _service.SearchAsync(TextBoxSearch.Text.ToString());
                 wrpStorage.Children.Clear();
+                loader.Visibility = Visibility.Visible;
+                var buyerpost = await _service.SearchAsync(TextBoxSearch.Text.ToString());
+                
                 foreach (var post in buyerpost.item2)
                 {
                     StorageProductViewUserControl buyerProductViewUserControl = new StorageProductViewUserControl();
                     buyerProductViewUserControl.SetData(post);
                     wrpStorage.Children.Add(buyerProductViewUserControl);
                 }
+                loader.Visibility = Visibility.Collapsed;
             }
         }
 
         private  async void By_Pst_TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TextBoxSearch.Text.Length == 0)
+            {
                 await RefreshAsync();
+            }
+               
         }
     }
 }

@@ -89,6 +89,7 @@
             Icon="Spinner"
             Visibility="Visible"
             Spin="True"
+            Foreground="LawnGreen"
             Height="200"
             Width="200"
             />

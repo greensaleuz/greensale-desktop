@@ -24,4 +24,8 @@
     <ProjectReference Include="..\GreenSale.ViewModels\GreenSale.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Storages\" />
+  </ItemGroup>
+
 </Project>

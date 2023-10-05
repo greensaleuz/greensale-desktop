@@ -14,8 +14,6 @@ using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Messages;
 using ToastNotifications.Position;
-using WPFNotification.Model;
-using WPFNotification.Services;
 
 namespace GreenSale.Desktop.Windows
 {
@@ -39,13 +37,13 @@ namespace GreenSale.Desktop.Windows
                 parentWindow: Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive),
                 corner: Corner.TopRight,
                 offsetX: 10,
-                offsetY: 10);
+                offsetY: 50);
 
             cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
-                notificationLifetime: TimeSpan.FromSeconds(5),
-                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+                notificationLifetime: TimeSpan.FromSeconds(1.5),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(1));
 
-            cfg.Dispatcher = Application.Current.Dispatcher;
+            cfg.Dispatcher = Application.Current.Dispatcher;    
         });
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
@@ -57,7 +55,7 @@ namespace GreenSale.Desktop.Windows
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
-            /* * */
+            
             notifier.Dispose();
             this.Close();
         }
@@ -82,17 +80,12 @@ namespace GreenSale.Desktop.Windows
         }
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            //--
-            /*INotificationDialogService _dailogService = new NotificationDialogService();
-            var newNotification = new Notification()
-            {
-                Title = "Machine error",
-                Message = "Error!! Please check your Machine Code and Try Again"
-            };
-            _dailogService.ShowNotificationWindow(newNotification);
-            //---*/
-
-            // ism
+            notifier.Dispose();
+            btnRegister.IsEnabled = false;
+            var loader = btnRegister.Template.FindName("loader", btnRegister) as FontAwesome.WPF.ImageAwesome;
+            loader.Visibility = Visibility.Visible;
+            notifier.Dispose();
+            bool IIsValid = true;
             if (txtFirstName.Text.Length == 0)
             {
                 Border border = sender as Border;
@@ -111,7 +104,8 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 ism_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Ism Bo'sh bo'lmasligi kerek!");
+                IIsValid = false;
             }
             else if (txtFirstName.Text.Length < 3)
             {
@@ -129,10 +123,13 @@ namespace GreenSale.Desktop.Windows
                     name_regs.Effect = dropShadowEffect;
                 }
                 notifier.ShowInformation("Ism uzunligi 3 dan katta bo'lishi kerek!");
+                IIsValid = false;
             }
             else
             {
                 ism_lv_rgs.Visibility = Visibility.Collapsed;
+                IIsValid = true;
+                notifier.Dispose();
             }
 
             // familya
@@ -155,7 +152,8 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 sure_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Familya bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Familya bo'sh bo'lmasligi kerek!");
+                IIsValid = false;
             }
             else if (txtLastName.Text.Length < 3)
             {
@@ -172,11 +170,14 @@ namespace GreenSale.Desktop.Windows
                     sure_lv_rgs.Visibility = Visibility.Visible;
                     sure_br.Effect = dropShadowEffect;
                 }
-                notifier.ShowInformation("Familya uzunligi 3 dan katta bo'lishi kerek!");
+                //notifier.ShowInformation("Familya uzunligi 3 dan katta bo'lishi kerek!");
+                IIsValid = false;
             }
             else
             {
                 sure_lv_rgs.Visibility = Visibility.Collapsed;
+                IIsValid = true;
+                notifier.Dispose();
             }
 
             //phone
@@ -199,7 +200,8 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 phone_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                IIsValid = false;
             }
             else if (txtPhoneNumber.Text.Length < 3)
             {
@@ -217,10 +219,13 @@ namespace GreenSale.Desktop.Windows
                     phone_br.Effect = dropShadowEffect;
                 }
                 //notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+                IIsValid = false;
+                notifier.Dispose();
             }
             else
             {
                 phone_lv_rgs.Visibility = Visibility.Collapsed;
+                IIsValid = true;
             }
 
             // parol
@@ -243,7 +248,8 @@ namespace GreenSale.Desktop.Windows
                   Color myColor = Colors.Red;
                   string myColorString = myColor.ToString();*/
                 password_lv_rgs.Visibility = Visibility.Visible;
-                notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                //notifier.ShowInformation("Telefon nomer bo'sh bo'lmasligi kerek!");
+                IIsValid = false;
             }
             else if (txtPassword.Password.Length < 3)
             {
@@ -260,45 +266,63 @@ namespace GreenSale.Desktop.Windows
                     password_lv_rgs.Visibility = Visibility.Visible;
                     paswr_br.Effect = dropShadowEffect;
                 }
-                notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+                //notifier.ShowInformation("Telefon nomer 3 dan katta bo'lishi kerek!");
+                IIsValid = false;
             }
             else
             {
                 password_lv_rgs.Visibility = Visibility.Collapsed;
+                IIsValid = true;
+                notifier.Dispose();
             }
+
 
             if (IsInternetAvailable())
             {
-                UserRegisterDto dto = new UserRegisterDto()
+                if (IIsValid)
                 {
-                    FirstName = txtFirstName.Text.ToString(),
-                    LastName = txtLastName.Text.ToString(),
-                    PhoneNumber = "+998" + txtPhoneNumber.Text.ToString(),
-                    Password = txtPassword.Password.ToString()
-                };
+                    UserRegisterDto dto = new UserRegisterDto()
+                    {
+                        FirstName = txtFirstName.Text.ToString(),
+                        LastName = txtLastName.Text.ToString(),
+                        PhoneNumber = "+998" + txtPhoneNumber.Text.ToString(),
+                        Password = txtPassword.Password.ToString()
+                    };
 
-                var res = await _service.RegisterAsync(dto);
+                    var res = await _service.RegisterAsync(dto);
 
-                if (res == true)
-                {
-                    var result = await _service.SendCodeForRegisterAsync(dto.PhoneNumber);
-                    phoneNum = dto.PhoneNumber;
-                    SendCodeWindow sendCodeWindow = new SendCodeWindow();
-                    sendCodeWindow.ShowDialog();
-                    /* * */
-                    notifier.Dispose();
-                    this.Close();
+                    if (res == true)
+                    {
+                        var result = await _service.SendCodeForRegisterAsync(dto.PhoneNumber);
+                        phoneNum = dto.PhoneNumber;
+                        SendCodeWindow sendCodeWindow = new SendCodeWindow();
+                        sendCodeWindow.ShowDialog();
+                        /* * */
+                        notifier.Dispose();
+                        this.Close();
+                    }
+                    else
+                    {
+                        notifier.ShowInformation("Bu nomerdan avval ro'yxatdan o'tgan!");
+                        loader.Visibility = Visibility.Collapsed;
+                        btnRegister.IsEnabled = true;
+                    }
                 }
                 else
                 {
-                    notifier.ShowInformation("Bu nomerdan avval ro'yxatdan o'tgan!");
+                    notifier.ShowInformation("Malumotlarni to'dirishda xatolik bor!");
+                    loader.Visibility = Visibility.Collapsed;
+                    btnRegister.IsEnabled = true;
+                    notifier.Dispose();
                 }
             }
             else if (IsInternetAvailable())
             {
                 notifier.ShowError("Internetga ulanmagansiz!");
+                loader.Visibility = Visibility.Collapsed;
+                btnRegister.IsEnabled = true;
             }
-
+            notifier.Dispose();
         }
 
         private void name_regs_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
