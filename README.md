@@ -10,7 +10,7 @@ Asosiy
 
 Sotuvchi e'lonlari| Sotuvchi e'lonlari ko'rinishi
 -----|-----
-![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/a836e639-040b-4f64-afac-e95eefbc43cb) ![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/ff1208c1-d484-47d5-bc2a-ccd400cedd7f)
+![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/a836e639-040b-4f64-afac-e95eefbc43cb) ! [image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/ff1208c1-d484-47d5-bc2a-ccd400cedd7f)
 
 
 Oluvchi e'lonlari| Oluvchi e'lonlari ko'rinishi
