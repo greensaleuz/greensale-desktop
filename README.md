@@ -10,15 +10,18 @@ Asosiy
 
 Sotuvchi e'lonlari| Sotuvchi e'lonlari ko'rinishi
 -----|-----
-![Sotuvchi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/a20739e4-2830-4220-bb07-cdb62c81a2c7) | ![Sotuvchi ko'rinishi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/69318e01-c81b-4f03-97cc-6f3ac8ae26df)
+![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/a836e639-040b-4f64-afac-e95eefbc43cb) ![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/ff1208c1-d484-47d5-bc2a-ccd400cedd7f)
+
 
 Oluvchi e'lonlari| Oluvchi e'lonlari ko'rinishi
 -----|-----
-![Oluvchi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/29095b09-06ef-401c-9c38-b8359ecc262a) | ![Oluvchi ko'rinishi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/3531aef4-a867-4af2-9b82-520a3249974b)
+![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/7e33e7ab-d4fe-4998-8add-b1a4ed433be0) | ![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/584ef5a6-00a2-4318-961f-1a3dc6d17b59)
+
 
 Yukxona e'lonlari| Yukxona e'lonlari ko'rinishi
 -----|-----
-![Yukxona](https://github.com/greensaleuz/greensale-desktop/assets/123434293/6dcb3961-90be-4a54-a0f4-96293a27bc7f) | ![Yukxona ko'rinishi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/da990174-27d7-4b5e-96cc-50fb937cab05)
+![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/17c13e19-ec86-4a23-8b8a-9f207ac6e7f1) | ![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/5f83fd78-1153-4fd3-81a4-8d05eb41efd4)
+
 
 ![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/9b663c9a-cd1f-479e-a770-1ab39d68c0c2)
 
