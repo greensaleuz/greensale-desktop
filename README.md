@@ -5,9 +5,8 @@ Kirish | Ro'yhatdan o'tish
 -----|-----
 ![Kirish](https://github.com/greensaleuz/greensale-desktop/assets/123434293/8c1b9e39-022f-4d69-a549-1b07f5abbc19) | ![Ro'yhatdan o'tish](https://github.com/greensaleuz/greensale-desktop/assets/123434293/1240053e-6d30-4def-b032-fcb941ec01af)
 
-
 Asosiy
-![Asosiy](https://github.com/greensaleuz/greensale-desktop/assets/123434293/3373f64a-1f62-401b-b1a6-e5235b62f15e)
+![Asosiy](https://github.com/greensaleuz/greensale-desktop/assets/123434293/556a1481-d681-4933-b6d1-52c37daefd3a)
 
 Sotuvchi e'lonlari| Sotuvchi e'lonlari ko'rinishi
 -----|-----
