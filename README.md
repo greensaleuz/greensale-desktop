@@ -20,3 +20,5 @@ Yukxona e'lonlari| Yukxona e'lonlari ko'rinishi
 -----|-----
 ![Yukxona](https://github.com/greensaleuz/greensale-desktop/assets/123434293/6dcb3961-90be-4a54-a0f4-96293a27bc7f) | ![Yukxona ko'rinishi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/da990174-27d7-4b5e-96cc-50fb937cab05)
 
+![image](https://github.com/greensaleuz/greensale-desktop/assets/123434293/9b663c9a-cd1f-479e-a770-1ab39d68c0c2)
+
