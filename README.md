@@ -1,5 +1,4 @@
 # greensale-desktop 
-
 <h4>"GreenSale" foydalanuvchilar uchun juda qulay va tushunarli dasturdir.Ushbu ilova korxonalarga korxonalarga eksport qilish uchun meva va sabzavotlarni tez va oson topishda yordam beradi.</h4>
 
 Kirish | Ro'yhatdan o'tish
@@ -20,5 +19,3 @@ Oluvchi e'lonlari| Oluvchi e'lonlari ko'rinishi
 Yukxona e'lonlari| Yukxona e'lonlari ko'rinishi
 -----|-----
 ![Yukxona](https://github.com/greensaleuz/greensale-desktop/assets/123434293/6dcb3961-90be-4a54-a0f4-96293a27bc7f) | ![Yukxona ko'rinishi](https://github.com/greensaleuz/greensale-desktop/assets/123434293/da990174-27d7-4b5e-96cc-50fb937cab05)
-
-
