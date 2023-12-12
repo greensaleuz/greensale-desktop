@@ -35,7 +35,7 @@
                             Margin="0 0 15 0"/>
                     </Border>
                 </Grid >
-                <Label Content="Kodni kiriting"
+                <Label Content="введите код"
                    FontSize="28"
                    Foreground="{DynamicResource FifthTextColor}"
                    HorizontalAlignment="Center"
@@ -184,7 +184,7 @@
                         <Button x:Name="btnConfirm"
                         Click="btnConfirm_Click"
                         Style="{DynamicResource SendCodButton}"
-                        Content="Tasdiqlash"
+                        Content="Подтверждение"
                         Margin="0 30 0 0"/>
                     </Border>
                     
