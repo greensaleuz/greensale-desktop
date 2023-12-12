@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.10.1" />
+    <PackageReference Include="Azure.Identity" Version="1.10.4" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
     <PackageReference Include="Emgu.CV" Version="4.8.0.5324" />
     <PackageReference Include="Emgu.CV.Bitmap" Version="4.8.0.5324" />

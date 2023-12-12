@@ -27,7 +27,7 @@
           
             <Grid >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="50*"/>
                     <RowDefinition Height="60*"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0"  
@@ -38,20 +38,20 @@
                             Margin="20 100 20 0">
                         <Border >
                             <StackPanel>
-                                <Label Content="Bu joyda yangimisiz?"
+                                <Label Content="Ты здесь новенький?"
                                    FontSize="30"
                                    Margin="0 0 0 5"
                                    FontFamily="send-series"
                                    Foreground="{DynamicResource PrimarytextColor}"
                                    HorizontalAlignment="Center"/>
-                                <TextBlock Text="Dasturni yangi o'rnatgan bo'lsangiz yoki hali ro'yhatdan "
+                                <TextBlock Text="Независимо от того, установили ли вы программу или уже зарегистрированы "
                                        FontSize="16"
                                        Margin="50 5"
                                        TextWrapping="Wrap"
                                        FontFamily="send-series"
                                        Foreground="{DynamicResource PrimarytextColor}"
-                                       HorizontalAlignment="Center"/>
-                                <TextBlock Text="o'tmagan bo'lsangiz ro'yhatdan o'ting."
+                                       HorizontalAlignment="Center" Width="455"/>
+                                <TextBlock Text="Зарегистрируйтесь, если вы еще этого не сделали."
                                        FontSize="16"
                                        Margin="50 0"
                                        TextWrapping="Wrap"
@@ -63,7 +63,7 @@
                                     <Button x:Name="btnRoyxatdanOtish"
                                         Click="btnRoyxatdanOtish_Click"
                                         Style="{DynamicResource SuccessButton}"
-                                        Content="Ro'yhatdan O'tish"/>
+                                        Content="Постановка на учет"/>
                                 </Border>
                                 
                             </StackPanel>
@@ -92,7 +92,7 @@
                 </Border>
                 <Border Margin="80 120 80 80">
             <StackPanel Margin="20" >
-                <Label Content="Shaxsiy kabinetga kirish"
+                        <Label Content="Доступ в личный кабинет"
                        HorizontalAlignment="Center"
                        FontSize="30"
                        FontWeight="Bold"
@@ -101,12 +101,12 @@
                        Foreground="{DynamicResource FifthTextColor}"/>
                         <Grid Margin="30 0 0 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="125"/>
+                                <ColumnDefinition Width="160"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" 
                                 Height="40" Width="350"
-                               Content="Telefon nomer"
+                               Content="Номер телефона"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                x:Name="lb_phone_lgn"
@@ -168,12 +168,12 @@
 
                         <Grid Margin="30 0 0 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="90"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" 
                                 Height="40" Width="350"
-                               Content="Parol"
+                               Content="Пароль"
                                Margin="0 10 0 0"                       
                                FontSize="18"
                                x:Name="lb_parol_lgn"
@@ -231,7 +231,7 @@
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0"
                                        x:Name="forgotPassword"
-                                       Content="Parolingizni unitdingizmi?"
+                                       Content="Забыли пароль?"
                                        FontSize="16"
                                        Foreground="{DynamicResource FourthBackground}"
                                        Margin=" 190 10 0 0"
@@ -245,7 +245,7 @@
                                     Click="btnLogin_Click"
                                     Height="60"
                                     Margin="0 10 0 0"
-                                    Content="Kirish"
+                                    Content="Входить"
                                     Style="{DynamicResource SignSuccessButton}">
                                 </Button>
                             </Grid>
