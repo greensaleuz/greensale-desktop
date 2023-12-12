@@ -168,7 +168,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Nomi:"
+                                <Label Content="Имя:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -194,7 +194,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Turi:"
+                                <Label Content="Тип:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -222,7 +222,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Miqdori:"
+                                <Label Content="Количество:"
                                    FontSize="20"
                                    Margin="10 1 0 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -258,7 +258,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Narxi:"
+                                <Label Content="Цены:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -292,7 +292,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Viloyat:"
+                                <Label Content="Провинция:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -319,7 +319,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Tuman:"
+                                <Label Content="Округ:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -343,7 +343,7 @@
                             <StackPanel Margin="5"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                                <Label Content="Tel:"
+                                <Label Content="Тел:"
                                    FontSize="20"
                                    Margin="10 1 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -367,7 +367,7 @@
                                 <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center"
                                 Margin="5 5 0 5">
-                                <TextBlock Text="Tasnif:"
+                                <TextBlock Text="Описание:"
                                          FontSize="20"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"

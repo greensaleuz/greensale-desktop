@@ -57,7 +57,7 @@
                                     Margin="0"
                                     VerticalAlignment="Center">
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="Yukxona nomi"
+                                    <Label Content="Название склада"
                                            FontSize="16"
                                            HorizontalAlignment="Left"
                                            Margin="5 5 0 0"
@@ -96,7 +96,7 @@
                             </Border>
 
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="Ma'lumot"
+                                <Label Content="Информация"
                                    FontSize="16"
                                    HorizontalAlignment="Left"
                                    Margin="5 5 5 0"
@@ -147,7 +147,7 @@
                                     VerticalAlignment="Center">
 
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Viloyat"
+                            <Label Content="Провинция"
                                    FontSize="16"
                                    Margin="11 5 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -200,7 +200,7 @@
                                     VerticalAlignment="Bottom">
 
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Tuman"
+                            <Label Content="Округ"
                                    FontSize="16"
                                    Margin="10 5 5 0"
                                    Foreground="{DynamicResource FifthTextColor}"
@@ -239,7 +239,7 @@
                 </Grid>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Manzil"
+                    <Label Content="Адрес"
                        FontSize="16"
                        HorizontalAlignment="Left"
                        Margin="30 5 5 0"
@@ -277,7 +277,7 @@
                 </Border>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Tasnif"
+                    <Label Content="Описание"
                        FontSize="16"
                        HorizontalAlignment="Left"
                        Margin="30 5 5 0"
@@ -315,7 +315,7 @@
                              Foreground="{DynamicResource FifthTextColor}"/>
                 </Border>
                 <Button x:Name="btnCreate" Style="{DynamicResource ProductCreateButton}"
-                        Content="Yaratish"
+                        Content="Создавать"
                         Height="55"
                         Width="490"
                         Margin="0 20 0 0" Click="btnCreate_Click"/>

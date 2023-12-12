@@ -142,7 +142,7 @@
                                 <TextBox
                                          x:Name="txtbName"
                                          FontSize="26"
-                                         Text="Oltiariq  yukxonasi"
+                                         Text="Склад Алтиарик"
                                          Margin="0 5"
                                          BorderThickness="0"
                                          Background="{DynamicResource SecondaryBackground}"
@@ -177,7 +177,7 @@
                                     Background="{DynamicResource SixthBackground}">
                                 <StackPanel Orientation="Horizontal"
                                         Margin="0 3 0 3">
-                                    <TextBlock Text="Ism:" 
+                                    <TextBlock Text="Имя:" 
                                              FontSize="18"
                                              Margin="10 5"
                                              Background="{DynamicResource SixthBackground}"
@@ -200,7 +200,7 @@
                                     Background="{DynamicResource SixthBackground}">
                                 <StackPanel Orientation="Horizontal"
                                         Margin="0 3 0 3">
-                                    <TextBlock Text="Tel:" 
+                                    <TextBlock Text="Тел:" 
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -236,7 +236,7 @@
                                 Orientation="Horizontal"
                                 VerticalAlignment="Center"
                                 Margin="0 3 0 3">
-                            <TextBlock Text="Viloyat:" 
+                            <TextBlock Text="Провинция:" 
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -263,7 +263,7 @@
                                 Orientation="Horizontal"
                                 VerticalAlignment="Center"
                                 Margin="0 3 0 3">
-                            <TextBlock Text="Tuman:" 
+                            <TextBlock Text="Округ:" 
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -289,7 +289,7 @@
                     <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center"
                             Margin="0 3 0 3">
-                        <TextBlock Text="Manzil:"
+                        <TextBlock Text="Адрес:"
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -315,7 +315,7 @@
                     <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Top"
                             Margin="0 5 5 5">
-                        <TextBlock Text="Tasnif:"
+                        <TextBlock Text="Описание:"
                                          FontSize="18"
                                          Margin="10 5"
                                          Background="{DynamicResource SixthBackground}"
@@ -352,7 +352,7 @@
                             Margin="10 0 0 0">
                         <Button x:Name="btnUpdate" 
                                 Style="{DynamicResource ProductUpdateButton}"
-                                Content="Tahrirlash"
+                                Content="Редактирование"
                                 Click="btnUpdate_Click"/>
                     </Border>
                     <Border Grid.Column="1"
@@ -361,7 +361,7 @@
                             >
                         <Button x:Name="btnDelete"
                                 Style="{DynamicResource ProductBackButton}"
-                                Content="Ortga"
+                                Content="Назад"
                                 Click="btnDelete_Click"/>
                     </Border>
                 </Grid>

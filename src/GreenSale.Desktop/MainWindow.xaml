@@ -21,7 +21,7 @@
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid Margin="0,0,0,40">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="260"/>
                 <ColumnDefinition Width="40*"/>
             </Grid.ColumnDefinitions>
 
@@ -83,14 +83,14 @@
 
                     </StackPanel>
                     <!--Menu item-->
-                    <TextBlock Text="Menyu" Style="{DynamicResource menuTitle}"/>
+                    <TextBlock Text="Меню" Style="{DynamicResource menuTitle}"/>
 
                     <RadioButton x:Name="AsosiyButton" 
                                  Click="AsosiyButton_Click" 
                                  Style="{DynamicResource menuButton}" >
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="Home" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Asosiy" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Основной" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
@@ -99,7 +99,7 @@
                                  Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="Adjust" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Sotuvchi e'lonlari" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Объявления продавца" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton x:Name="btnStorage"
@@ -107,7 +107,7 @@
                                  Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="HomeGroup" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Yukxona e'lonlari" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Складские объявления" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton x:Name="btnBuyer"
@@ -115,7 +115,7 @@
                                  Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="ClipboardTextPlayOutline" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Oluvchi e'lonlari" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Объявления получателей" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton x:Name="btnCreateAd"
@@ -123,7 +123,7 @@
                                  Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="GamepadDown" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="E'lon yaratish" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Создать объявление" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
@@ -147,7 +147,7 @@
                         Style="{DynamicResource menuButton}">
                         <StackPanel Orientation="Horizontal">
                             <icon:PackIconMaterial Kind="StarSettings" Style="{DynamicResource menuButtonIcon}"/>
-                            <TextBlock Text="Sozlamalar" Style="{DynamicResource menuButtonText}"/>
+                            <TextBlock Text="Настройки" Style="{DynamicResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
